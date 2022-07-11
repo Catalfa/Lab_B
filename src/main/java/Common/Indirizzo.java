@@ -17,5 +17,10 @@ public class Indirizzo {
         this.provincia = provincia;
         this.cap = cap;
     }
+
+    public String toString(){
+        String indirizzo= qualificatore+", "+nome_via+", "+numero_civico+", "+comune+", "+provincia+", "+cap;
+        return indirizzo;
+    }
     
 }
