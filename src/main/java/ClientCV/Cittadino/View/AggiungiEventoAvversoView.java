@@ -1,0 +1,295 @@
+package ClientCV.Cittadino.View;
+
+import ClientCV.Cittadino.Controller.AggiungiEventoAvversoController;
+
+import java.awt.Font;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+
+public class AggiungiEventoAvversoView{
+
+    AggiungiEventoAvversoController controller;
+
+    private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
+    private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
+    private static final int WIDTH = 900;
+    private static final int HIGHT = 700;
+
+    /*
+    *Creo questi panels inquesta posizione perchè mi serviranno
+    *anche in altre parti di codice e altre classi
+    */
+    private JFrame frame_aggiungiEventoAvverso;
+    private JPanel panel_tipoEvento;
+    private JPanel panel_intensitaEvento;
+    private JPanel panel_noteEvento;
+
+    private String[] labelNames = {"Nome Del Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensita': ", "Note: "};
+    private String[] buttonNames = {"Registra Evento", "Indietro"};
+    private ButtonGroup[] buttonGroup = new ButtonGroup[6];
+    private JTextField[] noteFields = new JTextField[6];
+    private JScrollPane[] scrollPanes = new JScrollPane[6];
+    private JLabel label_InfoNomeCentro;
+    private JLabel label_IdVaccinazione;
+
+    String[] eventiRegistrabili = {
+        "Mal di testa",
+        "Febbre",
+        "Dolori articolari - muscolari",
+        "Linfoadenopatia",
+        "Tachicardia",
+        "Crisi ipertensiva",
+    };
+
+    public AggiungiEventoAvversoView(){
+
+        //Per poter creare un nuovo frame che ci permetta di inserire eventi avversi
+        controller = new AggiungiEventoAvversoController(this);
+        frame_aggiungiEventoAvverso = new JFrame();
+
+        //Pannello contenitore
+        JPanel container = new JPanel();
+        container.setLayout(new BorderLayout());
+
+        //Pannello secondario e eltri utili
+        JPanel panel_infoCentro = new JPanel();
+        panel_tipoEvento = new JPanel();
+        panel_intensitaEvento = new JPanel();
+        panel_noteEvento = new JPanel();
+        JPanel panelButton = new JPanel();
+
+        //Setto le dimensioni del Frame 
+        frame_aggiungiEventoAvverso.setSize(WIDTH, HIGHT);
+        frame_aggiungiEventoAvverso.setResizable(false);
+        frame_aggiungiEventoAvverso.setLocationRelativeTo(null);
+        frame_aggiungiEventoAvverso.add(container);
+        
+        //Inizializzo coi vari parametri i pannelli che ho creato sopra
+        panel_infoCentro.setLayout(null);
+        panel_infoCentro.setPreferredSize(new Dimension(WIDTH, 200));
+        panel_infoCentro.setBackground(Color.WHITE);
+
+        panel_tipoEvento.setLayout(new GridLayout(6, 1, 0, 30));
+        panel_tipoEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
+        panel_tipoEvento.setBackground(Color.WHITE);
+
+        panel_intensitaEvento.setLayout(new GridLayout(6, 5, 0, 30));
+        panel_intensitaEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
+        panel_intensitaEvento.setBackground(Color.WHITE);
+
+        panel_noteEvento.setLayout(new GridLayout(6, 2, 0, 30));
+        panel_noteEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
+        panel_noteEvento.setBackground(Color.WHITE);
+
+        panelButton.setLayout(null);
+        panelButton.setPreferredSize(new Dimension(WIDTH, 100));
+        panelButton.setBackground(Color.WHITE);
+
+        //Aggiungo i pannelli inizializzati al Pannello principale
+        container.add(panel_infoCentro, BorderLayout.PAGE_START);
+        container.add(panel_tipoEvento, BorderLayout.LINE_START);
+        container.add(panel_intensitaEvento, BorderLayout.CENTER);
+        container.add(panel_noteEvento, BorderLayout.LINE_END);
+
+        //Creo i label che servono per la visione grafica per l'inserimento
+        JLabel nomeCentro = new JLabel(labelNames[0]);
+        nomeCentro.setFont(mainFont);
+        nomeCentro.setForeground(Color.RED);
+        nomeCentro.setBounds(0, 20, WIDTH, 25);
+        nomeCentro.setHorizontalAlignment(JLabel.CENTER);
+        nomeCentro.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(nomeCentro);
+        frame_aggiungiEventoAvverso.setVisible(true);
+
+        label_InfoNomeCentro = new JLabel("");
+        label_InfoNomeCentro.setFont(secondMainFont);
+        label_InfoNomeCentro.setBounds(0, 50, WIDTH, 25);
+        label_InfoNomeCentro.setHorizontalAlignment(JLabel.CENTER);
+        label_InfoNomeCentro.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(label_InfoNomeCentro);
+
+        JLabel idVaccinazione = new JLabel(labelNames[1]);
+        idVaccinazione.setFont(mainFont);
+        idVaccinazione.setForeground(Color.RED);
+        idVaccinazione.setBounds(0, 80, WIDTH, 25);
+        idVaccinazione.setHorizontalAlignment(JLabel.CENTER);
+        idVaccinazione.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(idVaccinazione);
+
+        label_IdVaccinazione = new JLabel("");
+        label_IdVaccinazione.setFont(secondMainFont);
+        label_IdVaccinazione.setBounds(0, 110, WIDTH, 25);
+        label_IdVaccinazione.setHorizontalAlignment(JLabel.CENTER);
+		label_IdVaccinazione.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(label_IdVaccinazione);
+
+        JLabel eventiAvversi = new JLabel(labelNames[2]);
+        eventiAvversi.setFont(mainFont);
+        eventiAvversi.setForeground(Color.BLACK);
+        eventiAvversi.setBounds(0, 140, WIDTH, 25);
+        eventiAvversi.setHorizontalAlignment(JLabel.CENTER);
+		eventiAvversi.setVerticalAlignment(JLabel.CENTER);
+		panel_infoCentro.add(eventiAvversi);
+
+        JLabel tipoEvento = new JLabel(labelNames[3]);
+        tipoEvento.setFont(mainFont);
+        tipoEvento.setForeground(Color.BLACK);
+        tipoEvento.setBounds(0, 170, WIDTH/3, 25);
+        tipoEvento.setHorizontalAlignment(JLabel.CENTER);
+		tipoEvento.setVerticalAlignment(JLabel.CENTER);
+		panel_infoCentro.add(tipoEvento);
+
+        addEventi();
+
+        JLabel intensita = new JLabel(labelNames[4]);
+        intensita.setFont(mainFont);
+        intensita.setForeground(Color.BLACK);
+        intensita.setBounds(WIDTH/3, 170, WIDTH/3, 25);
+        intensita.setHorizontalAlignment(JLabel.CENTER);
+		intensita.setVerticalAlignment(JLabel.CENTER);
+		panel_infoCentro.add(intensita);
+
+        addIntensita();
+
+        JLabel note = new JLabel(labelNames[5]);
+        note.setFont(mainFont);
+        note.setForeground(Color.BLACK);
+        note.setBounds(WIDTH/3*2, 170, WIDTH/3, 25);
+        note.setHorizontalAlignment(JLabel.CENTER);
+        note.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(note);
+
+        addNote();
+
+        //Inizializziamo anche i bottoni creati sopra
+        JButton btn_inserisciEventiAvversi = new JButton(buttonNames[0]);
+        btn_inserisciEventiAvversi.setBounds(350, 20, 200, 15);
+        panelButton.add(btn_inserisciEventiAvversi);
+
+        JButton btn_backToSignIn = new JButton(buttonNames[1]);
+        btn_backToSignIn.setBounds(350, 20, 200, 15);
+        panelButton.add(btn_backToSignIn);
+
+        container.add(panelButton, BorderLayout.PAGE_END);
+
+        btn_inserisciEventiAvversi.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String idvaccinazione = label_IdVaccinazione.getText();
+                String nomeCentro = label_InfoNomeCentro.getText();
+                Integer[] intensitaEventi = new Integer[6];
+                String[] noteEventi = new String[6];
+
+                for(int i=0; i<6; i++){
+                    intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
+                    noteEventi[i] = noteFields[i].getText();
+                }
+
+                controller.inserisciEventiAvversiAction(intensitaEventi, noteEventi, idvaccinazione, nomeCentro, eventiRegistrabili);                
+            }
+        });
+        frame_aggiungiEventoAvverso.setVisible(true);
+        
+    }
+
+    /**
+	 * Metodo che crea, per ogni evento una nuova label e la inserisce nel panel.
+	 */
+    private void addEventi(){
+        for(String evt : eventiRegistrabili){
+            JLabel evento = new JLabel(evt);
+            evento.setHorizontalAlignment(JLabel.CENTER);
+            panel_tipoEvento.add(evento);
+        }
+    }
+
+    
+    /*
+    *Metodo per inizializzare il ButtonGroup
+    */
+    private void inizializzaButtonGroup(){
+        for(int i=0; i<6; i++){
+            buttonGroup[i] = new ButtonGroup();
+        }
+    }
+
+    /**
+	 * Metodo che crea i gruppi di bottoni con determinati valori d'intensita' e li aggiunge nel panel. 
+	 */
+    private void addIntensita(){
+        inizializzaButtonGroup();
+        for(int j=0; j<6; j++){
+            for(int i=0; i<6; i++){                
+                JRadioButton rb_intensita = new JRadioButton(""+i, (i==1 ? true : false));
+                rb_intensita.setActionCommand(""+j);
+                rb_intensita.setVerticalTextPosition(JRadioButton.BOTTOM);
+                rb_intensita.setHorizontalTextPosition(JRadioButton.CENTER);
+                buttonGroup[j].add(rb_intensita);
+                panel_intensitaEvento.add(rb_intensita);
+            }
+        }
+    }
+
+    /**
+	 * Metodo che crea un campo per l'inserimento delle note e una label per indicare il numero di caratteri rimanenti,
+     * per poi aggiungerli al panel.
+	 */
+    private void addNote(){
+        for(int i=0; i<6; i++){
+            scrollPanes[i] = new JScrollPane();
+            noteFields[i] = new JTextField();
+            scrollPanes[i].add(noteFields[i]);
+            scrollPanes[i].setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+            panel_noteEvento.add(noteFields[i]);
+            JLabel label = new JLabel("256 caratteri disponibili");
+            panel_noteEvento.add(label);
+            int index = i;
+            noteFields[i].addKeyListener(new KeyListener(){
+                private int max_numCharNote = 256;
+                private int count_numCharNote = 0;
+
+                @Override
+                public void keyTyped(KeyEvent arg0) {
+                    count_numCharNote = max_numCharNote - noteFields[index].getText().length();
+                    label.setText(count_numCharNote + "caratteri rimanenti.");
+                    controller. checkNumCharAction(arg0, count_numCharNote);
+                }
+
+                @Override
+                public void keyPressed(KeyEvent arg0) {}
+
+                @Override
+                public void keyReleased(KeyEvent arg0) {}
+
+            });
+
+        }
+    }
+
+
+    /* 
+    *Metodo per chiudere frames
+    */
+    public void deleteView(){
+        frame_aggiungiEventoAvverso.setVisible(false);
+        frame_aggiungiEventoAvverso.dispose();
+    }
+
+}
