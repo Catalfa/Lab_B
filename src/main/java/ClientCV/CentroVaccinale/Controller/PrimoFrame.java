@@ -41,7 +41,7 @@ public class PrimoFrame extends JFrame{
         });
 
         add(textAreaPanel, BorderLayout.CENTER);      //posizione area testo
-        add(barraStrumenti, BorderLayout.PAGE_START);
+       // add(barraStrumenti, BorderLayout.PAGE_START);
         add(pannelloForm, BorderLayout.LINE_START);
 
         setSize( 800, 500);

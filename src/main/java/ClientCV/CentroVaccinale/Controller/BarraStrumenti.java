@@ -16,15 +16,15 @@ public class BarraStrumenti {
         bottoneGoBack = new JButton("Go back");
         bottoneLogin = new JButton("Login");
 
-        bottoneSignIn.addActionListener(this);
-        bottoneGoBack.addActionListener(this);
-        bottoneLogin.addActionListener(this);
+        bottoneSignIn.addActionListener(this::actionPerformed);
+        bottoneGoBack.addActionListener(this::actionPerformed);
+        bottoneLogin.addActionListener(this::actionPerformed);
 
-        setLayout(new FlowLayout(FlowLayout.LEFT));
+       // setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        add(bottoneSignIn);
-        add(bottoneGoBack);
-        add(bottoneLogin);
+       // add(bottoneSignIn);
+       // add(bottoneGoBack);
+       // add(bottoneLogin);
 
     }
 
@@ -33,7 +33,6 @@ public class BarraStrumenti {
 
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {               //collegamento che permette scrivere del testo schiacciando bottone
         if (textListener != null){
             JButton premuto = (JButton) e.getSource();

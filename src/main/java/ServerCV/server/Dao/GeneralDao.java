@@ -26,7 +26,7 @@ public class GeneralDao {
 	 * @param username	Lo username per accedere al DB.
 	 * @param password	La password per accedere al DB.
 	 */
-	public static void setDatabaseParams(String url, String username, String password) {
+	public  void setDatabaseParams(String url, String username, String password) {
 		DB_URL = url;
 		DB_USERNAME = username;
 		DB_PASSWORD = password;
@@ -38,7 +38,10 @@ public class GeneralDao {
 	 */
 	public Connection openConnection() {
 		try {
-			return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+			Connection connection=DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+			System.out.println("connesso al db");
+			return  connection;
+
 		} catch (SQLException ex) {
 			System.err.println("ERRORE DI CONNESSIONE AL DATABASE, CONTROLLARE I DATI INSERITI O IL CORRETTO FUNZIONAMENTO DEL DATABASE");
 		}

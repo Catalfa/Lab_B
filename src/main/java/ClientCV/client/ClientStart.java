@@ -9,7 +9,8 @@ import java.rmi.RemoteException;
  */
 public class ClientStart {
 
-	public static void start() {
+	public void start() {
+
 		Server stub = ServerSingleton.getInstance();
 	}
 }
