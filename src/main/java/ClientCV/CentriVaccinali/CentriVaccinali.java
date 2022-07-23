@@ -8,12 +8,11 @@ import ServerCV.server.ServerStart;
 
 public class CentriVaccinali {
     static ServerStart server=new ServerStart();
-    static ClientStart client= new ClientStart();
+
 
     public static void main(String[] args) {
-        HomePageView homePage = new HomePageView();
-        homePage.setVisible(true);
+
         server.start();
-        client.start();
+        ClientStart.start();
     }
 }

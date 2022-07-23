@@ -21,6 +21,40 @@ import ServerCV.server.Dao.GeneralDao;
  */
 public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao {
 
+	public EventiAvversiDaoImpl(){
+		createTable_();
+	}
+
+
+	public void createTable_() {
+		String qCreate_eventiavversi = "CREATE TABLE eventi_avversi" + "("
+				+ "evento character varying, "
+				+ "importanza smallint, "
+				+ "note character varying(256), "
+				+ "idvaccinazione smallint, "
+				+ "note DATE, "
+				+ "nomecentro character varying ) ";
+		PreparedStatement pstmt;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qCreate_eventiavversi);
+			pstmt.executeUpdate();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+	}
+
+
+
+
+
+
+
+
 	/**
 	 * Metodo che inserisce i dati dell'evento avverso all'interno della tabella eventi_avversi.
 	 * @param idVaccinazione		L'ID della vaccinazione.

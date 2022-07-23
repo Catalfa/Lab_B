@@ -8,17 +8,9 @@ import java.rmi.RemoteException;
 
 public class main {
 
-
     public static void main(String[] args) throws RemoteException {
-       ServerStart server= new ServerStart();
-        ClientStart client=new ClientStart();
-            if (server.start()){
-                client.start();
-            }else {
-                System.err.println("server non funzionante");
-            }
-
-
+        ServerStart server = new ServerStart();
+        ClientStart client = new ClientStart();
 
     }
 }

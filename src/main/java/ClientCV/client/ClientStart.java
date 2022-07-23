@@ -1,5 +1,6 @@
 package ClientCV.client;
 
+import ClientCV.CentriVaccinali.View.HomePageView;
 import ServerCV.interfaccia.Server;
 
 import java.rmi.RemoteException;
@@ -9,8 +10,15 @@ import java.rmi.RemoteException;
  */
 public class ClientStart {
 
-	public void start() {
-
-		Server stub = ServerSingleton.getInstance();
+	public ClientStart() {
+		start();
 	}
+
+	public static void start() {
+		Server stub = ServerSingleton.getInstance();
+		HomePageView homePage = new HomePageView();
+		homePage.setVisible(true);
+
+	}
+
 }
