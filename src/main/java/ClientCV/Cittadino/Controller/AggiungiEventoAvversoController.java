@@ -37,7 +37,6 @@ public class AggiungiEventoAvversoController {
 	 * In base al codice restituito dal server puo' mostrare, o un messaggio d'errore o uno di avvenuto inserimento.
 	 * @param intensitaEventi	L'intensit� dei vari eventi.
 	 * @param noteEventi		Le note sui vari eventi.
-	 * @param idVaccinazione	L'ID di vaccinazione del cittadino.
 	 * @param nomeCentro		Il nome del centro vaccinale.
 	 * @param eventi			La lista degli eventi.
 	 */
