@@ -1,22 +1,12 @@
 package ClientCV.Cittadino.View;
 
-import java.awt.Color;
-import java.awt.GridLayout;
+import ClientCV.Cittadino.Controller.LoginCittadinoController;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.FlowLayout;
-import java.awt.Font;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-
-import ClientCV.Cittadino.Controller.LoginCittadinoController;
+import java.rmi.RemoteException;
 
 public class LoginCittadinoView extends JFrame {
     
@@ -91,7 +81,7 @@ public class LoginCittadinoView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.signinCittadino();            
+                controller.signinCittadino();
             }
 
         });
@@ -102,9 +92,11 @@ public class LoginCittadinoView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = usernamField.getText();
                 char[] password = passwordField.getPassword();
-                controller.loginCittadino(username, password);
-                // TODO Auto-generated method stub
-                
+                try {
+                    controller.loginCittadino(username, password);
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
             }
 
         });

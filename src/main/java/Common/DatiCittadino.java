@@ -12,15 +12,21 @@ public class DatiCittadino implements Serializable{
     private String cf;
     private String email;
     private String username;
-    private char[] password;
+    private String password;
 
-    public DatiCittadino(String nome, String cognome, String cf, String email, String username, char[] password) {
+    private String idvaccinazione;
+
+    private String idcentro;
+
+    public DatiCittadino(String nome, String cognome, String cf, String email, String username, String password/*, String idvaccinazione, String idcentro*/) {
         this.nome = nome;
         this.cognome = cognome;
         this.cf = cf;
         this.email = email;
         this.username = username;
         this.password = password;
+      //  this.idvaccinazione=idvaccinazione;
+       // this.idcentro=idcentro;
     }
 
     public String getNomeCittadino(){
@@ -43,7 +49,7 @@ public class DatiCittadino implements Serializable{
         return username;
     }
 
-    public char[] getPasswordCittadino() {
+    public String getPasswordCittadino() {
         return password;
     }
 }

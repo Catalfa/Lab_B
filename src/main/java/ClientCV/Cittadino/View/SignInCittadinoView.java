@@ -1,26 +1,16 @@
 package ClientCV.Cittadino.View;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.WindowConstants;
-
 import ClientCV.Cittadino.Controller.SignInCittadinoController;
 import Common.DatiCittadino;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SignInCittadinoView extends JFrame{
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
-    private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
     private final int WIDTH = 350;
     private final int HIGHT = 450;
 
@@ -95,21 +85,15 @@ public class SignInCittadinoView extends JFrame{
                 
         });
 
-
         //0 ci ritorna l'id_vaccinazione nel controller
         buttons[1].addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                //TODO
-                //IMPLEMENTARE IL CONTROLLO PER IL SINGIN, APRIRE LA NUOVA FINESTRA SOLO SE I DATI SONO STATI INSERITI 
-                //E MATCHANO IL TIPO DELLE STRINGHE
                 controller.signIn(new DatiCittadino(textFields[0].getText(), textFields[1].getText(), textFields[2].getText(), 
-                textFields[3].getText(), textFields[4].getText(), passwordField.getPassword()));
-
+                textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString()));
             }
-
+            
         });
 
         buttons[2].addActionListener(new ActionListener() {

@@ -1,13 +1,13 @@
 package ServerCV.interfaccia;
 
-import java.rmi.Remote;
-import java.rmi.RemoteException;
-import java.util.List;
-
 import Common.DatiCittadino;
 import Common.InfoCentriVaccinali;
 import Common.InfoCittadino;
-import Common.RegistraVaccinato;
+import Common.RegistrazioniVaccinati;
+
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
 
 /**
  * Classe ServerCV.interfaccia del server.
@@ -108,7 +108,7 @@ public interface Server extends Remote {
 	 * @return						Un codice per gestire i vari casi di avviso ed errore.
 	 * @throws RemoteException		Eccezione remota.
 	 */
-	public int registraVaccinato(RegistraVaccinato datiRegistrazione) throws RemoteException;
+	public int registraVaccinato(RegistrazioniVaccinati datiRegistrazione) throws RemoteException;
 	
 	/**
 	 * Interfaccia per gestire l'inserimento di eventi avversi.

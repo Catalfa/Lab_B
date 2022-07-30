@@ -1,9 +1,9 @@
 package ClientCV.client;
 
+import ServerCV.interfaccia.Server;
+
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-
-import ServerCV.interfaccia.Server;
 
 /**
  * Classe che permette la creazione di una sola istanza della classe server.
@@ -24,7 +24,7 @@ public class ServerSingleton {
 	public static Server getInstance() {
 		if(instance == null) {
 			try {
-				Registry registry = LocateRegistry.getRegistry(1400);
+				Registry registry = LocateRegistry.getRegistry(1100);
 				instance = (Server)registry.lookup("serverCV");
 				System.err.println("client collegato");
 			} catch (Exception ex) {

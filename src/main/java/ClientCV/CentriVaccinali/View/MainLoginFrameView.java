@@ -1,17 +1,9 @@
 package ClientCV.CentriVaccinali.View;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.WindowConstants;
-
 import ClientCV.CentriVaccinali.Controller.MainLoginFrameController;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

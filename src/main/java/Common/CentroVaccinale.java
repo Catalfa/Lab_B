@@ -2,42 +2,62 @@ package Common;
 
 public class CentroVaccinale {
     
-    private String nome;
-    private String cognome;
-    private String matricola;
-    private String email;
-    private char[] password;
+    private String idCentro;
+    private String nomeCentroVaccinale;
+    private String tipologiaCentro;
+    private String qualificatore;
+    private String indirizzo;
+    private int numeroCivico;
+    private String comune;
+    private String provincia;
+    private String cap;
 
-    //todo
-    //Essendo ora un centro vaccinale e non piu un dottore, modificare i dati richiesti e i getter/setter
-    //in modo da rispettare le caratteristiche del centro vaccinale
-
-    public CentroVaccinale(String nome, String cognome, String matricola, String email, char[] password) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.matricola = matricola;
-        this.email = email;
-        this.password = password;
+    public CentroVaccinale(String idCentro, String nomeCentroVaccinale, String tipologiaCentro, String qualificatore, String indirizzo, int numeroCivico, String comune, String provincia, String cap) {
+        this.idCentro = idCentro;
+        this.nomeCentroVaccinale = nomeCentroVaccinale;
+        this.tipologiaCentro = tipologiaCentro;
+        this.qualificatore = qualificatore;
+        this.indirizzo = indirizzo;
+        this.numeroCivico = numeroCivico;
+        this.comune = comune;
+        this.provincia = provincia;
+        this.cap = cap;
     }
 
-    public String GetNome() {
-        return nome;
+    public String getIdCentro(){
+        return idCentro;
     }
 
-    public String GetCognome() {
-        return cognome;
+    public String getnomeCentroVaccinale() {
+        return nomeCentroVaccinale;
     }
 
-    public String GetMatricola() {
-        return matricola;
+    public String getTipologiaCentro() {
+        return tipologiaCentro;
     }
 
-    public String GetEmail() {
-        return email;
+    public String getQualificatore(){
+        return qualificatore;
     }
 
-    public char[] GetPassword() {
-        return password;
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public int getNumeroCivico() {
+        return numeroCivico;
+    }
+
+    public String getComune() {
+        return comune;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public String getCap() {
+        return cap;
     }
 
 }

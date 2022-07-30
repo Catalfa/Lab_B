@@ -1,24 +1,31 @@
 package ServerCV.server;
 
+import Common.*;
+import ServerCV.database.gestioneDB.DaoFactory;
+import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
+import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
+import ServerCV.database.gestioneDB.interfacceDB.EventiAvversiDao;
+import ServerCV.database.gestioneDB.interfacceDB.RegistrazioniVaccinazioniDao;
+import ServerCV.interfaccia.Client;
+
 import java.rmi.RemoteException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import ClientCV.CentriVaccinali.CentriVaccinali;
-import Common.*;
-import ServerCV.interfaccia.Client;
-import ServerCV.server.Dao.*;
-import ServerCV.server.Dao.Interfacce.CentriVaccinaliDao;
-
 /**
  * Classe che gestisce le classi del DB per metterle a disposizione del client.
  */
 public class GestioneClient {
+
+	CittadiniRegistratiDao cittadiniRegistratiDao = (CittadiniRegistratiDao) DaoFactory.getDao("CittadiniRegistratiDao");
+	CentriVaccinaliDao centriVaccinaliDao = (CentriVaccinaliDao) DaoFactory.getDao("CentriVaccinaliDao");
+	EventiAvversiDao eventiAvversiDao = (EventiAvversiDao) DaoFactory.getDao("EventiAvversiDao");
+	RegistrazioniVaccinazioniDao registrazioniVaccinazioniDao = (RegistrazioniVaccinazioniDao) DaoFactory.getDao("RegistrazioniVaccinazioniDao");
 	ConcurrentHashMap<Integer, Client> clients = new ConcurrentHashMap<>();
 	Integer clientCount = 0;
-	
+
 	//TODO da implementare il metodo getDao in DaoFactory @Rondo
 	//CentriVaccinaliDao centriVaccinaliDao = (CentriVaccinaliDao) DaoFactory.getDao("CentriVaccinaliDao");
 
@@ -68,7 +75,14 @@ public class GestioneClient {
 	 * @return				Un codice per gestire i vari casi di avviso ed errore.
 	 */
 	public int gestRegistraCittadino(DatiCittadino datiCittadino) {
-		return 3;
+		if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino()))
+			return 2;
+		else
+		if(!cittadiniRegistratiDao.existCittadino(datiCittadino.getUsernameCittadino())) {
+			cittadiniRegistratiDao.insertCittadino(datiCittadino);
+			return 1;
+		}
+		return 0;
 	}
 	
 	/**
@@ -78,7 +92,12 @@ public class GestioneClient {
 	 * @return			Un codice per gestire i vari casi di avviso ed errore.
 	 */
 	public int gestLoginCittadino(String username, String pw) {
-		return 3;
+		if(!cittadiniRegistratiDao.existCittadino(username))
+			return 2;
+		else if(cittadiniRegistratiDao.checkPwCittadino(username, pw))//se password inserita = pw sul db -> login)
+			return 1;
+		else
+			return 3;
 	}
 
 	/**
@@ -86,8 +105,30 @@ public class GestioneClient {
 	 * @param username	Lo username del cittadino.
 	 * @return			Il CF del cittadino.
 	 */
+	//da finire, devo capire come passare la connessione
 	public String gestOttieniCF(String username) {
-		return null;
+		DatiCittadino datiCittadino = cittadiniRegistratiDao.getCfCittadino(username);
+		return datiCittadino.getCFCittadino();
+	/*	String sql="SELECT cf FROM Cittadini_Registrati WHERE userid=?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		String cf="";
+		try {
+			pstmt=connessione.prepareStatement(sql);
+			pstmt.setString(1,username);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				cf=rs.getString("cf");
+			}
+			if(cf.equals(null) || cf.equals(""))
+				System.out.println("cf non presente");
+			else
+			System.out.println(cf);
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+*/
 	}
 
 	/**
@@ -95,8 +136,11 @@ public class GestioneClient {
 	 * @param cf	Il CF del cittadino.
 	 * @return		Il nome e il cognome del cittadino.
 	 */
-	public InfoCittadino gestOttieniInfoCittadino(String cf) {
-		return null;
+	public InfoCittadino gestOttieniInfoCittadino(String cf){
+		CittadiniRegistratiDao cittadiniRegistrati=null;
+		DatiCittadino datiCittadino = cittadiniRegistrati.getDatiCittadino(cf);
+		return new InfoCittadino(datiCittadino.getNomeCittadino(), (datiCittadino.getPasswordCittadino().toCharArray()));
+
 	}
 	
 	/**
@@ -104,8 +148,18 @@ public class GestioneClient {
 	 * @param datoRegistrazione		I dati che il cittadino ha inserito al momento della prenotazione.
 	 * @return						Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	public int gestRegistraVaccinato(RegistraVaccinato datoRegistrazione) {
-		return 2;
+	public int gestRegistraVaccinato(RegistrazioniVaccinati datoRegistrazione) {
+		if(centriVaccinaliDao.existCf(datoRegistrazione.getNomeCentro(), datoRegistrazione.getCf()))
+			return 3;
+		else
+		if(cittadiniRegistratiDao.existIdCittadino(datoRegistrazione.getIdVaccinazione()))
+			return 2;
+		else {
+			centriVaccinaliDao.insertVaccinato(datoRegistrazione);
+			cittadiniRegistratiDao.updateIdCittadino(datoRegistrazione.getIdVaccinazione(), datoRegistrazione.getCf());;
+			updateAllClients(0, 1);
+			return 1;
+		}
 	}
 
 	/**
@@ -114,7 +168,16 @@ public class GestioneClient {
 	 * @return						Un codice per gestire i vari casi di avviso ed errore.
 	 */
 	public int gestRegistraCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
-		return 3;
+		if(centriVaccinaliDao.existCentroVaccinale(infoCentroVaccinale.getNomeCentro()))
+			return 2;
+		else {
+			centriVaccinaliDao.insertDatiCentroVaccinale(infoCentroVaccinale);
+			String nome = infoCentroVaccinale.getNomeCentro();
+			nome = Utility.getNameForQuery(nome);
+			centriVaccinaliDao.createVaccinati_(nome);
+			updateAllClients(1, 0);
+			return 1;
+		}
 	}
 
 	/**
@@ -123,7 +186,7 @@ public class GestioneClient {
 	 * @return		Se esiste vero, altrimenti falso.
 	 */
 	public boolean gestExistCfRegistrazioneVaccinazione(String cf) {
-		return true;
+		return registrazioniVaccinazioniDao.existCf(cf);
 	}
 
 	/**
@@ -132,7 +195,9 @@ public class GestioneClient {
 	 * @return		Un codice per gestire i vari casi di avviso ed errore.
 	 */
 	public int gestControlloPreRegistrazioneEventoAvverso(String cf) {
-		return 3;
+		if(eventiAvversiDao.existId(cittadiniRegistratiDao.getIdCittadino(cf)))
+			return 1;
+		return 2;
 	}
 	
 	/**
@@ -141,7 +206,7 @@ public class GestioneClient {
 	 * @return		L'ID della vaccinazione di quel cittadino.
 	 */
 	public String gestOttieniIdVaccinazione(String cf) {
-		return null;
+		return Integer.toString(cittadiniRegistratiDao.getIdCittadino(cf));
 	}
 
 	/**
@@ -150,7 +215,7 @@ public class GestioneClient {
 	 * @return			Una lista dei vari centri vaccinali.
 	 */
 	public List<InfoCentriVaccinali>gestRicercaCentroVaccinale(String testo) {
-		return null;
+		return centriVaccinaliDao.findCentroVaccinale(testo);
 	}
 
 	/**
@@ -160,7 +225,23 @@ public class GestioneClient {
 	 */
 
 	//TODO da rivedere e implementare eventiAvversiDao e getIdVaccinazione
-	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso) {/*
+	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso) {
+
+		//int id_evento, String nomeCentro, String evento,  Integer severita, String note
+
+		if(!centriVaccinaliDao.existId(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
+			return 2;
+		else {
+			for(int i=0; i<6; i++) {
+				eventiAvversiDao.insertEventoAvverso(eventoAvverso.getIdEvento(),
+						eventoAvverso.getNomeCentro(),
+						eventoAvverso.getEvento()[i],
+						eventoAvverso.getSeverita()[i],
+						eventoAvverso.getNotes()[i]);
+			}
+			return 1;
+		}
+		/*
 		if(!centriVaccinaliDao.existId(eventoAvverso.getNomeCentro(), eventoAvverso.getIdVaccinazione()))
 		return 0;
 		else{
@@ -171,7 +252,7 @@ public class GestioneClient {
 			}
 			return 1;
 		}
-	*/return 0;
+	*/
 	}
 	
 	
@@ -181,7 +262,7 @@ public class GestioneClient {
 	 * @return				Il numero di segnalazioni per quel determinato centro vaccinale.
 	 */
 	public int gestOttieniNumSegnalazioni(String nomeCentro) {
-	return 3;
+		return eventiAvversiDao.getSegnalazioni(nomeCentro)/6;
 	}
 	
 	/**
@@ -191,7 +272,8 @@ public class GestioneClient {
 	 * @return				Il valore medio dell'intensita' di quel determinato evento.
 	 */
 	public Double gestOttieniImportanzaEventi(String nomeCentro, String evento) {
-		return null;
+
+		return eventiAvversiDao.getImportanzaEvento(nomeCentro, evento);
 	}
 
 	/**
@@ -199,7 +281,10 @@ public class GestioneClient {
 	 * @return		Le statistiche.
 	 */
 	public int[] getStatistiche() {
-		return null;
+		int countCentri = centriVaccinaliDao.countCentriVaccinali();
+		int countVaccinati = cittadiniRegistratiDao.countCittadiniVaccinati();
+		int[] statistiche = {countCentri, countVaccinati};
+		return statistiche;
 	}
 }
 	

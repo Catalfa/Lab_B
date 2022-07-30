@@ -2,26 +2,14 @@ package ClientCV.Cittadino.View;
 
 import ClientCV.Cittadino.Controller.AggiungiEventoAvversoController;
 
-import java.awt.Font;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-
-public class AggiungiEventoAvversoView{
+public class AggiungiEventoAvversoView extends JFrame{
 
     AggiungiEventoAvversoController controller;
 
@@ -31,8 +19,8 @@ public class AggiungiEventoAvversoView{
     private static final int HIGHT = 700;
 
     /*
-    *Creo questi panels inquesta posizione perchè mi serviranno
-    *anche in altre parti di codice e altre classi
+    Creo questi panels inquesta posizione perchè mi serviranno
+    anche in altre parti di codice e altre classi
     */
     private JFrame frame_aggiungiEventoAvverso;
     private JPanel panel_tipoEvento;
@@ -44,8 +32,9 @@ public class AggiungiEventoAvversoView{
     private ButtonGroup[] buttonGroup = new ButtonGroup[6];
     private JTextField[] noteFields = new JTextField[6];
     private JScrollPane[] scrollPanes = new JScrollPane[6];
+    
     private JLabel label_InfoNomeCentro;
-    private JLabel label_IdVaccinazione;
+    private JLabel label_IdEvento;
 
     String[] eventiRegistrabili = {
         "Mal di testa",
@@ -56,7 +45,7 @@ public class AggiungiEventoAvversoView{
         "Crisi ipertensiva",
     };
 
-    public AggiungiEventoAvversoView(){
+    public AggiungiEventoAvversoView(String nomeCentroBottone){
 
         //Per poter creare un nuovo frame che ci permetta di inserire eventi avversi
         controller = new AggiungiEventoAvversoController(this);
@@ -96,7 +85,7 @@ public class AggiungiEventoAvversoView{
         panel_noteEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
         panel_noteEvento.setBackground(Color.WHITE);
 
-        panelButton.setLayout(null);
+        panelButton.setLayout(new GridLayout(1, 2, 10, 30));
         panelButton.setPreferredSize(new Dimension(WIDTH, 100));
         panelButton.setBackground(Color.WHITE);
 
@@ -114,9 +103,9 @@ public class AggiungiEventoAvversoView{
         nomeCentro.setHorizontalAlignment(JLabel.CENTER);
         nomeCentro.setVerticalAlignment(JLabel.CENTER);
         panel_infoCentro.add(nomeCentro);
-        frame_aggiungiEventoAvverso.setVisible(true);
+        //frame_aggiungiEventoAvverso.setVisible(true);
 
-        label_InfoNomeCentro = new JLabel("");
+        label_InfoNomeCentro = new JLabel(nomeCentroBottone);
         label_InfoNomeCentro.setFont(secondMainFont);
         label_InfoNomeCentro.setBounds(0, 50, WIDTH, 25);
         label_InfoNomeCentro.setHorizontalAlignment(JLabel.CENTER);
@@ -131,12 +120,12 @@ public class AggiungiEventoAvversoView{
         idVaccinazione.setVerticalAlignment(JLabel.CENTER);
         panel_infoCentro.add(idVaccinazione);
 
-        label_IdVaccinazione = new JLabel("");
-        label_IdVaccinazione.setFont(secondMainFont);
-        label_IdVaccinazione.setBounds(0, 110, WIDTH, 25);
-        label_IdVaccinazione.setHorizontalAlignment(JLabel.CENTER);
-		label_IdVaccinazione.setVerticalAlignment(JLabel.CENTER);
-        panel_infoCentro.add(label_IdVaccinazione);
+        label_IdEvento = new JLabel("");
+        label_IdEvento.setFont(secondMainFont);
+        label_IdEvento.setBounds(0, 110, WIDTH, 25);
+        label_IdEvento.setHorizontalAlignment(JLabel.CENTER);
+		label_IdEvento.setVerticalAlignment(JLabel.CENTER);
+        panel_infoCentro.add(label_IdEvento);
 
         JLabel eventiAvversi = new JLabel(labelNames[2]);
         eventiAvversi.setFont(mainFont);
@@ -177,13 +166,13 @@ public class AggiungiEventoAvversoView{
         addNote();
 
         //Inizializziamo anche i bottoni creati sopra
-        JButton btn_inserisciEventiAvversi = new JButton(buttonNames[0]);
-        btn_inserisciEventiAvversi.setBounds(350, 20, 200, 15);
-        panelButton.add(btn_inserisciEventiAvversi);
-
         JButton btn_backToSignIn = new JButton(buttonNames[1]);
-        btn_backToSignIn.setBounds(350, 20, 200, 15);
+        btn_backToSignIn.setBounds(WIDTH/5, 20, 50, 15);
         panelButton.add(btn_backToSignIn);
+
+        JButton btn_inserisciEventiAvversi = new JButton(buttonNames[0]);
+        btn_inserisciEventiAvversi.setBounds((WIDTH/5)*3, 20, 50, 15);
+        panelButton.add(btn_inserisciEventiAvversi);
 
         container.add(panelButton, BorderLayout.PAGE_END);
 
@@ -192,23 +181,33 @@ public class AggiungiEventoAvversoView{
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                String idvaccinazione = label_IdVaccinazione.getText();
+                String idEvento = label_IdEvento.getText();
                 String nomeCentro = label_InfoNomeCentro.getText();
-                Integer[] intensitaEventi = new Integer[6];
-                String[] noteEventi = new String[6];
+                Integer intensitaEventi[] = new Integer[6];
+                String noteEventi[] = new String[6];
 
                 for(int i=0; i<6; i++){
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
                     noteEventi[i] = noteFields[i].getText();
                 }
-
-                controller.inserisciEventiAvversiAction(intensitaEventi, noteEventi, idvaccinazione, nomeCentro, eventiRegistrabili);                
+                controller.inserisciEventiAvversiAction( idEvento, nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);                
             }
         });
-        frame_aggiungiEventoAvverso.setVisible(true);
+
+        
+        
+        btn_backToSignIn.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                controller.goBack();                
+            }
+
+        });
         
     }
 
+    
     /**
 	 * Metodo che crea, per ogni evento una nuova label e la inserisce nel panel.
 	 */
@@ -219,7 +218,6 @@ public class AggiungiEventoAvversoView{
             panel_tipoEvento.add(evento);
         }
     }
-
     
     /*
     *Metodo per inizializzare il ButtonGroup
@@ -252,6 +250,7 @@ public class AggiungiEventoAvversoView{
      * per poi aggiungerli al panel.
 	 */
     private void addNote(){
+        int max_numCharNote = 256;
         for(int i=0; i<6; i++){
             scrollPanes[i] = new JScrollPane();
             noteFields[i] = new JTextField();
@@ -262,30 +261,30 @@ public class AggiungiEventoAvversoView{
             panel_noteEvento.add(label);
             int index = i;
             noteFields[i].addKeyListener(new KeyListener(){
-                private int max_numCharNote = 256;
-                private int count_numCharNote = 0;
 
                 @Override
                 public void keyTyped(KeyEvent arg0) {
-                    count_numCharNote = max_numCharNote - noteFields[index].getText().length();
-                    label.setText(count_numCharNote + "caratteri rimanenti.");
-                    controller. checkNumCharAction(arg0, count_numCharNote);
+                    int count_numCharNote = max_numCharNote - noteFields[index].getText().length();
+                    label.setText(count_numCharNote + " caratteri rimanenti.");
+                    controller.checkNumCharAction(arg0, count_numCharNote);
                 }
-
+                
                 @Override
                 public void keyPressed(KeyEvent arg0) {}
 
                 @Override
-                public void keyReleased(KeyEvent arg0) {}
+                public void keyReleased(KeyEvent arg0) {
+                       
+                }
 
             });
 
         }
+        frame_aggiungiEventoAvverso.setVisible(true);
     }
 
-
     /* 
-    *Metodo per chiudere frames
+    *Metodo per chiudere frames di controller
     */
     public void deleteView(){
         frame_aggiungiEventoAvverso.setVisible(false);

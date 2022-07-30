@@ -1,7 +1,10 @@
 package ClientCV;
 
-import javax.swing.JOptionPane;
-
+import javax.swing.*;
+/* import javax.swing.JTextField;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+ */
 public class Utility {
     
     public static void showErrorPopUp(String titolo, String messaggio) {

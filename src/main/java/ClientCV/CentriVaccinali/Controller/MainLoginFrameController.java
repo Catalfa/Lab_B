@@ -13,12 +13,18 @@ public class MainLoginFrameController {
         this.loginFrameView = loginFrameView;
     }
 
+    /**
+	 * Metodo che torna al frame precedente.
+	 */
     public void backToHomePage() {
         HomePageView homePageView = new HomePageView();
         homePageView.setVisible(true);
         loginFrameView.dispose();
     }
 
+    /**
+	 * Metodo che crea un nuovo frame e manda in dispose quello corrente.
+	 */
     public void createLoginCittadinoFrame() {
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
         loginCittadinoView.setVisible(true);

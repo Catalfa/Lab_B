@@ -2,13 +2,27 @@ package ClientCV.Cittadino.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
+import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
 import ClientCV.Cittadino.View.SignInCittadinoView;
+import ClientCV.Utility;
+import ClientCV.client.ServerSingleton;
+import Common.InfoCittadino;
+import ServerCV.interfaccia.Server;
+
+import java.rmi.RemoteException;
 
 public class LoginCittadinoController {
+
+    Server Stub;
     
-    private LoginCittadinoView loginCittadinoView;
+    Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
+    public LoginCittadinoView loginCittadinoView;
+
+    public InfoCittadino infoCittadino;
+    private Utility utility = new Utility();
 
     public LoginCittadinoController(LoginCittadinoView loginCittadinoView) {
+        Stub = ServerSingleton.getInstance();
         this.loginCittadinoView = loginCittadinoView;
     }
 
@@ -18,7 +32,24 @@ public class LoginCittadinoController {
         loginCittadinoView.dispose();
     }
 
-    public int loginCittadino(String username, char[] password) {
+    public int loginCittadino(String username, char[] password) throws RemoteException {
+
+        infoCittadino = new InfoCittadino(username, password);
+
+        if(username.toString().isEmpty() || password.length == 0){
+            utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
+            return 1;
+        }
+        if(password.length < 6){
+            utility.showWarningPopUp("Attenzione!", "La password non può essere lunga meno di 6 caratteri.");
+            return 1;
+        }
+
+        //TODO creare metodo per il controllo nel DB prima di aprire il frame "Ricerca_CentroVaccinale_View"
+        Stub.loginCittadino(username,password.toString());
+        Ricerca_CentroVaccinale_View ricerca_centro = new Ricerca_CentroVaccinale_View();
+        loginCittadinoView.dispose();
+        
         return 0;
     }
 

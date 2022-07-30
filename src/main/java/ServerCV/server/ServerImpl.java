@@ -1,15 +1,16 @@
 package ServerCV.server;
 
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.List;
-
 import Common.DatiCittadino;
 import Common.InfoCentriVaccinali;
 import Common.InfoCittadino;
-import Common.RegistraVaccinato;
+import Common.RegistrazioniVaccinati;
 import ServerCV.interfaccia.Client;
 import ServerCV.interfaccia.Server;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe che implementa le interfacce del server e del client.
@@ -62,7 +63,11 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 */
 	@Override
 	public List<InfoCentriVaccinali> cercaCentroVaccinale(String testo) throws RemoteException {
-		return gestClient.gestRicercaCentroVaccinale(testo);
+		List<InfoCentriVaccinali> listaCentri = new ArrayList();
+		for(int i=0; i<20; i++){
+			listaCentri.add(i, new InfoCentriVaccinali("Centro"+i, "Password "+i));
+		}
+		return listaCentri;
 	}
 	
 	/**
@@ -77,8 +82,6 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * Metodo implementativo del server per ottenere le informazioni dei cittadini.
 	 * @return
 	 */
-
-	//TODO non capisco il problema @Rondo
 	@Override
 	public InfoCittadino getInfoCittadini(String cf) throws RemoteException {
 		return gestClient.gestOttieniInfoCittadino(cf);
@@ -88,7 +91,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * Metodo implementativo del server per registrare un cittadino vaccinato.
 	 */
 	@Override
-	public int registraVaccinato(RegistraVaccinato datiRegistrazione) throws RemoteException {
+	public int registraVaccinato(RegistrazioniVaccinati datiRegistrazione) throws RemoteException {
 		return gestClient.gestRegistraVaccinato(datiRegistrazione);
 	}
 	
