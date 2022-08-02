@@ -53,7 +53,7 @@ public class SignInCittadinoController extends JFrame{
     }
 
     public void reset() {
-        for(int i=0; i<6; i++)
+        for(int i=0; i<8; i++)
             signInCittadinoView.textFields[i].setText("");
             signInCittadinoView.passwordField.setText("");
     }
