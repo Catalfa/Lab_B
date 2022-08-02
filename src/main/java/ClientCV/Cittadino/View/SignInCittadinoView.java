@@ -14,7 +14,7 @@ public class SignInCittadinoView extends JFrame{
     private final int WIDTH = 350;
     private final int HIGHT = 450;
 
-    private String[] labelNames = {"Nome", "Cognome", "CF", "Email", "Username", "Password"};
+    private String[] labelNames = {"Nome", "Cognome", "CF", "Email", "Username", "Password", "ID-Vaccinazione", "Nome-CV"};
     private String[] buttonNames = {"BACK", "SIGN-IN", "RESET"};
     private JButton[] buttons = new JButton[3];
     public JTextField[] textFields = new JTextField[5];

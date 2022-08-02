@@ -16,7 +16,15 @@ public class ShowInfo_CV_CittadinoView {
     public JLabel label_infoNomeCentro;
 	public JLabel label_infoIndirizzo;
 	public JLabel label_infoTipoCentro;
+
+	public JLabel label_Comune;
+
+	public JLabel label_siglaProvincia;
+
+	public JLabel label_cap;
 	public JLabel label_numeroSegnalazioni;
+
+	public JLabel label_severitàMedia;
     private JTable table;
     public DefaultTableModel tableModel;
     private JScrollPane scrollPane;
@@ -77,6 +85,45 @@ public class ShowInfo_CV_CittadinoView {
 		label_infoTipoCentro.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_infoTipoCentro);
 
+		JLabel Comune = new JLabel("Tipo centro:");
+		Comune.setForeground(Color.RED);
+		Comune.setBounds(0, 170, 400, 25);
+		Comune.setHorizontalAlignment(JLabel.CENTER);
+		Comune.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(Comune);
+
+		label_Comune = new JLabel("");
+		label_Comune.setBounds(0, 200, 400, 25);
+		label_Comune.setHorizontalAlignment(JLabel.CENTER);
+		label_Comune.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(label_Comune);
+
+		JLabel siglaProvincia = new JLabel("Tipo centro:");
+		siglaProvincia.setForeground(Color.RED);
+		siglaProvincia.setBounds(0, 170, 400, 25);
+		siglaProvincia.setHorizontalAlignment(JLabel.CENTER);
+		siglaProvincia.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(siglaProvincia);
+
+		label_siglaProvincia = new JLabel("");
+		label_siglaProvincia.setBounds(0, 200, 400, 25);
+		label_siglaProvincia.setHorizontalAlignment(JLabel.CENTER);
+		label_siglaProvincia.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(label_siglaProvincia);
+
+		JLabel cap = new JLabel("Tipo centro:");
+		cap.setForeground(Color.RED);
+		cap.setBounds(0, 170, 400, 25);
+		cap.setHorizontalAlignment(JLabel.CENTER);
+		cap.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(cap);
+
+		label_cap = new JLabel("");
+		label_cap.setBounds(0, 200, 400, 25);
+		label_cap.setHorizontalAlignment(JLabel.CENTER);
+		label_cap.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(label_cap);
+
         JLabel numeroSegnalazioni = new JLabel("Numero segnalazioni:");
 		numeroSegnalazioni.setForeground(Color.RED);
 		numeroSegnalazioni.setBounds(0, 230, 400, 25);
@@ -89,6 +136,19 @@ public class ShowInfo_CV_CittadinoView {
 		label_numeroSegnalazioni.setHorizontalAlignment(JLabel.CENTER);
 		label_numeroSegnalazioni.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_numeroSegnalazioni);
+
+		JLabel severitàMedia = new JLabel("Numero segnalazioni:");
+		severitàMedia.setForeground(Color.RED);
+		severitàMedia.setBounds(0, 230, 400, 25);
+		severitàMedia.setHorizontalAlignment(JLabel.CENTER);
+		severitàMedia.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(severitàMedia);
+
+		label_severitàMedia = new JLabel("");
+		label_severitàMedia.setBounds(0, 260, 400, 25);
+		label_severitàMedia.setHorizontalAlignment(JLabel.CENTER);
+		label_severitàMedia.setVerticalAlignment(JLabel.CENTER);
+		panel_showInfoCvCittadino.add(label_severitàMedia);
 
         tableModel = new DefaultTableModel(new String[] {"Evento", "Intensità"}, 0);
 		
