@@ -3,7 +3,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class ConnessioneDB {      //classe che gestisce la connessione al DB
-    String jdbcURL="jdbc:postgresql://localhost:5433/";
+    String jdbcURL="jdbc:postgresql://localhost:5432/";
     String username;
     String password;
     Connection connection;
