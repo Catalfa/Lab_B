@@ -37,10 +37,10 @@ public class MainProva {
         System.out.println("Sto creando la tabella eventi_avversi...");
         ct.Create_EventiAvversi(connessione);
         Server stub= ServerSingleton.getInstance();
-        InfoCentriVaccinali dati=new InfoCentriVaccinali("qwerty", "laSchiranna", "ospedaliero", "via", "24 maggio", 9, "varese", "varese","VA",21100);
+        //InfoCentriVaccinali dati=new InfoCentriVaccinali("qwerty", "laSchiranna", "ospedaliero", "via", "24 maggio", 9, "varese", "varese","VA",21100);
         //CentriVaccinaliDaoImpl imp= new CentriVaccinaliDaoImpl();
         // imp.insertDatiCentroVaccinale(dati);
-        stub.registraCentroVaccinale(dati);
+       // stub.registraCentroVaccinale(dati);
 
 
     }

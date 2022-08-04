@@ -25,9 +25,9 @@ public class DatiCittadino implements Serializable{
         this.email = email;
         this.username = username;
         this.password = password;
-      //  this.idvaccinazione=idvaccinazione;
-       // this.idcentro=idcentro;
-    }
+        this.idvaccinazione=idvaccinazione;
+        this.idcentro=idcentro;
+    }  //problemi generati dall'aggiunta dell'idvaccinazione e dell'idcentro che non si toglieranno finchè non verranno aggiunti da andre come valori da passare
 
     public String getNomeCittadino(){
         return nome;
@@ -52,4 +52,8 @@ public class DatiCittadino implements Serializable{
     public String getPasswordCittadino() {
         return password;
     }
+
+    public String getIdvaccinazione(){return idvaccinazione;}
+
+    public String getIdcentro(){return idcentro;}
 }

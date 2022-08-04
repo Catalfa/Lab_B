@@ -1,6 +1,7 @@
 package ServerCV.database.gestioneDB;
 
 import Common.DatiCittadino;
+import ServerCV.database.ConnessioneDB;
 import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
 
 import java.sql.Connection;
@@ -9,15 +10,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniRegistratiDao {
-	
+
 	/**
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
 	 * @param citizenData	I dati del cittadino che si sta registrando.
 	 */
-	//Non posso ancora modificarlo perchè mex deve cambiarmi un suo metodo
+	//MEtodo da sistemare, non ancora verificato funzionamento su DB
 	@Override
 	public void insertCittadino(DatiCittadino citizenData) {
-		String qAddValuesCittadiniRegistrati = "INSERT INTO cittadini_registrati VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?/*, ?, ?*/)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
@@ -30,6 +31,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(4, citizenData.getEmailCittadino());
 			pstmt.setString(5, citizenData.getUsernameCittadino());
 			pstmt.setString(6, citizenData.getPasswordCittadino());
+		//	pstmt.setString(7,citizenData.getIdvaccinazione());
+		//	pstmt.setString(8,citizenData.getIdcentro());
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -43,7 +46,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf 	Il codice fiscale del cittadino.
 	 * @return 		Il nome e cognome del cittadino.
 	 */
-	//aggiornato query con dati corretti
+	//Metodo da sistemare. Non ancora verificato funzionamento metodo su DB
 	@Override
 	public DatiCittadino getDatiCittadino(String cf) {
 		DatiCittadino datiCittadino = null;
@@ -53,7 +56,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		Connection connection = null;
 		
 		try {
-			connection = openConnection();
+			connection =openConnection();
 			pstmt = connection.prepareStatement(qGetInfoCittadini);
 			pstmt.setString(1, cf);
 			rs = pstmt.executeQuery();
@@ -75,7 +78,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param password	La password del cittadino registrato.
 	 * @return			Se la password dell'utente registrato e' corretta.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public boolean checkPwCittadino(String username, String password) {
 		String qCitizenPasswordMatch = "SELECT userid, password FROM Cittadini_Registrati WHERE userid = ? AND password = ?";
@@ -100,7 +103,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return false;
 	}
 
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public boolean existCittadino(String username) {
 		String qExistCitizenOnDb = "SELECT userid FROM Cittadini_Registrati WHERE userid = ?";
@@ -129,7 +132,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param username	Il nome del cittadino registrato.
 	 * @return			Il Cf del cittadino registrato.
 	 */
-	//aggiornato query con dati corretti
+	//Metodo da sistemare. Non ancora verificato metodo su DB
 	@Override
 	public DatiCittadino getCfCittadino(String username) {
 		DatiCittadino datiCittadino = null;
@@ -160,7 +163,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf	Il Cf del cittadino che si sta registrando
 	 * @return		Se e' gia' presente un cittadino registrato con quel Cf.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public boolean existCfCittadino(String cf) {
 		String qExistCfInCittadiniRegistrati = "SELECT cf FROM Cittadini_Registrati WHERE cf = ?";
@@ -190,9 +193,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param id	L'Id della vaccinazione.
 	 * @param cf	Il Cf del cittadino registrato.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona, però Rondo devi cambiare il tipo dell'id da int a String nella classe GestioneClient che si trova nel package server
 	@Override
 	public void updateIdCittadino(int id, String cf) {
+		String id1=String.valueOf(id);
 		String qUpdateIdVaccinazioneInCittadiniRegistrati = "UPDATE Cittadini_Registrati SET idvaccinazione = ? WHERE cf = ?";
 		PreparedStatement pstmt;
 		Connection connection = null;
@@ -200,7 +204,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qUpdateIdVaccinazioneInCittadiniRegistrati);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, id1);
 			pstmt.setString(2, cf);
 			pstmt.executeUpdate();
 			
@@ -216,9 +220,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param id	L'Id della vaccinazione.
 	 * @return		Se e' gia' stato utilizzato quell'Id.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona; però c'è lostesso discorso fatto prima sempre per quanto rigurada l'id
 	@Override
 	public boolean existIdCittadino(int id) {
+		String id1=String.valueOf(id);
 		String qExistIdInCittadiniRegistrati = "SELECT idvaccinazione FROM Cittadini_Registrati WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -227,7 +232,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInCittadiniRegistrati);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, id1);
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -246,7 +251,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf	Il Cf del cittadino registrato.
 	 * @return		L'Id della vaccinazione.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona. Rondo devi modificare il metodo 'gestControlloPreRegistrazioneEventoAvverso' che si trova sempre in GestioneClient
 	@Override
 	public int getIdCittadino(String cf) {
 		String qGetIdVaccinazioneInCittadiniRegistrati = "SELECT idvaccinazione FROM Cittadini_Registrati WHERE cf = ?";
@@ -261,7 +266,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				return rs.getInt("idvaccinazione");
+					String id=rs.getString("idvaccinazione");
+				return Integer.valueOf(id);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -271,10 +277,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return 0;
 	}
 
-	//aggiornato query con dati corretti
+	//query modificata e funzionante
 	@Override
 	public int countCittadiniVaccinati() {
-		String qCountCittadiniVaccinati = "SELECT COUNT(idvaccinazione) AS count_vaccinazioni FROM Cittadini_Registrati";
+		String qCountCittadiniVaccinati = "SELECT COUNT(idvaccinazione) AS count_vaccinazioni FROM Cittadini_Registrati WHERE (idvaccinazione IS NOT NULL)";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;

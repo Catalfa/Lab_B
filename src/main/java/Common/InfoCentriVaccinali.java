@@ -18,9 +18,6 @@ public class InfoCentriVaccinali implements Serializable{
     private String comune;
 
     private String provincia;
-
-    private String sigla;
-
     private int cap;
 
     private String idcentro;
@@ -31,7 +28,7 @@ public class InfoCentriVaccinali implements Serializable{
         this.idcentro=idcentro;
 
     }
-    public InfoCentriVaccinali(String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap ) {
+    public InfoCentriVaccinali(String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, int cap ) {
         this.nome_centro = nome_centro;
         this.idcentro=idcentro;
         this.tipologia=tipologia;
@@ -40,7 +37,6 @@ public class InfoCentriVaccinali implements Serializable{
         this.numciv=numciv;
         this.comune=comune;
         this.provincia=provincia;
-        this.sigla=sigla;
         this.cap=cap;
 
     }
@@ -56,11 +52,6 @@ public class InfoCentriVaccinali implements Serializable{
     public String getNomeCentro() {
         return nome_centro;
     }
-
-   /* public String getPassword() {
-        return password; 
-    }
-*/
 
     /**
      * Metodo che restituisce la tipologia dell'ospedale
@@ -106,15 +97,6 @@ public class InfoCentriVaccinali implements Serializable{
      */
     public String getProvincia() {
         return provincia;
-    }
-
-    /**
-     * Metodo che restituisce la sigla della provincia
-     * @return sigla
-     */
-
-    public String getSigla() {
-        return sigla;
     }
 
     /**

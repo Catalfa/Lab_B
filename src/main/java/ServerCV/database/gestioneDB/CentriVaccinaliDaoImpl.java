@@ -18,11 +18,10 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che inserisce i dati nella tabella centri_vaccinali.
 	 * @param infoCentroVaccinale	I dati del centro vaccinale.
 	 */
-	//indirizzo bisogna cambiarlo con dei dati più specifici, però ne parliamo per valutare alcune cose riguardo quel campo
-	//aggiornato query con dati corretti
+	//Devo controllare se metodo funziona su DB
 	@Override
 	public void insertDatiCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
-		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, sigla, cap ) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap ) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
@@ -37,8 +36,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(6, ((Integer)infoCentroVaccinale.getNumCiv()).toString());
 			pstmt.setString(7, infoCentroVaccinale.getComune());
 			pstmt.setString(8, infoCentroVaccinale.getProvincia());
-			pstmt.setString(9, infoCentroVaccinale.getSigla());
-			pstmt.setString(10, ((Integer)infoCentroVaccinale.getCap()).toString());
+			pstmt.setString(9, ((Integer)infoCentroVaccinale.getCap()).toString());
 
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
@@ -57,9 +55,9 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	@Override
 	public List<InfoCentriVaccinali> findCentroVaccinale(String researchText) {
 		List<InfoCentriVaccinali> list = new ArrayList<>();
-		String qResearchQuery = "SELECT nome_centro, indirizzo, tipologia FROM CentriVaccinali WHERE "
+		String qResearchQuery = "SELECT nome_centro, nome_via, tipologia FROM CentriVaccinali WHERE "
 				+ "nome_centro LIKE '%" +researchText+ "%' "
-				+ "OR indirizzo LIKE '%" +researchText+ "%' "
+				+ "OR nome_via LIKE '%" +researchText+ "%' "
 				+ "OR tipologia LIKE '%" +researchText+ "%'";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -88,7 +86,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 * @return				Se e' gia' esistente un centro con lo stesso nome 
 	 */
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public boolean existCentroVaccinale(String nomeCentro) {
 		String qExistCenterOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE nome_centro = ?";
@@ -146,7 +144,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che modifica la tabella Vaccinati_NomeCentroVaccinale impostando una nuova FK.
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 */
-	//aggiornato query con dati corretti
+	//Devo verificare che motodo sia funzionante su DB
 	public void alterVaccinati_(String nomeCentro) {
 		String qAlterVaccinati_NomeCentro = "ALTER TABLE Vaccinati_" +nomeCentro+ " "
 				+ "ADD FOREIGN KEY(cf) "
@@ -192,7 +190,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param cf			Il Cf del cittadino registrato.
 	 * @return				Se e' gia' stata effettuata una vaccinazione in quel centro vaccinale.
 	 */
-	//aggiornato query con dati corretti
+	//Devo verificare che mtodo funzioni su DB
 	@Override
 	public boolean existCf(String nomeCentro, String cf) {
 		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " WHERE cf = ?";
@@ -253,23 +251,25 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che inserisce i dati inseriti dal cittadino registrato in fase di prenotazione dopo essere stato vaccinato.
 	 * @param registrazioneVaccinato	I dati di prenotazione della vaccinazione del cittadino registrato.
 	 */
-	//aggiornato query con dati corretti
-	//nei valori da inserire manca un campo, però aspetto a modificare perchè vorrei chiarimenti su questa insert
+	//Sistemato metodo, tranne piccolo detttaglio da discutere con rondo
+	//Non verificato che moto sia funzionante su DB
 	@Override
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getNomeCentro();
-		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?)";
+		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddRegistrazioneVaccinato);
-			pstmt.setString(1, registrazioneVaccinato.getNomeCentro());
-			pstmt.setString(2, registrazioneVaccinato.getCf());
-			pstmt.setDate(3, registrazioneVaccinato.getDataVaccino());
-			pstmt.setString(4, registrazioneVaccinato.getTipoVaccino());
-			pstmt.setInt(5, registrazioneVaccinato.getIdVaccinazione());
+			pstmt.setString(1, registrazioneVaccinato.getCf());
+			pstmt.setString(2, registrazioneVaccinato.getNomeVaccinato());
+			pstmt.setString(3, registrazioneVaccinato.getCognomeVaccinato());
+			pstmt.setDate(4, registrazioneVaccinato.getDataVaccino());
+			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino());
+			pstmt.setInt(6, registrazioneVaccinato.getIdVaccinazione());
+			pstmt.setString(7, registrazioneVaccinato.getNomeCentro()); //sostiutire nome centro con id centro
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -278,7 +278,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 	}
 
-	//aggiornato query con dati corretti
+	//Query funziona
 	@Override
 	public int countCentriVaccinali() {
 		String qCountCentriVaccinali = "SELECT COUNT(*) AS count_centri FROM CentriVaccinali";

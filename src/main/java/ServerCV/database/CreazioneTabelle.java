@@ -15,11 +15,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
                 \tnome_via VARCHAR(60) NOT NULL,
                 \tnum_civ VARCHAR(10) NOT NULL,
                 \tcomune VARCHAR(60) NOT NULL,
-                \tprovincia VARCHAR(60) NOT NULL,
-                \tsigla  VARCHAR(10) NOT NULL,
+                \tprovincia VARCHAR(10) NOT NULL,  
                 \tcap VARCHAR(10) NOT NULL
                 );""";
         InvioCreateTable(sql,conn);
+
     }
 
     public void Create_Vaccinato(Connection conn,String nomeCentro){
