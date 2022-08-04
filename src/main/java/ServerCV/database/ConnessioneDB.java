@@ -1,4 +1,6 @@
 package ServerCV.database;
+import ServerCV.database.gestioneDB.GeneralDao;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,12 +15,16 @@ public class ConnessioneDB {      //classe che gestisce la connessione al DB
         this.jdbcURL=jdbcURL+nomeDb;
         this.username=user;
         this.password=pwd;
+        GeneralDao dao=new GeneralDao();
+        dao.setDatabaseParams(jdbcURL,username,password);
     }
 
     public Connection Connessione(){
         try {
             connection= DriverManager.getConnection(jdbcURL,username,password);
             System.out.println("Connessione riuscita");
+
+
         } catch (SQLException e) {
             System.out.println("Connessione fallita");
         }

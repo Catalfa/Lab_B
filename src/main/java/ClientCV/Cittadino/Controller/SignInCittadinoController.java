@@ -30,7 +30,7 @@ public class SignInCittadinoController extends JFrame{
 
     public int signIn(DatiCittadino cittadini) {
 
-        /* if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length==0 || cittadini.getIdVaccinazione().isEmpty() || cittadini.getNomeCv().isEmpty()){
+        /* if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length==0 ){
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati");
             return 1;    
         }
@@ -53,7 +53,7 @@ public class SignInCittadinoController extends JFrame{
     }
 
     public void reset() {
-        for(int i=0; i<8; i++)
+        for(int i=0; i<6; i++)
             signInCittadinoView.textFields[i].setText("");
             signInCittadinoView.passwordField.setText("");
     }

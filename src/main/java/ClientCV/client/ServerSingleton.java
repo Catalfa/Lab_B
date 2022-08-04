@@ -25,7 +25,7 @@ public class ServerSingleton {
 		if(instance == null) {
 			try {
 				Registry registry = LocateRegistry.getRegistry(1100);
-				instance = (Server)registry.lookup("serverCV");
+				instance = (Server)registry.lookup("ServerCV");
 				System.err.println("client collegato");
 			} catch (Exception ex) {
 				System.out.println(ex);

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 	private static String DB_USERNAME;
 	private static String DB_PASSWORD;
 	
-	public static void setDatabaseParams(String url, String username, String password) {
+	public  void setDatabaseParams(String url, String username, String password) {
 		DB_URL = url;
 		DB_USERNAME = username;
 		DB_PASSWORD = password;

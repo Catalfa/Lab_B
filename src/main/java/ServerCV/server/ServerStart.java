@@ -21,7 +21,7 @@ public class ServerStart {
 		try {
 		Server stub = (Server) new ServerImpl();
 		Registry registry = LocateRegistry.createRegistry(1100);
-		registry.rebind("serverCV", stub);
+		registry.rebind("ServerCV", stub);
 		System.out.println("Server avviato");
 	} catch (Exception ex) {
 		System.out.println(ex);

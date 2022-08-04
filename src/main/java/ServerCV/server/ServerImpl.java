@@ -52,9 +52,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	/**
 	 * Metodo implementativo del server che effettua il login del cittadino.
+	 * @return
 	 */
 	@Override
-	public int loginCittadino(String username, String password) throws RemoteException {
+	public Boolean loginCittadino(String username, String password) throws RemoteException {
 		return gestClient.gestLoginCittadino(username, password);
 	}
 	
@@ -145,7 +146,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * Metodo implementativo del server che registra i cittadini.
 	 */
 	@Override
-	public int registraCittadino(DatiCittadino datiCittadino) throws RemoteException {
-		return gestClient.gestRegistraCittadino(datiCittadino);
+	public void registraCittadino(DatiCittadino datiCittadino) throws RemoteException {
+		 gestClient.gestRegistraCittadino(datiCittadino);
 	}
 }

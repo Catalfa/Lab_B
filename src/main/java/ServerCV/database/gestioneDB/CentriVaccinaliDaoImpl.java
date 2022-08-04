@@ -22,15 +22,24 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//aggiornato query con dati corretti
 	@Override
 	public void insertDatiCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
-		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(nome_centro, ) VALUES (?, ?)";
+		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, sigla, cap ) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddValuesCentroVaccinale);
-			pstmt.setString(1, infoCentroVaccinale.getNomeCentro());
-			pstmt.setString(2, infoCentroVaccinale.getIdCentro());
+			pstmt.setString(1, infoCentroVaccinale.getIdCentro());
+			pstmt.setString(2, infoCentroVaccinale.getNomeCentro());
+			pstmt.setString(3, infoCentroVaccinale.getTipologia());
+			pstmt.setString(4, infoCentroVaccinale.getQualificatore());
+			pstmt.setString(5, infoCentroVaccinale.getNomeVia());
+			pstmt.setString(6, ((Integer)infoCentroVaccinale.getNumCiv()).toString());
+			pstmt.setString(7, infoCentroVaccinale.getComune());
+			pstmt.setString(8, infoCentroVaccinale.getProvincia());
+			pstmt.setString(9, infoCentroVaccinale.getSigla());
+			pstmt.setString(10, ((Integer)infoCentroVaccinale.getCap()).toString());
+
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();

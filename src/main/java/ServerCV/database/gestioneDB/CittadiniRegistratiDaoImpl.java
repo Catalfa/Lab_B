@@ -17,7 +17,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	//Non posso ancora modificarlo perchè mex deve cambiarmi un suo metodo
 	@Override
 	public void insertCittadino(DatiCittadino citizenData) {
-		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String qAddValuesCittadiniRegistrati = "INSERT INTO cittadini_registrati VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		

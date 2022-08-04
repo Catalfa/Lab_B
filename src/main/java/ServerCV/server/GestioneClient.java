@@ -1,6 +1,8 @@
 package ServerCV.server;
 
 import Common.*;
+import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
+import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 import ServerCV.database.gestioneDB.DaoFactory;
 import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
 import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
@@ -9,6 +11,10 @@ import ServerCV.database.gestioneDB.interfacceDB.RegistrazioniVaccinazioniDao;
 import ServerCV.interfaccia.Client;
 
 import java.rmi.RemoteException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -74,15 +80,16 @@ public class GestioneClient {
 	 * @param datiCittadino	Le informazioni del cittadino.
 	 * @return				Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	public int gestRegistraCittadino(DatiCittadino datiCittadino) {
-		if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino()))
-			return 2;
+	public void gestRegistraCittadino(DatiCittadino datiCittadino) {
+		CittadiniRegistratiDao DAO =(CittadiniRegistratiDaoImpl) new DaoFactory().getDao("CittadiniRegistratiDao");
+		DAO.insertCittadino(datiCittadino);
+		/*if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino()))
+			System.err.println("codice fiscale già registrato");
 		else
 		if(!cittadiniRegistratiDao.existCittadino(datiCittadino.getUsernameCittadino())) {
 			cittadiniRegistratiDao.insertCittadino(datiCittadino);
-			return 1;
-		}
-		return 0;
+			System.err.println("cittadino regsitrato con successo");
+		}*/
 	}
 	
 	/**
@@ -91,13 +98,13 @@ public class GestioneClient {
 	 * @param pw		La password del cittadino.
 	 * @return			Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	public int gestLoginCittadino(String username, String pw) {
+	public Boolean gestLoginCittadino(String username, String pw) {
 		if(!cittadiniRegistratiDao.existCittadino(username))
-			return 2;
+			return false;
 		else if(cittadiniRegistratiDao.checkPwCittadino(username, pw))//se password inserita = pw sul db -> login)
-			return 1;
+			return true;
 		else
-			return 3;
+			return false;
 	}
 
 	/**
@@ -106,14 +113,15 @@ public class GestioneClient {
 	 * @return			Il CF del cittadino.
 	 */
 	//da finire, devo capire come passare la connessione
-	public String gestOttieniCF(String username) {
+	public String gestOttieniCF(String username) {/*
 		DatiCittadino datiCittadino = cittadiniRegistratiDao.getCfCittadino(username);
 		return datiCittadino.getCFCittadino();
-	/*	String sql="SELECT cf FROM Cittadini_Registrati WHERE userid=?";
+		String sql="SELECT cf FROM Cittadini_Registrati WHERE userid=?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		String cf="";
 		try {
+			Connection connessione = null;
 			pstmt=connessione.prepareStatement(sql);
 			pstmt.setString(1,username);
 			rs=pstmt.executeQuery();
@@ -127,8 +135,8 @@ public class GestioneClient {
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
-
-*/
+		*/
+		return username;
 	}
 
 	/**

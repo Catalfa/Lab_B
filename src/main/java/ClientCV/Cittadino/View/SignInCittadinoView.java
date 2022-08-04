@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class SignInCittadinoView extends JFrame{
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
-    private final int WIDTH = 350;
+    private final int WIDTH = 400;
     private final int HIGHT = 550;
 
     private String[] labelNames = {"Nome", "Cognome", "CF", "Email", "Username", "Password", "ID-Vaccinazione", "Nome-CV"};
@@ -41,7 +41,7 @@ public class SignInCittadinoView extends JFrame{
         int y = 50;
         for (int i = 0; i < 8; i++) {
             labels[i] = new JLabel(labelNames[i], SwingConstants.RIGHT);
-            labels[i].setBounds(7, y, 75, 25);
+            labels[i].setBounds(7, y, 105, 25);
             mainPanel.add(labels[i]);
             y += 50;
         }
@@ -50,11 +50,11 @@ public class SignInCittadinoView extends JFrame{
         for (int i = 0; i < 8; i++) {
             if (i == 7) {
                 passwordField = new JPasswordField(20);
-                passwordField.setBounds(100, y, 200, 25);
+                passwordField.setBounds(120, y, 250, 25);
                 mainPanel.add(passwordField);
             } else {
                 textFields[i] = new JTextField(20);
-                textFields[i].setBounds(100, y, 200, 25);
+                textFields[i].setBounds(120, y, 250, 25);
                 mainPanel.add(textFields[i]);
                 y += 50;
             }
