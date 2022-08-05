@@ -14,10 +14,10 @@ public class SignInCittadinoView extends JFrame{
     private final int WIDTH = 400;
     private final int HIGHT = 550;
 
-    private String[] labelNames = {"Nome", "Cognome", "CF", "Email", "Username", "Password", "ID-Vaccinazione", "Nome-CV"};
+    private String[] labelNames = {"Nome", "Cognome", "CF", "Email", "Username", "Password", "ID-Vaccinazione", "ID-Centro"};
     private String[] buttonNames = {"BACK", "SIGN-IN", "RESET"};
     private JButton[] buttons = new JButton[3];
-    public JTextField[] textFields = new JTextField[7];
+    public JTextField[] textFields = new JTextField[8];
     private JLabel[] labels = new JLabel[8];
     public JPasswordField passwordField;
     private SignInCittadinoController controller;
@@ -47,11 +47,15 @@ public class SignInCittadinoView extends JFrame{
         }
 
         y = 50;
-        for (int i = 0; i < 8; i++) {
-            if (i == 7) {
+        for (int i = 0; i <= 7; i++) {
+            if (i == 5) {
                 passwordField = new JPasswordField(20);
                 passwordField.setBounds(120, y, 250, 25);
                 mainPanel.add(passwordField);
+                textFields[i] = new JTextField(20);
+                textFields[i].setBounds(120, y, 250, 25);
+                mainPanel.add(textFields[i]);
+                y += 50;
             } else {
                 textFields[i] = new JTextField(20);
                 textFields[i].setBounds(120, y, 250, 25);
@@ -92,7 +96,7 @@ public class SignInCittadinoView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.signIn(new DatiCittadino(textFields[0].getText(), textFields[1].getText(), textFields[2].getText(),
-                        textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString()));
+                        textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString(), (textFields[5].getText()), (textFields[6].getText())));
             }
 
         });

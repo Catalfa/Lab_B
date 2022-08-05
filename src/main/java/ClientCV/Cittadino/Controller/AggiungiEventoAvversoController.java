@@ -41,15 +41,19 @@ public class AggiungiEventoAvversoController {
 	 * @param eventi			La lista degli eventi.
 	 */
     
-     public void inserisciEventiAvversiAction(String idEvento, String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
+     public void inserisciEventiAvversiAction(String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
         EventiAvversi eventoAvverso = new EventiAvversi(Integer.parseInt(idEvento), nomeCentro, eventi, intensitaEventi, noteEventi);
 
         try {
-            int risultato = Stub.InserisciEventiAvversi(eventoAvverso);
+            int risultato = Stub.InserisciEventiAvversi(eventoAvverso, codiceFiscale);
             if (risultato == 2) {
                 Utility.showErrorPopUp("ERRORE", "Non ti sei vaccinato in questo centro vaccinale");
                 return;
-            }if (risultato == 1) {
+            }if (risultato == 3) {
+                Utility.showErrorPopUp("ERRORE", "Sono gia' stati inseriti degli eventi avversi per questo Id");
+                return;
+            }
+            if (risultato == 1) {
                 Utility.showInformationPopUp("Richiesta andata a buon fine.", "Eventi avversi inseriti con successo");
 
                 //eventoAvversoView.deleteView();

@@ -9,6 +9,7 @@ import java.sql.Date;
  * Classe oggetto per i dati dei dati delle vaccinazioni.
  */
 public class RegistrazioniVaccinati implements Serializable {
+	private String idCentro;
 	private String nomeCentro;
 	private String cf;
 	private Date dataVaccino;
@@ -20,14 +21,15 @@ public class RegistrazioniVaccinati implements Serializable {
 	
 	/**
 	 * Costruttore della classe.
-	 * @param nomeCentro		Il nome del centro vaccinale.
+	 * @param idCentro		Il nome del centro vaccinale.
 	 * @param cf				Il CF del cittadino.
 	 * @param dataVaccino		La data di prenotazione della vaccinazione.
 	 * @param tipoVaccino		La tipologia di vaccino somministrata.
 	 * @param idVaccinazione	L'ID vaccinazione del cittadino.
 	 */
-	public RegistrazioniVaccinati(String nomeCentro, String cf, Date dataVaccino, String tipoVaccino, int idVaccinazione, String nome, String cognome) {
-		this.nomeCentro = nomeCentro;
+	public RegistrazioniVaccinati(String nomeCentro, String idCentro, String cf, Date dataVaccino, String tipoVaccino, int idVaccinazione, String nome, String cognome) {
+		this.idCentro = idCentro;
+		this.nomeCentro=nomeCentro;
 		this.cf = cf;
 		this.dataVaccino = dataVaccino;
 		this.tipoVaccino = tipoVaccino;
@@ -40,9 +42,12 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * Metodo che restituisce il nome del centro vaccinale.
 	 * @return		Il nome del centro vaccinale.
 	 */
-	public String getNomeCentro() {
-		return nomeCentro;
+	public String getIdCentro() {
+		return idCentro;
 	}
+
+	public String getnomeCentro(){return  nomeCentro;}
+
 	
 	/**
 	 * Metodo che restituisce il Cf del cittadino.

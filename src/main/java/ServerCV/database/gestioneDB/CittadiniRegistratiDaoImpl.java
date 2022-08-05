@@ -61,7 +61,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(1, cf);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				datiCittadino = new DatiCittadino(rs.getString("nome"), rs.getString("cognome"), null, null, null, null/*, null, null*/);
+				datiCittadino = new DatiCittadino(rs.getString("nome"), rs.getString("cognome"), null, null, null, null, null, null);
 				return datiCittadino;
 			}
 		} catch (SQLException ex) {
@@ -148,7 +148,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				datiCittadino = new DatiCittadino(null, null, rs.getString("cf"), null, null, null/*, null, null*/);
+				datiCittadino = new DatiCittadino(null, null, rs.getString("cf"), null, null, null, null, null);
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();

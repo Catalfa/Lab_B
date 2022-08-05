@@ -255,7 +255,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//Non verificato che moto sia funzionante su DB
 	@Override
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
-		String nomeCentro = registrazioneVaccinato.getNomeCentro();
+		String nomeCentro = registrazioneVaccinato.getnomeCentro();
 		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
@@ -269,7 +269,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setDate(4, registrazioneVaccinato.getDataVaccino());
 			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino());
 			pstmt.setInt(6, registrazioneVaccinato.getIdVaccinazione());
-			pstmt.setString(7, registrazioneVaccinato.getNomeCentro()); //sostiutire nome centro con id centro
+			pstmt.setString(7, registrazioneVaccinato.getIdCentro());
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();

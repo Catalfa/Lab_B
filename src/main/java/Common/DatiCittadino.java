@@ -13,12 +13,14 @@ public class DatiCittadino implements Serializable{
     private String email;
     private String username;
     private String password;
+    private String idVaccinazione;
+    private String nomeCV;
 
     private String idvaccinazione;
 
     private String idcentro;
 
-    public DatiCittadino(String nome, String cognome, String cf, String email, String username, String password/*, String idvaccinazione, String idcentro*/) {
+    public DatiCittadino(String nome, String cognome, String cf, String email, String username, String password, String idvaccinazione, String idcentro) {
         this.nome = nome;
         this.cognome = cognome;
         this.cf = cf;

@@ -99,7 +99,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	/**
 	 * Metodo implementativo del server per controllare se un cittadino � stato vaccinato prima di inserire un evento avvero.
 	 */
-	public int controlloPreRegistrazioneEventoAvverso(String cf) throws RemoteException {
+	public Boolean controlloPreRegistrazioneEventoAvverso(String cf) throws RemoteException {
 		return gestClient.gestControlloPreRegistrazioneEventoAvverso(cf);
 	}
 	
@@ -138,8 +138,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * Metodo implementativo del server per inserire gli eventi avversi.
 	 */
 	@Override
-	public int InserisciEventiAvversi(Common.EventiAvversi eventoAvverso) throws RemoteException {
-		return gestClient.gestInserimentoEventoAvverso(eventoAvverso);
+	public int InserisciEventiAvversi(Common.EventiAvversi eventoAvverso, String codiceFiscale) throws RemoteException {
+		return gestClient.gestInserimentoEventoAvverso(eventoAvverso, codiceFiscale);
 	}
 
 	/**

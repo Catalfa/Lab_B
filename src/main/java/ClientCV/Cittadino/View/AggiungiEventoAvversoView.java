@@ -177,7 +177,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         container.add(panelButton, BorderLayout.PAGE_END);
 
         btn_inserisciEventiAvversi.addActionListener(new ActionListener(){
-
+            //andre serve che venga passato anche il codice fiscale del cittadino che effettua la segnalazione
             @Override
             public void actionPerformed(ActionEvent e) {
                 
@@ -190,7 +190,7 @@ public class AggiungiEventoAvversoView extends JFrame{
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
                     noteEventi[i] = noteFields[i].getText();
                 }
-                controller.inserisciEventiAvversiAction( idEvento, nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);                
+                controller.inserisciEventiAvversiAction( idEvento, "wewe", nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
             }
         });
 

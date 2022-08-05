@@ -75,7 +75,7 @@ public interface Server extends Remote {
 	 * @return					Un codice per gestire i vari casi di avviso ed errore.
 	 * @throws RemoteException	Eccezione remota.
 	 */
-	int controlloPreRegistrazioneEventoAvverso(String cf) throws RemoteException;
+	Boolean controlloPreRegistrazioneEventoAvverso(String cf) throws RemoteException;
 	
 	/**
 	 * Interfaccia per gestire l'ID della vaccinazione dell'utente.
@@ -115,7 +115,7 @@ public interface Server extends Remote {
 	 * @return					Un codice per gestire i vari casi di avviso ed errore.
 	 * @throws RemoteException	Eccezione remota.
 	 */
-	public int InserisciEventiAvversi(Common.EventiAvversi eventoAvverso) throws RemoteException;
+	public int InserisciEventiAvversi(Common.EventiAvversi eventoAvverso, String codiceFiscale) throws RemoteException;
 	
 	/**
 	 * Interfaccia per gestire l'ottenimento della severita' media per un determinato tipo di evento.

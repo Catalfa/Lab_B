@@ -157,7 +157,7 @@ public class GestioneClient {
 	 * @return						Un codice per gestire i vari casi di avviso ed errore.
 	 */
 	public int gestRegistraVaccinato(RegistrazioniVaccinati datoRegistrazione) {
-		if(centriVaccinaliDao.existCf(datoRegistrazione.getNomeCentro(), datoRegistrazione.getCf()))
+		if(centriVaccinaliDao.existCf(datoRegistrazione.getnomeCentro(), datoRegistrazione.getCf()))
 			return 3;
 		else
 		if(cittadiniRegistratiDao.existIdCittadino(datoRegistrazione.getIdVaccinazione()))
@@ -202,10 +202,10 @@ public class GestioneClient {
 	 * @param cf	Il CF del cittadino.
 	 * @return		Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	public int gestControlloPreRegistrazioneEventoAvverso(String cf) {
+	public boolean gestControlloPreRegistrazioneEventoAvverso(String cf) {
 		if(eventiAvversiDao.existId(cittadiniRegistratiDao.getIdCittadino(cf)))
-			return 1;
-		return 2;
+			return true;
+		return false;
 	}
 	
 	/**
@@ -233,13 +233,15 @@ public class GestioneClient {
 	 */
 
 	//TODO da rivedere e implementare eventiAvversiDao e getIdVaccinazione
-	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso) {
+	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso, String codiceFiscale) {
 
 		//int id_evento, String nomeCentro, String evento,  Integer severita, String note
 
 		if(!centriVaccinaliDao.existId(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
 			return 2;
-		else {
+		else if(gestControlloPreRegistrazioneEventoAvverso(codiceFiscale)){
+			return 3;
+		}else{
 			for(int i=0; i<6; i++) {
 				eventiAvversiDao.insertEventoAvverso(eventoAvverso.getIdEvento(),
 						eventoAvverso.getNomeCentro(),
@@ -249,18 +251,6 @@ public class GestioneClient {
 			}
 			return 1;
 		}
-		/*
-		if(!centriVaccinaliDao.existId(eventoAvverso.getNomeCentro(), eventoAvverso.getIdVaccinazione()))
-		return 0;
-		else{
-			for(int i=0; i<6; i++){
-				eventiAvversiDao.insetEventoAvverso(eventoAvverso.getIdVaccinazione(), eventoAvverso.getNomeCentro(),
-													eventoAvverso.getEvento()[i], eventoAvverso.getSeverita()[i],
-													eventoAvverso.getNotes()[i]);
-			}
-			return 1;
-		}
-	*/
 	}
 	
 	
