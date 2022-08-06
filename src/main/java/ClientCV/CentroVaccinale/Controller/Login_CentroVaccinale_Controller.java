@@ -38,7 +38,7 @@ public class Login_CentroVaccinale_Controller {
     public int loginCentroVaccinale(String nomeCentroVaccinale, String idCentro) {
 
         //String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap 
-        infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
+        //infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
         
         if(nomeCentroVaccinale.isEmpty() || idCentro.isEmpty()){
             utility.showWarningPopUp("Attenzione", "Riempire tutti i campi.");
@@ -47,7 +47,7 @@ public class Login_CentroVaccinale_Controller {
 
         else{
             try {
-                this.Stab.loginCittadino(nomeCentroVaccinale, idCentro.toString());
+                            //TODO implementare login Centri Vaccinali
             } catch (Exception e) {
                 e.printStackTrace();
             }

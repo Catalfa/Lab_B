@@ -47,7 +47,7 @@ public class Registra_CentroVaccinale_Controller {
             cVaccinale.getTipologiaCentro().isEmpty() || cVaccinale.getQualificatore().isEmpty() ||
             cVaccinale.getIndirizzo().isEmpty() || cVaccinale.getNumeroCivico() == 0 || 
             cVaccinale.getComune().isEmpty() || cVaccinale.getProvincia().isEmpty() || 
-            cVaccinale.getCap().isEmpty()){
+            cVaccinale.getCap()==0){
 
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati.");
             return 1;
@@ -59,7 +59,7 @@ public class Registra_CentroVaccinale_Controller {
             return 1;
         }
 
-        if(cVaccinale.getCap().length() != 5){
+        if(cVaccinale.getCap() < 10000){
             utility.showWarningPopUp("Attenzione", "Controllare che il campo CAP sia corretto.");
             return 1;
         }

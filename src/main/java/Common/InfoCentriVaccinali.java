@@ -3,54 +3,30 @@ package Common;
 import java.io.Serializable;
 
 public class InfoCentriVaccinali implements Serializable{
-    
-    private String nome_centro;
-   // private String password;
+    private CentroVaccinale dati;
+    private String username;
+    private String password;
 
-    private String tipologia;
-
-    private String qualificatore;
-
-    private String nomevia;
-
-    private int numciv;
-
-    private String comune;
-
-    private String provincia;
-    private int cap;
-
-    private String idcentro;
-
-
-    public InfoCentriVaccinali(String idcentro, String nome_centro) {
-        this.nome_centro = nome_centro;
-        this.idcentro=idcentro;
-
-    }
     public InfoCentriVaccinali(String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, int cap ) {
-        this.nome_centro = nome_centro;
-        this.idcentro=idcentro;
-        this.tipologia=tipologia;
-        this.qualificatore=qualificatore;
-        this.nomevia=nomevia;
-        this.numciv=numciv;
-        this.comune=comune;
-        this.provincia=provincia;
-        this.cap=cap;
+        dati=new CentroVaccinale(idcentro,nome_centro,tipologia,qualificatore,nomevia, numciv,comune,provincia,cap);
+    }
+    public InfoCentriVaccinali(String username, String password,String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, int cap ) {
 
+        this.username=username;
+        this.password=password;
+        dati=new CentroVaccinale(idcentro,nome_centro,tipologia,qualificatore,nomevia, numciv,comune,provincia,cap);
     }
 
 
 
-    public String getIdCentro(){return idcentro;}
+    public String getIdCentro(){return dati.getIdCentro();}
 
     /**
 	 * Metodo che restituisce il nome del centro vaccinale.
 	 * @return		Il nome del centro vaccinale.
 	 */
     public String getNomeCentro() {
-        return nome_centro;
+        return dati.getnomeCentroVaccinale();
     }
 
     /**
@@ -58,7 +34,7 @@ public class InfoCentriVaccinali implements Serializable{
      * @return tipologia
      */
     public String getTipologia() {
-        return tipologia;
+        return dati.getTipologiaCentro();
     }
 
     /**
@@ -66,7 +42,7 @@ public class InfoCentriVaccinali implements Serializable{
      * @return qualificatore
      */
     public String getQualificatore() {
-        return qualificatore;
+        return dati.getQualificatore();
     }
 
     /**
@@ -74,7 +50,7 @@ public class InfoCentriVaccinali implements Serializable{
      * @return nomevia
      */
     public String getNomeVia() {
-        return nomevia;
+        return dati.getIndirizzo();
     }
 
     /**
@@ -82,21 +58,21 @@ public class InfoCentriVaccinali implements Serializable{
      * @return numciv
      */
     public int getNumCiv() {
-        return numciv;
+        return dati.getNumeroCivico();
     }
 
     /**
      * Metodo che resituisce il comune
      * @return comune
      */
-    public String getComune(){return comune;}
+    public String getComune(){return dati.getComune();}
 
     /**
      * Metodo che restituisce la provincia
      * @return provincia
      */
     public String getProvincia() {
-        return provincia;
+        return dati.getProvincia();
     }
 
     /**
@@ -104,6 +80,6 @@ public class InfoCentriVaccinali implements Serializable{
      * @return
      */
     public int getCap() {
-        return cap;
+        return dati.getCap();
     }
 }

@@ -103,7 +103,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
 
                 controller.signIn(new CentroVaccinale( textFields[0].getText(), textFields[1].getText(), 
                     textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), s, 
-                    textFields[6].getText(), textFields[7].getText(), textFields[8].getText()));
+                    textFields[6].getText(), textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
             }
 
         });

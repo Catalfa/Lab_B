@@ -1,10 +1,13 @@
 package ServerCV.database.gestioneDB;
 
+import ClientCV.client.ServerSingleton;
 import Common.InfoCentriVaccinali;
 import Common.RegistrazioniVaccinati;
+import ServerCV.database.CreazioneTabelle;
 import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
 import ServerCV.server.Utility;
 
+import java.net.ServerSocket;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,10 +55,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//aggiornato query con dati corretti
 	// Per l'indirizzo è lo stesso discorso fatto prima
+	//TODO da controllare nuove modifiche (select * nella query)
 	@Override
 	public List<InfoCentriVaccinali> findCentroVaccinale(String researchText) {
 		List<InfoCentriVaccinali> list = new ArrayList<>();
-		String qResearchQuery = "SELECT nome_centro, nome_via, tipologia FROM CentriVaccinali WHERE "
+		String qResearchQuery = "SELECT * FROM CentriVaccinali WHERE "
 				+ "nome_centro LIKE '%" +researchText+ "%' "
 				+ "OR nome_via LIKE '%" +researchText+ "%' "
 				+ "OR tipologia LIKE '%" +researchText+ "%'";
@@ -86,7 +90,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 * @return				Se e' gia' esistente un centro con lo stesso nome 
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public boolean existCentroVaccinale(String nomeCentro) {
 		String qExistCenterOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE nome_centro = ?";
@@ -115,29 +119,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 */
 	//Segnalo che manca la definizione della PK, io userei cf e dataVaccinazione come PK
-	//non modificato perchè necessito di chiarimenti su questa tabella
+	//questo metodo
 	public void createVaccinati_(String nomeCentro) {
-		String qCreateVaccinati_NomeCentro = "CREATE TABLE Vaccinati_" +nomeCentro+ "("
-				+ "nomeCentro varchar, "
-				+ "cf varchar(16), "
-				+ "dataVaccinazione DATE, "
-				+ "tipoVaccino varchar, "
-				+ "idVaccinazione smallint, "
-				+ "CONSTRAINT fk_Vaccinati" +nomeCentro+ "_CentriVaccinali "
-				+ "FOREIGN KEY(nomeCentro) "
-				+ "REFERENCES centri_vaccinali(nomeCentro) ON UPDATE CASCADE ON DELETE NO ACTION)";
-		PreparedStatement pstmt;
-		Connection connection = null;
-		
-		try {
-			connection = openConnection();
-			pstmt = connection.prepareStatement(qCreateVaccinati_NomeCentro);
-			pstmt.executeUpdate();
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-		} finally {
-			closeConnection(connection);
-		}
+		Connection conn=openConnection();
+		new CreazioneTabelle().Create_Vaccinato(conn, nomeCentro);
+		closeConnection(conn);
 	}
 	
 	/**
@@ -164,24 +150,40 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	}
 	
 	/**
-	 * Metodo che converte i valori ottenuti dal ResultSet in un dato di tipo InfoCentroVaccinale.	
+	 * Metodo che converte i valori ottenuti dal ResultSet in un dato di tipo InfoCentroVaccinale
+	 * utilizzato nella ricerca di un centro vaccinale nel metodo findCentroVaccinale
+	 * .
 	 * @param rs	Il ResultSet di una query.
 	 * @return		I valori della query sotto forma di informazioni.
 	 */
+	//TODO @BARO da controllare se i campi coincidono con quelli in tabella
+	//costruttore semplificato eliminato, questa funzione la usiamo nella ricerca dei centri in base al nome, nella funzione findCentroVaccinale
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs) {
-		String nomeCentro = null;
-		String psw = null;
+		String nome_centro=null;
+		String tipologia=null;
+		String qualificatore=null;
+		String nomevia=null;
+		int numciv=0;
+		String comune=null;
+		String provincia=null;
+		int cap=0;
+		String idcentro=null;
 		try {
-			nomeCentro = rs.getString("nomecentro");
-			psw = rs.getString("password");
+			nome_centro = rs.getString("nome_centro");
+			tipologia = rs.getString("tipologia");
+			qualificatore = rs.getString("qualificatore");
+			nomevia=rs.getString("nome_via");
+			numciv=rs.getInt("num_civ");
+			comune=rs.getString("comune");
+			provincia=rs.getString("provincia");
+			cap=rs.getInt("cap");
+			idcentro=rs.getString("id_centro");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		//TODO controllare costruttore classe infoCentriVaccinali
-		//InfoCentriVaccinali infoCentro = new InfoCentriVaccinali();
-		InfoCentriVaccinali infoCentro =null;
-		return infoCentro;
-	}
+
+		InfoCentriVaccinali infoCentro = new InfoCentriVaccinali(idcentro,nome_centro,tipologia,qualificatore,nomevia,numciv,comune,provincia,cap);
+		return infoCentro;}
 
 	
 	/**

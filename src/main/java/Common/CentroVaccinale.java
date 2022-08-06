@@ -10,9 +10,9 @@ public class CentroVaccinale {
     private int numeroCivico;
     private String comune;
     private String provincia;
-    private String cap;
+    private int cap;
 
-    public CentroVaccinale(String idCentro, String nomeCentroVaccinale, String tipologiaCentro, String qualificatore, String indirizzo, int numeroCivico, String comune, String provincia, String cap) {
+    public CentroVaccinale(String idCentro, String nomeCentroVaccinale, String tipologiaCentro, String qualificatore, String indirizzo, int numeroCivico, String comune, String provincia, int cap) {
         this.idCentro = idCentro;
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.tipologiaCentro = tipologiaCentro;
@@ -56,7 +56,7 @@ public class CentroVaccinale {
         return provincia;
     }
 
-    public String getCap() {
+    public int getCap() {
         return cap;
     }
 
