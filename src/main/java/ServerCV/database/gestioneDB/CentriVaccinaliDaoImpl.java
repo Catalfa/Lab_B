@@ -92,7 +92,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//query implementata
 	@Override
-	public boolean existCentroVaccinale(String nomeCentro) {
+	public Boolean existCentroVaccinale(String nomeCentro) {
 		String qExistCenterOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE nome_centro = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -194,7 +194,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//Devo verificare che mtodo funzioni su DB
 	@Override
-	public boolean existCf(String nomeCentro, String cf) {
+	public Boolean existCf(String nomeCentro, String cf) {
 		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -225,8 +225,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @return				Se la vaccinazione e' stata effettuata in quel determinato centro vaccinale.
 	 */
 	//aggiornato query con dati corretti
-	@Override
-	public boolean existId(String nomeCentro, int id) {
+
+	public Boolean existIdVaccinazione(String nomeCentro, int id) {
 		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +nomeCentro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -303,4 +303,5 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 		return 0;
 	}
+
 }
