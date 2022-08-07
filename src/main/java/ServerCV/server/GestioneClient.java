@@ -83,13 +83,13 @@ public class GestioneClient {
 	public void gestRegistraCittadino(DatiCittadino datiCittadino) {
 		CittadiniRegistratiDao DAO =(CittadiniRegistratiDaoImpl) new DaoFactory().getDao("CittadiniRegistratiDao");
 		DAO.insertCittadino(datiCittadino);
-		/*if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino()))
+		if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino()))
 			System.err.println("codice fiscale già registrato");
 		else
 		if(!cittadiniRegistratiDao.existCittadino(datiCittadino.getUsernameCittadino())) {
 			cittadiniRegistratiDao.insertCittadino(datiCittadino);
 			System.err.println("cittadino regsitrato con successo");
-		}*/
+		}
 	}
 	
 	/**
@@ -98,13 +98,25 @@ public class GestioneClient {
 	 * @param pw		La password del cittadino.
 	 * @return			Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	public Boolean gestLoginCittadino(String username, String pw) {
+	//metodo per il login di un centro, ritorna 1 se il login è stato effettuato con successo, 2 se non esiste centro con quell'username e 3 se la password non è corretta
+	public int gestLoginCittadino(String username, String pw) {
 		if(!cittadiniRegistratiDao.existCittadino(username))
-			return false;
+			return 2;
 		else if(cittadiniRegistratiDao.checkPwCittadino(username, pw))//se password inserita = pw sul db -> login)
-			return true;
+			return 1;
 		else
-			return false;
+			return 3;
+	}
+	//metodo per il login di un centro, ritorna 1 se il login è stato effettuato con successo, 2 se non esiste centro con quell'username e 3 se la password non è corretta
+	public int gestLoginCentroVaccinale(String username, String password){
+		if(centriVaccinaliDao.checkLoginCentro(username,password)){
+			return 1;
+		}else if(!centriVaccinaliDao.existCentro(username)){
+			return 2;
+		}else {
+			return 3;
+		}
+
 	}
 
 	/**
@@ -237,7 +249,7 @@ public class GestioneClient {
 
 		//int id_evento, String nomeCentro, String evento,  Integer severita, String note
 
-		if(!centriVaccinaliDao.existId(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
+		if(!centriVaccinaliDao.existIdVaccinazione(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
 			return 2;
 		else if(gestControlloPreRegistrazioneEventoAvverso(codiceFiscale)){
 			return 3;

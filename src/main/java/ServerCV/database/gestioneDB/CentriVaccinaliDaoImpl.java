@@ -92,7 +92,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//query implementata
 	@Override
-	public boolean existCentroVaccinale(String nomeCentro) {
+	public Boolean existCentroVaccinale(String nomeCentro) {
 		String qExistCenterOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE nome_centro = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -113,7 +113,52 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 		return false;
 	}
-	
+	//metodo aggiunto per verificare l'esistenza di un centro tramite username
+	public Boolean existCentro(String username) {
+		String qExistCitizenOnDb = "SELECT userid FROM CentriVaccinali WHERE username = ?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCitizenOnDb);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return false;
+	}
+	//metodo che permette il login di un centro vaccinale
+	public Boolean checkLoginCentro(String username, String password) {
+		String qCentroPasswordMatch = "SELECT username, password FROM CentriVaccinali WHERE username = ? AND password = ?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qCentroPasswordMatch);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return false;
+	}
+
 	/**
 	 * Metodo che crea la tabella Vaccinati_NomeCentroVaccinale in maniera dinamica.
 	 * @param nomeCentro	Il nome del centro vaccinale.
@@ -157,7 +202,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @return		I valori della query sotto forma di informazioni.
 	 */
 	//TODO @BARO da controllare se i campi coincidono con quelli in tabella
-	//costruttore semplificato eliminato, questa funzione la usiamo nella ricerca dei centri in base al nome, nella funzione findCentroVaccinale
+	//Questa funzione la usiamo nella ricerca dei centri in base al nome, nella funzione findCentroVaccinale
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs) {
 		String nome_centro=null;
 		String tipologia=null;
@@ -185,7 +230,6 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		InfoCentriVaccinali infoCentro = new InfoCentriVaccinali(idcentro,nome_centro,tipologia,qualificatore,nomevia,numciv,comune,provincia,cap);
 		return infoCentro;}
 
-	
 	/**
 	 * Metodo che controlla se e' gi� stata effettuata una vaccinazione per quel Cf in quel determinato centro vaccinale..
 	 * @param nomeCentro	Il nome del centro vaccinale.
@@ -194,7 +238,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//Devo verificare che mtodo funzioni su DB
 	@Override
-	public boolean existCf(String nomeCentro, String cf) {
+	public Boolean existCf(String nomeCentro, String cf) {
 		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -226,7 +270,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//aggiornato query con dati corretti
 	@Override
-	public boolean existId(String nomeCentro, int id) {
+	public Boolean existIdVaccinazione(String nomeCentro, int id) {
 		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +nomeCentro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;

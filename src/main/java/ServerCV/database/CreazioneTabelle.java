@@ -16,7 +16,9 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
                 \tnum_civ VARCHAR(10) NOT NULL,
                 \tcomune VARCHAR(60) NOT NULL,
                 \tprovincia VARCHAR(10) NOT NULL,  
-                \tcap VARCHAR(10) NOT NULL
+                \tcap VARCHAR(10) NOT NULL,
+                \tusername VARCHAR(20) NOT NULL,
+                \tpassword VARCHAR(20) NOT NULL
                 );""";
         InvioCreateTable(sql,conn);
 
