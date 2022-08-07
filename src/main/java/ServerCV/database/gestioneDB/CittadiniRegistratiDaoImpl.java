@@ -15,7 +15,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
 	 * @param citizenData	I dati del cittadino che si sta registrando.
 	 */
-	//MEtodo da sistemare, non ancora verificato funzionamento su DB
+	//Metodo da sistemare, non ancora verificato funzionamento su DB
 	@Override
 	public void insertCittadino(DatiCittadino citizenData) {
 		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?/*, ?, ?*/)";
@@ -78,7 +78,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param password	La password del cittadino registrato.
 	 * @return			Se la password dell'utente registrato e' corretta.
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public boolean checkPwCittadino(String username, String password) {
 		String qCitizenPasswordMatch = "SELECT userid, password FROM Cittadini_Registrati WHERE userid = ? AND password = ?";
@@ -103,7 +103,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return false;
 	}
 
-	//query funziona
+	//query implementata
 	@Override
 	public boolean existCittadino(String username) {
 		String qExistCitizenOnDb = "SELECT userid FROM Cittadini_Registrati WHERE userid = ?";
@@ -163,7 +163,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf	Il Cf del cittadino che si sta registrando
 	 * @return		Se e' gia' presente un cittadino registrato con quel Cf.
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public boolean existCfCittadino(String cf) {
 		String qExistCfInCittadiniRegistrati = "SELECT cf FROM Cittadini_Registrati WHERE cf = ?";

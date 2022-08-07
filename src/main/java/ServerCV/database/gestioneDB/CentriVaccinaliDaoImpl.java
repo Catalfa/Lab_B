@@ -156,7 +156,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param rs	Il ResultSet di una query.
 	 * @return		I valori della query sotto forma di informazioni.
 	 */
-	//i campi coincidono con quelli in tabella
+	//TODO @BARO da controllare se i campi coincidono con quelli in tabella
 	//costruttore semplificato eliminato, questa funzione la usiamo nella ricerca dei centri in base al nome, nella funzione findCentroVaccinale
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs) {
 		String nome_centro=null;

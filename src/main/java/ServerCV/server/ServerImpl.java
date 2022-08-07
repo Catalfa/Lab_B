@@ -55,10 +55,17 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * @return
 	 */
 	@Override
-	public Boolean loginCittadino(String username, String password) throws RemoteException {
+	public int loginCittadino(String username, String password) throws RemoteException {
 		return gestClient.gestLoginCittadino(username, password);
 	}
-	
+
+
+	//metodo per il login di un centro, ritorna 1 se il login è stato effettuato con successo,
+	//2 se non esiste centro con quell'username e 3 se la password non è corretta
+	public int loginCentroVaccinale(String username, String password) throws RemoteException {
+		return gestClient.gestLoginCentroVaccinale(username, password);
+	}
+
 	/**
 	 * Metodo implementativo del server che effettua la ricerca del centro vaccinale.
 	 */
