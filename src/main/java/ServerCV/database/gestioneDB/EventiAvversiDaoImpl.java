@@ -14,7 +14,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 *
 	 */
 	//aggiornato query con dati corretti
-	//non modificaro perchè devo prima aspettare che max modifichi un suo metodo
+	//non verifcato funzionamento su DB
 	@Override
 	public void insertEventoAvverso(int id_evento, String nomeCentro, String evento, Integer severita, String note) {
 		String qInserisciEventiAvversi = "INSERT INTO Eventi_Avversi (id_evento, nome_centro, nome_evento, severita, note_opzionali) VALUES (?, ?, ?, ?, ?)";
@@ -42,7 +42,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 * @return				Il numero di segnalazioni effettuate per quel determinato centro vaccinale.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
 		String qGetNumSegnalazioni = "SELECT count(nome_centro) AS count_segnalazioni FROM eventi_avversi WHERE nome_centro = ?";
@@ -73,7 +73,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param evento		Il tipo di evento avverso.
 	 * @return				Il valore medio di quel determinato evento.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona
 	@Override
 	public double getImportanzaEvento(String nomeCentro, String evento) {
 		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE nome_centro = ? AND nome_evento = ?";
@@ -105,7 +105,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @return		Se sono gia' stati inseriti degli eventi avversi.
 	 */
 	//aggiornato query con dati corretti
-	//non modificato perchè non ho troavato dove viene richiamato il metodo per poter cambiare l'argomento del metodo
+	//discutere con rondo se tenere questo metodo o cambiarlo con altro
 	public boolean existId(int id) {
 		String qExistIdInEventiAvversi = "SELECT idvaccinazione FROM Eventi_Avversi WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;

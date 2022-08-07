@@ -2,9 +2,11 @@ package ServerCV.database;
 
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
+import ServerCV.database.gestioneDB.EventiAvversiDaoImpl;
 import ServerCV.database.gestioneDB.GeneralDao;
 
 import java.sql.Connection;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MainProvaBaro {
@@ -65,6 +67,17 @@ public class MainProvaBaro {
         prove_controllo(contr);
         int numvcentri = cv.countCentriVaccinali();
         System.out.println("Numero centri vaccinali: " + numvcentri);
+
+
+        EventiAvversiDaoImpl ea=new EventiAvversiDaoImpl();
+        int numsegnalazioni=ea.getSegnalazioni("Santa Maria");
+        System.out.println("Numero segnalazioni per centro Santa Maria: "+numsegnalazioni);
+        double mediaseverita=ea.getImportanzaEvento("Santa Maria","mal di testa");
+        System.out.println("Mediia delle severità dei mal di testa per il centro Santa Maria: "+mediaseverita);
+
+        String ritorno=accorpamento("Santa Maria Immacolata");
+        System.out.println(ritorno);
+
     }
 
     public static void prove_controllo(boolean check) {
@@ -80,5 +93,24 @@ public class MainProvaBaro {
         else {
             System.out.println("Id vaccinazione: " + check);
         }
+    }
+
+    public static String accorpamento(String centro){
+      String tmp="";
+      String fin="";
+
+        for(int i=0;i<centro.length();i++){
+            char ch=centro.charAt(i);
+            if(ch==' '){
+                tmp=tmp;
+            }
+            else {
+                tmp = tmp + ch;
+
+            }
+        }
+
+
+        return tmp.toLowerCase();
     }
 }

@@ -60,9 +60,9 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
                 \tid_evento VARCHAR(20) PRIMARY KEY,
                 \tnome_centro VARCHAR(60) NOT NULL,
                 \tnome_evento VARCHAR(60) NOT NULL,
-                \tnote_opzionali VARCHAR(256) NOT NULL,
+                \tnote_opzionali VARCHAR(256),
                 \tseverita INT NOT NULL,
-                \tuserid VARCHAR(40) UNIQUE NOT NULL,
+                \tuserid VARCHAR(40) NOT NULL,
                 \tpassword VARCHAR(40) NOT NULL,
                 \tcf VARCHAR(30) NOT NULL,
                 \tFOREIGN KEY (cf) REFERENCES Cittadini_Registrati(cf)
