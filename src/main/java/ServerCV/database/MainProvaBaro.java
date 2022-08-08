@@ -75,9 +75,19 @@ public class MainProvaBaro {
         double mediaseverita=ea.getImportanzaEvento("Santa Maria","mal di testa");
         System.out.println("Mediia delle severità dei mal di testa per il centro Santa Maria: "+mediaseverita);
 
-        String ritorno=accorpamento("Santa Maria Immacolata");
-        System.out.println(ritorno);
+     //   String ritorno=accorpamento("Santa Maria Immacolata");
+       // System.out.println(ritorno);
+      contr=cv.existCf("Santa Maria","ALMU01PO");
+        prove_controllo(contr);
 
+        contr=cv.existIdVaccinazione("Santa Maria", 3456);
+        prove_controllo(contr);
+
+        contr=cv.existCentro("Cen01");
+        prove_controllo(contr);
+
+        contr=cv.checkLoginCentro("Can01","Pa01");
+        prove_controllo(contr);
     }
 
     public static void prove_controllo(boolean check) {
@@ -96,8 +106,8 @@ public class MainProvaBaro {
     }
 
     public static String accorpamento(String centro){
-      String tmp="";
-      String fin="";
+        String tmp="";
+        String fin="";
 
         for(int i=0;i<centro.length();i++){
             char ch=centro.charAt(i);

@@ -156,7 +156,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param rs	Il ResultSet di una query.
 	 * @return		I valori della query sotto forma di informazioni.
 	 */
-	//TODO @BARO da controllare se i campi coincidono con quelli in tabella
+	//Campi coincidono con quelli nella tabella, mancano solo username e password su cui però dobbiamo ancora decidere bene se metterli
 	//costruttore semplificato eliminato, questa funzione la usiamo nella ricerca dei centri in base al nome, nella funzione findCentroVaccinale
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs) {
 		String nome_centro=null;
@@ -192,9 +192,10 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param cf			Il Cf del cittadino registrato.
 	 * @return				Se e' gia' stata effettuata una vaccinazione in quel centro vaccinale.
 	 */
-	//Devo verificare che mtodo funzioni su DB
+	//query funziona
 	@Override
 	public Boolean existCf(String nomeCentro, String cf) {
+		nomeCentro=accorpamento(nomeCentro);
 		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -224,9 +225,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param id			L'Id della vaccinazione.
 	 * @return				Se la vaccinazione e' stata effettuata in quel determinato centro vaccinale.
 	 */
-	//aggiornato query con dati corretti
+	//query funziona. Rondo però defvi cambiare l'id da int a stringa per quel discorso che abbiamo già fatto
 
 	public Boolean existIdVaccinazione(String nomeCentro, int id) {
+		nomeCentro=accorpamento(nomeCentro);
+		String mom=String.valueOf(id);
 		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +nomeCentro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -235,7 +238,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInVaccinati_);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, mom);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -254,7 +257,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param registrazioneVaccinato	I dati di prenotazione della vaccinazione del cittadino registrato.
 	 */
 	//Sistemato metodo, tranne piccolo detttaglio da discutere con rondo
-	//Non verificato che moto sia funzionante su DB
+	//Non verificato che metodo sia funzionante su DB
 	@Override
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
@@ -302,6 +305,68 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			closeConnection(connection);
 		}
 		return 0;
+	}
+
+	//Query funziona
+	public Boolean existCentro(String username) {
+		String qExistCenterOnDb = "SELECT username FROM CentriVaccinali WHERE username = ?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCenterOnDb);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return false;
+	}
+//query funziona
+	public Boolean checkLoginCentro(String username, String password) {
+		String qExistCenterOnDb = "SELECT username FROM CentriVaccinali WHERE username = ? AND password=?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCenterOnDb);
+			pstmt.setString(1, username);
+			pstmt.setString(2,password);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return false;
+	}
+
+	//metodo creato per rendere stringa del nome centro vaccinale senza spazi in modo da poterla usare per i vaccinati_nomecentro
+	public static String accorpamento(String centro){
+		String tmp="";
+		for(int i=0;i<centro.length();i++){
+			char ch=centro.charAt(i);
+			if(ch==' '){
+				tmp=tmp;
+			}
+			else {
+				tmp = tmp + ch;
+
+			}
+		}
+		return tmp.toLowerCase();
 	}
 
 }
