@@ -1,4 +1,4 @@
-package ClientCV.CentroVaccinale.Controller;
+package ClientCV.CentroVaccinale.Controller;      //ATT uso anche per acc lib ---
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
@@ -40,7 +40,7 @@ public class Login_CentroVaccinale_Controller {
         //String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap 
         //infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
         
-        if(nomeCentroVaccinale.isEmpty() || idCentro.isEmpty()){
+        if(nomeCentroVaccinale.isEmpty() || idCentro.isEmpty()){                                 //ATT ciclo controllo compilare campi, copio per acc lib
             utility.showWarningPopUp("Attenzione", "Riempire tutti i campi.");
             return 1;
         }

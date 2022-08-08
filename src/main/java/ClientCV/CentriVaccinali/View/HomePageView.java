@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class HomePageView extends JFrame {
 
     //todo
-    //Modificare in modo che nel frame non appaia Dottore ma Centro Vaccinale
+    //Modificare in modo che nel frame non appaia Dottore ma Centro Vaccinale - fatto
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 400;
@@ -22,7 +22,7 @@ public class HomePageView extends JFrame {
 
         JPanel mainPanel = new JPanel();
         JLabel lbCentriVaccinali = new JLabel("CENTRI VACCINALI", SwingConstants.CENTER);
-        JButton btnAccessoLibero = new JButton("Accesso libero");
+        JButton btnAccessoLibero = new JButton("Accesso libero");                        //bott acc lib mi collego
         JButton btnLogin = new JButton("Login");
 
         mainPanel.setLayout(null);
