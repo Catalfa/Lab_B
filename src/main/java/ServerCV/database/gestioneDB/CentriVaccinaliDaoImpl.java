@@ -256,11 +256,12 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che inserisce i dati inseriti dal cittadino registrato in fase di prenotazione dopo essere stato vaccinato.
 	 * @param registrazioneVaccinato	I dati di prenotazione della vaccinazione del cittadino registrato.
 	 */
-	//Sistemato metodo, tranne piccolo detttaglio da discutere con rondo
-	//Non verificato che metodo sia funzionante su DB
+
+	//Query funziona
 	@Override
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
+		nomeCentro=accorpamento(nomeCentro);
 		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;

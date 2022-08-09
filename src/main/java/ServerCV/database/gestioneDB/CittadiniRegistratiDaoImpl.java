@@ -15,10 +15,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
 	 * @param citizenData	I dati del cittadino che si sta registrando.
 	 */
-	//Metodo da sistemare, non ancora verificato funzionamento su DB
+	//Query funziona
 	@Override
 	public void insertCittadino(DatiCittadino citizenData) {
-		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?/*, ?, ?*/)";
+		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
@@ -31,8 +31,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(4, citizenData.getEmailCittadino());
 			pstmt.setString(5, citizenData.getUsernameCittadino());
 			pstmt.setString(6, citizenData.getPasswordCittadino());
-		//	pstmt.setString(7,citizenData.getIdvaccinazione());
-		//	pstmt.setString(8,citizenData.getIdcentro());
+			pstmt.setString(7,citizenData.getIdvaccinazione());
+			pstmt.setString(8,citizenData.getIdcentro());
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -46,7 +46,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf 	Il codice fiscale del cittadino.
 	 * @return 		Il nome e cognome del cittadino.
 	 */
-	//Metodo da sistemare. Non ancora verificato funzionamento metodo su DB
+	//Query funziona
 	@Override
 	public DatiCittadino getDatiCittadino(String cf) {
 		DatiCittadino datiCittadino = null;
@@ -132,7 +132,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param username	Il nome del cittadino registrato.
 	 * @return			Il Cf del cittadino registrato.
 	 */
-	//Metodo da sistemare. Non ancora verificato metodo su DB
+	//query funziona
 	@Override
 	public DatiCittadino getCfCittadino(String username) {
 		DatiCittadino datiCittadino = null;

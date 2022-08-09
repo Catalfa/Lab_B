@@ -14,7 +14,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	private String cf;
 	private Date dataVaccino;
 	private String tipoVaccino;
-	private int idVaccinazione;
+	private int idVaccinazione;  //l'idVaccinazione deve essere di tipo String non int bisogna cambiarlo
 
 	private String nome;
 	private String cognome;

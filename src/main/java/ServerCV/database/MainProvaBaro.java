@@ -1,11 +1,16 @@
 package ServerCV.database;
 
+import Common.DatiCittadino;
+import Common.RegistrazioniVaccinati;
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 import ServerCV.database.gestioneDB.EventiAvversiDaoImpl;
 import ServerCV.database.gestioneDB.GeneralDao;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -88,6 +93,18 @@ public class MainProvaBaro {
 
         contr=cv.checkLoginCentro("Can01","Pa01");
         prove_controllo(contr);
+
+     //   Common.DatiCittadino dc=new DatiCittadino("Andra","Russo","ANDRRUSS012FR","andrearusso1@gmail.com","andrea1","russo1","VA000","CE00");
+      //  cr.insertCittadino(dc);
+        Common.DatiCittadino dc2;
+       dc2 =cr.getDatiCittadino("ANDRRUSS012FR");
+        cicloDati(dc2);
+
+        dc2=cr.getCfCittadino("andrea1");
+       System.out.println(dc2.getCFCittadino());
+       Date dt= Date.valueOf(LocalDate.now());
+    //   Common.RegistrazioniVaccinati rv=new RegistrazioniVaccinati("Santa Maria","CE00","ANDRRUSS012FR", dt,"Pfizer",3456,"Andra","Russo");
+     //  cv.insertVaccinato(rv);
     }
 
     public static void prove_controllo(boolean check) {
@@ -122,5 +139,10 @@ public class MainProvaBaro {
 
 
         return tmp.toLowerCase();
+    }
+
+    public static void cicloDati(DatiCittadino dc3){
+    System.out.println(dc3.getNomeCittadino());
+    System.out.println(dc3.getCognomeCittadino());
     }
 }
