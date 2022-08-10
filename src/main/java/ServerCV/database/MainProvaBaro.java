@@ -1,6 +1,7 @@
 package ServerCV.database;
 
 import Common.DatiCittadino;
+import Common.InfoCentriVaccinali;
 import Common.RegistrazioniVaccinati;
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
@@ -11,6 +12,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -105,6 +107,11 @@ public class MainProvaBaro {
        Date dt= Date.valueOf(LocalDate.now());
     //   Common.RegistrazioniVaccinati rv=new RegistrazioniVaccinati("Santa Maria","CE00","ANDRRUSS012FR", dt,"Pfizer",3456,"Andra","Russo");
      //  cv.insertVaccinato(rv);
+
+     //   Common.InfoCentriVaccinali icv=new InfoCentriVaccinali("Cen03","Pw03","CE03","Padre Pio","Ospedaliero","Via","Marzio",45,"Como","Como",2134);
+       // cv.insertDatiCentroVaccinale(icv);
+        List<InfoCentriVaccinali> info=cv.findCentroVaccinale("Ospedaliero");
+        estraiDati(info);
     }
 
     public static void prove_controllo(boolean check) {
@@ -144,5 +151,17 @@ public class MainProvaBaro {
     public static void cicloDati(DatiCittadino dc3){
     System.out.println(dc3.getNomeCittadino());
     System.out.println(dc3.getCognomeCittadino());
+    }
+
+    public static void estraiDati(List<InfoCentriVaccinali> info){
+     System.out.println(info.get(0).getIdCentro());
+        System.out.println(info.get(0).getNomeCentro());
+        System.out.println(info.get(0).getNomeVia());
+        System.out.println(info.get(0).getNumCiv());
+        System.out.println(info.get(0).getTipologia());
+        System.out.println(info.get(0).getComune());
+        System.out.println(info.get(0).getCap());
+        System.out.println(info.get(0).getProvincia());
+        System.out.println(info.get(1).getNomeCentro());
     }
 }

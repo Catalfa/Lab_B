@@ -21,10 +21,10 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che inserisce i dati nella tabella centri_vaccinali.
 	 * @param infoCentroVaccinale	I dati del centro vaccinale.
 	 */
-	//Devo controllare se metodo funziona su DB
+	//TODO query funziona. Bisogna cambiare num_civ da int a String ma bisogna che Andrea modifichi il suo metodo
 	@Override
 	public void insertDatiCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
-		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap ) VALUES (?,?,?,?,?,?,?,?,?,?)";
+		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap, username, password ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
@@ -39,7 +39,9 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(6, ((Integer)infoCentroVaccinale.getNumCiv()).toString());
 			pstmt.setString(7, infoCentroVaccinale.getComune());
 			pstmt.setString(8, infoCentroVaccinale.getProvincia());
-			pstmt.setString(9, ((Integer)infoCentroVaccinale.getCap()).toString());
+			pstmt.setInt(9, infoCentroVaccinale.getCap());
+			pstmt.setString(10, infoCentroVaccinale.getUsername());
+			pstmt.setString(11, infoCentroVaccinale.getPassword());
 
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
@@ -53,9 +55,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che effettua una ricerca del centro vaccinale.
 	 * @param researchText 	Il testo scritto dall'utente.
 	 */
-	//aggiornato query con dati corretti
-	// Per l'indirizzo è lo stesso discorso fatto prima
-	//TODO da controllare nuove modifiche (select * nella query)
+	//TODO query funziona
 	@Override
 	public List<InfoCentriVaccinali> findCentroVaccinale(String researchText) {
 		List<InfoCentriVaccinali> list = new ArrayList<>();

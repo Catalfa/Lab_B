@@ -10,7 +10,7 @@ public class InfoCentriVaccinali implements Serializable{
     public InfoCentriVaccinali(String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, int cap ) {
         dati=new CentroVaccinale(idcentro,nome_centro,tipologia,qualificatore,nomevia, numciv,comune,provincia,cap);
     }
-    public InfoCentriVaccinali(String username, String password,String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, int cap ) {
+    public InfoCentriVaccinali(String username, String password,String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia,int cap ) {
         this.username=username;
         this.password=password;
         dati=new CentroVaccinale(idcentro,nome_centro,tipologia,qualificatore,nomevia,numciv,comune,provincia,cap);
