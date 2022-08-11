@@ -42,7 +42,7 @@ public class AggiungiEventoAvversoController {
 	 */
     
      public void inserisciEventiAvversiAction(String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
-        EventiAvversi eventoAvverso = new EventiAvversi(Integer.parseInt(idEvento), nomeCentro, eventi, intensitaEventi, noteEventi);
+        EventiAvversi eventoAvverso = new EventiAvversi(idEvento, nomeCentro, eventi, intensitaEventi, noteEventi);
 
         try {
             int risultato = Stub.InserisciEventiAvversi(eventoAvverso, codiceFiscale);

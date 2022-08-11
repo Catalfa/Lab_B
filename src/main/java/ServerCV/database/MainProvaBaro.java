@@ -58,12 +58,12 @@ public class MainProvaBaro {
         contr = cr.existCfCittadino("Andrea");
         prove_controllo(contr);
 
-        cr.updateIdCittadino(3456, "Andrea");
+        cr.updateIdCittadino("3456", "Andrea");
 
-        contr = cr.existIdCittadino(3457);
+        contr = cr.existIdCittadino("3457");
         prove_controllo(contr);
 
-        int contr2 = cr.getIdCittadino("Andreee");
+        int contr2 = Integer.parseInt(cr.getIdCittadino("Andreee"));
         prove_controllo2(contr2);
 
         int numvaccinati = cr.countCittadiniVaccinati();
@@ -87,7 +87,7 @@ public class MainProvaBaro {
       contr=cv.existCf("Santa Maria","ALMU01PO");
         prove_controllo(contr);
 
-        contr=cv.existIdVaccinazione("Santa Maria", 3456);
+        contr=cv.existIdVaccinazione("Santa Maria", "3456");
         prove_controllo(contr);
 
         contr=cv.existCentro("Cen01");

@@ -5,19 +5,18 @@ import java.io.Serializable;
 public class InfoCittadino implements Serializable{
     
     private String nome;
-    private char[] password;
+    private String cognome;
 
-    public InfoCittadino(String userName, char[] pwd) {
-        this.nome = userName;
-        this.password = pwd;
+    public InfoCittadino(String Name, String Surname) {
+        this.nome = Name;
+        this.cognome=Surname;
     }
 
     public String getUserName(){
         return nome;
     }
 
-    public char[] getPassword(){
-        return password;
+    public String getNome(){return cognome;
     }
 
 }

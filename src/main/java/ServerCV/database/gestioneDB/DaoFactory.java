@@ -24,10 +24,6 @@ public class DaoFactory {
 				if(databaseType.equals("PostgreSQL"))
 					return new EventiAvversiDaoImpl();
 				break;
-			case "RegistrazioniVaccinazioniDao":
-				if(databaseType.equals("PostgreSQL"))
-					return new RegistrazioniVaccinazioniDaoImpl();
-				break;
 		}
 		
 		return null;

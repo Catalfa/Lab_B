@@ -17,7 +17,7 @@ public interface CentriVaccinaliDao {
 	//public void alterVaccinati_(String nomeCentro);
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs);
 	public Boolean existCf(String nomeCentro, String cf);
-	public Boolean existIdVaccinazione(String nomeCentro, int id);
+	public Boolean existIdVaccinazione(String nomeCentro, String id);
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato);
 	public int countCentriVaccinali();
 }

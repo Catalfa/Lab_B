@@ -12,8 +12,8 @@ public interface CittadiniRegistratiDao {
 	public boolean existCittadino(String username);
 	public DatiCittadino getCfCittadino(String username);
 	public boolean existCfCittadino(String cf);
-	public void updateIdCittadino(int id, String cf);
-	public boolean existIdCittadino(int id);
-	public int getIdCittadino(String cf);
+	public void updateIdCittadino(String id, String cf);
+	public boolean existIdCittadino(String id);
+	public String getIdCittadino(String cf);
 	public int countCittadiniVaccinati();
 }

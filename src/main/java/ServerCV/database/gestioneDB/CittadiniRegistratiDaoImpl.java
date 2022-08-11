@@ -1,7 +1,6 @@
 package ServerCV.database.gestioneDB;
 
 import Common.DatiCittadino;
-import ServerCV.database.ConnessioneDB;
 import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
 
 import java.sql.Connection;
@@ -15,7 +14,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
 	 * @param citizenData	I dati del cittadino che si sta registrando.
 	 */
-	//Query funziona
+	//Query implementata
 	@Override
 	public void insertCittadino(DatiCittadino citizenData) {
 		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?)";
@@ -46,7 +45,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf 	Il codice fiscale del cittadino.
 	 * @return 		Il nome e cognome del cittadino.
 	 */
-	//Query funziona
+	//Query implementata
 	@Override
 	public DatiCittadino getDatiCittadino(String cf) {
 		DatiCittadino datiCittadino = null;
@@ -132,7 +131,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param username	Il nome del cittadino registrato.
 	 * @return			Il Cf del cittadino registrato.
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public DatiCittadino getCfCittadino(String username) {
 		DatiCittadino datiCittadino = null;
@@ -193,9 +192,9 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param id	L'Id della vaccinazione.
 	 * @param cf	Il Cf del cittadino registrato.
 	 */
-	//query funziona, però Rondo devi cambiare il tipo dell'id da int a String nella classe GestioneClient che si trova nel package server
+	//query implementata
 	@Override
-	public void updateIdCittadino(int id, String cf) {
+	public void updateIdCittadino(String id, String cf) {
 		String id1=String.valueOf(id);
 		String qUpdateIdVaccinazioneInCittadiniRegistrati = "UPDATE Cittadini_Registrati SET idvaccinazione = ? WHERE cf = ?";
 		PreparedStatement pstmt;
@@ -214,15 +213,14 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			closeConnection(connection);
 		}
 	}
-
 	/**
 	 * Metodo che controlla se l'Id vaccinazione inserito e' gia' stato utilizzato.
 	 * @param id	L'Id della vaccinazione.
 	 * @return		Se e' gia' stato utilizzato quell'Id.
 	 */
-	//query funziona; però c'è lostesso discorso fatto prima sempre per quanto rigurada l'id
+	//query implementata
 	@Override
-	public boolean existIdCittadino(int id) {
+	public boolean existIdCittadino(String id) {
 		String id1=String.valueOf(id);
 		String qExistIdInCittadiniRegistrati = "SELECT idvaccinazione FROM Cittadini_Registrati WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
@@ -251,9 +249,9 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf	Il Cf del cittadino registrato.
 	 * @return		L'Id della vaccinazione.
 	 */
-	//query funziona. Rondo devi modificare il metodo 'gestControlloPreRegistrazioneEventoAvverso' che si trova sempre in GestioneClient
+	//query implementata
 	@Override
-	public int getIdCittadino(String cf) {
+	public String getIdCittadino(String cf) {
 		String qGetIdVaccinazioneInCittadiniRegistrati = "SELECT idvaccinazione FROM Cittadini_Registrati WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -267,17 +265,17 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			
 			while(rs.next()) {
 					String id=rs.getString("idvaccinazione");
-				return Integer.valueOf(id);
+				return id;
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
 			closeConnection(connection);
 		}
-		return 0;
+		return null ;
 	}
 
-	//query modificata e funzionante
+	//query implementata
 	@Override
 	public int countCittadiniVaccinati() {
 		String qCountCittadiniVaccinati = "SELECT COUNT(idvaccinazione) AS count_vaccinazioni FROM Cittadini_Registrati WHERE (idvaccinazione IS NOT NULL)";

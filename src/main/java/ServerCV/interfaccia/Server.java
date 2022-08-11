@@ -4,6 +4,7 @@ import Common.DatiCittadino;
 import Common.InfoCentriVaccinali;
 import Common.InfoCittadino;
 import Common.RegistrazioniVaccinati;
+import ServerCV.server.GestioneClient;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -140,4 +141,5 @@ public interface Server extends Remote {
 	 * @throws RemoteException	Eccezione remota.
 	 */
 	public int[] getStatisticheHomepage() throws RemoteException;
+
 }

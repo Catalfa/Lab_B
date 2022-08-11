@@ -34,8 +34,6 @@ public class LoginCittadinoController {
 
     public int loginCittadino(String username, char[] password) throws RemoteException {
 
-        infoCittadino = new InfoCittadino(username, password);
-
         if(username.toString().isEmpty() || password.length == 0){
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
             return 1;

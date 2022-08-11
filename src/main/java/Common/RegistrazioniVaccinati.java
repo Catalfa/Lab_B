@@ -14,7 +14,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	private String cf;
 	private Date dataVaccino;
 	private String tipoVaccino;
-	private int idVaccinazione;  //l'idVaccinazione deve essere di tipo String non int bisogna cambiarlo
+	private String idVaccinazione;
 
 	private String nome;
 	private String cognome;
@@ -27,7 +27,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * @param tipoVaccino		La tipologia di vaccino somministrata.
 	 * @param idVaccinazione	L'ID vaccinazione del cittadino.
 	 */
-	public RegistrazioniVaccinati(String nomeCentro, String idCentro, String cf, Date dataVaccino, String tipoVaccino, int idVaccinazione, String nome, String cognome) {
+	public RegistrazioniVaccinati(String nomeCentro, String idCentro, String cf, Date dataVaccino, String tipoVaccino, String idVaccinazione, String nome, String cognome) {
 		this.idCentro = idCentro;
 		this.nomeCentro=nomeCentro;
 		this.cf = cf;
@@ -77,7 +77,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * Metodo che restituisce l'ID della vaccinazione.
 	 * @return		L'Id della vaccinazione.
 	 */
-	public int getIdVaccinazione() {
+	public String getIdVaccinazione() {
 		return idVaccinazione;
 	}
 

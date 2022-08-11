@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Classe oggetto per i dati degli eventi avversi.
  */
 public class EventiAvversi implements Serializable{
-    private int id_evento;
+    private String id_evento;
 	private String nomeCentro;
 	private String[] evento;
 	private Integer[] severita;
@@ -24,7 +24,7 @@ public class EventiAvversi implements Serializable{
 	//int id_evento, String nomeCentro, String evento, Integer severita, String note
 	
 
-    public EventiAvversi(int id_evento, String nomeCentro, String[] evento,  Integer[] severita, String[] note) {
+    public EventiAvversi(String id_evento, String nomeCentro, String[] evento,  Integer[] severita, String[] note) {
         this.id_evento = id_evento;
 		this.nomeCentro = nomeCentro;
 		this.evento = evento;
@@ -36,7 +36,7 @@ public class EventiAvversi implements Serializable{
 	 * Metodo che restituisce l'Id vaccinazione del cittadino.
 	 * @return		L'ID vaccinazione del cittadino.
 	 */
-    public int getIdEvento(){
+    public String getIdEvento(){
         return id_evento;
     }
 

@@ -71,11 +71,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 */
 	@Override
 	public List<InfoCentriVaccinali> cercaCentroVaccinale(String testo) throws RemoteException {
-		List<InfoCentriVaccinali> listaCentri = new ArrayList();
-		for(int i=0; i<20; i++){
-			listaCentri=(new GestioneClient().gestRicercaCentroVaccinale(testo));
-		}
-		return listaCentri;
+		return gestClient.gestRicercaCentroVaccinale(testo);
 	}
 	
 	/**

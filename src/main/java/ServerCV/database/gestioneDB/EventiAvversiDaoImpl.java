@@ -13,10 +13,10 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * Metodo che inserisce i dati all'interno della tabella eventi_avversi.
 	 *
 	 */
-	//aggiornato query con dati corretti
+	//query implementata
 	//non verifcato funzionamento su DB
 	@Override
-	public void insertEventoAvverso(int id_evento, String nomeCentro, String evento, Integer severita, String note) {
+	public void insertEventoAvverso(String id_evento, String nomeCentro, String evento, Integer severita, String note) {
 		String qInserisciEventiAvversi = "INSERT INTO Eventi_Avversi (id_evento, nome_centro, nome_evento, severita, note_opzionali) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
@@ -24,7 +24,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qInserisciEventiAvversi);
-			pstmt.setInt(1, id_evento);
+			pstmt.setString(1, id_evento);
 			pstmt.setString(2, nomeCentro);
 			pstmt.setString(3, evento);
 			pstmt.setInt(4, severita);
@@ -42,7 +42,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param nomeCentro	Il nome del centro vaccinale.
 	 * @return				Il numero di segnalazioni effettuate per quel determinato centro vaccinale.
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
 		String qGetNumSegnalazioni = "SELECT count(nome_centro) AS count_segnalazioni FROM eventi_avversi WHERE nome_centro = ?";
@@ -73,7 +73,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param evento		Il tipo di evento avverso.
 	 * @return				Il valore medio di quel determinato evento.
 	 */
-	//query funziona
+	//query implementata
 	@Override
 	public double getImportanzaEvento(String nomeCentro, String evento) {
 		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE nome_centro = ? AND nome_evento = ?";
@@ -104,9 +104,8 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param id	L'Id della vaccinazione.
 	 * @return		Se sono gia' stati inseriti degli eventi avversi.
 	 */
-	//aggiornato query con dati corretti
-	//discutere con rondo se tenere questo metodo o cambiarlo con altro
-	public boolean existId(int id) {
+	//query implementata
+	public boolean existId(String id) {
 		String qExistIdInEventiAvversi = "SELECT idvaccinazione FROM Eventi_Avversi WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -115,7 +114,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInEventiAvversi);
-			pstmt.setInt(1, id);
+			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
