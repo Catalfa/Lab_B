@@ -22,7 +22,7 @@ public class HomePageView extends JFrame {
 
         JPanel mainPanel = new JPanel();
         JLabel lbCentriVaccinali = new JLabel("CENTRI VACCINALI", SwingConstants.CENTER);
-        JButton btnAccessoLibero = new JButton("Accesso libero");                        //bott acc lib mi collego
+        JButton btnAccessoLibero = new JButton("Accesso libero");
         JButton btnLogin = new JButton("Login");
 
         mainPanel.setLayout(null);
@@ -40,6 +40,13 @@ public class HomePageView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.createLoginFrame();
+            }
+        });
+
+        btnAccessoLibero.addActionListener(new ActionListener() {                                    //ATT new
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.createAccLibFrame();
             }
         });
 

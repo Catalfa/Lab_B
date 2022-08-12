@@ -24,7 +24,7 @@ public class MainAccLibFrameController {
     /**
      * Metodo che crea un nuovo frame e manda in dispose quello corrente.
      */
-   /* public void createLoginCittadinoFrame() {                                       ATT metodi per classi successive
+  /* public void createLoginCittadinoFrame() {
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
         loginCittadinoView.setVisible(true);
         loginFrameView.dispose();

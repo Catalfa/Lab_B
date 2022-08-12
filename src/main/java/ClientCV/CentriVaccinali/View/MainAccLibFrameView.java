@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 public class MainAccLibFrameView extends JFrame {
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 16);
-    private final int WIDTH = 500;
-    private final int HIGHT = 150;
+    private final int WIDTH = 450;
+    private final int HIGHT = 300;
 
     public MainAccLibFrameView(){
 
