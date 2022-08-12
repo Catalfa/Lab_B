@@ -3,9 +3,10 @@ package ClientCV.CentroVaccinale.Controller;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
 import ClientCV.Utility;
-import Common.CentroVaccinale;
+import Common.InfoCentriVaccinali;
 import ServerCV.interfaccia.Server;
 
+import java.rmi.RemoteException;
 import java.util.regex.Pattern;
 
 public class Registra_CentroVaccinale_Controller {
@@ -33,9 +34,9 @@ public class Registra_CentroVaccinale_Controller {
 
     /**
 	 * Metodo che, dopo aver effettuato vari controlli, invia al server i dati per registrare un nuovo centro vaccinale.
-	 * @param cVaccinale    Il nome del centro vaccinale.
-	 */
-    public int signIn(CentroVaccinale cVaccinale) {
+     * @param cVaccinale    Il nome del centro vaccinale.
+     */
+    public int signIn(InfoCentriVaccinali cVaccinale) throws RemoteException {
 
         /*
         gli errori di tipo 1 sono errori dal lato client
@@ -43,9 +44,9 @@ public class Registra_CentroVaccinale_Controller {
         return tipo 0indica che non ci sono errori 
         */
 
-        if(cVaccinale.getIdCentro().isEmpty() || cVaccinale.getnomeCentroVaccinale().isEmpty() ||
-            cVaccinale.getTipologiaCentro().isEmpty() || cVaccinale.getQualificatore().isEmpty() ||
-            cVaccinale.getIndirizzo().isEmpty() || cVaccinale.getNumeroCivico() == 0 || 
+        if(cVaccinale.getIdCentro().isEmpty() || cVaccinale.getNomeCentro().isEmpty() ||
+            cVaccinale.getTipologia().isEmpty() || cVaccinale.getQualificatore().isEmpty() ||
+            cVaccinale.getNomeVia().isEmpty() || cVaccinale.getNumCiv() == 0 ||
             cVaccinale.getComune().isEmpty() || cVaccinale.getProvincia().isEmpty() || 
             cVaccinale.getCap()==0){
 
@@ -54,7 +55,7 @@ public class Registra_CentroVaccinale_Controller {
         }
 
         //Controlla con il metodo presente nel bottone "buttons[1] nella View"
-        if(cVaccinale.getNumeroCivico() == -1){
+        if(cVaccinale.getNumCiv() == -1){
             utility.showWarningPopUp("Attenzione", "Il numero civico dev'essere un numero.");
             return 1;
         }
@@ -69,7 +70,7 @@ public class Registra_CentroVaccinale_Controller {
             return 1;
         }
         
-        return 0;
+        return Stub.registraCentroVaccinale(cVaccinale);
     }
 
     

@@ -29,9 +29,6 @@ public class Ricerca_CentroVaccinale_Controller {
     }
 
     public void cercaCentro(String nome){
-        //TODO implementare in modo da poter passare e ricevere i dati dal e verso il DB
-        //Fare anche metodo che se non ci sono centri corrispondenti a quel nome esce un messaggio 
-        //di avviso presente in utility
         List<InfoCentriVaccinali> listaCentri = new ArrayList();
         try {
             this.Stub = ServerSingleton.getInstance();

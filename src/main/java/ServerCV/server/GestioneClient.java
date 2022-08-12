@@ -221,21 +221,21 @@ public class GestioneClient {
 
 	//ok
 	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso, String codiceFiscale) {
-
-		//int id_evento, String nomeCentro, String evento,  Integer severita, String note
-
 		if(!centriVaccinaliDao.existIdVaccinazione(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
 			return 2;
+		else if(gestControlloPreRegistrazioneEventoAvverso(codiceFiscale))
+			return 3;
 		else{
-			for(int i=0; i<6; i++) {
-				eventiAvversiDao.insertEventoAvverso(eventoAvverso.getIdEvento(),
-						eventoAvverso.getNomeCentro(),
-						eventoAvverso.getEvento()[i],
-						eventoAvverso.getSeverita()[i],
-						eventoAvverso.getNotes()[i]);
+				for(int i=0; i<6; i++) {
+					eventiAvversiDao.insertEventoAvverso(eventoAvverso.getIdEvento(),
+							eventoAvverso.getNomeCentro(),
+							eventoAvverso.getEvento()[i],
+							eventoAvverso.getSeverita()[i],
+							eventoAvverso.getNotes()[i]);
+				}
+				return 1;
 			}
-			return 1;
-		}
+
 	}
 
 	/**

@@ -44,7 +44,19 @@ public class LoginCittadinoController {
         }
 
         //TODO creare metodo per il controllo nel DB prima di aprire il frame "Ricerca_CentroVaccinale_View"
-        Stub.loginCittadino(username,password.toString());
+
+        switch (Stub.loginCittadino(username,password.toString())){
+            //TODO @Andre implementare frame successivi
+            case 1:
+                //login effettuato con successo
+                break;
+            case 2:
+                //username non esistente
+                break;
+            case 3:
+                //password errata
+                break;
+        }
         Ricerca_CentroVaccinale_View ricerca_centro = new Ricerca_CentroVaccinale_View();
         loginCittadinoView.dispose();
         

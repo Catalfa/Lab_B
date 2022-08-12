@@ -13,11 +13,11 @@ public class Login_CentroVaccinale_Controller {
 
     private Login_CentroVaccinale_View loginCVaccView;
     Utility utility = new Utility();
-    Server Stab;
+    Server Stub;
 
     public Login_CentroVaccinale_Controller(Login_CentroVaccinale_View loginCVaccView) {
         this.loginCVaccView = loginCVaccView;
-        Stab = ServerSingleton.getInstance();
+        Stub = ServerSingleton.getInstance();
     }
 
     /**
@@ -42,20 +42,17 @@ public class Login_CentroVaccinale_Controller {
         
         if(nomeCentroVaccinale.isEmpty() || idCentro.isEmpty() || user.isEmpty() || password.isEmpty()){                                 //ATT ciclo controllo compilare campi, copio per acc lib
             utility.showWarningPopUp("Attenzione", "Riempire tutti i campi.");
-            return 1;
+            return 0;
         }
-
-
-
         else{
             try {
-                            //TODO implementare login Centri Vaccinali
+                return Stub.loginCentroVaccinale(user,password);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         
-        return 0;
+    return 0;
     }
 
     /**

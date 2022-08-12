@@ -118,8 +118,7 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         });
 
-        // TODO
-        //Utilizzo i metodi di InfoCeentriVaccinali per i vari getter e setter
+
         loginButton.addActionListener(new ActionListener() {
 
             @Override
@@ -128,7 +127,18 @@ public class Login_CentroVaccinale_View extends JFrame {
                 String idCentro = tf_idCentro.getText();
                 String user = tf_user.getText();
                 String password = tf_password.getText();
-                controller.loginCentroVaccinale(username, idCentro, user, password);
+                switch (controller.loginCentroVaccinale(username, idCentro, user, password)){
+                    //TODO @Andre implementare frame successivi
+                    case 1:
+                        //login effettuato con successo
+                        break;
+                    case 2:
+                        //username non esistente
+                        break;
+                    case 3:
+                        //password errata
+                        break;
+                }
             }
 
         });

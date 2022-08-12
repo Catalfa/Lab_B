@@ -55,8 +55,7 @@ public class AggiungiEventoAvversoController {
             }
             if (risultato == 1) {
                 Utility.showInformationPopUp("Richiesta andata a buon fine.", "Eventi avversi inseriti con successo");
-
-                //eventoAvversoView.deleteView();
+                eventoAvversoView.deleteView();
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -69,7 +68,8 @@ public class AggiungiEventoAvversoController {
 	 * @param count_numCharNote		Il numero di caratteri disponibili rimanenti.
 	 */
     public void checkNumCharAction(KeyEvent arg0, int count_numCharNote) {
-        if(count_numCharNote==0) {
+        if((count_numCharNote%256)==0) {
+            //TODO da controllare
             Utility.showErrorPopUp("ERRORE", "Ragiunto numero massimo di caratteri disponibili");
             arg0.consume();
         }

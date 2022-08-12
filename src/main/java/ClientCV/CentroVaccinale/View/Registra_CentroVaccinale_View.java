@@ -2,11 +2,17 @@ package ClientCV.CentroVaccinale.View;
 
 import ClientCV.CentroVaccinale.Controller.Registra_CentroVaccinale_Controller;
 import Common.CentroVaccinale;
+import Common.InfoCentriVaccinali;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
+
+
+//TODO @Andre bisogna aggiungere i campi username e password
+
 
 public class Registra_CentroVaccinale_View extends JFrame {
 
@@ -100,10 +106,14 @@ public class Registra_CentroVaccinale_View extends JFrame {
                         s = -1;
                     }
                 }
-
-                controller.signIn(new CentroVaccinale( textFields[0].getText(), textFields[1].getText(), 
-                    textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), s, 
-                    textFields[6].getText(), textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
+                //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
+                try {
+                    controller.signIn(new InfoCentriVaccinali( textFields[0].getText(), textFields[1].getText(),
+                        textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), s,
+                        textFields[6].getText(), textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
             }
 
         });
