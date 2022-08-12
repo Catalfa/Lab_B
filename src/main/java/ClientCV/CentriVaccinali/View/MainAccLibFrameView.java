@@ -65,7 +65,7 @@ public class MainAccLibFrameView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.createConsultaInfoCvFrame();
+                //controller.createConsultaInfoCvFrame();
             }
 
         });
@@ -74,7 +74,7 @@ public class MainAccLibFrameView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.createTabEventiAvvFrame();
+              //  controller.createTabEventiAvvFrame();
             }
 
         });

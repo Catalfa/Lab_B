@@ -1,6 +1,7 @@
 package ClientCV.Cittadino.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
+import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
 import ClientCV.Cittadino.View.SignInCittadinoView;
@@ -32,7 +33,7 @@ public class LoginCittadinoController {
         loginCittadinoView.dispose();
     }
 
-    public int loginCittadino(String username, char[] password) throws RemoteException {
+    public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
 
         if(username.toString().isEmpty() || password.length == 0){
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
@@ -48,7 +49,7 @@ public class LoginCittadinoController {
         switch (Stub.loginCittadino(username,password.toString())){
             //TODO @Andre implementare frame successivi
             case 1:
-                //login effettuato con successo
+                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(cf);
                 break;
             case 2:
                 //username non esistente

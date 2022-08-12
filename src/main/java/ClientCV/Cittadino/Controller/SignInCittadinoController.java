@@ -7,6 +7,7 @@ import ClientCV.Utility;
 import Common.DatiCittadino;
 
 import javax.swing.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignInCittadinoController extends JFrame{
@@ -30,7 +31,7 @@ public class SignInCittadinoController extends JFrame{
 
     public int signIn(DatiCittadino cittadini) {
 
-        /* if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length==0 ){
+         if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length()==0 ){
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati");
             return 1;    
         }
@@ -41,10 +42,10 @@ public class SignInCittadinoController extends JFrame{
             return 1;
         }
 
-        if(cittadini.getPasswordCittadino().length <6) {
+        if(cittadini.getPasswordCittadino().length() <6) {
             utility.showWarningPopUp("Attenzione", "La password deve essere di almeno 6 caratteri");
             return 1;
-        } */
+        }
  
             
             signInCittadinoView.dispose();

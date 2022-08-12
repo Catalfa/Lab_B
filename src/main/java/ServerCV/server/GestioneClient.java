@@ -100,7 +100,7 @@ public class GestioneClient {
 	//ok
 	public int gestLoginCittadino(String username, String pw) {
 		if(!cittadiniRegistratiDao.existCittadino(username))
-			return 2;
+			return 2 ;
 		else if(cittadiniRegistratiDao.checkPwCittadino(username, pw))//se password inserita = pw sul db -> login)
 			return 1;
 		else

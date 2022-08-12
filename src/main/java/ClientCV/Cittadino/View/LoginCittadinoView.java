@@ -93,7 +93,7 @@ public class LoginCittadinoView extends JFrame {
                 String username = usernamField.getText();
                 char[] password = passwordField.getPassword();
                 try {
-                    controller.loginCittadino(username, password);
+                    controller.loginCittadino(username, password, "cf da implementare");
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }

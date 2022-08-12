@@ -190,7 +190,7 @@ public class AggiungiEventoAvversoView extends JFrame{
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
                     noteEventi[i] = noteFields[i].getText();
                 }
-                controller.inserisciEventiAvversiAction( idEvento, "wewe", nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
+                controller.inserisciEventiAvversiAction( idEvento, "", nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
             }
         });
 
