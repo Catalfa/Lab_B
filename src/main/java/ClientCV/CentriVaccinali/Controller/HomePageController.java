@@ -1,6 +1,7 @@
 package ClientCV.CentriVaccinali.Controller;
 
 import ClientCV.CentriVaccinali.View.HomePageView;
+import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ServerCV.interfaccia.Client;
 
@@ -19,6 +20,12 @@ public class HomePageController implements Client {
 	 */
     public void createLoginFrame(){
         MainLoginFrameView f = new MainLoginFrameView();
+        f.setVisible(true);
+        homePageView.dispose();
+    }
+
+    public void createAccLibFrame(){                              //ATT new
+        MainAccLibFrameView f = new MainAccLibFrameView();
         f.setVisible(true);
         homePageView.dispose();
     }
