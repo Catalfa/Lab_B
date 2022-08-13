@@ -61,7 +61,7 @@ public class MainAccLibFrameView extends JFrame {
 
         });
 
-        btnConsultaInfoCv.addActionListener(new ActionListener() {               //sistemo metodi
+        btnConsultaInfoCv.addActionListener(new ActionListener() {               /**sistemo metodi */
 
             @Override
             public void actionPerformed(ActionEvent e) {

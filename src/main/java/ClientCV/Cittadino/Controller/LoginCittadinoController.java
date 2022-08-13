@@ -35,7 +35,7 @@ public class LoginCittadinoController {
 
     public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
 
-        if(username.toString().isEmpty() || password.length == 0){
+        if(username.toString().isEmpty() || password.length == 0 || cf == null){                  //CONTROLLO QUI CF
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
             return 1;
         }
@@ -43,6 +43,7 @@ public class LoginCittadinoController {
             utility.showWarningPopUp("Attenzione!", "La password non può essere lunga meno di 6 caratteri.");
             return 1;
         }
+
 
         //TODO creare metodo per il controllo nel DB prima di aprire il frame "Ricerca_CentroVaccinale_View"
 

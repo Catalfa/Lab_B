@@ -15,6 +15,7 @@ public class LoginCittadinoView extends JFrame {
     private final int HIGHT = 300;
     private JTextField usernamField = new JTextField(20);
     private JPasswordField passwordField = new JPasswordField(20);
+
     private JButton loginButton = new JButton("LOGIN");
     private JButton backButton = new JButton("BACK");
     private JButton signinButton = new JButton("SIGN-IN");

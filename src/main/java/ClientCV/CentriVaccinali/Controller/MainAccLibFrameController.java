@@ -26,9 +26,9 @@ public class MainAccLibFrameController {
     /**
      * Metodo che crea un nuovo frame e manda in dispose quello corrente.
      */
-   /*public void createConsultaInfoCvFrame() {             //RICORDA fare
+   public void createConsultaInfoCvFrame() {
         InfCvView infCvView = new InfCvView();
-        InfCvView.setVisible(true);                         //si corregge quando faccio classi succ
+        InfCvView.setVisible(true);
         accLibFrameView.dispose();
     }
 
@@ -36,5 +36,5 @@ public class MainAccLibFrameController {
         EvAvvView evAvvView = new EvAvvView();
         EvAvvView.setVisible(true);
         accLibFrameView.dispose();
-    }*/
+    }
 }
