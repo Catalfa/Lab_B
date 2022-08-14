@@ -1,12 +1,16 @@
 package ClientCV.AccessoLibero.Controller;
 
+import ClientCV.AccessoLibero.View.InfCvView;
+import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
+import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
 import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
+import Common.InfoCentriVaccinali;
 import Common.InfoCittadino;
 import ServerCV.interfaccia.Server;
 
@@ -17,10 +21,10 @@ public class InfCvController {
 
     Server Stub;
 
-    //Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
+
     public InfCvView infCvView;
 
-    //public InfoCittadino infoCittadino;                      /** controllo*/
+
     private Utility utility = new Utility();
 
     public InfCvController(InfCvView infCvView) {
@@ -28,46 +32,42 @@ public class InfCvController {
         this.infCvView = infCvView;
     }
 
+
+
     public void goBack() {
-        MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
-        mainLoginFrameView.setVisible(true);
+        MainAccLibFrameView mainAccLibFrameView = new MainAccLibFrameView();
+        mainAccLibFrameView.setVisible(true);
         infCvView.dispose();
     }
 
-    public int infCv(String nomeCv, String comune, String tipologia) throws RemoteException {
+    public int infCv(String nomeCv, String comune, String tipologia) {
 
-        if(nomeCv.toString().isEmpty() || comune == null || tipologia == null){
+        if (nomeCv.isEmpty() || comune.isEmpty() || tipologia.isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
-            return 1;
+            return 0;
         }
 
-        if(comune.toString().isEmpty() || nomeCv == null || tipologia == null){
-            utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
-            return 1;
+        else{
+            try {
+                return Stub.infCv(nomeCv,comune, tipologia);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-
-        if(tipologia.toString().isEmpty() || nomeCv == null || comune == null){
-            utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
-            return 1;
-        }
-        //TODO creare metodo per il controllo nel DB prima di aprire il frame "Ricerca_CentroVaccinale_View"
-
-        switch (Stub.loginCittadino(nomeCv, comune.toString())){
-            //TODO @Andre implementare frame successivi
-            case 1:
-                InformazioniCvView informazioniCvView = new InformazioniCvView(cf);        //creo classe InformazioniCv
-                break;
-            case 2:
-                //username non esistente
-                break;
-            case 3:
-                //password errata
-                break;
-        }
-        InformazioniCvView infoCentro = new InformazioniCvView();  /////////////////////
-        infCvView.dispose();
 
         return 0;
     }
 
+    /**
+     * Metodo che crea un nuovo frame e manda in dispose quello corrente.
+     */
+    public void invio() {
+        Registra_CentroVaccinale_View signInCentroVaccinaleView = new Registra_CentroVaccinale_View();
+        signInCentroVaccinaleView.setVisible(true);
+        infCvView.dispose();
+    }
+
+
 }
+
+

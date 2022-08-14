@@ -137,6 +137,11 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return gestClient.getStatistiche();
 	}
 
+	@Override
+	public int infCv(String nomeCv, String comune, String tipologia) {
+		return 0;
+	}
+
 	/**
 	 * Metodo implementativo del server per inserire gli eventi avversi.
 	 */

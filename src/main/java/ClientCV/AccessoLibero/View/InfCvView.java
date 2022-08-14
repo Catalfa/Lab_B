@@ -104,13 +104,7 @@ public class InfCvView extends JFrame{
                     }
                 }
                 //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
-                try {
-                    controller.invio(new InfoCentriVaccinali( textFields[0].getText(), textFields[1].getText(),
-                            textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), s,
-                            textFields[6].getText(), textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
-                } catch (RemoteException ex) {
-                    ex.printStackTrace();
-                }
+
             }
 
         });

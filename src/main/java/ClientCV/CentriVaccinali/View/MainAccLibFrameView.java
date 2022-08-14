@@ -18,7 +18,7 @@ public class MainAccLibFrameView extends JFrame {
         MainAccLibFrameController controller = new MainAccLibFrameController(this);
 
         JLabel lbAccLibFrame = new JLabel("Accesso Libero");
-        JButton btnConsultaInfoCv = new JButton("Consulta Informazioni Centrio Vaccinale");
+        JButton btnConsultaInfoCv = new JButton("Consulta Informazioni Centro Vaccinale");
         JButton btnTabEventiAvv = new JButton("Tabella Eventi Avversi");
         JButton btnBack = new JButton("Indietro");
 
@@ -65,7 +65,7 @@ public class MainAccLibFrameView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //controller.createConsultaInfoCvFrame();
+                controller.createConsultaInfoCvFrame();
             }
 
         });
@@ -74,7 +74,7 @@ public class MainAccLibFrameView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-              //  controller.createTabEventiAvvFrame();
+              //  controller.createTabEventiAvvFrame();                //SBLOCCARE QUANDO FINISCO EVV AVV
             }
 
         });

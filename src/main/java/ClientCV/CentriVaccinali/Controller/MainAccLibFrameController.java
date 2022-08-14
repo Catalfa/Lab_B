@@ -28,13 +28,13 @@ public class MainAccLibFrameController {
      */
    public void createConsultaInfoCvFrame() {
         InfCvView infCvView = new InfCvView();
-        InfCvView.setVisible(true);
+        infCvView.setVisible(true);
         accLibFrameView.dispose();
     }
 
-    public void createTabEventiAvvFrame() {
+    /*public void createTabEventiAvvFrame() {                  //SBLOCCO QUANDO FACCIO EVV AVV
         EvAvvView evAvvView = new EvAvvView();
         EvAvvView.setVisible(true);
         accLibFrameView.dispose();
-    }
+    }*/
 }
