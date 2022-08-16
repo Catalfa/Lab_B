@@ -1,6 +1,7 @@
-package ClientCV.Cittadino.View;
+package ClientCV.AccessoLibero.View;
 
-import ClientCV.Cittadino.Controller.SelezionaCentro_Controller;
+import ClientCV.AccessoLibero.Controller.SelezionaCentro_Controller;
+import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import Common.InfoCentriVaccinali;
 
 import javax.swing.*;

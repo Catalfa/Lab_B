@@ -1,6 +1,6 @@
-package ClientCV.Cittadino.View;
+package ClientCV.AccessoLibero.View;
 
-import ClientCV.Cittadino.Controller.Ricerca_CentroVaccinale_Controller;
+import ClientCV.AccessoLibero.Controller.Ricerca_CentroVaccinale_Controller;
 import ClientCV.Utility;
 
 import javax.swing.*;

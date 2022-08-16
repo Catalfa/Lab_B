@@ -1,4 +1,4 @@
-package ClientCV.Cittadino.View;
+package ClientCV.AccessoLibero.View;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

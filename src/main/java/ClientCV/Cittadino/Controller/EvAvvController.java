@@ -1,4 +1,4 @@
-package ClientCV.AccessoLibero.Controller;
+package ClientCV.Cittadino.Controller;
 
 import ClientCV.AccessoLibero.View.InfCvView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
@@ -11,7 +11,7 @@ import ServerCV.interfaccia.Server;
 import java.rmi.RemoteException;
 
 public class EvAvvController {
-    Server Stub;
+   /* Server Stub;
 
 
     public EvAvvView evAvvView;

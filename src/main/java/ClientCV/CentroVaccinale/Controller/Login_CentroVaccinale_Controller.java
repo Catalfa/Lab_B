@@ -25,7 +25,7 @@ public class Login_CentroVaccinale_Controller {
 	 */
     public void goBack() {
         MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
-        //mainLoginFrameView.setVisible(true);
+        mainLoginFrameView.setVisible(true);
         loginCVaccView.dispose();
     }
 

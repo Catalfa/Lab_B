@@ -3,7 +3,7 @@ package ClientCV.Cittadino.Controller;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
-import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
+import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
 import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
@@ -50,13 +50,13 @@ public class LoginCittadinoController {
         switch (Stub.loginCittadino(username,password.toString())){
             //TODO @Andre implementare frame successivi
             case 1:
-                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(cf);
+                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(cf);      //log corretto
                 break;
             case 2:
-                //username non esistente
+                utility.showWarningPopUp("Attenzione!", "Username errato");
                 break;
             case 3:
-                //password errata
+                utility.showWarningPopUp("Attenzione!", "Password errata");
                 break;
         }
         Ricerca_CentroVaccinale_View ricerca_centro = new Ricerca_CentroVaccinale_View();

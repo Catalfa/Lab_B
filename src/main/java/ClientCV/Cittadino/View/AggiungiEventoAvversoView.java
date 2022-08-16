@@ -27,8 +27,8 @@ public class AggiungiEventoAvversoView extends JFrame{
     private JPanel panel_intensitaEvento;
     private JPanel panel_noteEvento;
 
-    private String[] labelNames = {"Nome Del Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensita': ", "Note: "};
-    private String[] buttonNames = {"Registra Evento", "Indietro"};
+    private String[] labelNames = {"Nome Del Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensità: ", "Note: "};
+    private String[] buttonNames = {"Salva evento", "Indietro"};
     private ButtonGroup[] buttonGroup = new ButtonGroup[6];
     private JTextField[] noteFields = new JTextField[6];
     private JScrollPane[] scrollPanes = new JScrollPane[6];
@@ -37,7 +37,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     private JLabel label_IdEvento;
 
     String[] eventiRegistrabili = {
-        "Mal di testa",
+        "Mal di testa", "Mal di pancia",
         "Febbre",
         "Dolori articolari - muscolari",
         "Linfoadenopatia",
@@ -55,7 +55,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         JPanel container = new JPanel();
         container.setLayout(new BorderLayout());
 
-        //Pannello secondario e eltri utili
+        //Pannello secondario e altri utili
         JPanel panel_infoCentro = new JPanel();
         panel_tipoEvento = new JPanel();
         panel_intensitaEvento = new JPanel();

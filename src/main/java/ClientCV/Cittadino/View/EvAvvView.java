@@ -1,4 +1,4 @@
-package ClientCV.AccessoLibero.View;
+package ClientCV.Cittadino.View;
 
 import ClientCV.CentroVaccinale.Controller.Registra_CentroVaccinale_Controller;
 import Common.InfoCentriVaccinali;

@@ -2,20 +2,9 @@ package ClientCV.AccessoLibero.Controller;
 
 import ClientCV.AccessoLibero.View.InfCvView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
-import ClientCV.CentriVaccinali.View.MainLoginFrameView;
-import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
-import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
-import ClientCV.Cittadino.View.LoginCittadinoView;
-import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
-import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
-import Common.InfoCentriVaccinali;
-import Common.InfoCittadino;
 import ServerCV.interfaccia.Server;
-
-import javax.swing.*;
-import java.rmi.RemoteException;
 
 public class InfCvController {
 

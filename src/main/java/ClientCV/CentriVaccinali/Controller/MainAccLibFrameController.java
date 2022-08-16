@@ -1,6 +1,5 @@
 package ClientCV.CentriVaccinali.Controller;
 
-import ClientCV.AccessoLibero.View.EvAvvView;
 import ClientCV.AccessoLibero.View.InfCvView;
 import ClientCV.CentriVaccinali.View.HomePageView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;

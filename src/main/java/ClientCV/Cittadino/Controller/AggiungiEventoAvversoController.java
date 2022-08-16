@@ -1,12 +1,12 @@
 package ClientCV.Cittadino.Controller;
 
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
-import ClientCV.Cittadino.View.Ricerca_CentroVaccinale_View;
+import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
+import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.EventiAvversi;
 import ServerCV.interfaccia.Server;
-import ServerCV.server.*;
 
 import java.awt.event.KeyEvent;
 import java.rmi.RemoteException;
@@ -22,13 +22,9 @@ public class AggiungiEventoAvversoController {
         this.eventoAvversoView = eventoAvversoView;
     }
 
-    //Se la view estende JFrame allora definisco il .setVisible() nella classe della view
-    //Se la view invece definisce il JFrame come oggetto allora posso richiamare il frame nel controller e 
-    //  appicargli il metodo .setVisible()
-
     public void goBack(){
-        //SelezionaCentro_View selezionaCentro_View = new SelezionaCentro_View(serverImpl.cercaCentroVaccinale(testo));
-        Ricerca_CentroVaccinale_View view = new Ricerca_CentroVaccinale_View();
+        LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
+        loginCittadinoView.setVisible(true);
         eventoAvversoView.deleteView();
     }
 
@@ -70,7 +66,7 @@ public class AggiungiEventoAvversoController {
     public void checkNumCharAction(KeyEvent arg0, int count_numCharNote) {
         if((count_numCharNote%256)==0) {
             //TODO da controllare
-            Utility.showErrorPopUp("ERRORE", "Ragiunto numero massimo di caratteri disponibili");
+            Utility.showErrorPopUp("ERRORE", "Raggiunto numero massimo di caratteri disponibili");
             arg0.consume();
         }
         return;
