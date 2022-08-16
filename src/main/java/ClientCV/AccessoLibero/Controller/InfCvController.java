@@ -61,9 +61,9 @@ public class InfCvController {
     /**
      * Metodo che crea un nuovo frame e manda in dispose quello corrente.
      */
-    public void invio() {
-        Registra_CentroVaccinale_View signInCentroVaccinaleView = new Registra_CentroVaccinale_View();
-        signInCentroVaccinaleView.setVisible(true);
+    public void invio() {                                           //CLASSE SUCCESSIVA
+        InfCvView InformazioniCvView = new InfCvView();
+        InformazioniCvView.setVisible(true);
         infCvView.dispose();
     }
 

@@ -143,4 +143,7 @@ public interface Server extends Remote {
 	public int[] getStatisticheHomepage() throws RemoteException;
 
 	int infCv(String nomeCv, String comune, String tipologia);
+
+
+	int infCv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv);
 }
