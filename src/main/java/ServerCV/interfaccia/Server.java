@@ -146,4 +146,6 @@ public interface Server extends Remote {
 
 
 	int infCv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv);
+
+	int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione, int dataVaccino, String idCentro);
 }

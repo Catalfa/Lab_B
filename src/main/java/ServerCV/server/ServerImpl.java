@@ -142,6 +142,16 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return 0;
 	}
 
+	@Override
+	public int infCv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv) {
+		return 0;
+	}
+
+	@Override
+	public int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione, int dataVaccino, String idCentro) {
+		return 0;
+	}
+
 	/**
 	 * Metodo implementativo del server per inserire gli eventi avversi.
 	 */
