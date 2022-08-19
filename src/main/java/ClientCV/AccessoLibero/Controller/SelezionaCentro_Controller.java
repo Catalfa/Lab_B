@@ -8,7 +8,7 @@ import javax.swing.*;
 public class SelezionaCentro_Controller extends JFrame{
 
     SelezionaCentro_View view;
-    Ricerca_CentroVaccinale_View ricercaCv_View;
+    Ricerca_CentroVaccinale_View ricerca_centroVaccinale_View;
 
     public SelezionaCentro_Controller(SelezionaCentro_View selezionaCentro_View){
         this.view = selezionaCentro_View;
@@ -22,7 +22,7 @@ public class SelezionaCentro_Controller extends JFrame{
 
     public void closeWindow(){
         view.setVisible(false);
-    }
+    }                  //metodo finale per chiudere finestre aperte
 
     
 }

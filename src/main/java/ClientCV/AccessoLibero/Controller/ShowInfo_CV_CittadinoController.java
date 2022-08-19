@@ -6,14 +6,10 @@ import ServerCV.interfaccia.Server;
 
 public class ShowInfo_CV_CittadinoController {
 
-    ShowInfo_CV_CittadinoView view;
+   /* ShowInfo_CV_CittadinoView view;
 	
 	Server stub;
-	
-	/**
-	 * Costruttore della classe.
-	 * @param view La View della classe corrente.
-	 */
+
 	public ShowInfo_CV_CittadinoController(ShowInfo_CV_CittadinoView view) {
 		this.view = view;
 		this.stub = ServerSingleton.getInstance();
@@ -22,8 +18,8 @@ public class ShowInfo_CV_CittadinoController {
     /*
     *Metodo per tornare alla view precedente, TODO da implementere metodo goBack()
     */
-    public void goBack(){
+  /*  public void goBack(){
 		//frame da mettere in dispose
 		//frame da settare visible
-    }
+    } */
 }

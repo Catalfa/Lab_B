@@ -1,122 +1,145 @@
 package ClientCV.AccessoLibero.View;
 
-import ClientCV.AccessoLibero.Controller.InfCvController;
-import ClientCV.CentroVaccinale.Controller.Registra_CentroVaccinale_Controller;
-import ClientCV.Cittadino.Controller.LoginCittadinoController;
-import Common.InfoCentriVaccinali;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.rmi.RemoteException;
 
 public class InfCvView extends JFrame{
 
-  /*  private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
-    private final int WIDTH = 520;
-    private final int HIGHT = 600;
+    /**CODICE DI SelezionaCentroView   ASPETTO A CANCELLARE, PRIMA VERIFICO CORRETTEZZA DI SELEZIONACENTRO **/
 
-    private String[] labelNames = {"Nome Cv", "Comune","Tipologia Centro"};
-    //private String hint = "via/viale/piazza";
-    private String[] buttonNames = {"BACK", "INVIO"};
-    private JButton[] buttons = new JButton[2];
-    public JTextField[] textFields = new JTextField[3];
-    private JLabel[] labels = new JLabel[3];
-    //public JPasswordField passwordField;
 
-    public InfCvView() {
+   /* public class SelezionaCentro_View extends JFrame{
 
-        InfCvController controller = new InfCvController(this);
+        InfoCentriVaccinali infoCentriVaccinali;
+        SelezionaCentro_Controller controller;
+        AggiungiEventoAvversoView aggiungiEventoAvversoView;
 
-        JPanel mainPanel = new JPanel();
+        private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
+        private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
+        private static final int WIDTH = 600;
+        private static final int HIGHT = 350;
 
-        mainPanel.setBackground(Color.WHITE);
+        public JFrame frame;
+        private JPanel panel_buttons;
+        private JPanel panel_welcome;
+        private JPanel panel_navigation;
 
-        mainPanel.setLayout(null);
+        public JLabel welcome_label;
 
-        JLabel infCv = new JLabel("Consulta Informazioni Centro Vaccinale", SwingConstants.CENTER);
-        infCv.setFont(mainFont);
-        infCv.setBounds((WIDTH/2)-150, 2, 300, 25);
+        private JButton btn_back;
+        private JButton btn_InserisciEvento;
+        private JButton buttons_1;
+        private JButton buttons_2;
+        private JButton buttons_3;
+        private JButton buttons_4;
+        private JButton[] buttons;
+        private JScrollPane jScrollPane;
+        //TODO da passare come stringa il nome del cv (scelto dal cittadino) al bottone, se ce ne sono di uguali
+        //allora il bottone conterrà anche il comune in cui sta
+        //se non ci sono almeno 4 bottoni allora dev'essere settato a null o stringa vuota
 
-        mainPanel.add(infCv);
+        public SelezionaCentro_View(java.util.List<InfoCentriVaccinali> listaCentri){
 
-        int y = 50;
-        for(int i=0; i<3; i++) {
-            labels[i] = new JLabel(labelNames[i], SwingConstants.LEFT);
-            //primo valore della pos rispetto x, secondo valore della pos rispetto y, terzo ?, quarto sipra ?
-            labels[i].setBounds(30, y, 200, 25);
-            mainPanel.add(labels[i]);
-            y += 50;
-        }
+            frame = new JFrame("CentriVaccinali");
+            controller = new SelezionaCentro_Controller(this);
 
-        y = 50;
-        for(int i=0; i<3; i++) {
-            textFields[i] = new JTextField(20);
-            textFields[i].setBounds(220, y, 250, 25);
-            //textFields[i] = new JTextField(labelNames[i]);
-            mainPanel.add(textFields[i]);
-            y += 50;
-        }
+            JPanel container = new JPanel();
+            container.setLayout(new BorderLayout());
+            container.setBackground(Color.ORANGE);
 
-        int x = 0;
-        for(int i=0; i<2; i++){
-            buttons[i] = new JButton(buttonNames[i]);
-            buttons[i].setBounds((WIDTH/2)-150+x, 505, 90, 25);
-            mainPanel.add(buttons[i], JButton.BOTTOM);
-            x += 100;
-        }
+            jScrollPane = new JScrollPane();
+            jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+            jScrollPane.setViewportBorder(new LineBorder(Color.RED));
 
-        add(mainPanel);
 
-        setSize(WIDTH, HIGHT);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
+            panel_navigation = new JPanel();
+            panel_buttons = new JPanel();
+            panel_welcome = new JPanel();
 
-        buttons[0].addActionListener(new ActionListener() {
+            welcome_label = new JLabel("Seleziona il Centro Vaccinale Per Cui Inserire l'Evento Avverso");
+            welcome_label.setFont(mainFont);
+            welcome_label.setSize(WIDTH-10, 40);
+            welcome_label.setHorizontalAlignment(JLabel.CENTER);
+            welcome_label.setVerticalAlignment(JLabel.CENTER);
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.goBack();
-            }
+            panel_welcome.setLayout(null);
+            panel_welcome.setPreferredSize(new Dimension(WIDTH, 60));
+            panel_welcome.setBackground(Color.WHITE);
+            panel_welcome.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+            panel_welcome.add(welcome_label);
 
-        });
+            container.add(panel_welcome, BorderLayout.PAGE_START);
 
-        buttons[1].addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+            panel_buttons.setLayout(new GridLayout(0, 2, 20, 20));
+            //panel_buttons.setPreferredSize(new Dimension(200, 200));
+            panel_buttons.setBackground(Color.CYAN);
+            panel_buttons.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
-                /*
-                metodo per fare il controllo di un int
-                */
-      /*          int s;
-                String k = textFields[3].getText();
-                if (k.isEmpty()){
-                    s=0;
-                }else{
-                    try {
-                        s = Integer.parseInt(k);
-                    } catch (Exception ex) {
-                        s = -1;
-                    }
+            inserisciBottoni(listaCentri);
+            jScrollPane.setViewportView(panel_buttons);
+            container.add(jScrollPane, BorderLayout.CENTER);
+            //container.add(panel_buttons, BorderLayout.CENTER);
+
+
+            btn_back = new JButton("Back");
+            btn_back.setFont(mainFont);
+            btn_InserisciEvento = new JButton("Inserisci Evento");
+            btn_InserisciEvento.setFont(mainFont);
+
+            panel_navigation.setLayout(new GridLayout(1, 2));
+            panel_navigation.setPreferredSize(new Dimension(40, 60));
+            panel_navigation.setBackground(Color.RED);
+
+            panel_navigation.add(btn_back);
+            panel_navigation.add(btn_InserisciEvento);
+
+            container.add(panel_navigation, BorderLayout.PAGE_END);
+
+
+            setSize(WIDTH, HIGHT);
+            setResizable(false);
+            setLocationRelativeTo(null);
+            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+            setVisible(true);
+            add(container);
+
+            btn_back.addActionListener(new ActionListener(){
+
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
+                    controller.back();
                 }
-                //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
+
+            });
+
+        }
+
+        private void inserisciBottoni(List<InfoCentriVaccinali> listaCentriVaccinali){
+            for(int i=0; i<listaCentriVaccinali.size(); i++){
+                String nomeCentro = listaCentriVaccinali.get(i).getNomeCentro();
+                this.buttons = new JButton[listaCentriVaccinali.size()];
+                this.buttons[i] = new JButton(nomeCentro);
+                //buttons[i].setSize(30, 45);
+                //buttons[i].setText(listaCentriVaccinali.get(i).getNomeCentro());
+                this.buttons[i].setHorizontalAlignment(JLabel.CENTER);
+                this.buttons[i].setFont(mainFont);
+                panel_buttons.add(this.buttons[i]);
+                //jScrollPane.add(buttons[i]);
+                this.buttons[i].addActionListener(new ActionListener(){
+
+                    @Override
+                    public void actionPerformed(ActionEvent arg0) {
+                        controller.closeWindow();
+                        AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView(nomeCentro);
+                    }
+
+                });
 
             }
 
-        });
+        }
 
-        buttons[2].addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.goBack();
-            }
-
-        });
-    } */
+    }*/
 }
 

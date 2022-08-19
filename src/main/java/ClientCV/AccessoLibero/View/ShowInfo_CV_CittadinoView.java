@@ -39,7 +39,7 @@ public class ShowInfo_CV_CittadinoView {
         panel_showInfoCvCittadino.setLayout(null);
         panel_showInfoCvCittadino.setBackground(Color.WHITE);
 
-        JLabel titolo = new JLabel("Info Centro Vaccinale");
+        JLabel titolo = new JLabel("Informazioni Centro Vaccinale");
         titolo.setForeground(Color.BLACK);
         titolo.setBounds(0, 15, 400, 25);
         titolo.setHorizontalAlignment(JLabel.CENTER);
@@ -72,7 +72,7 @@ public class ShowInfo_CV_CittadinoView {
 		label_infoIndirizzo.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_infoIndirizzo);
 
-        JLabel tipoCentro = new JLabel("Tipo centro:");
+        JLabel tipoCentro = new JLabel("Tipologia centro:");
 		tipoCentro.setForeground(Color.RED);
 		tipoCentro.setBounds(0, 170, 400, 25);
 		tipoCentro.setHorizontalAlignment(JLabel.CENTER);
@@ -85,7 +85,7 @@ public class ShowInfo_CV_CittadinoView {
 		label_infoTipoCentro.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_infoTipoCentro);
 
-		JLabel Comune = new JLabel("Tipo centro:");
+		JLabel Comune = new JLabel("Comune:");
 		Comune.setForeground(Color.RED);
 		Comune.setBounds(0, 170, 400, 25);
 		Comune.setHorizontalAlignment(JLabel.CENTER);
@@ -98,7 +98,7 @@ public class ShowInfo_CV_CittadinoView {
 		label_Comune.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_Comune);
 
-		JLabel siglaProvincia = new JLabel("Tipo centro:");
+		JLabel siglaProvincia = new JLabel("Provincia:");
 		siglaProvincia.setForeground(Color.RED);
 		siglaProvincia.setBounds(0, 170, 400, 25);
 		siglaProvincia.setHorizontalAlignment(JLabel.CENTER);
@@ -111,7 +111,7 @@ public class ShowInfo_CV_CittadinoView {
 		label_siglaProvincia.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_siglaProvincia);
 
-		JLabel cap = new JLabel("Tipo centro:");
+		JLabel cap = new JLabel("Cap:");
 		cap.setForeground(Color.RED);
 		cap.setBounds(0, 170, 400, 25);
 		cap.setHorizontalAlignment(JLabel.CENTER);
@@ -137,7 +137,7 @@ public class ShowInfo_CV_CittadinoView {
 		label_numeroSegnalazioni.setVerticalAlignment(JLabel.CENTER);
 		panel_showInfoCvCittadino.add(label_numeroSegnalazioni);
 
-		JLabel severitàMedia = new JLabel("Numero segnalazioni:");
+		JLabel severitàMedia = new JLabel("Severità media:");
 		severitàMedia.setForeground(Color.RED);
 		severitàMedia.setBounds(0, 230, 400, 25);
 		severitàMedia.setHorizontalAlignment(JLabel.CENTER);

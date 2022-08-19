@@ -109,13 +109,13 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         panel_labels.add(label_cercaPerTipologia);        
 
 
-        tf_cercaPerNomeCentro = new JTextField("Nome");
+        tf_cercaPerNomeCentro = new JTextField("Nome: ");
         tf_cercaPerNomeCentro.setBounds(20, 20, 30, 15);
 
-        tf_cercaPerComune = new JTextField("Comune");
+        tf_cercaPerComune = new JTextField("Comune: ");
         tf_cercaPerComune.setBounds(20, 20, 30, 15);
 
-        tf_cercaPerTipologia = new JTextField("Tipologia");
+        tf_cercaPerTipologia = new JTextField("Tipologia: ");
         tf_cercaPerTipologia.setBounds(20, 20, 30, 15);
 
         panel_buttons.add(tf_cercaPerNomeCentro);

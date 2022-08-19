@@ -1,12 +1,6 @@
 package ClientCV.CentroVaccinale.View;
 
-import ClientCV.AccessoLibero.Controller.InfCvController;
-import ClientCV.AccessoLibero.View.InfCvView;
-import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.CentroVaccinale.Controller.RegistraVaccinatoController;
-import ClientCV.Utility;
-import ClientCV.client.ServerSingleton;
-import ServerCV.interfaccia.Server;
 
 import javax.swing.*;
 import java.awt.*;
