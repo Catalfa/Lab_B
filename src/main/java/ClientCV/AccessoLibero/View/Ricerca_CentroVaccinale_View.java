@@ -39,7 +39,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
     public Ricerca_CentroVaccinale_View(){
 
-        frame = new JFrame("Centri Vaccinali");
+        frame = new JFrame("Consulta Informazioni Centri Vaccinali");
         controller = new Ricerca_CentroVaccinale_Controller(this);
         
         JPanel container = new JPanel();

@@ -8,7 +8,7 @@ import ServerCV.interfaccia.Server;
 
 public class InfCvController {
 
-    Server Stub;
+    /*Server Stub;
 
 
     public InfCvView infCvView;
@@ -50,11 +50,11 @@ public class InfCvController {
     /**
      * Metodo che crea un nuovo frame e manda in dispose quello corrente.
      */
-    public void invio() {                                           //CLASSE SUCCESSIVA
+  /*  public void invio() {                                           //CLASSE SUCCESSIVA
         InfCvView InformazioniCvView = new InfCvView();
         InformazioniCvView.setVisible(true);
         infCvView.dispose();
-    }
+    }*/
 
 
 }

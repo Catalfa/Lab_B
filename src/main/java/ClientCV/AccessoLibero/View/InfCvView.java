@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 
 public class InfCvView extends JFrame{
 
-    private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
+  /*  private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 520;
     private final int HIGHT = 600;
 
@@ -92,7 +92,7 @@ public class InfCvView extends JFrame{
                 /*
                 metodo per fare il controllo di un int
                 */
-                int s;
+      /*          int s;
                 String k = textFields[3].getText();
                 if (k.isEmpty()){
                     s=0;
@@ -117,6 +117,6 @@ public class InfCvView extends JFrame{
             }
 
         });
-    }
+    } */
 }
 

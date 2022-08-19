@@ -1,5 +1,6 @@
 package ClientCV.AccessoLibero.Controller;
 
+import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
 import ClientCV.AccessoLibero.View.SelezionaCentro_View;
@@ -24,8 +25,8 @@ public class Ricerca_CentroVaccinale_Controller {
 
     public void back(){
         ricerca_CentroVaccinale_View.deleteView();
-        loginCittadinoView = new LoginCittadinoView();
-        loginCittadinoView.setVisible(true);
+        MainAccLibFrameView mainAccLibFrameView = new MainAccLibFrameView();
+        mainAccLibFrameView.setVisible(true);
     }
 
     public void cercaCentro(String nome){

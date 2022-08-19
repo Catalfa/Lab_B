@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MainAccLibFrameView extends JFrame {
+
+    public JFrame frame;
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 16);
     private final int WIDTH = 450;
@@ -15,15 +17,15 @@ public class MainAccLibFrameView extends JFrame {
 
     public MainAccLibFrameView(){
 
+
         MainAccLibFrameController controller = new MainAccLibFrameController(this);
 
         JLabel lbAccLibFrame = new JLabel("Accesso Libero");
         JButton btnConsultaInfoCv = new JButton("Consulta Informazioni Centro Vaccinale");
-        JButton btnTabEventiAvv = new JButton("Tabella Eventi Avversi");
         JButton btnBack = new JButton("Indietro");
 
         btnConsultaInfoCv.setFont(mainFont);
-        btnTabEventiAvv.setFont(mainFont);
+
         btnBack.setFont(mainFont);
         lbAccLibFrame.setFont(secondMainFont);
 
@@ -36,7 +38,7 @@ public class MainAccLibFrameView extends JFrame {
         lowerPanel.setBackground(Color.WHITE);
         lowerPanel.add(btnBack);
         lowerPanel.add(btnConsultaInfoCv);
-        lowerPanel.add(btnTabEventiAvv);
+
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(2, 1));
@@ -70,15 +72,11 @@ public class MainAccLibFrameView extends JFrame {
 
         });
 
-        btnTabEventiAvv.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-              //  controller.createTabEventiAvvFrame();                //SBLOCCARE QUANDO FINISCO EVV AVV
-            }
+    }
 
-        });
-
-
+    public void deleteView() {
+        frame.setVisible(false);
+        frame.dispose();
     }
 }
