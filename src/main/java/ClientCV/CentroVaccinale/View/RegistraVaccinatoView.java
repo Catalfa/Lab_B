@@ -13,7 +13,7 @@ public class RegistraVaccinatoView extends JFrame{
     private final int WIDTH = 520;
     private final int HIGHT = 600;
 
-    private String[] labelNames = {"Nome", "Cognome","Data vaccino", "Vaccino somministrato", "Id vaccinazione", "Id centro"};
+    private String[] labelNames = {"Nome", "Cognome","Data vaccino", "Codice Fiscale", "Vaccino somministrato", "Id vaccinazione", "Id centro"};
 
     private String[] buttonNames = {"BACK", "INVIO"};
     private JButton[] buttons = new JButton[2];
