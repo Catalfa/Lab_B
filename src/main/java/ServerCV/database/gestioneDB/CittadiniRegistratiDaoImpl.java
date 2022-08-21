@@ -33,6 +33,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(7,citizenData.getIdvaccinazione());
 			pstmt.setString(8,citizenData.getIdcentro());
 			pstmt.executeUpdate();
+			System.out.println("registrato");
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {

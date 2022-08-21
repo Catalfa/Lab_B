@@ -4,9 +4,12 @@ import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
+import ClientCV.client.ServerSingleton;
 import Common.DatiCittadino;
+import ServerCV.interfaccia.Server;
 
 import javax.swing.*;
+import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,11 +19,13 @@ public class SignInCittadinoController extends JFrame{
     private AggiungiEventoAvversoView eventoAvversoView;
     private Utility utility = new Utility();
     public final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+    Server stub;
     
     
 
     public SignInCittadinoController(SignInCittadinoView signInCittadinoView) {
         this.signInCittadinoView = signInCittadinoView;
+        stub= ServerSingleton.getInstance();
     }
 
     public void goBack() {
@@ -29,7 +34,7 @@ public class SignInCittadinoController extends JFrame{
         signInCittadinoView.dispose();
     }
 
-    public int signIn(DatiCittadino cittadini) {
+    public int signIn(DatiCittadino cittadini) throws RemoteException {
 
          if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length()==0 ){
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati");
@@ -46,7 +51,11 @@ public class SignInCittadinoController extends JFrame{
             utility.showWarningPopUp("Attenzione", "La password deve essere di almeno 6 caratteri");
             return 1;
         }
- 
+           if(stub.registraCittadino(cittadini)==1){
+               new Utility().showConfirmationPopUp("avviso"," registrazione effettuata con successo");
+           }else{
+               new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
+           }
             
             signInCittadinoView.dispose();
         

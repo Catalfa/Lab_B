@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 public class SignInCittadinoView extends JFrame{
 
@@ -95,8 +96,12 @@ public class SignInCittadinoView extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                controller.signIn(new DatiCittadino(textFields[0].getText(), textFields[1].getText(), textFields[2].getText(),
-                        textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString(), (textFields[5].getText()), (textFields[6].getText())));
+                try {
+                    controller.signIn(new DatiCittadino(textFields[0].getText(), textFields[1].getText(), textFields[2].getText(),
+                            textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString(), (textFields[5].getText()), (textFields[6].getText())));
+                } catch (RemoteException ex) {
+                    ex.printStackTrace();
+                }
             }
 
         });

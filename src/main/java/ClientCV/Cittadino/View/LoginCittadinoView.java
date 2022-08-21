@@ -94,7 +94,7 @@ public class LoginCittadinoView extends JFrame {
                 String username = usernamField.getText();
                 char[] password = passwordField.getPassword();
                 try {
-                    controller.loginCittadino(username, password, "cf da implementare");
+                    controller.loginCittadino(username, password, "");
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }

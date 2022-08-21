@@ -1,9 +1,13 @@
 package ServerCV.server;
 
+import ServerCV.database.CreazioneTabelle;
+import ServerCV.database.gestioneDB.GeneralDao;
 import ServerCV.interfaccia.Server;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.sql.Connection;
+import java.util.Scanner;
 
 /**
  * Classe che esegue l'avvio del server.
@@ -18,13 +22,42 @@ public class ServerStart {
 	}*/
 
 	public void start() {
+		CreazioneTabelle ct = new CreazioneTabelle();
+		Connection connessione=null;
+		boolean contr;
+
 		try {
 		Server stub = (Server) new ServerImpl();
 		Registry registry = LocateRegistry.createRegistry(1100);
 		registry.rebind("ServerCV", stub);
-		System.out.println("Server avviato");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Inserisci il nome del database");
+			String nomeDb = sc.next();
+			System.out.println("Inserisci lo username");
+			String user = sc.next();
+			System.out.println("Inserisci la password");
+			String password = sc.next();
+			GeneralDao.setDatabaseParams(nomeDb, user, password);
+			connessione = GeneralDao.openConnection();
+			if (connessione == null)
+				System.out.println("Errore");
+			else{
+				System.out.println("Connessione riuscita");
+				System.out.println("Server avviato");
+			}
+
 	} catch (Exception ex) {
 		System.out.println(ex);
-	}
+	}finally {
+			System.out.println("Sto creando la tabella centrivaccinali...");
+			ct.Create_CentroVaccinale(connessione);
+			System.out.println("Sto creando la tabella cittadini_registrati...");
+			ct.Create_CittadinoRegistrato(connessione);
+			System.out.println("Sto creando la tabella vaccinati...");
+			String nomecentro="SantaMaria";
+			ct.Create_Vaccinato(connessione,nomecentro);
+			System.out.println("Sto creando la tabella eventi_avversi...");
+			ct.Create_EventiAvversi(connessione);
+		}
 	}
 }
