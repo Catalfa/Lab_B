@@ -4,7 +4,6 @@ import Common.DatiCittadino;
 import Common.InfoCentriVaccinali;
 import Common.InfoCittadino;
 import Common.RegistrazioniVaccinati;
-import ServerCV.server.GestioneClient;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
@@ -42,8 +41,9 @@ public interface Server extends Remote {
 	 * Interfaccia per gestire la registrazione del cittadino.
 	 * @param datiCittadino        Le informazioni del cittadino.
 	 * @throws RemoteException	Eccezione remota.
+     * @return
 	 */
-	void registraCittadino(DatiCittadino datiCittadino) throws RemoteException;
+	int registraCittadino(DatiCittadino datiCittadino) throws RemoteException;
 	
 	/**
 	 * Interfaccia per gestire il login del cittadino.
@@ -142,10 +142,10 @@ public interface Server extends Remote {
 	 */
 	public int[] getStatisticheHomepage() throws RemoteException;
 
-	int infCv(String nomeCv, String comune, String tipologia);
+	int infCv(String nomeCv, String comune, String tipologia) throws RemoteException;
 
 
-	int infCv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv);
+	int infCv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv) throws RemoteException;
 
-	int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione, int dataVaccino, String idCentro);
+	int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione, int dataVaccino, String idCentro) throws RemoteException;
 }

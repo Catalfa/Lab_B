@@ -9,7 +9,6 @@ import ServerCV.interfaccia.Server;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -162,9 +161,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	/**
 	 * Metodo implementativo del server che registra i cittadini.
+	 * @return
 	 */
 	@Override
-	public void registraCittadino(DatiCittadino datiCittadino) throws RemoteException {
-		 gestClient.gestRegistraCittadino(datiCittadino);
+	public int registraCittadino(DatiCittadino datiCittadino) throws RemoteException {
+		return gestClient.gestRegistraCittadino(datiCittadino);
 	}
 }

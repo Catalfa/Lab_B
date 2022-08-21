@@ -4,6 +4,7 @@ import Common.*;
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 import ServerCV.database.gestioneDB.DaoFactory;
+import ServerCV.database.gestioneDB.EventiAvversiDaoImpl;
 import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
 import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
 import ServerCV.database.gestioneDB.interfacceDB.EventiAvversiDao;
@@ -25,10 +26,9 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GestioneClient {
 
-	CittadiniRegistratiDao cittadiniRegistratiDao = (CittadiniRegistratiDao) DaoFactory.getDao("CittadiniRegistratiDao");
-	CentriVaccinaliDao centriVaccinaliDao = (CentriVaccinaliDao) DaoFactory.getDao("CentriVaccinaliDao");
-	EventiAvversiDao eventiAvversiDao = (EventiAvversiDao) DaoFactory.getDao("EventiAvversiDao");
-	RegistrazioniVaccinazioniDao registrazioniVaccinazioniDao = (RegistrazioniVaccinazioniDao) DaoFactory.getDao("RegistrazioniVaccinazioniDao");
+	CittadiniRegistratiDao cittadiniRegistratiDao = new CittadiniRegistratiDaoImpl();
+	CentriVaccinaliDao centriVaccinaliDao =new CentriVaccinaliDaoImpl();
+	EventiAvversiDao eventiAvversiDao =new EventiAvversiDaoImpl();
 	ConcurrentHashMap<Integer, Client> clients = new ConcurrentHashMap<>();
 	Integer clientCount = 0;
 
@@ -82,13 +82,13 @@ public class GestioneClient {
 	 */
 	//ok
 	public int gestRegistraCittadino(DatiCittadino datiCittadino) {
-		if(cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino())){
-			return 0; //in caso che il codice fiscale sia già registrato
-		} else if(!cittadiniRegistratiDao.existCittadino(datiCittadino.getUsernameCittadino())) {
-			cittadiniRegistratiDao.insertCittadino(datiCittadino);
-			return 1; //in caso la registrazione avvenisse con successo
-		}
-		return 0;
+		System.out.println(datiCittadino.getCFCittadino());
+			if( cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino())){
+				return 0; //in caso che il codice fiscale sia già registrato
+			} else  {
+				cittadiniRegistratiDao.insertCittadino(datiCittadino);
+				return 1; //in caso la registrazione avvenisse con successo
+			}
 	}
 	
 	/**

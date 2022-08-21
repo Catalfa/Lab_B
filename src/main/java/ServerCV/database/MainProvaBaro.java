@@ -106,7 +106,7 @@ public class MainProvaBaro {
        System.out.println(dc2.getCFCittadino());
        Date dt= Date.valueOf(LocalDate.now());
     //   Common.RegistrazioniVaccinati rv=new RegistrazioniVaccinati("Santa Maria","CE00","ANDRRUSS012FR", dt,"Pfizer",3456,"Andra","Russo");
-     //  cv.insertVaccinato(rv);
+    //   cv.insertVaccinato(rv);
 
      //   Common.InfoCentriVaccinali icv=new InfoCentriVaccinali("Cen03","Pw03","CE03","Padre Pio","Ospedaliero","Via","Marzio",45,"Como","Como",2134);
        // cv.insertDatiCentroVaccinale(icv);

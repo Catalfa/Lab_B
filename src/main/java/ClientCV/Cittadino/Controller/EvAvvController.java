@@ -1,17 +1,15 @@
 package ClientCV.Cittadino.Controller;
 
-import ClientCV.AccessoLibero.View.InfCvView;
+
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
-import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
+import ClientCV.Cittadino.View.EvAvvView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
-import Common.InfoCentriVaccinali;
+import Common.EventiAvversi;
 import ServerCV.interfaccia.Server;
-
-import java.rmi.RemoteException;
-
 public class EvAvvController {
-   /* Server Stub;
+    /*
+   Server Stub;
 
 
     public EvAvvView evAvvView;
@@ -23,17 +21,17 @@ public class EvAvvController {
         Stub = ServerSingleton.getInstance();
         this.evAvvView = evAvvView;
     }
-
+e
 
 
     public void goBack() {
         MainAccLibFrameView mainAccLibFrameView = new MainAccLibFrameView();
         mainAccLibFrameView.setVisible(true);
-        evAvvView.dispose();
+       // evAvvView.dispose();
     }
 
     public int evAvv(String nomeCv, String tipoEv, int intensitàMedia, String noteEv) {
-
+        EventiAvversi segnalazione=new EventiAvversi();
         if (nomeCv.isEmpty() || tipoEv.isEmpty() || intensitàMedia == 0 || intensitàMedia > 10 || noteEv.isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
             return 0;
@@ -42,6 +40,7 @@ public class EvAvvController {
         else{
             try {
                 return Stub.infCv(nomeCv,tipoEv, intensitàMedia, noteEv);
+                Stub.InserisciEventiAvversi()
             } catch (Exception e) {
                 e.printStackTrace();
             }

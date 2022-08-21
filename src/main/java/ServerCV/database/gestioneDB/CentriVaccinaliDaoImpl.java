@@ -22,7 +22,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//Devo controllare se metodo funziona su DB, query già implementata ma ancora da provare
 	@Override
 	public void insertDatiCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
-		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap, username, password ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap, username, password ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
@@ -40,7 +40,6 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(9, ((Integer)infoCentroVaccinale.getCap()).toString());
 			pstmt.setString(10, infoCentroVaccinale.getUsername());
 			pstmt.setString(11, infoCentroVaccinale.getPassword());
-
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
