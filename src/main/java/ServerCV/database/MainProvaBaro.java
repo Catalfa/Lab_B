@@ -63,8 +63,8 @@ public class MainProvaBaro {
         contr = cr.existIdCittadino("3457");
         prove_controllo(contr);
 
-        int contr2 = Integer.parseInt(cr.getIdCittadino("Andreee"));
-        prove_controllo2(contr2);
+       // int contr2 = Integer.parseInt(cr.getIdCittadino("Andreee"));
+       // prove_controllo2(contr2);
 
         int numvaccinati = cr.countCittadiniVaccinati();
         System.out.println("Numero cittadini vaccinati: " + numvaccinati);
@@ -88,7 +88,9 @@ public class MainProvaBaro {
         prove_controllo(contr);
 
         contr=cv.existIdVaccinazione("Santa Maria", "3456");
+        System.out.println("controllo cf");
         prove_controllo(contr);
+
 
         contr=cv.existCentro("Cen01");
         prove_controllo(contr);
@@ -96,8 +98,8 @@ public class MainProvaBaro {
         contr=cv.checkLoginCentro("Can01","Pa01");
         prove_controllo(contr);
 
-     //   Common.DatiCittadino dc=new DatiCittadino("Andra","Russo","ANDRRUSS012FR","andrearusso1@gmail.com","andrea1","russo1","VA000","CE00");
-      //  cr.insertCittadino(dc);
+     //  Common.DatiCittadino dc=new DatiCittadino("Alessio","Cefalo","ALESCEF12FR","alessiocefalo@gmail.com","alessio","cefalo","VA040","CE00");
+       // cr.insertCittadino(dc);
         Common.DatiCittadino dc2;
        dc2 =cr.getDatiCittadino("ANDRRUSS012FR");
         cicloDati(dc2);
