@@ -6,6 +6,8 @@ import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.DatiCittadino;
+import Common.InfoCentriVaccinali;
+import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.interfaccia.Server;
 
 import javax.swing.*;
@@ -51,7 +53,7 @@ public class SignInCittadinoController extends JFrame{
             utility.showWarningPopUp("Attenzione", "La password deve essere di almeno 6 caratteri");
             return 1;
         }
-           if(stub.registraCittadino(cittadini)==1){
+        if(stub.registraCittadino(cittadini)==1){
                new Utility().showConfirmationPopUp("avviso"," registrazione effettuata con successo");
            }else{
                new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");

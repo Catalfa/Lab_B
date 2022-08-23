@@ -3,19 +3,13 @@ package ServerCV.server;
 import Common.*;
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
-import ServerCV.database.gestioneDB.DaoFactory;
 import ServerCV.database.gestioneDB.EventiAvversiDaoImpl;
 import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
 import ServerCV.database.gestioneDB.interfacceDB.CittadiniRegistratiDao;
 import ServerCV.database.gestioneDB.interfacceDB.EventiAvversiDao;
-import ServerCV.database.gestioneDB.interfacceDB.RegistrazioniVaccinazioniDao;
 import ServerCV.interfaccia.Client;
 
 import java.rmi.RemoteException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -84,10 +78,16 @@ public class GestioneClient {
 	public int gestRegistraCittadino(DatiCittadino datiCittadino) {
 		System.out.println(datiCittadino.getCFCittadino());
 			if( cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino())){
+				System.out.println("problemi cf");
 				return 0; //in caso che il codice fiscale sia già registrato
 			} else  {
-				cittadiniRegistratiDao.insertCittadino(datiCittadino);
-				return 1; //in caso la registrazione avvenisse con successo
+				if(cittadiniRegistratiDao.insertCittadino(datiCittadino)) {
+					return 1; //in caso la registrazione avvenisse con successo
+				}
+				else{
+					System.out.println("problemi booof");
+					return 0; //in caso che il codice fiscale sia già registrato
+				}
 			}
 	}
 	
@@ -149,12 +149,11 @@ public class GestioneClient {
 	 */
 	//ok
 	public int gestRegistraVaccinato(RegistrazioniVaccinati datoRegistrazione) {
-		if(centriVaccinaliDao.existCf(datoRegistrazione.getnomeCentro(), datoRegistrazione.getCf()))
+		if(centriVaccinaliDao.existCf(datoRegistrazione.getnomeCentro(), datoRegistrazione.getCf())){
 			return 3;
-		else
-		if(cittadiniRegistratiDao.existIdCittadino(datoRegistrazione.getIdVaccinazione()))
+		} else if(cittadiniRegistratiDao.existIdCittadino(datoRegistrazione.getIdVaccinazione())){
 			return 2;
-		else {
+		} else {
 			centriVaccinaliDao.insertVaccinato(datoRegistrazione);
 			cittadiniRegistratiDao.updateIdCittadino(datoRegistrazione.getIdVaccinazione(), datoRegistrazione.getCf());;
 			updateAllClients(0, 1);
@@ -220,10 +219,10 @@ public class GestioneClient {
 	 */
 
 	//ok
-	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso, String codiceFiscale) {
+	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso) {
 		if(!centriVaccinaliDao.existIdVaccinazione(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
 			return 2;
-		else if(gestControlloPreRegistrazioneEventoAvverso(codiceFiscale))
+		else if(gestControlloPreRegistrazioneEventoAvverso(eventoAvverso.getCf_evento()))
 			return 3;
 		else{
 				for(int i=0; i<6; i++) {
@@ -231,7 +230,8 @@ public class GestioneClient {
 							eventoAvverso.getNomeCentro(),
 							eventoAvverso.getEvento()[i],
 							eventoAvverso.getSeverita()[i],
-							eventoAvverso.getNotes()[i]);
+							eventoAvverso.getNotes()[i],
+							eventoAvverso.getCf_evento());
 				}
 				return 1;
 			}

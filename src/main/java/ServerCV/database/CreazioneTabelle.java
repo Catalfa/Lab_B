@@ -66,7 +66,7 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
                 \tseverita INT NOT NULL,
                 \tuserid VARCHAR(40) NOT NULL,
                 \tpassword VARCHAR(40) NOT NULL,
-                \tcf VARCHAR(30) NOT NULL,
+                \tcf VARCHAR(16) NOT NULL,
                 \tFOREIGN KEY (cf) REFERENCES Cittadini_Registrati(cf)
                 );""";
         InvioCreateTable(sql,conn);

@@ -156,7 +156,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 */
 	@Override
 	public int InserisciEventiAvversi(Common.EventiAvversi eventoAvverso, String codiceFiscale) throws RemoteException {
-		return gestClient.gestInserimentoEventoAvverso(eventoAvverso, codiceFiscale);
+		return gestClient.gestInserimentoEventoAvverso(eventoAvverso);
 	}
 
 	/**

@@ -26,9 +26,9 @@ public class MainProva {
 
         CentriVaccinaliDaoImpl cv=new CentriVaccinaliDaoImpl();
         CittadiniRegistratiDaoImpl cr=new CittadiniRegistratiDaoImpl();
-        //Common.InfoCentriVaccinali icv=new InfoCentriVaccinali("Cen03","Pw03","CE03","Padre Pio","Ospedaliero","Via","Marzio",45,"Como","Como",2134);
-       // cv.insertDatiCentroVaccinale(icv);
-        Common.DatiCittadino dc=new DatiCittadino("Andra","Russo","ANDRRUSS012FR","andrearusso1@gmail.com","andrea1","russo1","VA000","CE00");
+        Common.InfoCentriVaccinali icv=new InfoCentriVaccinali("Cen03","Pw03","CE01","Padre Pio","Ospedaliero","Via","Marzio",45,"Como","Como",2134);
+        cv.insertDatiCentroVaccinale(icv);
+        Common.DatiCittadino dc=new DatiCittadino("Andra","Russo","ANDRRUSS012FR","andrearusso1@gmail.com","andrea1","russo1","VA000","CE01");
          cr.insertCittadino(dc);
 
     }

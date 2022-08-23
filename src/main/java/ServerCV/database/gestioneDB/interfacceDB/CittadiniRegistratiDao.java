@@ -4,7 +4,7 @@ import Common.DatiCittadino;
 
 public interface CittadiniRegistratiDao {
 	
-	public void insertCittadino(DatiCittadino citizenData);
+	public Boolean insertCittadino(DatiCittadino citizenData);
 
 	public DatiCittadino getDatiCittadino(String cf) ;
 

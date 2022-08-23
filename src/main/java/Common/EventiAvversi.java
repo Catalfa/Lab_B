@@ -11,6 +11,7 @@ public class EventiAvversi implements Serializable{
 	private String[] evento;
 	private Integer[] severita;
 	private String[] notes;
+	private String cf;
     
     /**
 	 * Costruttore della classe.
@@ -71,6 +72,10 @@ public class EventiAvversi implements Serializable{
     public String[] getNotes(){
         return notes;
     }
+
+	public String getCf_evento(){
+		return cf;
+	}
 }
     
 

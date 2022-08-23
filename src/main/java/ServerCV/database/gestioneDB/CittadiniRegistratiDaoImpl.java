@@ -12,15 +12,25 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 
 	/**
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
-	 * @param citizenData	I dati del cittadino che si sta registrando.
+	 * @param citizenData    I dati del cittadino che si sta registrando.
+	 * @return
 	 */
 	//Query implementata
 	@Override
-	public void insertCittadino(DatiCittadino citizenData) {
+	public Boolean insertCittadino(DatiCittadino citizenData) {
 		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
-		
+		System.out.println("password: "+citizenData.getPasswordCittadino());
+		System.out.println("username: "+citizenData.getUsernameCittadino());
+		System.out.println("cf: "+citizenData.getCFCittadino());
+		System.out.println("nome: "+citizenData.getNomeCittadino());
+		System.out.println("cognome: "+citizenData.getCognomeCittadino());
+		System.out.println("id vaccinazione: "+citizenData.getIdvaccinazione());
+		System.out.println("id centro: "+citizenData.getIdcentro());
+		System.out.println("mail: "+citizenData.getEmailCittadino());
+
+
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddValuesCittadiniRegistrati);
@@ -33,9 +43,9 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(7,citizenData.getIdvaccinazione());
 			pstmt.setString(8,citizenData.getIdcentro());
 			pstmt.executeUpdate();
-			System.out.println("registrato");
+			return true;
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			return false;
 		} finally {
 			closeConnection(connection);
 		}
