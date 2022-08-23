@@ -13,6 +13,9 @@ import java.rmi.RemoteException;
 
 public class AggiungiEventoAvversoController {
 
+    public LoginCittadinoView username;
+    public LoginCittadinoView password;
+
     private AggiungiEventoAvversoView eventoAvversoView;
     private Server Stub;
     //private ServerImpl serverImpl;
@@ -21,6 +24,7 @@ public class AggiungiEventoAvversoController {
         Stub = ServerSingleton.getInstance();
         this.eventoAvversoView = eventoAvversoView;
     }
+
 
     public void goBack(){
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
@@ -37,7 +41,7 @@ public class AggiungiEventoAvversoController {
 	 * @param eventi			La lista degli eventi.
 	 */
     
-     public void inserisciEventiAvversiAction(String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
+     public void inserisciEventiAvversiAction( String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
         EventiAvversi eventoAvverso = new EventiAvversi(idEvento, nomeCentro, eventi, intensitaEventi, noteEventi);
 
         try {
@@ -71,5 +75,6 @@ public class AggiungiEventoAvversoController {
         }
         return;
     }
+
 
 }
