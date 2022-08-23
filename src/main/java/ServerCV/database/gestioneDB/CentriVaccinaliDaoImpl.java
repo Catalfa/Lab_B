@@ -112,7 +112,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	}
 	//query implementata
 	public Boolean existCentro(String username) {
-		String qExistCitizenOnDb = "SELECT userid FROM CentriVaccinali WHERE username = ?";
+		String qExistCitizenOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE username = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -162,8 +162,9 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//query NON implementata, bisogna capire quando chiamarla
 	public void createVaccinati_(String nomeCentro) {
+		String centro=accorpamento(nomeCentro);
 		Connection conn=openConnection();
-		new CreazioneTabelle().Create_Vaccinato(conn, nomeCentro);
+		new CreazioneTabelle().Create_Vaccinato(conn, centro);
 		closeConnection(conn);
 	}
 	
@@ -211,7 +212,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//Devo verificare che metodo funzioni su DB, ma già implementata
 	@Override
 	public Boolean existCf(String nomeCentro, String cf) {
-		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " WHERE cf = ?";
+		String centro=accorpamento(nomeCentro);
+		String qExistCfInVaccinati_ = "SELECT cf FROM Vaccinati_" +Utility.getNameForQuery(centro).toLowerCase()+ " WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -243,7 +245,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//query implementata
 	@Override
 	public Boolean existIdVaccinazione(String nomeCentro, String id) {
-		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +nomeCentro+ " WHERE idvaccinazione = ?";
+		String centro=accorpamento(nomeCentro);
+		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -317,5 +320,25 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			closeConnection(connection);
 		}
 		return 0;
+	}
+
+	//metodo che viene usato per ridurre il nome del centro in un'unica stringa compatta (usata solo per i metodi del vaccinato)
+	public static String accorpamento(String centro){
+		String tmp="";
+		String fin="";
+
+		for(int i=0;i<centro.length();i++){
+			char ch=centro.charAt(i);
+			if(ch==' '){
+				tmp=tmp;
+			}
+			else {
+				tmp = tmp + ch;
+
+			}
+		}
+
+
+		return tmp.toLowerCase();
 	}
 }

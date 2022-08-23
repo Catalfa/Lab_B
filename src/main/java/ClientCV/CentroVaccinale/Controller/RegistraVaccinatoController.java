@@ -17,6 +17,7 @@ public class RegistraVaccinatoController {
 
 
     private Utility utility = new Utility();
+    private String cf;
 
     public RegistraVaccinatoController(RegistraVaccinatoView registraVaccinatoView) {
         Stub = ServerSingleton.getInstance();
@@ -32,6 +33,7 @@ public class RegistraVaccinatoController {
     }
 
     public int infCv(String nome, String cognome, String cf, String vaccinoSomministrato, String idVaccinazione , int dataVaccino, String idCentro) {
+        this.cf = cf;
 
         if (nome.isEmpty() || cognome.isEmpty() || vaccinoSomministrato.isEmpty() || idVaccinazione.isEmpty() || dataVaccino == 0 || idCentro.isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");

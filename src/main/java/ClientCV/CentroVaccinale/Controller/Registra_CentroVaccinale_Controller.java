@@ -3,6 +3,7 @@ package ClientCV.CentroVaccinale.Controller;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
 import ClientCV.Utility;
+import ClientCV.client.ServerSingleton;
 import Common.InfoCentriVaccinali;
 import ServerCV.interfaccia.Server;
 
@@ -19,6 +20,7 @@ public class Registra_CentroVaccinale_Controller {
 
     public Registra_CentroVaccinale_Controller(Registra_CentroVaccinale_View registraCentroVaccinaleView) {
         this.registraCentroVaccinaleView = registraCentroVaccinaleView;
+        Stub = ServerSingleton.getInstance();
     }
 
     /**

@@ -96,7 +96,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
                 metodo per fare il controllo di un int
                 */
                 int s;
-                String k = textFields[3].getText();
+                String k = textFields[5].getText();  //3
                 if (k.isEmpty()){
                     s=0;
                 }else{
