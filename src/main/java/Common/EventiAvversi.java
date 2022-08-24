@@ -11,6 +11,8 @@ public class EventiAvversi implements Serializable{
 	private String[] evento;
 	private Integer[] severita;
 	private String[] notes;
+
+	private String cf;
     
     /**
 	 * Costruttore della classe.
@@ -24,12 +26,13 @@ public class EventiAvversi implements Serializable{
 	//int id_evento, String nomeCentro, String evento, Integer severita, String note
 	
 
-    public EventiAvversi(String id_evento, String nomeCentro, String[] evento,  Integer[] severita, String[] note) {
+    public EventiAvversi(String id_evento, String nomeCentro, String[] evento,  Integer[] severita, String[] note, String cf) {
         this.id_evento = id_evento;
 		this.nomeCentro = nomeCentro;
 		this.evento = evento;
 		this.severita = severita;
 		this.notes = note;
+		this.cf=cf;
     }
 
     /**
@@ -71,6 +74,12 @@ public class EventiAvversi implements Serializable{
     public String[] getNotes(){
         return notes;
     }
+
+	/**
+	 * Metodo che restituisce la stringa contenente il codice fiscale.
+	 * @return		Il CF.
+	 */
+	public String getCf_evento(){return cf;}
 }
     
 

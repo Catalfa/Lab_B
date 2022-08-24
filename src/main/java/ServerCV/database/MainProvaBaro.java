@@ -98,8 +98,10 @@ public class MainProvaBaro {
         contr=cv.checkLoginCentro("Can01","Pa01");
         prove_controllo(contr);
 
-     //  Common.DatiCittadino dc=new DatiCittadino("Alessio","Cefalo","ALESCEF12FR","alessiocefalo@gmail.com","alessio","cefalo","VA040","CE00");
-       // cr.insertCittadino(dc);
+
+     //System.out.println("Insert del cittadino");
+    // Common.DatiCittadino dc=new DatiCittadino("Antonio","Muratore","ANTO,UR12FR","antoniomuratore@gmail.com","antonio","muratore","VA050","CE00");
+      // cr.insertCittadino(dc);
         Common.DatiCittadino dc2;
        dc2 =cr.getDatiCittadino("ANDRRUSS012FR");
         cicloDati(dc2);
