@@ -11,9 +11,9 @@ public class Login_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 450;
-    private final int HIGHT = 600;
-    private JTextField tf_usernamField = new JTextField(20);
-    private JTextField tf_idCentro = new JTextField(20);
+    private final int HIGHT = 400;
+   // private JTextField tf_usernamField = new JTextField(20);
+   // private JTextField tf_idCentro = new JTextField(20);
 
     private JTextField tf_user = new JTextField(20);
 
@@ -27,20 +27,20 @@ public class Login_CentroVaccinale_View extends JFrame {
         Login_CentroVaccinale_Controller controller = new Login_CentroVaccinale_Controller(this);
 
         JPanel mainPanel = new JPanel();
-        JPanel usernamePanel = new JPanel();
-        JPanel idPanel = new JPanel();
+      //  JPanel usernamePanel = new JPanel();
+      // JPanel idPanel = new JPanel();
         JPanel userPanel = new JPanel();
         JPanel passwordPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
 
-        usernamePanel.setLayout(new GridLayout(1, 2));
+      /*  usernamePanel.setLayout(new GridLayout(1, 2));
         usernamePanel.setBackground(Color.WHITE);
         usernamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
 
         idPanel.setLayout(new GridLayout(1, 2));
         idPanel.setBackground(Color.WHITE);
         idPanel.setBounds(5, 5, 5, 5);
-        idPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
+        idPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));*/
 
         userPanel.setLayout(new GridLayout(1, 2));
         userPanel.setBackground(Color.WHITE);
@@ -59,8 +59,8 @@ public class Login_CentroVaccinale_View extends JFrame {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
 
         JLabel label_loginCittadino = new JLabel("LOGIN Centro Vaccinale", SwingConstants.CENTER);
-        JLabel label_username = new JLabel("Nome Centro Vaccinale", SwingConstants.LEFT);
-        JLabel label_id = new JLabel("ID Centro Vaccinale", SwingConstants.LEFT);
+       // JLabel label_username = new JLabel("Nome Centro Vaccinale", SwingConstants.LEFT);
+       // JLabel label_id = new JLabel("ID Centro Vaccinale", SwingConstants.LEFT);
         JLabel label_user = new JLabel("Username", SwingConstants.LEFT);
         JLabel label_password = new JLabel("Password", SwingConstants.LEFT);
 
@@ -71,13 +71,13 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         mainPanel.add(label_loginCittadino);
 
-        usernamePanel.add(label_username);
+      /*  usernamePanel.add(label_username);
         usernamePanel.add(tf_usernamField);
         mainPanel.add(usernamePanel);
 
         idPanel.add(label_id);
         idPanel.add(tf_idCentro);
-        mainPanel.add(idPanel);
+        mainPanel.add(idPanel); */
 
         userPanel.add(label_user);
         userPanel.add(tf_user);
@@ -123,11 +123,11 @@ public class Login_CentroVaccinale_View extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username = tf_usernamField.getText();
-                String idCentro = tf_idCentro.getText();
+             //   String username = tf_usernamField.getText();
+             //   String idCentro = tf_idCentro.getText();
                 String user = tf_user.getText();
                 String password = tf_password.getText();
-                switch (controller.loginCentroVaccinale(username, idCentro, user, password)){
+                switch (controller.loginCentroVaccinale(user, password)){
                     //TODO @Andre implementare frame successivi
                     case 1:
                         //login effettuato con successo

@@ -13,8 +13,8 @@ import java.rmi.RemoteException;
 
 public class AggiungiEventoAvversoController {
 
-    public LoginCittadinoView username;
-    public LoginCittadinoView password;
+   // public LoginCittadinoView username;
+   // public LoginCittadinoView password;
 
     private AggiungiEventoAvversoView eventoAvversoView;
     private Server Stub;

@@ -18,7 +18,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 520;
-    private final int HIGHT = 600;
+    private final int HIGHT = 700;
 
     private String[] labelNames = {"ID Centro", "Nome Centro Vaccinale", "Username", "Password", "Tipologia Centro", "Qualificatore (via/viale/piazza)", "Indirizzo", "Numero Civico", "Comune", "Provincia (sigla)", "CAP"};
     //private String hint = "via/viale/piazza";
@@ -45,7 +45,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
         mainPanel.add(signinCentroVaccinale);
         
         int y = 50;
-        for(int i=0; i<9; i++) {
+        for(int i=0; i<11; i++) {
             labels[i] = new JLabel(labelNames[i], SwingConstants.LEFT);
             //primo valore della pos rispetto x, secondo valore della pos rispetto y, terzo ?, quarto sipra ?
             labels[i].setBounds(30, y, 200, 25);
@@ -54,7 +54,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
         }
 
         y = 50;
-        for(int i=0; i<9; i++) {
+        for(int i=0; i<11; i++) {
             textFields[i] = new JTextField(20);
             textFields[i].setBounds(220, y, 250, 25);
             //textFields[i] = new JTextField(labelNames[i]);
@@ -65,7 +65,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
         int x = 0;
         for(int i=0; i<3; i++){
             buttons[i] = new JButton(buttonNames[i]);
-            buttons[i].setBounds((WIDTH/2)-150+x, 505, 90, 25);
+            buttons[i].setBounds((WIDTH/2)-150+x, 605, 90, 25);
             mainPanel.add(buttons[i], JButton.BOTTOM);
             x += 100;
         }

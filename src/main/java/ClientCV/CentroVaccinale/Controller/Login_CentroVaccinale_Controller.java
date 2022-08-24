@@ -30,17 +30,14 @@ public class Login_CentroVaccinale_Controller {
     }
 
     /**
-	 * Metodo che gestisce il login del centro vaccinale.
-	 * @param nomeCentroVaccinale	Il nome del centro vaccinale.
-     * @param idCentro              L'id del centro vaccinale.
-	 * @return				Un codice per.
-	 */
-    public int loginCentroVaccinale(String nomeCentroVaccinale, String idCentro, String user, String password) {
+     * Metodo che gestisce il login del centro vaccinale.
+     */
+    public int loginCentroVaccinale(String user, String password) {
 
         //String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap 
         //infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
-        
-        if(nomeCentroVaccinale.isEmpty() || idCentro.isEmpty() || user.isEmpty() || password.isEmpty()){                                 //ATT ciclo controllo compilare campi, copio per acc lib
+
+        if(user.isEmpty() || password.isEmpty()){                                 //ATT ciclo controllo compilare campi, copio per acc lib
             utility.showWarningPopUp("Attenzione", "Riempire tutti i campi.");
             return 0;
         }
