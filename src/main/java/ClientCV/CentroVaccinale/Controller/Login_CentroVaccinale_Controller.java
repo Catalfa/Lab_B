@@ -1,4 +1,4 @@
-package ClientCV.CentroVaccinale.Controller;      //ATTTTTTTTT uso anche per acc lib ---
+package ClientCV.CentroVaccinale.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;

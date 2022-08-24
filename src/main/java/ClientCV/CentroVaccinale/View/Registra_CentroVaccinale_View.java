@@ -20,12 +20,12 @@ public class Registra_CentroVaccinale_View extends JFrame {
     private final int WIDTH = 520;
     private final int HIGHT = 600;
 
-    private String[] labelNames = {"ID Centro", "Nome Centro Vaccinale","Tipologia Centro", "Qualificatore (via/viale/piazza)", "Indirizzo", "Numero Civico", "Comune", "Provincia (sigla)", "CAP"};
+    private String[] labelNames = {"ID Centro", "Nome Centro Vaccinale", "Username", "Password", "Tipologia Centro", "Qualificatore (via/viale/piazza)", "Indirizzo", "Numero Civico", "Comune", "Provincia (sigla)", "CAP"};
     //private String hint = "via/viale/piazza";
     private String[] buttonNames = {"BACK", "SIGN-IN", "RESET"};
     private JButton[] buttons = new JButton[3];
-    public JTextField[] textFields = new JTextField[9];
-    private JLabel[] labels = new JLabel[9];
+    public JTextField[] textFields = new JTextField[11];
+    private JLabel[] labels = new JLabel[11];
     public JPasswordField passwordField;
 
     public Registra_CentroVaccinale_View() {
@@ -109,8 +109,8 @@ public class Registra_CentroVaccinale_View extends JFrame {
                 //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
                 try {
                     controller.signIn(new InfoCentriVaccinali( textFields[0].getText(), textFields[1].getText(),
-                        textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), s,
-                        textFields[6].getText(), textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
+                                            textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), textFields[6].getText(),
+                            textFields[7].getText(), Integer.parseInt(textFields[8].getText()), textFields[9].getText(), textFields[10].getText(), s));
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }

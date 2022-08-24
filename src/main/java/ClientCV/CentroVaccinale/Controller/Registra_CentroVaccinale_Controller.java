@@ -50,7 +50,7 @@ public class Registra_CentroVaccinale_Controller {
             cVaccinale.getTipologia().isEmpty() || cVaccinale.getQualificatore().isEmpty() ||
             cVaccinale.getNomeVia().isEmpty() || cVaccinale.getNumCiv() == 0 ||
             cVaccinale.getComune().isEmpty() || cVaccinale.getProvincia().isEmpty() || 
-            cVaccinale.getCap()==0){
+            cVaccinale.getCap()==0 || cVaccinale.getUsername().isEmpty() || cVaccinale.getPassword().isEmpty()){
 
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati.");
             return 1;
@@ -77,7 +77,7 @@ public class Registra_CentroVaccinale_Controller {
 
     
     public void reset() {
-        for(int i=0; i<7; i++)
+        for(int i=0; i<10; i++)
         registraCentroVaccinaleView.textFields[i].setText("");
         registraCentroVaccinaleView.passwordField.setText("");
     }
