@@ -1,7 +1,6 @@
 package ClientCV.Cittadino.Controller;
 
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
-import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;

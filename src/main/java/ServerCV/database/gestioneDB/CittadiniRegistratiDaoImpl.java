@@ -21,15 +21,6 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
-		System.out.println("password: "+citizenData.getPasswordCittadino());
-		System.out.println("username: "+citizenData.getUsernameCittadino());
-		System.out.println("cf: "+citizenData.getCFCittadino());
-		System.out.println("nome: "+citizenData.getNomeCittadino());
-		System.out.println("cognome: "+citizenData.getCognomeCittadino());
-		System.out.println("id vaccinazione: "+citizenData.getIdvaccinazione());
-		System.out.println("id centro: "+citizenData.getIdcentro());
-		System.out.println("mail: "+citizenData.getEmailCittadino());
-
 
 		try {
 			connection = openConnection();
@@ -93,7 +84,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	public boolean checkPwCittadino(String username, String password) {
 		String qCitizenPasswordMatch = "SELECT userid, password FROM Cittadini_Registrati WHERE userid = ? AND password = ?";
 		PreparedStatement pstmt;
-		ResultSet rs;
+		ResultSet rs=null;
 		Connection connection = null;
 		
 		try {
@@ -103,14 +94,17 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next())
+			if(rs!=null){
 				return true;
+			}else{
+				return false;
+			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+			return false;
 		} finally {
 			closeConnection(connection);
 		}
-		return false;
 	}
 
 	//query implementata
@@ -198,6 +192,34 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return false;
 	}
 
+	public boolean CheckCfCittadino(String username, String cf_cittadino) {
+		String qExistCfInCittadiniRegistrati = "SELECT * FROM Cittadini_Registrati WHERE userid = ? and cf =?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCfInCittadiniRegistrati);
+			pstmt.setString(1, username);
+			pstmt.setString(2, cf_cittadino);
+			rs = pstmt.executeQuery();
+
+			if((rs.next())){
+				return true;
+			}else{
+				return false;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		} finally {
+			closeConnection(connection);
+		}
+
+	}
+
+
 	/**
 	 * Metodo che aggiorna il valore dell'Id vaccinazione per quel determinato cittadino registrato.
 	 * @param id	L'Id della vaccinazione.
@@ -257,16 +279,17 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 
 	/**
 	 * Metodo che restituisce l'Id vaccinazione per quel determinato cittadino registrato.
-	 * @param cf	Il Cf del cittadino registrato.
+	 * @param cf    Il Cf del cittadino registrato.
 	 * @return		L'Id della vaccinazione.
 	 */
 	//query implementata
 	@Override
-	public String getIdCittadino(String cf) {
-		String qGetIdVaccinazioneInCittadiniRegistrati = "SELECT idvaccinazione FROM Cittadini_Registrati WHERE cf = ?";
+	public String[] getIdCittadino(String cf) {
+		String qGetIdVaccinazioneInCittadiniRegistrati = "SELECT idvaccinazione , id_centro FROM Cittadini_Registrati WHERE cf = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
+		String [] risultato;
 		
 		try {
 			connection = openConnection();
@@ -275,8 +298,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-					String id=rs.getString("idvaccinazione");
-				return id;
+					String id_cittadno=rs.getString("idvaccinazione");
+				String id_centro=rs.getString("id_centro");
+				risultato= new String[]{id_cittadno, id_centro};
+				return risultato;
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
