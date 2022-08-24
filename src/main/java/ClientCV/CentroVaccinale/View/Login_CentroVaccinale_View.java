@@ -1,6 +1,7 @@
 package ClientCV.CentroVaccinale.View;
 
 import ClientCV.CentroVaccinale.Controller.Login_CentroVaccinale_Controller;
+import ClientCV.Utility;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,8 @@ public class Login_CentroVaccinale_View extends JFrame {
     private JButton loginButton = new JButton("LOGIN");
     private JButton backButton = new JButton("BACK");
     private JButton signinButton = new JButton("SIGN-IN");
+
+    private Utility utility=new Utility();
 
     public Login_CentroVaccinale_View() {
 
@@ -130,12 +133,15 @@ public class Login_CentroVaccinale_View extends JFrame {
                 switch (controller.loginCentroVaccinale(username, idCentro, user, password)){
                     //TODO @Andre implementare frame successivi
                     case 1:
+                        utility.showConfirmationPopUp("Sucesso!","Login effettuato");
                         //login effettuato con successo
                         break;
                     case 2:
+                        utility.showWarningPopUp("Attenzione!","Lo username non è corretto");
                         //username non esistente
                         break;
                     case 3:
+                        utility.showWarningPopUp("Attenzione!","La passowrd non è corretta");
                         //password errata
                         break;
                 }
