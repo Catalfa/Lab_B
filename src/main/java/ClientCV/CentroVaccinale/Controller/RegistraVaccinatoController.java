@@ -6,6 +6,7 @@ import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
 import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
+import Common.RegistrazioniVaccinati;
 import ServerCV.interfaccia.Server;
 
 public class RegistraVaccinatoController {
@@ -32,21 +33,34 @@ public class RegistraVaccinatoController {
         registraVaccinatoView.dispose();
     }
 
-    public int infCv(String nome, String cognome, String cf, String vaccinoSomministrato, String idVaccinazione , int dataVaccino, String idCentro) {
+    public void registraVaccinato(RegistrazioniVaccinati vaccinato) {
         this.cf = cf;
 
-        if (nome.isEmpty() || cognome.isEmpty() || vaccinoSomministrato.isEmpty() || idVaccinazione.isEmpty() || dataVaccino == 0 || idCentro.isEmpty()) {
+        if (vaccinato.getNomeVaccinato().isEmpty() ||vaccinato.getCognomeVaccinato().isEmpty() || vaccinato.getIdVaccinazione().isEmpty() || vaccinato.getTipoVaccino().isEmpty() || vaccinato.getDataVaccino() == null || vaccinato.getIdCentro().isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
-            return 0;
+            return;
         } else {
             try {
-                return Stub.registraVaccinato(nome, cognome, vaccinoSomministrato, idVaccinazione, dataVaccino, idCentro);
+                     switch (Stub.registraVaccinato(vaccinato)){
+                         case 1:
+                            Utility.showInformationPopUp("complimenti", "vaccinazione effettuata con successo");
+                             break;
+                         case 2:
+                             utility.showWarningPopUp("Attenzione!", "ID vaccinazione già esistente.");
+
+                             break;
+                         case 3:
+                             utility.showWarningPopUp("Attenzione!", "cittadino già registrato.");
+                             break;
+
+                     }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
 
-        return 0;
+        return;
     }
 
 }

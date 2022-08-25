@@ -1,11 +1,15 @@
 package ClientCV.CentroVaccinale.View;
 
 import ClientCV.CentroVaccinale.Controller.RegistraVaccinatoController;
+import Common.RegistrazioniVaccinati;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class RegistraVaccinatoView extends JFrame{
 
@@ -15,10 +19,10 @@ public class RegistraVaccinatoView extends JFrame{
 
     private String[] labelNames = {"Nome", "Cognome","Data vaccino", "Codice Fiscale", "Vaccino somministrato", "Id vaccinazione", "Id centro"};
 
-    private String[] buttonNames = {"BACK", "INVIO"};
+    private String[] buttonNames = {"BACK", "REGISTRA"};
     private JButton[] buttons = new JButton[2];
-    public JTextField[] textFields = new JTextField[3];
-    private JLabel[] labels = new JLabel[3];
+    public JTextField[] textFields = new JTextField[7];
+    private JLabel[] labels = new JLabel[7];
     //public JPasswordField passwordField;
 
     public RegistraVaccinatoView() {
@@ -38,7 +42,7 @@ public class RegistraVaccinatoView extends JFrame{
         mainPanel.add(registraVaccinato);
 
         int y = 50;
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<7; i++) {
             labels[i] = new JLabel(labelNames[i], SwingConstants.LEFT);
             //primo valore della pos rispetto x, secondo valore della pos rispetto y, terzo ?, quarto sipra ?
             labels[i].setBounds(30, y, 200, 25);
@@ -47,7 +51,7 @@ public class RegistraVaccinatoView extends JFrame{
         }
 
         y = 50;
-        for(int i=0; i<3; i++) {
+        for(int i=0; i<7; i++) {
             textFields[i] = new JTextField(20);
             textFields[i].setBounds(220, y, 250, 25);
             //textFields[i] = new JTextField(labelNames[i]);
@@ -88,19 +92,14 @@ public class RegistraVaccinatoView extends JFrame{
                 /*
                 metodo per fare il controllo di un int
                 */
-                int s;
-                String k = textFields[3].getText();
-                if (k.isEmpty()){
-                    s=0;
-                }else{
-                    try {
-                        s = Integer.parseInt(k);
-                    } catch (Exception ex) {
-                        s = -1;
-                    }
+                Date date1=null;
+                try {
+                     date1=new SimpleDateFormat("dd/MM/yyyy").parse((textFields[2]).getText());
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
                 }
-                //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
-
+                RegistrazioniVaccinati vaccinato=new RegistrazioniVaccinati(textFields[7].getText(),textFields[6].getText(),textFields[3].getText(), (java.sql.Date) date1,textFields[4].getText(),textFields[5].getText(),textFields[0].getText(),textFields[1].getText());
+               controller.registraVaccinato(vaccinato);
             }
 
         });
