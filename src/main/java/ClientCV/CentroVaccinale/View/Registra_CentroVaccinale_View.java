@@ -1,6 +1,7 @@
 package ClientCV.CentroVaccinale.View;
 
 import ClientCV.CentroVaccinale.Controller.Registra_CentroVaccinale_Controller;
+import Common.CentroVaccinale;
 import Common.InfoCentriVaccinali;
 
 import javax.swing.*;
@@ -17,7 +18,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 520;
-    private final int HIGHT = 700;
+    private final int HIGHT = 600;
 
     private String[] labelNames = {"ID Centro", "Nome Centro Vaccinale", "Username", "Password", "Tipologia Centro", "Qualificatore (via/viale/piazza)", "Indirizzo", "Numero Civico", "Comune", "Provincia (sigla)", "CAP"};
     //private String hint = "via/viale/piazza";
@@ -44,7 +45,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
         mainPanel.add(signinCentroVaccinale);
         
         int y = 50;
-        for(int i=0; i<11; i++) {
+        for(int i=0; i<9; i++) {
             labels[i] = new JLabel(labelNames[i], SwingConstants.LEFT);
             //primo valore della pos rispetto x, secondo valore della pos rispetto y, terzo ?, quarto sipra ?
             labels[i].setBounds(30, y, 200, 25);
@@ -53,9 +54,9 @@ public class Registra_CentroVaccinale_View extends JFrame {
         }
 
         y = 50;
-        for(int i=0; i<11; i++) {
+        for(int i=0; i<9; i++) {
             textFields[i] = new JTextField(20);
-            textFields[i].setBounds(220, y, 250, 20);
+            textFields[i].setBounds(220, y, 250, 25);
             //textFields[i] = new JTextField(labelNames[i]);
             mainPanel.add(textFields[i]);
             y += 50;
@@ -64,7 +65,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
         int x = 0;
         for(int i=0; i<3; i++){
             buttons[i] = new JButton(buttonNames[i]);
-            buttons[i].setBounds((WIDTH/2)-150+x, 600, 90, 25);
+            buttons[i].setBounds((WIDTH/2)-150+x, 505, 90, 25);
             mainPanel.add(buttons[i], JButton.BOTTOM);
             x += 100;
         }
@@ -107,9 +108,9 @@ public class Registra_CentroVaccinale_View extends JFrame {
                 }
                 //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
                 try {
-                    controller.signIn(new InfoCentriVaccinali( textFields[2].getText(), textFields[3].getText(),
-                                            textFields[0].getText(), textFields[1].getText(), textFields[4].getText(), textFields[5].getText(),
-                            textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[8].getText(), textFields[9].getText(), Integer.parseInt(textFields[10].getText())));
+                    controller.signIn(new InfoCentriVaccinali( textFields[0].getText(), textFields[1].getText(),
+                                            textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), textFields[6].getText(),
+                            textFields[7].getText(), Integer.parseInt(textFields[8].getText()), textFields[9].getText(), textFields[10].getText(), s));
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }

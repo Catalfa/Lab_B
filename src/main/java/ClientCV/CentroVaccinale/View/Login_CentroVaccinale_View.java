@@ -13,12 +13,12 @@ public class Login_CentroVaccinale_View extends JFrame {
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 450;
     private final int HIGHT = 600;
-    private JTextField tf_usernamField = new JTextField(1);
-    private JTextField tf_idCentro = new JTextField(1);
+    private JTextField tf_usernamField = new JTextField(20);
+    private JTextField tf_idCentro = new JTextField(20);
 
-    private JTextField tf_user = new JTextField(1);
+    private JTextField tf_user = new JTextField(20);
 
-    private JTextField tf_password = new JTextField(1);
+    private JTextField tf_password = new JTextField(20);
     private JButton loginButton = new JButton("LOGIN");
     private JButton backButton = new JButton("BACK");
     private JButton signinButton = new JButton("SIGN-IN");
@@ -38,22 +38,22 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         usernamePanel.setLayout(new GridLayout(1, 2));
         usernamePanel.setBackground(Color.WHITE);
-        usernamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
+        usernamePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
 
         idPanel.setLayout(new GridLayout(1, 2));
         idPanel.setBackground(Color.WHITE);
         idPanel.setBounds(5, 5, 5, 5);
-        idPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
+        idPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
 
         userPanel.setLayout(new GridLayout(1, 2));
         userPanel.setBackground(Color.WHITE);
         userPanel.setBounds(5, 5, 5, 5);
-        userPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
+        userPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
 
         passwordPanel.setLayout(new GridLayout(1, 2));
         passwordPanel.setBackground(Color.WHITE);
         passwordPanel.setBounds(5, 5, 5, 5);
-        passwordPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
+        passwordPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20));
         
         buttonPanel.setBackground(Color.WHITE);
 

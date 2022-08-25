@@ -55,6 +55,8 @@ public class SignInCittadinoController extends JFrame{
         }
         if(stub.registraCittadino(cittadini)==1){
                new Utility().showConfirmationPopUp("avviso"," registrazione effettuata con successo");
+               //AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView();
+               //eventoAvversoView.dispose();
            }else{
                new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
            }
