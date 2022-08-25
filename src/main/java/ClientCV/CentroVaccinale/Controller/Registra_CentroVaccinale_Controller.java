@@ -61,18 +61,25 @@ public class Registra_CentroVaccinale_Controller {
             utility.showWarningPopUp("Attenzione", "Il numero civico dev'essere un numero.");
             return 1;
         }
-
-        if(cVaccinale.getCap() < 10000){
-            utility.showWarningPopUp("Attenzione", "Controllare che il campo CAP sia corretto.");
-            return 1;
-        }
+            System.out.println("IDcentro: "+cVaccinale.getIdCentro());
+        System.out.println("nomeCentro: "+cVaccinale.getNomeCentro());
+        System.out.println("username: "+cVaccinale.getUsername());
+        System.out.println("password: "+cVaccinale.getPassword());
+        System.out.println("tipologia: "+cVaccinale.getTipologia());
+        System.out.println("qualificatore: "+cVaccinale.getQualificatore());
+        System.out.println("indirizzo: "+cVaccinale.getNomeVia());
+        System.out.println("numeroCivico: "+cVaccinale.getNumCiv());
+        System.out.println("comune: "+cVaccinale.getComune());
+        System.out.println("provincia: "+cVaccinale.getProvincia());
+        System.out.println("cap: "+cVaccinale.getCap());
 
         if(cVaccinale.getProvincia().length() != 2){
             utility.showWarningPopUp("Attenzione", "La provincia deve essere una sigla di due caratteri.");
             return 1;
         }
-        
-        return Stub.registraCentroVaccinale(cVaccinale);
+        int c=Stub.registraCentroVaccinale(cVaccinale);
+        System.out.println(c);
+        return c;
     }
 
     

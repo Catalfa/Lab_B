@@ -1,6 +1,8 @@
 package Common;
 
-public class CentroVaccinale {
+import java.io.Serializable;
+
+public class CentroVaccinale implements Serializable {
     
     private String idCentro;
     private String nomeCentroVaccinale;

@@ -1,6 +1,8 @@
 package Common;
 
-public class Indirizzo {
+import java.io.Serializable;
+
+public class Indirizzo implements Serializable {
 
     private String qualificatore;
     private String nome_via;

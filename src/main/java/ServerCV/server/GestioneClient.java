@@ -175,6 +175,7 @@ public class GestioneClient {
 			nome = Utility.getNameForQuery(nome);
 			centriVaccinaliDao.createVaccinati_(nome);
 			updateAllClients(1, 0);
+
 			return 1;
 		}
 	}
