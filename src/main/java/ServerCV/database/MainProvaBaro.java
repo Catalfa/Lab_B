@@ -100,7 +100,7 @@ public class MainProvaBaro {
 
 
      //System.out.println("Insert del cittadino");
-    // Common.DatiCittadino dc=new DatiCittadino("Antonio","Muratore","ANTO,UR12FR","antoniomuratore@gmail.com","antonio","muratore","VA050","CE00");
+    // Common.DatiCittadino dc=new DatiCittadino("Antonio","Muratore","ANTO,UR12FR","antoniomuratore@gmail.com","antonio","muratore","VA050","CE09");
       // cr.insertCittadino(dc);
         Common.DatiCittadino dc2;
        dc2 =cr.getDatiCittadino("ANDRRUSS012FR");

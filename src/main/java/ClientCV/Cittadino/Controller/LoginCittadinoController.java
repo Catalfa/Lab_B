@@ -8,6 +8,7 @@ import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.InfoCittadino;
+import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 import ServerCV.interfaccia.Server;
 
 import java.rmi.RemoteException;
@@ -35,22 +36,19 @@ public class LoginCittadinoController {
 
     public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
 
-        if(username.toString().isEmpty() || password.length == 0 || cf == null){                  //CONTROLLO QUI CF
-            utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
-            return 1;
-        }
-        if(password.length < 6){
-            utility.showWarningPopUp("Attenzione!", "La password non può essere lunga meno di 6 caratteri.");
+        if(username.toString().isEmpty() || password.length == 0 || cf == null ||cf.length()!=16){
+            utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati correttamente.");
             return 1;
         }
 
-
-        //TODO creare metodo per il controllo nel DB prima di aprire il frame "Ricerca_CentroVaccinale_View"
+        if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
+            utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
+            return 1;
+        }
 
         switch (Stub.loginCittadino(username,password.toString())){
-            //TODO @Andre implementare frame successivi
             case 1:
-                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(cf);      //log corretto
+                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(new CittadiniRegistratiDaoImpl().getIdCittadino(cf));      //log corretto
                 break;
             case 2:
                 utility.showWarningPopUp("Attenzione!", "Username errato");
@@ -59,7 +57,6 @@ public class LoginCittadinoController {
                 utility.showWarningPopUp("Attenzione!", "Password errata");
                 break;
         }
-        Ricerca_CentroVaccinale_View ricerca_centro = new Ricerca_CentroVaccinale_View();
         loginCittadinoView.dispose();
         
         return 0;

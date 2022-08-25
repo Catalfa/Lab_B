@@ -76,16 +76,15 @@ public class GestioneClient {
 	 */
 	//ok
 	public int gestRegistraCittadino(DatiCittadino datiCittadino) {
-		System.out.println(datiCittadino.getCFCittadino());
-			if( cittadiniRegistratiDao.existCfCittadino(datiCittadino.getCFCittadino())){
+		CittadiniRegistratiDaoImpl cittadiniRegistratiDaoImpl =new CittadiniRegistratiDaoImpl();
+		if( cittadiniRegistratiDaoImpl.existCfCittadino(datiCittadino.getCFCittadino())){
 				System.out.println("problemi cf");
 				return 0; //in caso che il codice fiscale sia già registrato
 			} else  {
-				if(cittadiniRegistratiDao.insertCittadino(datiCittadino)) {
+				if(cittadiniRegistratiDaoImpl.insertCittadino(datiCittadino)) {
 					return 1; //in caso la registrazione avvenisse con successo
 				}
 				else{
-					System.out.println("problemi booof");
 					return 0; //in caso che il codice fiscale sia già registrato
 				}
 			}
@@ -199,7 +198,7 @@ public class GestioneClient {
 	 */
 	//ok
 	public String gestOttieniIdVaccinazione(String cf) {
-		return (cittadiniRegistratiDao.getIdCittadino(cf));
+		return (cittadiniRegistratiDao.getIdCittadino(cf))[0];
 	}
 
 	/**

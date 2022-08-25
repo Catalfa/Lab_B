@@ -98,7 +98,7 @@ public class SignInCittadinoView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 try {
                     controller.signIn(new DatiCittadino(textFields[0].getText(), textFields[1].getText(), textFields[2].getText(),
-                            textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString(), (textFields[5].getText()), (textFields[6].getText())));
+                            textFields[3].getText(), textFields[4].getText(), (passwordField.getPassword()).toString(), textFields[6].getText(), (textFields[7].getText())));
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }

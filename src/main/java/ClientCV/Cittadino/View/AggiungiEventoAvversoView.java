@@ -27,7 +27,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     private JPanel panel_intensitaEvento;
     private JPanel panel_noteEvento;
 
-    private String[] labelNames = {"Nome Del Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensità: ", "Note: "};
+    private String[] labelNames = {"ID Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensità: ", "Note: "};
     private String[] buttonNames = {"Salva evento", "Indietro"};
     private ButtonGroup[] buttonGroup = new ButtonGroup[6];
     private JTextField[] noteFields = new JTextField[6];
@@ -45,7 +45,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         "Crisi ipertensiva",
     };
 
-    public AggiungiEventoAvversoView(String nomeCentroBottone){
+    public AggiungiEventoAvversoView(String[] id_cittadino){
 
         //Per poter creare un nuovo frame che ci permetta di inserire eventi avversi
         controller = new AggiungiEventoAvversoController(this);
@@ -105,7 +105,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         panel_infoCentro.add(nomeCentro);
         //frame_aggiungiEventoAvverso.setVisible(true);
 
-        label_InfoNomeCentro = new JLabel(nomeCentroBottone);
+        label_InfoNomeCentro = new JLabel(id_cittadino[1]);
         label_InfoNomeCentro.setFont(secondMainFont);
         label_InfoNomeCentro.setBounds(0, 50, WIDTH, 25);
         label_InfoNomeCentro.setHorizontalAlignment(JLabel.CENTER);
@@ -120,7 +120,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         idVaccinazione.setVerticalAlignment(JLabel.CENTER);
         panel_infoCentro.add(idVaccinazione);
 
-        label_IdEvento = new JLabel("");
+        label_IdEvento = new JLabel(id_cittadino[0]);
         label_IdEvento.setFont(secondMainFont);
         label_IdEvento.setBounds(0, 110, WIDTH, 25);
         label_IdEvento.setHorizontalAlignment(JLabel.CENTER);

@@ -15,6 +15,7 @@ public class LoginCittadinoView extends JFrame {
     private final int HIGHT = 300;
     private JTextField usernamField = new JTextField(20);
     private JPasswordField passwordField = new JPasswordField(20);
+    private JTextField cfField = new JTextField(20);
 
     private JButton loginButton = new JButton("LOGIN");
     private JButton backButton = new JButton("BACK");
@@ -27,23 +28,27 @@ public class LoginCittadinoView extends JFrame {
         JPanel mainPanel = new JPanel();
         JPanel usernamePanel = new JPanel();
         JPanel passwordPanel = new JPanel();
+        JPanel cfPanel=new JPanel();
         JPanel buttonPanel = new JPanel();
 
         usernamePanel.setBackground(Color.WHITE);
         passwordPanel.setBackground(Color.WHITE);
+        cfPanel.setBackground(Color.WHITE);
         buttonPanel.setBackground(Color.WHITE);
 
         usernamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
         passwordPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
+        cfPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 25));
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 7, 25));
 
         JLabel loginCittadino = new JLabel("LOGIN CITTADINO", SwingConstants.CENTER);
         JLabel username = new JLabel("Username");
         JLabel password = new JLabel("Password");
+        JLabel cf=new JLabel("codice fiscale");
 
         loginCittadino.setFont(mainFont);
 
-        mainPanel.setLayout(new GridLayout(4, 1));
+        mainPanel.setLayout(new GridLayout(5, 1));
         mainPanel.setBackground(Color.WHITE);
 
         mainPanel.add(loginCittadino);
@@ -55,6 +60,10 @@ public class LoginCittadinoView extends JFrame {
         passwordPanel.add(password);
         passwordPanel.add(passwordField);
         mainPanel.add(passwordPanel);
+
+        cfPanel.add(cf);
+        cfPanel.add(cfField);
+        mainPanel.add(cfPanel);
 
         buttonPanel.add(backButton);
         buttonPanel.add(signinButton);
@@ -93,8 +102,9 @@ public class LoginCittadinoView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = usernamField.getText();
                 char[] password = passwordField.getPassword();
+                String codiceFiscale= cfField.getText();
                 try {
-                    controller.loginCittadino(username, password, "");
+                    controller.loginCittadino(username, password, codiceFiscale);
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
                 }
