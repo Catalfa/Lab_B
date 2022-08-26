@@ -207,7 +207,11 @@ public class AggiungiEventoAvversoView extends JFrame{
         
     }
 
-    
+    public AggiungiEventoAvversoView() {          /**COLLEGAMENTO NUOVO, RICONTROLLO SE SERVE**/
+
+    }
+
+
     /**
 	 * Metodo che crea, per ogni evento una nuova label e la inserisce nel panel.
 	 */

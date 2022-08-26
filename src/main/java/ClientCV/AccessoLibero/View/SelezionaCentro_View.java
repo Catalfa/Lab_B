@@ -180,4 +180,8 @@ public class SelezionaCentro_View extends JFrame{
         scrollPane.setBounds(1, 290, 400, 120);
         panel_showInfoCvCittadino.add(scrollPane);
     }
+
+    public SelezionaCentro_View() {   /**NUOVO COSTRUTTORE PER COLLEGAMENTO**/
+
+    }
 }

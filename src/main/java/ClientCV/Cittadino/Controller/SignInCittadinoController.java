@@ -1,6 +1,7 @@
 package ClientCV.Cittadino.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
+import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.SignInCittadinoView;
 import ClientCV.Utility;
@@ -38,6 +39,10 @@ public class SignInCittadinoController extends JFrame{
 
     public int signIn(DatiCittadino cittadini) throws RemoteException {
 
+        AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView();   /**COANDO COLLEGAMENTO NUOVO**/
+        aggiungiEventoAvversoView.setVisible(true);
+        signInCittadinoView.dispose();
+
          if(cittadini.getNomeCittadino().isEmpty() || cittadini.getCognomeCittadino().isEmpty() || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty() ||cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length()==0 ){
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati");
             return 1;    
@@ -55,8 +60,6 @@ public class SignInCittadinoController extends JFrame{
         }
         if(stub.registraCittadino(cittadini)==1){
                new Utility().showConfirmationPopUp("avviso"," registrazione effettuata con successo");
-               //AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView();
-               //eventoAvversoView.dispose();
            }else{
                new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
            }

@@ -1,6 +1,7 @@
 package ClientCV.AccessoLibero.Controller;
 
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
+import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
 import ClientCV.AccessoLibero.View.SelezionaCentro_View;
@@ -30,6 +31,11 @@ public class Ricerca_CentroVaccinale_Controller {
     }
 
     public void cercaCentro(String nome){
+
+        SelezionaCentro_View selezionaCentro_view = new SelezionaCentro_View();
+        selezionaCentro_view.setVisible(true);
+        ricerca_CentroVaccinale_View.dispose();
+
         List<InfoCentriVaccinali> listaCentri = new ArrayList();
         try {
             this.Stub = ServerSingleton.getInstance();
