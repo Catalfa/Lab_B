@@ -8,10 +8,10 @@ import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 //import ClientCV.Cittadino.View.LoginCittadinoView;
 
 public class MainAccLibFrameController {
-    private MainAccLibFrameView accLibFrameView;
+    private MainAccLibFrameView mainAccLibFrameView;
 
-    public MainAccLibFrameController(MainAccLibFrameView loginFrameView){
-        this.accLibFrameView = accLibFrameView;
+    public MainAccLibFrameController(MainAccLibFrameView mainAccLibFrameView){
+        this.mainAccLibFrameView = mainAccLibFrameView;
     }
 
     /**
@@ -20,7 +20,7 @@ public class MainAccLibFrameController {
     public void backToHomePage() {
         HomePageView homePageView = new HomePageView();
         homePageView.setVisible(true);
-        accLibFrameView.deleteView();
+        mainAccLibFrameView.dispose();
     }
 
     /**
@@ -29,7 +29,7 @@ public class MainAccLibFrameController {
    public void createConsultaInfoCvFrame() {
         Ricerca_CentroVaccinale_View ricerca_centroVaccinale_view = new Ricerca_CentroVaccinale_View();
         ricerca_centroVaccinale_view.setVisible(true);
-        accLibFrameView.dispose();
+        mainAccLibFrameView.dispose();
     }
 
 }

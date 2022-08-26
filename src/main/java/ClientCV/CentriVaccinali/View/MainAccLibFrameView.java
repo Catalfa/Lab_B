@@ -75,8 +75,4 @@ public class MainAccLibFrameView extends JFrame {
 
     }
 
-    public void deleteView() {
-        frame.setVisible(false);
-        frame.dispose();
-    }
 }
