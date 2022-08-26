@@ -41,10 +41,10 @@ public class LoginCittadinoController {
             return 1;
         }
 
-       /* if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
+        if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
             utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
             return 1;
-        } */
+        }
 
         switch (Stub.loginCittadino(username,password.toString(), cf)){
             case 1:
