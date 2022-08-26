@@ -47,12 +47,14 @@ public interface Server extends Remote {
 	
 	/**
 	 * Interfaccia per gestire il login del cittadino.
-	 * @param username            Lo username del cittadino.
-	 * @param password            La password del cittadino.
-	 * @return					Un codice per gestire i vari casi di avviso ed errore.
-	 * @throws RemoteException	Eccezione remota.
+	 *
+	 * @param username Lo username del cittadino.
+	 * @param password La password del cittadino.
+	 * @param cf
+	 * @throws RemoteException Eccezione remota.
+	 * @return Un codice per gestire i vari casi di avviso ed errore.
 	 */
-	int loginCittadino(String username, String password) throws RemoteException;
+	int loginCittadino(String username, String password, String cf) throws RemoteException;
 	/**
 	 * Interfaccia per gestire il login del centro vaccinale.
 	 * @param username            Lo username del centro vaccinale.

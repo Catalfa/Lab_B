@@ -36,17 +36,17 @@ public class LoginCittadinoController {
 
     public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
 
-        if(username.toString().isEmpty() || password.length == 0 || cf == null ||cf.length()!=16){
+        if(username.toString().isEmpty() || password.length == 0 || cf == null || cf.length()!=16){
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati correttamente.");
             return 1;
         }
 
-        if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
+       /* if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
             utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
             return 1;
-        }
+        } */
 
-        switch (Stub.loginCittadino(username,password.toString())){
+        switch (Stub.loginCittadino(username,password.toString(), cf)){
             case 1:
                 AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(new CittadiniRegistratiDaoImpl().getIdCittadino(cf));      //log corretto
                 break;
@@ -55,6 +55,9 @@ public class LoginCittadinoController {
                 break;
             case 3:
                 utility.showWarningPopUp("Attenzione!", "Password errata");
+                break;
+            case 4:
+                utility.showWarningPopUp("Attenzione!", "Codice Fiscale errato");
                 break;
         }
         loginCittadinoView.dispose();

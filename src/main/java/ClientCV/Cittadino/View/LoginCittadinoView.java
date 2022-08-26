@@ -44,7 +44,7 @@ public class LoginCittadinoView extends JFrame {
         JLabel loginCittadino = new JLabel("LOGIN CITTADINO", SwingConstants.CENTER);
         JLabel username = new JLabel("Username");
         JLabel password = new JLabel("Password");
-        JLabel cf=new JLabel("codice fiscale");
+        JLabel cf = new JLabel("Codice Fiscale");
 
         loginCittadino.setFont(mainFont);
 

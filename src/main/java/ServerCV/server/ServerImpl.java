@@ -54,7 +54,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * @return
 	 */
 	@Override
-	public int loginCittadino(String username, String password) throws RemoteException {
+	public int loginCittadino(String username, String password, String cf) throws RemoteException {
 		return gestClient.gestLoginCittadino(username, password);
 	}
 
