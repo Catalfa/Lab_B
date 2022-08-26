@@ -37,7 +37,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(6, ((Integer)infoCentroVaccinale.getNumCiv()).toString());
 			pstmt.setString(7, infoCentroVaccinale.getComune());
 			pstmt.setString(8, infoCentroVaccinale.getProvincia());
-			pstmt.setString(9, ((Integer)infoCentroVaccinale.getCap()).toString());
+			pstmt.setInt(9, infoCentroVaccinale.getCap());
 			pstmt.setString(10, infoCentroVaccinale.getUsername());
 			pstmt.setString(11, infoCentroVaccinale.getPassword());
 			pstmt.executeUpdate();
@@ -132,6 +132,30 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 		return false;
 	}
+
+	//metodo per controllare che lo user del centro sia corretto
+	public Boolean existUser(String username){
+		String qExistCenterOnDb = "SELECT username FROM CentriVaccinali WHERE username = ?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCenterOnDb);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				return true;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return false;
+	}
+
 	//query implementata
 	public Boolean checkLoginCentro(String username, String password) {
 		String qCentroPasswordMatch = "SELECT username, password FROM CentriVaccinali WHERE username = ? AND password = ?";
