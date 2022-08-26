@@ -11,7 +11,7 @@ import java.rmi.RemoteException;
 public class LoginCittadinoView extends JFrame {
     
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
-    private final int WIDTH = 400;
+    private final int WIDTH = 370;
     private final int HIGHT = 300;
     private JTextField usernamField = new JTextField(20);
     private JPasswordField passwordField = new JPasswordField(20);
@@ -36,9 +36,9 @@ public class LoginCittadinoView extends JFrame {
         cfPanel.setBackground(Color.WHITE);
         buttonPanel.setBackground(Color.WHITE);
 
-        usernamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-        passwordPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-        cfPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 25));
+        usernamePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 7, 25));
+        passwordPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 7, 25));
+        cfPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 7, 25));
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 7, 25));
 
         JLabel loginCittadino = new JLabel("LOGIN CITTADINO", SwingConstants.CENTER);

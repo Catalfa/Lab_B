@@ -41,10 +41,10 @@ public class LoginCittadinoController {
         loginCittadinoView.dispose();
 
 
-        /*if(username.toString().isEmpty() || password.length == 0 || cf == null || cf.length()!=16){
+        if(username.toString().isEmpty() || password.length == 0 || cf.length()!=16){
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati correttamente.");
             return 1;
-        }*/
+        }
 
         if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
             utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
