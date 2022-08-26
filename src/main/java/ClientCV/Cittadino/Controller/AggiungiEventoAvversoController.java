@@ -45,14 +45,14 @@ public class AggiungiEventoAvversoController {
 
         try {
             int risultato = Stub.InserisciEventiAvversi(eventoAvverso, codiceFiscale);
-            if (risultato == 2) {
+           if (risultato == 2) {
                 Utility.showErrorPopUp("ERRORE", "Non ti sei vaccinato in questo centro vaccinale");
                 return;
             }if (risultato == 3) {
                 Utility.showErrorPopUp("ERRORE", "Sono gia' stati inseriti degli eventi avversi per questo Id");
                 return;
             }
-            if (risultato == 1) {
+            if (risultato == 1 ) {
                 Utility.showInformationPopUp("Richiesta andata a buon fine.", "Eventi avversi inseriti con successo");
                 eventoAvversoView.deleteView();
             }
@@ -67,7 +67,7 @@ public class AggiungiEventoAvversoController {
 	 * @param count_numCharNote		Il numero di caratteri disponibili rimanenti.
 	 */
     public void checkNumCharAction(KeyEvent arg0, int count_numCharNote) {
-        if((count_numCharNote%256)==0) {
+        if(count_numCharNote==256){
             //TODO da controllare
             Utility.showErrorPopUp("ERRORE", "Raggiunto numero massimo di caratteri disponibili");
             arg0.consume();

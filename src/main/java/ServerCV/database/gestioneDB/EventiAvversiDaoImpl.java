@@ -16,16 +16,16 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	//query implementata
 	//non verifcato funzionamento su DB
 	@Override
-	public void insertEventoAvverso(String id_evento, String nomeCentro, String evento, Integer severita, String note, String cf) {
-		String qInserisciEventiAvversi = "INSERT INTO Eventi_Avversi (id_evento, nome_centro, nome_evento, severita, note_opzionali, cf) VALUES (?, ?, ?, ?, ?,?)";
+	public void insertEventoAvverso(String id_vaccinazione, String id_centro, String evento, Integer severita, String note, String cf) {
+		String qInserisciEventiAvversi = "INSERT INTO Eventi_Avversi (id_vaccinazione, id_centro, nome_evento, severita, note_opzionali, cf) VALUES (?, ?, ?, ?, ?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qInserisciEventiAvversi);
-			pstmt.setString(1, id_evento);
-			pstmt.setString(2, nomeCentro);
+			pstmt.setString(1, id_vaccinazione);
+			pstmt.setString(2, id_centro);
 			pstmt.setString(3, evento);
 			pstmt.setInt(4, severita);
 			pstmt.setString(5, note);
@@ -107,22 +107,23 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 */
 	//query implementata
 	public boolean existId(String[] id) {
-		String qExistIdInEventiAvversi = "SELECT idvaccinazione FROM Eventi_Avversi WHERE idvaccinazione = ?";
+		String qExistIdInEventiAvversi = "SELECT id_vaccinazione FROM Eventi_Avversi WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
-		
+
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInEventiAvversi);
 			pstmt.setString(1, id[0]);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			if (rs.next()) {
 				return true;
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
+			return false;
 		} finally {
 			closeConnection(connection);
 		}

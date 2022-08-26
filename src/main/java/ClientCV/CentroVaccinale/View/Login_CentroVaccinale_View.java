@@ -49,8 +49,8 @@ public class Login_CentroVaccinale_View extends JFrame {
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
 
         JLabel label_loginCittadino = new JLabel("LOGIN Centro Vaccinale", SwingConstants.CENTER);
-        JLabel label_user = new JLabel("Username", SwingConstants.LEFT);
-        JLabel label_password = new JLabel("Password", SwingConstants.LEFT);
+        JLabel label_user = new JLabel("Username", SwingConstants.CENTER);
+        JLabel label_password = new JLabel("Password", SwingConstants.CENTER);
 
         label_loginCittadino.setFont(mainFont);
 

@@ -290,7 +290,6 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		ResultSet rs;
 		Connection connection = null;
 		String [] risultato;
-		
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetIdVaccinazioneInCittadiniRegistrati);
@@ -300,7 +299,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			while(rs.next()) {
 					String id_cittadno=rs.getString("idvaccinazione");
 				String id_centro=rs.getString("id_centro");
-				risultato= new String[]{id_cittadno, id_centro};
+				risultato= new String[]{id_cittadno, id_centro, cf};
 				return risultato;
 			}
 		} catch (SQLException ex) {

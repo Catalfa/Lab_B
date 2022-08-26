@@ -222,7 +222,7 @@ public class GestioneClient {
 	public int gestInserimentoEventoAvverso(EventiAvversi eventoAvverso) {
 		if(!centriVaccinaliDao.existIdVaccinazione(eventoAvverso.getNomeCentro(), eventoAvverso.getIdEvento()))
 			return 2;
-		else if(gestControlloPreRegistrazioneEventoAvverso(eventoAvverso.getCf_evento()))
+		else if(!gestControlloPreRegistrazioneEventoAvverso(eventoAvverso.getCf_evento()))
 			return 3;
 		else{
 				for(int i=0; i<6; i++) {

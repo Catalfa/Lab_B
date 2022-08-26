@@ -1,7 +1,5 @@
 package ClientCV.CentroVaccinale.Controller;
 
-import ClientCV.AccessoLibero.View.InfCvView;
-import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
 import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.Utility;
@@ -18,7 +16,6 @@ public class RegistraVaccinatoController {
 
 
     private Utility utility = new Utility();
-    private String cf;
 
     public RegistraVaccinatoController(RegistraVaccinatoView registraVaccinatoView) {
         Stub = ServerSingleton.getInstance();
@@ -34,7 +31,6 @@ public class RegistraVaccinatoController {
     }
 
     public void registraVaccinato(RegistrazioniVaccinati vaccinato) {
-        this.cf = cf;
 
         if (vaccinato.getNomeVaccinato().isEmpty() ||vaccinato.getCognomeVaccinato().isEmpty() || vaccinato.getIdVaccinazione().isEmpty() || vaccinato.getTipoVaccino().isEmpty() || vaccinato.getDataVaccino() == null || vaccinato.getIdCentro().isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");

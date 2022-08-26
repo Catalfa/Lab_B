@@ -1,6 +1,7 @@
 package ClientCV.Cittadino.View;
 
 import ClientCV.Cittadino.Controller.AggiungiEventoAvversoController;
+import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
     private static final int WIDTH = 900;
-    private static final int HIGHT = 700;
+    private static final int HIGHT = 800;
 
     /*
     Creo questi panels inquesta posizione perchè mi serviranno
@@ -190,7 +191,14 @@ public class AggiungiEventoAvversoView extends JFrame{
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
                     noteEventi[i] = noteFields[i].getText();
                 }
-                controller.inserisciEventiAvversiAction( idEvento, "", nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
+                System.out.println(idEvento);
+                System.out.println(id_cittadino[2]);
+                System.out.println(nomeCentro);
+                System.out.println(eventiRegistrabili);
+                System.out.println(intensitaEventi);
+                System.out.println(noteEventi);
+
+                controller.inserisciEventiAvversiAction( idEvento, id_cittadino[2], nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
             }
         });
 
@@ -270,7 +278,7 @@ public class AggiungiEventoAvversoView extends JFrame{
                 public void keyTyped(KeyEvent arg0) {
                     int count_numCharNote = max_numCharNote - noteFields[index].getText().length();
                     label.setText(count_numCharNote + " caratteri rimanenti.");
-                    controller.checkNumCharAction(arg0, count_numCharNote);
+                    controller.checkNumCharAction(arg0, noteFields[index].getText().length());
                 }
                 
                 @Override

@@ -59,14 +59,13 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
     public void Create_EventiAvversi(Connection conn){
         sql= """
                 CREATE TABLE IF NOT EXISTS Eventi_Avversi (
-                \tid_evento VARCHAR(20) PRIMARY KEY,
-                \tnome_centro VARCHAR(60) NOT NULL,
+                \tid_vaccinazione VARCHAR(20) NOT NULL,
+                \tid_centro VARCHAR(60) NOT NULL,
                 \tnome_evento VARCHAR(60) NOT NULL,
                 \tnote_opzionali VARCHAR(256),
                 \tseverita INT NOT NULL,
-                \tuserid VARCHAR(40) NOT NULL,
-                \tpassword VARCHAR(40) NOT NULL,
                 \tcf VARCHAR(16) NOT NULL,
+                \tPRIMARY KEY(id_vaccinazione, id_centro, nome_evento),
                 \tFOREIGN KEY (cf) REFERENCES Cittadini_Registrati(cf)
                 );""";
         InvioCreateTable(sql,conn);
