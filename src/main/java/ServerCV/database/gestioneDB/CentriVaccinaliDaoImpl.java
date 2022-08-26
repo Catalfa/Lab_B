@@ -270,7 +270,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	@Override
 	public Boolean existIdVaccinazione(String nomeCentro, String id) {
 		String centro=accorpamento(nomeCentro);
-		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
+		String qExistIdInVaccinati_ = "SELECT id_vaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -298,6 +298,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 */
 	//Non verificato che moto sia funzionante su DB, ma già implementata
 	@Override
+
+	//TODO metodo da sistemare per far sì che si possa registrare un vaccinato e che questo possa successivamente inserire un evento avveso
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
 		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
