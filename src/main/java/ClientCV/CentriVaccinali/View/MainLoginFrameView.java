@@ -14,14 +14,14 @@ public class MainLoginFrameView extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 16);
-    private final int WIDTH = 500;
-    private final int HIGHT = 150;
+    private final int WIDTH = 600;
+    private final int HIGHT = 250;
 
     public MainLoginFrameView(){
 
         MainLoginFrameController controller = new MainLoginFrameController(this);
 
-        JLabel lbWelcomeLogFrame = new JLabel("Desideri fare il login come cittadino oppure dottore?");
+        JLabel lbWelcomeLogFrame = new JLabel("Desideri fare il login come cittadino oppure come Centro Vaccinale?");
         JButton btnLogCittadino = new JButton("Cittadino");
         JButton btnLoginDottore = new JButton("Centro Vaccinale");
         JButton btnBack = new JButton("Indietro");

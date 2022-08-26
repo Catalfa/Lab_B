@@ -1,6 +1,7 @@
 package ClientCV.CentroVaccinale.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
+import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
@@ -40,6 +41,9 @@ public class Registra_CentroVaccinale_Controller {
      */
     public int signIn(InfoCentriVaccinali cVaccinale) throws RemoteException {
 
+        RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
+        registraVaccinatoView.setVisible(true);
+        registraCentroVaccinaleView.dispose();
         /*
         gli errori di tipo 1 sono errori dal lato client
         gli errori di tipo 2 sono errori dal lato server

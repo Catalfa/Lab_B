@@ -2,7 +2,9 @@ package ClientCV.CentroVaccinale.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
+import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
+import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.InfoCentriVaccinali;
@@ -33,7 +35,9 @@ public class Login_CentroVaccinale_Controller {
      * Metodo che gestisce il login del centro vaccinale.
      */
     public int loginCentroVaccinale(String user, String password) {
-
+        RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
+        registraVaccinatoView.setVisible(true);
+        loginCVaccView.dispose();
         //String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap 
         //infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
 

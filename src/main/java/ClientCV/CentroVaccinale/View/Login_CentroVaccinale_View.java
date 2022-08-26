@@ -108,9 +108,10 @@ public class Login_CentroVaccinale_View extends JFrame {
                 switch (controller.loginCentroVaccinale( user, password)){
                     //TODO @Andre implementare frame successivi
                     case 1:
-                        utility.showConfirmationPopUp("Sucesso!","Login effettuato");
+                        utility.showConfirmationPopUp("Successo!","Login effettuato");
                         //login effettuato con successo
                         break;
+
                     case 2:
                         utility.showWarningPopUp("Attenzione!","Lo username non è corretto");
                         //username non esistente
