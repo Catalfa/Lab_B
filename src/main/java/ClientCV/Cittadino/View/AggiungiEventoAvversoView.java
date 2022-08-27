@@ -16,8 +16,8 @@ public class AggiungiEventoAvversoView extends JFrame{
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
-    private static final int WIDTH = 900;
-    private static final int HIGHT = 900;
+    private static final int WIDTH = 930;
+    private static final int HIGHT = 800;
 
     /*
     Creo questi panels inquesta posizione perchè mi serviranno
@@ -30,7 +30,7 @@ public class AggiungiEventoAvversoView extends JFrame{
 
     private String[] labelNames = {"ID Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensità: ", "Note: "};
     private String[] buttonNames = {"Salva evento", "Indietro"};
-    private ButtonGroup[] buttonGroup = new ButtonGroup[6];
+    private ButtonGroup[] buttonGroup = new ButtonGroup[7];
     private JTextField[] noteFields = new JTextField[7];
     private JScrollPane[] scrollPanes = new JScrollPane[7];
     
@@ -75,15 +75,15 @@ public class AggiungiEventoAvversoView extends JFrame{
         panel_infoCentro.setPreferredSize(new Dimension(WIDTH, 200));
         panel_infoCentro.setBackground(Color.WHITE);
 
-        panel_tipoEvento.setLayout(new GridLayout(6, 1, 0, 30));
+        panel_tipoEvento.setLayout(new GridLayout(7, 1, 0, 20));
         panel_tipoEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
         panel_tipoEvento.setBackground(Color.WHITE);
 
-        panel_intensitaEvento.setLayout(new GridLayout(6, 5, 0, 30));
+        panel_intensitaEvento.setLayout(new GridLayout(7, 5, 0, 20));
         panel_intensitaEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
         panel_intensitaEvento.setBackground(Color.WHITE);
 
-        panel_noteEvento.setLayout(new GridLayout(6, 2, 0, 30));
+        panel_noteEvento.setLayout(new GridLayout(7, 2, 0, 20));
         panel_noteEvento.setPreferredSize(new Dimension(WIDTH/3, 400));
         panel_noteEvento.setBackground(Color.WHITE);
 
@@ -185,10 +185,10 @@ public class AggiungiEventoAvversoView extends JFrame{
                 
                 String idEvento = label_IdEvento.getText();
                 String nomeCentro = label_InfoNomeCentro.getText();
-                Integer intensitaEventi[] = new Integer[6];
-                String noteEventi[] = new String[6];
+                Integer intensitaEventi[] = new Integer[7];
+                String noteEventi[] = new String[7];
 
-                for(int i=0; i<6; i++){
+                for(int i=0; i<7; i++){
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
                     noteEventi[i] = noteFields[i].getText();
                 }
@@ -236,7 +236,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     *Metodo per inizializzare il ButtonGroup
     */
     private void inizializzaButtonGroup(){
-        for(int i=0; i<6; i++){
+        for(int i=0; i<7; i++){
             buttonGroup[i] = new ButtonGroup();
         }
     }
@@ -246,8 +246,8 @@ public class AggiungiEventoAvversoView extends JFrame{
 	 */
     private void addIntensita(){
         inizializzaButtonGroup();
-        for(int j=0; j<6; j++){
-            for(int i=0; i<6; i++){                
+        for(int j=0; j<7; j++){
+            for(int i=0; i<6; i++){
                 JRadioButton rb_intensita = new JRadioButton(""+i, (i==1 ? true : false));
                 rb_intensita.setActionCommand(""+j);
                 rb_intensita.setVerticalTextPosition(JRadioButton.BOTTOM);
@@ -264,7 +264,7 @@ public class AggiungiEventoAvversoView extends JFrame{
 	 */
     private void addNote(){
         int max_numCharNote = 256;
-        for(int i=0; i<6; i++){
+        for(int i=0; i<7; i++){
             scrollPanes[i] = new JScrollPane();
             noteFields[i] = new JTextField();
             scrollPanes[i].add(noteFields[i]);
