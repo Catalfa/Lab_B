@@ -6,10 +6,7 @@ import ServerCV.database.CreazioneTabelle;
 import ServerCV.database.gestioneDB.interfacceDB.CentriVaccinaliDao;
 import ServerCV.server.Utility;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -302,7 +299,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//TODO metodo da sistemare per far sì che si possa registrare un vaccinato e che questo possa successivamente inserire un evento avveso
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
-		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String centro=accorpamento(nomeCentro);
+		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(centro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		

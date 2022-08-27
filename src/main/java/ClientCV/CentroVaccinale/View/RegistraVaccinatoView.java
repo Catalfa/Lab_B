@@ -7,9 +7,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+//import java.util.Date;
 
 public class RegistraVaccinatoView extends JFrame{
 
@@ -24,6 +27,8 @@ public class RegistraVaccinatoView extends JFrame{
     public JTextField[] textFields = new JTextField[8];
     private JLabel[] labels = new JLabel[8];
     //public JPasswordField passwordField;
+
+
 
     public RegistraVaccinatoView() {
 
@@ -93,12 +98,16 @@ public class RegistraVaccinatoView extends JFrame{
                 metodo per fare il controllo di un int
                 */
                 Date date1=null;
-                try {
-                     date1=new SimpleDateFormat("dd/MM/yyyy").parse((textFields[2]).getText());
-                } catch (ParseException ex) {
-                    ex.printStackTrace();
-                }
-                RegistrazioniVaccinati vaccinato=new RegistrazioniVaccinati(textFields[7].getText(),textFields[6].getText(),textFields[3].getText(), (java.sql.Date) date1,textFields[4].getText(),textFields[5].getText(),textFields[0].getText(),textFields[1].getText());
+
+
+            //    try {
+
+               date1= Date.valueOf(textFields[2].getText());
+              //   date1= (Date) new SimpleDateFormat("dd/MM/yyyy").parse((textFields[2]).getText());
+          //      } catch (ParseException ex) {
+            //        ex.printStackTrace();
+              //  }
+                RegistrazioniVaccinati vaccinato=new RegistrazioniVaccinati(textFields[7].getText(),textFields[6].getText(),textFields[3].getText(), date1,textFields[4].getText(),textFields[5].getText(),textFields[0].getText(),textFields[1].getText());
                controller.registraVaccinato(vaccinato);
             }
 

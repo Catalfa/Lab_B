@@ -37,7 +37,9 @@ public class RegistrazioniVaccinati implements Serializable {
 		this.nome=nome;
 		this.cognome=cognome;
 	}
-	
+
+
+
 	/**
 	 * Metodo che restituisce il nome del centro vaccinale.
 	 * @return		Il nome del centro vaccinale.
@@ -61,9 +63,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * Metodo che restituisce la data della vaccinazione.
 	 * @return		La data della vaccinazione.
 	 */
-	public Date getDataVaccino() {
-		return dataVaccino;
-	}
+	public Date getDataVaccino() {return dataVaccino;}
 	
 	/**
 	 * Metodo che restituisce il tipo di vaccino somministrato.
