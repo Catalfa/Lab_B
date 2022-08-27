@@ -14,7 +14,7 @@ public class AggiungiEventoAvversoController {
 
    // public LoginCittadinoView username;
    // public LoginCittadinoView password;
-
+    public LoginCittadinoView cf;
     private AggiungiEventoAvversoView eventoAvversoView;
     private Server Stub;
     //private ServerImpl serverImpl;

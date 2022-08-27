@@ -17,7 +17,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
     private static final int WIDTH = 900;
-    private static final int HIGHT = 800;
+    private static final int HIGHT = 900;
 
     /*
     Creo questi panels inquesta posizione perchè mi serviranno
@@ -31,14 +31,15 @@ public class AggiungiEventoAvversoView extends JFrame{
     private String[] labelNames = {"ID Centro: ", "ID Vaccinazione: ", "Eventi Avversi: ", "Tipo Evento: ", "Intensità: ", "Note: "};
     private String[] buttonNames = {"Salva evento", "Indietro"};
     private ButtonGroup[] buttonGroup = new ButtonGroup[6];
-    private JTextField[] noteFields = new JTextField[6];
-    private JScrollPane[] scrollPanes = new JScrollPane[6];
+    private JTextField[] noteFields = new JTextField[7];
+    private JScrollPane[] scrollPanes = new JScrollPane[7];
     
     private JLabel label_InfoNomeCentro;
     private JLabel label_IdEvento;
 
     String[] eventiRegistrabili = {
-        "Mal di testa", "Mal di pancia",
+        "Mal di testa",
+        "Mal di pancia",
         "Febbre",
         "Dolori articolari - muscolari",
         "Linfoadenopatia",
@@ -168,11 +169,11 @@ public class AggiungiEventoAvversoView extends JFrame{
 
         //Inizializziamo anche i bottoni creati sopra
         JButton btn_backToSignIn = new JButton(buttonNames[1]);
-        btn_backToSignIn.setBounds(WIDTH/5, 20, 50, 15);
+        btn_backToSignIn.setBounds(WIDTH/5, 20, 50, 10);
         panelButton.add(btn_backToSignIn);
 
         JButton btn_inserisciEventiAvversi = new JButton(buttonNames[0]);
-        btn_inserisciEventiAvversi.setBounds((WIDTH/5)*3, 20, 50, 15);
+        btn_inserisciEventiAvversi.setBounds((WIDTH/5)*3, 20, 50, 10);
         panelButton.add(btn_inserisciEventiAvversi);
 
         container.add(panelButton, BorderLayout.PAGE_END);
@@ -215,7 +216,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         
     }
 
-    public AggiungiEventoAvversoView() {          /**COLLEGAMENTO NUOVO, RICONTROLLO SE SERVE**/
+    public AggiungiEventoAvversoView() {
 
     }
 
