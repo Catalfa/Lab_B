@@ -22,7 +22,7 @@ public class MainAccLibFrameView extends JFrame {
 
         JLabel lbAccLibFrame = new JLabel("Accesso Libero");
         JButton btnConsultaInfoCv = new JButton("Consulta Informazioni Centro Vaccinale");
-        JButton btnBack = new JButton("Indietro");
+        JButton btnBack = new JButton("Back");
 
         btnConsultaInfoCv.setFont(mainFont);
 

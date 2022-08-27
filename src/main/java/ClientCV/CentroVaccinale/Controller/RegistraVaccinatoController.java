@@ -32,7 +32,7 @@ public class RegistraVaccinatoController {
 
     public void registraVaccinato(RegistrazioniVaccinati vaccinato) {
 
-        if (vaccinato.getNomeVaccinato().isEmpty() ||vaccinato.getCognomeVaccinato().isEmpty() || vaccinato.getIdVaccinazione().isEmpty() || vaccinato.getTipoVaccino().isEmpty() || vaccinato.getDataVaccino() == null || vaccinato.getIdCentro().isEmpty()) {
+        if (vaccinato.getNomeVaccinato().isEmpty() ||vaccinato.getCognomeVaccinato().isEmpty() || vaccinato.getIdVaccinazione().isEmpty() || vaccinato.getTipoVaccino().isEmpty() || vaccinato.getDataVaccino() == null || vaccinato.getIdCentro().isEmpty() || vaccinato.getnomeCentro().isEmpty()) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati.");
             return;
         } else {

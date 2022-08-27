@@ -24,7 +24,7 @@ public class MainLoginFrameView extends JFrame {
         JLabel lbWelcomeLogFrame = new JLabel("Desideri fare il login come cittadino oppure come Centro Vaccinale?");
         JButton btnLogCittadino = new JButton("Cittadino");
         JButton btnLoginDottore = new JButton("Centro Vaccinale");
-        JButton btnBack = new JButton("Indietro");
+        JButton btnBack = new JButton("Back");
 
         btnLogCittadino.setFont(mainFont);
         btnLoginDottore.setFont(mainFont);

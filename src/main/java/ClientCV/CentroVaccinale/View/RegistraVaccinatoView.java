@@ -17,12 +17,12 @@ public class RegistraVaccinatoView extends JFrame{
     private final int WIDTH = 520;
     private final int HIGHT = 600;
 
-    private String[] labelNames = {"Nome", "Cognome","Data vaccino", "Codice Fiscale", "Vaccino somministrato", "Id vaccinazione", "Id centro"};
+    private String[] labelNames = {"Nome", "Cognome","Data vaccino", "Codice Fiscale", "Vaccino somministrato", "Id vaccinazione", "Id centro","Nome Centro"};
 
     private String[] buttonNames = {"BACK", "REGISTRA"};
     private JButton[] buttons = new JButton[2];
-    public JTextField[] textFields = new JTextField[7];
-    private JLabel[] labels = new JLabel[7];
+    public JTextField[] textFields = new JTextField[8];
+    private JLabel[] labels = new JLabel[8];
     //public JPasswordField passwordField;
 
     public RegistraVaccinatoView() {
@@ -42,7 +42,7 @@ public class RegistraVaccinatoView extends JFrame{
         mainPanel.add(registraVaccinato);
 
         int y = 50;
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<8; i++) {
             labels[i] = new JLabel(labelNames[i], SwingConstants.LEFT);
             //primo valore della pos rispetto x, secondo valore della pos rispetto y, terzo ?, quarto sipra ?
             labels[i].setBounds(30, y, 200, 25);
@@ -51,7 +51,7 @@ public class RegistraVaccinatoView extends JFrame{
         }
 
         y = 50;
-        for(int i=0; i<7; i++) {
+        for(int i=0; i<8; i++) {
             textFields[i] = new JTextField(20);
             textFields[i].setBounds(220, y, 250, 25);
             //textFields[i] = new JTextField(labelNames[i]);
@@ -104,13 +104,5 @@ public class RegistraVaccinatoView extends JFrame{
 
         });
 
-        buttons[2].addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.goBack();
-            }
-
-        });
     }
 }
