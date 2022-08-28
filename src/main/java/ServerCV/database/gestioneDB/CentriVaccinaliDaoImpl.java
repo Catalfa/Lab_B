@@ -312,7 +312,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(1, registrazioneVaccinato.getCf());
 			pstmt.setString(2, registrazioneVaccinato.getNomeVaccinato());
 			pstmt.setString(3, registrazioneVaccinato.getCognomeVaccinato());
-			pstmt.setDate(4, registrazioneVaccinato.getDataVaccino());
+			pstmt.setString(4, registrazioneVaccinato.getDataVaccino());
 			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino());
 			pstmt.setString(6, registrazioneVaccinato.getIdVaccinazione());
 			pstmt.setString(7, registrazioneVaccinato.getIdCentro());

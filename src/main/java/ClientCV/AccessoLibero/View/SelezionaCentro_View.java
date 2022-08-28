@@ -1,16 +1,11 @@
 package ClientCV.AccessoLibero.View;
 
-import ClientCV.AccessoLibero.Controller.SelezionaCentro_Controller;
-import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import Common.InfoCentriVaccinali;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 public class SelezionaCentro_View extends JFrame{
@@ -18,7 +13,6 @@ public class SelezionaCentro_View extends JFrame{
     private static final int WHIDTH = 450;
     private static final int HIGHT = 550;
 
-    public JDialog dialog_mostraInfoCvCittadinoView;
     public JFrame frame_showInfoCvCittadino;
     public JPanel panel_showInfoCvCittadino;
     public JLabel label_infoNomeCentro;
@@ -36,12 +30,8 @@ public class SelezionaCentro_View extends JFrame{
     private JTable table;
     public DefaultTableModel tableModel;
     private JScrollPane scrollPane;
-    //private ShowInfo_CV_CittadinoController contorller;
     
     public SelezionaCentro_View(List <InfoCentriVaccinali> listaCentri) {
-
-
-        //this.controller = new ShowInfo_CV_CittadinoController(this);
 
         frame_showInfoCvCittadino = new JFrame();
         panel_showInfoCvCittadino = new JPanel();

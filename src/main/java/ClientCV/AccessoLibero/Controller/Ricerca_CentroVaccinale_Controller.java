@@ -44,7 +44,8 @@ public class Ricerca_CentroVaccinale_Controller {
             e.printStackTrace();
             Utility.showInformationPopUp("Attenzione!", "Nessun Centro Trovato");
         }
-        
+
+
         selezionaCentro_View = new SelezionaCentro_View(listaCentri);
         selezionaCentro_View.setVisible(true);
     }
