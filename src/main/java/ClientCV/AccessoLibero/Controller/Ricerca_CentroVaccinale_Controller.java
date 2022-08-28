@@ -32,9 +32,6 @@ public class Ricerca_CentroVaccinale_Controller {
 
     public void cercaCentro(String nome){
 
-        SelezionaCentro_View selezionaCentro_view = new SelezionaCentro_View();
-        selezionaCentro_view.setVisible(true);
-        ricerca_CentroVaccinale_View.dispose();
 
         List<InfoCentriVaccinali> listaCentri = new ArrayList();
         try {
@@ -48,6 +45,7 @@ public class Ricerca_CentroVaccinale_Controller {
 
         selezionaCentro_View = new SelezionaCentro_View(listaCentri);
         selezionaCentro_View.setVisible(true);
+        ricerca_CentroVaccinale_View.dispose();
     }
     
 }

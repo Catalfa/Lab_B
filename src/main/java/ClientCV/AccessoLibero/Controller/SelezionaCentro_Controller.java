@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class SelezionaCentro_Controller extends JFrame{
 
-    SelezionaCentro_View view;
-    Ricerca_CentroVaccinale_View ricerca_centroVaccinale_View;
+    private SelezionaCentro_View view;
+    private Ricerca_CentroVaccinale_View ricerca_centroVaccinale_View;
 
     public SelezionaCentro_Controller(SelezionaCentro_View selezionaCentro_View){
         this.view = selezionaCentro_View;
