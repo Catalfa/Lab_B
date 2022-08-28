@@ -109,7 +109,8 @@ public class Login_CentroVaccinale_View extends JFrame {
                     //TODO @Andre implementare frame successivi
                     case 1:
                         utility.showConfirmationPopUp("Successo!","Login effettuato");
-                        //login effettuato con successo
+                        RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
+                        registraVaccinatoView.setVisible(true);
                         break;
 
                     case 2:

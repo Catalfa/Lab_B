@@ -41,6 +41,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(10, infoCentroVaccinale.getUsername());
 			pstmt.setString(11, infoCentroVaccinale.getPassword());
 			pstmt.executeUpdate();
+			createVaccinati_(infoCentroVaccinale.getNomeCentro());
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		} finally {
@@ -259,7 +260,31 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return false;
 	}
 
-	
+	public String getNomeCentro(String id_centro){
+		String tmp=null;
+		String qCentroPasswordMatch = "SELECT nome_centro FROM CentriVaccinali WHERE id_centro=?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qCentroPasswordMatch);
+			pstmt.setString(1, id_centro);
+			rs = pstmt.executeQuery();
+
+			while(rs.next())
+				tmp =rs.getString("nome_centro");
+			System.out.println(tmp);
+				return tmp;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return tmp;
+		} finally {
+			closeConnection(connection);
+		}
+	}
+
 	/**
 	 * Metodo che controlla se il cittadino registrato e' stato vaccinato in quel determinato centro vaccinale.
 	 * @param nomeCentro	Il nome del centro vaccinale.
@@ -269,8 +294,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//query implementata
 	@Override
 	public Boolean existIdVaccinazione(String nomeCentro, String id) {
-		String centro=accorpamento(nomeCentro);
-		String qExistIdInVaccinati_ = "SELECT id_vaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
+		String centro=getNomeCentro(nomeCentro);
+		System.out.println(centro);
+		createVaccinati_(centro);
+		centro=accorpamento(centro);
+		String qExistIdInVaccinati_ = "SELECT idvaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -291,6 +319,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 		return false;
 	}
+
+
 
 	/**
 	 * Metodo che inserisce i dati inseriti dal cittadino registrato in fase di prenotazione dopo essere stato vaccinato.

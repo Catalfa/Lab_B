@@ -1,5 +1,6 @@
 package ClientCV.Cittadino.Controller;
 
+import ClientCV.CentriVaccinali.Controller.MainLoginFrameController;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
@@ -23,7 +24,7 @@ public class SignInCittadinoController extends JFrame{
     private Utility utility = new Utility();
     public final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     Server stub;
-    
+    MainLoginFrameController controller = new MainLoginFrameController(new MainLoginFrameView());
     
 
     public SignInCittadinoController(SignInCittadinoView signInCittadinoView) {
@@ -63,7 +64,7 @@ public class SignInCittadinoController extends JFrame{
            }else{
                new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
            }
-            
+            controller.createLoginCittadinoFrame();
             signInCittadinoView.dispose();
         
         return 0;

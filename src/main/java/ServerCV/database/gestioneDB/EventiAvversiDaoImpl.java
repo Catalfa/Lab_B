@@ -107,7 +107,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 */
 	//query implementata
 	public boolean existId(String[] id) {
-		String qExistIdInEventiAvversi = "SELECT id_vaccinazione FROM Eventi_Avversi WHERE idvaccinazione = ?";
+		String qExistIdInEventiAvversi = "SELECT id_vaccinazione FROM Eventi_Avversi WHERE id_vaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
