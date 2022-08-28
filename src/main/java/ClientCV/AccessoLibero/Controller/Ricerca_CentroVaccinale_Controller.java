@@ -47,15 +47,17 @@ public class Ricerca_CentroVaccinale_Controller {
             System.out.println(listaCentri.get(0).getComune());
             System.out.println(listaCentri.get(0).getProvincia());
             System.out.println(listaCentri.get(0).getCap());
+            selezionaCentro_View = new SelezionaCentro_View(listaCentri);
+            selezionaCentro_View.setVisible(true);
+            ricerca_CentroVaccinale_View.dispose();
         } catch (Exception e) {
             e.printStackTrace();
             Utility.showInformationPopUp("Attenzione!", "Nessun Centro Trovato");
         }
 
 
-        selezionaCentro_View = new SelezionaCentro_View(listaCentri);
-        selezionaCentro_View.setVisible(true);
-        ricerca_CentroVaccinale_View.dispose();
+
+
     }
     
 }

@@ -157,18 +157,17 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if(!(tf_cercaPerComune.getText().isEmpty() || tf_cercaPerNomeCentro.getText().isEmpty() || tf_cercaPerTipologia.getText().isEmpty())){
-                    
+                if((tf_cercaPerComune.getText().equals("Comune") && tf_cercaPerNomeCentro.getText().equals("Nome") && tf_cercaPerTipologia.getText().equals("Tipologia"))){
+                Utility.showErrorPopUp("attenzione", "riempire almeno un campo di ricerca");
+                }
                     if(!(tf_cercaPerComune.getText().equals("Comune") && tf_cercaPerNomeCentro.getText().equals("Nome") && tf_cercaPerTipologia.getText().equals("Tipologia"))){
-                        frame.dispose();
                         controller.cercaCentro(getTextFieldText());
+                        frame.dispose();
+
                         
                     }else {Utility.showInformationPopUp("Attenzione!", "Riempire almeno un campo.");}
                    
-                }else {Utility.showInformationPopUp("Attenzione!", "Riempire almeno un campo.");}
-            
-            }
-
+                }
         });
 
         btn_reset.addActionListener(new ActionListener(){

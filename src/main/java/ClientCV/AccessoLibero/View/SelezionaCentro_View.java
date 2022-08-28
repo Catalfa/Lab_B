@@ -1,6 +1,5 @@
 package ClientCV.AccessoLibero.View;
 
-import ClientCV.AccessoLibero.Controller.Ricerca_CentroVaccinale_Controller;
 import ClientCV.AccessoLibero.Controller.SelezionaCentro_Controller;
 import Common.InfoCentriVaccinali;
 
@@ -14,6 +13,8 @@ public class SelezionaCentro_View extends JFrame{
 
     SelezionaCentro_Controller controller;
 
+    private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
+    private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 14);
     private static final int WHIDTH = 450;
     private static final int HIGHT = 550;
 
@@ -22,11 +23,8 @@ public class SelezionaCentro_View extends JFrame{
     public JLabel label_infoNomeCentro;
     public JLabel label_infoIndirizzo;
     public JLabel label_infoTipoCentro;
-
     public JLabel label_Comune;
-
     public JLabel label_siglaProvincia;
-
     public JLabel label_cap;
     public JLabel label_numeroSegnalazioni;
 
@@ -34,14 +32,18 @@ public class SelezionaCentro_View extends JFrame{
     private JTable table;
     public DefaultTableModel tableModel;
     private JScrollPane scrollPane;
+
+    private JButton btn_back;
     
     public SelezionaCentro_View(List <InfoCentriVaccinali> listaCentri) {
 
-        frame_showInfoCvCittadino = new JFrame();
+        frame_showInfoCvCittadino = new JFrame("Informazioni Centri Vaccinali");
         panel_showInfoCvCittadino = new JPanel();
 
-        panel_showInfoCvCittadino.setLayout(null);
+        panel_showInfoCvCittadino.setLayout(new GridLayout(4, 1, 30, 30));
         panel_showInfoCvCittadino.setBackground(Color.WHITE);
+        panel_showInfoCvCittadino.setPreferredSize(new Dimension(300, (HEIGHT/6)*5));
+        panel_showInfoCvCittadino.setBorder(BorderFactory.createEmptyBorder(20, 10, 0, 20));
 
         JLabel titolo = new JLabel("Informazioni Centro Vaccinale");
         titolo.setForeground(Color.BLACK);
