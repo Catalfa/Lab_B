@@ -46,6 +46,7 @@ public class Ricerca_CentroVaccinale_Controller {
             System.out.println(listaCentri.get(0).getNumCiv());
             System.out.println(listaCentri.get(0).getComune());
             System.out.println(listaCentri.get(0).getProvincia());
+            System.out.println(listaCentri.get(0).getCap());
         } catch (Exception e) {
             e.printStackTrace();
             Utility.showInformationPopUp("Attenzione!", "Nessun Centro Trovato");

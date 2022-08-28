@@ -18,6 +18,7 @@ public class SelezionaCentro_Controller extends JFrame{
         view.setVisible(false);
         view.dispose();
         Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View = new Ricerca_CentroVaccinale_View();
+        System.out.println("ciao");
     }
 
     public void closeWindow(){
