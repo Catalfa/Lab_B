@@ -32,14 +32,21 @@ public class Ricerca_CentroVaccinale_Controller {
 
     public void cercaCentro(String nome){
 
-        SelezionaCentro_View selezionaCentro_view = new SelezionaCentro_View();
-        selezionaCentro_view.setVisible(true);
-        ricerca_CentroVaccinale_View.dispose();
 
         List<InfoCentriVaccinali> listaCentri = new ArrayList();
         try {
             this.Stub = ServerSingleton.getInstance();
             listaCentri  = this.Stub.cercaCentroVaccinale(nome);
+            System.out.println(listaCentri.get(0).getNomeCentro());
+            System.out.println(listaCentri.get(0).getTipologia());
+            System.out.println(listaCentri.get(0).getUsername());
+            System.out.println(listaCentri.get(0).getPassword());
+            System.out.println(listaCentri.get(0).getQualificatore());
+            System.out.println(listaCentri.get(0).getNomeVia());
+            System.out.println(listaCentri.get(0).getNumCiv());
+            System.out.println(listaCentri.get(0).getComune());
+            System.out.println(listaCentri.get(0).getProvincia());
+            System.out.println(listaCentri.get(0).getCap());
         } catch (Exception e) {
             e.printStackTrace();
             Utility.showInformationPopUp("Attenzione!", "Nessun Centro Trovato");
@@ -48,6 +55,7 @@ public class Ricerca_CentroVaccinale_Controller {
 
         selezionaCentro_View = new SelezionaCentro_View(listaCentri);
         selezionaCentro_View.setVisible(true);
+        ricerca_CentroVaccinale_View.dispose();
     }
     
 }
