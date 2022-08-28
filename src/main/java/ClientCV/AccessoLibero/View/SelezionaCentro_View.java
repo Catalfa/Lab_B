@@ -1,5 +1,7 @@
 package ClientCV.AccessoLibero.View;
 
+import ClientCV.AccessoLibero.Controller.Ricerca_CentroVaccinale_Controller;
+import ClientCV.AccessoLibero.Controller.SelezionaCentro_Controller;
 import Common.InfoCentriVaccinali;
 
 import javax.swing.*;
@@ -9,6 +11,8 @@ import java.awt.*;
 import java.util.List;
 
 public class SelezionaCentro_View extends JFrame{
+
+    SelezionaCentro_Controller controller;
 
     private static final int WHIDTH = 450;
     private static final int HIGHT = 550;
