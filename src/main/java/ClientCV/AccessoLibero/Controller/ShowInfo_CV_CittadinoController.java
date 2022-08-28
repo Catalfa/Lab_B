@@ -1,6 +1,5 @@
 package ClientCV.AccessoLibero.Controller;
 
-import ClientCV.AccessoLibero.View.ShowInfo_CV_CittadinoView;
 import ClientCV.client.ServerSingleton;
 import ServerCV.interfaccia.Server;
 

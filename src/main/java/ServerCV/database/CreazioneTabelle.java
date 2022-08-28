@@ -25,11 +25,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
     }
 
     public void Create_Vaccinato(Connection conn,String nomeCentro){
-        sql="CREATE TABLE IF NOT EXISTS Vacccinati_"+nomeCentro+ " (\n" +
+        sql="CREATE TABLE IF NOT EXISTS Vaccinati_"+nomeCentro+ " (\n" +
                 "\tcf VARCHAR(30),\n" +
                 "\tnome VARCHAR(20) NOT NULL,\n" +
                 "\tcognome VARCHAR(20) NOT NULL,\n" +
-                "\tdata_vaccinazione DATE,\n" +
+                "\tdata_vaccinazione VARCHAR(20) ,\n" +
                 "\tvaccino_somministrato VARCHAR(30) NOT NULL,\n" +
                 "\tidvaccinazione VARCHAR(20) UNIQUE NOT NULL,\n" +
                 "\tid_centro VARCHAR(20) NOT NULL,\n" +

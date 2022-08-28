@@ -12,7 +12,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	private String idCentro;
 	private String nomeCentro;
 	private String cf;
-	private Date dataVaccino;
+	private String dataVaccino;
 	private String tipoVaccino;
 	private String idVaccinazione;
 
@@ -27,7 +27,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * @param tipoVaccino		La tipologia di vaccino somministrata.
 	 * @param idVaccinazione	L'ID vaccinazione del cittadino.
 	 */
-	public RegistrazioniVaccinati(String nomeCentro, String idCentro, String cf, Date dataVaccino, String tipoVaccino, String idVaccinazione, String nome, String cognome) {
+	public RegistrazioniVaccinati(String nomeCentro, String idCentro, String cf, String dataVaccino, String tipoVaccino, String idVaccinazione, String nome, String cognome) {
 		this.idCentro = idCentro;
 		this.nomeCentro=nomeCentro;
 		this.cf = cf;
@@ -61,7 +61,7 @@ public class RegistrazioniVaccinati implements Serializable {
 	 * Metodo che restituisce la data della vaccinazione.
 	 * @return		La data della vaccinazione.
 	 */
-	public Date getDataVaccino() {
+	public String getDataVaccino() {
 		return dataVaccino;
 	}
 	

@@ -225,8 +225,9 @@ public class GestioneClient {
 		else if(!gestControlloPreRegistrazioneEventoAvverso(eventoAvverso.getCf_evento()))
 			return 3;
 		else{
-				for(int i=0; i<6; i++) {
-					eventiAvversiDao.insertEventoAvverso(eventoAvverso.getIdEvento(),
+				for(int i=0; i<7; i++) {
+					eventiAvversiDao.insertEventoAvverso(
+							eventoAvverso.getIdEvento(),
 							eventoAvverso.getNomeCentro(),
 							eventoAvverso.getEvento()[i],
 							eventoAvverso.getSeverita()[i],

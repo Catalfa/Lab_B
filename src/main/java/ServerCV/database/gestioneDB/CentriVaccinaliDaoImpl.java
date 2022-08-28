@@ -262,14 +262,19 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	
 	/**
 	 * Metodo che controlla se il cittadino registrato e' stato vaccinato in quel determinato centro vaccinale.
-	 * @param nomeCentro	Il nome del centro vaccinale.
+	 * @param id_Centro	Il nome del centro vaccinale.
 	 * @param id			L'Id della vaccinazione.
 	 * @return				Se la vaccinazione e' stata effettuata in quel determinato centro vaccinale.
 	 */
 	//query implementata
 	@Override
-	public Boolean existIdVaccinazione(String nomeCentro, String id) {
+	public Boolean existIdVaccinazione(String id_Centro, String id) {
+		String nomeCentro=getNomeCentro(id_Centro);
+		if(nomeCentro==null) {
+			String centro=accorpamento(id_Centro);
+		}
 		String centro=accorpamento(nomeCentro);
+
 		String qExistIdInVaccinati_ = "SELECT id_vaccinazione from Vaccinati_" +centro+ " WHERE idvaccinazione = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -292,6 +297,33 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return false;
 	}
 
+	public String getNomeCentro(String ID_Centro){
+
+		String qExistIdInVaccinati_ = "SELECT nome_centro from CentriVaccinali WHERE id_centro = ?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistIdInVaccinati_);
+			pstmt.setString(1, ID_Centro);
+			rs = pstmt.executeQuery();
+
+			if(rs.next()) {
+				return rs.getString("nome_centro");
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return null;
+
+	}
+
+
+
 	/**
 	 * Metodo che inserisce i dati inseriti dal cittadino registrato in fase di prenotazione dopo essere stato vaccinato.
 	 * @param registrazioneVaccinato	I dati di prenotazione della vaccinazione del cittadino registrato.
@@ -302,6 +334,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//TODO metodo da sistemare per far sì che si possa registrare un vaccinato e che questo possa successivamente inserire un evento avveso
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
+		new CentriVaccinaliDaoImpl().createVaccinati_(nomeCentro);
 		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
@@ -312,7 +345,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt.setString(1, registrazioneVaccinato.getCf());
 			pstmt.setString(2, registrazioneVaccinato.getNomeVaccinato());
 			pstmt.setString(3, registrazioneVaccinato.getCognomeVaccinato());
-			pstmt.setDate(4, registrazioneVaccinato.getDataVaccino());
+			pstmt.setString(4, registrazioneVaccinato.getDataVaccino());
 			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino());
 			pstmt.setString(6, registrazioneVaccinato.getIdVaccinazione());
 			pstmt.setString(7, registrazioneVaccinato.getIdCentro());

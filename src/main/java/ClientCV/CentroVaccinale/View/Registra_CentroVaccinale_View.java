@@ -11,17 +11,24 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 
-//TODO @Andre bisogna aggiungere i campi username e password
-
-
 public class Registra_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 520;
     private final int HIGHT = 700;
 
-    private String[] labelNames = {"ID Centro", "Nome Centro Vaccinale", "Username", "Password", "Tipologia Centro", "Qualificatore (via/viale/piazza)", "Indirizzo", "Numero Civico", "Comune", "Provincia (sigla)", "CAP"};
-    //private String hint = "via/viale/piazza";
+    private String[] labelNames = {
+            "Username",
+            "Password",
+            "ID centro",
+            "Nome centtro",
+            "Tipologia Centro",
+            "via/viale/piazza",
+            "Indirizzo",
+            "Numero Civico",
+            "Comune",
+            "Provincia (sigla)",
+            "CAP"};
     private String[] buttonNames = {"BACK", "SIGN-IN", "RESET"};
     private JButton[] buttons = new JButton[3];
     public JTextField[] textFields = new JTextField[11];
@@ -108,8 +115,8 @@ public class Registra_CentroVaccinale_View extends JFrame {
                 }
                 //se il seguente metodo restituisce 1 la reggistrazione è avvenuta con successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
                 try {
-                    controller.signIn(new InfoCentriVaccinali( textFields[2].getText(), textFields[3].getText(),
-                                            textFields[0].getText(), textFields[1].getText(), textFields[4].getText(), textFields[5].getText(),
+                    controller.signIn(new InfoCentriVaccinali( textFields[0].getText(), textFields[1].getText(),
+                                            textFields[2].getText(), textFields[3].getText(), textFields[4].getText(), textFields[5].getText(),
                             textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[8].getText(), textFields[9].getText(),  Integer.parseInt(textFields[10].getText())));
                 } catch (RemoteException ex) {
                     ex.printStackTrace();
