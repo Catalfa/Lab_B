@@ -57,17 +57,23 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	@Override
 	public List<InfoCentriVaccinali> findCentroVaccinale(String researchText) {
 		List<InfoCentriVaccinali> list = new ArrayList<>();
+		/*
 		String qResearchQuery = "SELECT * FROM CentriVaccinali WHERE "
 				+ "nome_centro LIKE '%" +researchText+ "%' "
-				+ "OR nome_via LIKE '%" +researchText+ "%' "
+				+ "OR comune LIKE '%" +researchText+ "%' "
 				+ "OR tipologia LIKE '%" +researchText+ "%'";
+*/
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
-		
+		String query2="SELECT * FROM CentriVaccinali WHERE nome_centro=? OR comune=? OR tipologia=? ";
+
 		try {
 			connection = openConnection();
-			pstmt = connection.prepareStatement(qResearchQuery);
+			pstmt = connection.prepareStatement(query2);
+			pstmt.setString(1,researchText);
+			pstmt.setString(2,researchText);
+			pstmt.setString(3,researchText);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

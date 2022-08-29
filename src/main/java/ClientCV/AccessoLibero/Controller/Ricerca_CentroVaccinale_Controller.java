@@ -33,14 +33,13 @@ public class Ricerca_CentroVaccinale_Controller {
     public void cercaCentro(String nome){
 
 
-        List<InfoCentriVaccinali> listaCentri = new ArrayList();
+        List<InfoCentriVaccinali> listaCentri = new ArrayList<>();
+      //  nome="Astolfo";            usato per vedere se inserendo il nome da codice la lista funziona
         try {
             this.Stub = ServerSingleton.getInstance();
             listaCentri  = this.Stub.cercaCentroVaccinale(nome);
             System.out.println(listaCentri.get(0).getNomeCentro());
             System.out.println(listaCentri.get(0).getTipologia());
-            System.out.println(listaCentri.get(0).getUsername());
-            System.out.println(listaCentri.get(0).getPassword());
             System.out.println(listaCentri.get(0).getQualificatore());
             System.out.println(listaCentri.get(0).getNomeVia());
             System.out.println(listaCentri.get(0).getNumCiv());

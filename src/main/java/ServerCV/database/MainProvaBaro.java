@@ -86,22 +86,23 @@ public class MainProvaBaro {
        // System.out.println(ritorno);
       contr=cv.existCf("Santa Maria","ALMU01PO");
         prove_controllo(contr);
-
+/*
         contr=cv.existIdVaccinazione("Santa Maria", "3456");
         System.out.println("controllo cf");
         prove_controllo(contr);
-
-
+*/
+/*
         contr=cv.existCentro("Cen01");
         prove_controllo(contr);
 
         contr=cv.checkLoginCentro("Can01","Pa01");
         prove_controllo(contr);
-
+*/
 
      //System.out.println("Insert del cittadino");
     // Common.DatiCittadino dc=new DatiCittadino("Antonio","Muratore","ANTO,UR12FR","antoniomuratore@gmail.com","antonio","muratore","VA050","CE09");
       // cr.insertCittadino(dc);
+        /*
         Common.DatiCittadino dc2;
        dc2 =cr.getDatiCittadino("ANDRRUSS012FR");
         cicloDati(dc2);
@@ -109,12 +110,14 @@ public class MainProvaBaro {
         dc2=cr.getCfCittadino("andrea1");
        System.out.println(dc2.getCFCittadino());
        Date dt= Date.valueOf(LocalDate.now());
+       */
+
     //   Common.RegistrazioniVaccinati rv=new RegistrazioniVaccinati("Santa Maria","CE00","ANDRRUSS012FR", dt,"Pfizer",3456,"Andra","Russo");
     //   cv.insertVaccinato(rv);
 
      //   Common.InfoCentriVaccinali icv=new InfoCentriVaccinali("Cen03","Pw03","CE03","Padre Pio","Ospedaliero","Via","Marzio",45,"Como","Como",2134);
        // cv.insertDatiCentroVaccinale(icv);
-        List<InfoCentriVaccinali> info=cv.findCentroVaccinale("Ospedaliero");
+        List<InfoCentriVaccinali> info=cv.findCentroVaccinale("Astolfo");
         estraiDati(info);
     }
 
@@ -166,6 +169,6 @@ public class MainProvaBaro {
         System.out.println(info.get(0).getComune());
         System.out.println(info.get(0).getCap());
         System.out.println(info.get(0).getProvincia());
-        System.out.println(info.get(1).getNomeCentro());
+
     }
 }
