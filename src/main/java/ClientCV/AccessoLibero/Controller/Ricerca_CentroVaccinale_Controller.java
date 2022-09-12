@@ -1,5 +1,6 @@
 package ClientCV.AccessoLibero.Controller;
 
+import ClientCV.AccessoLibero.View.InfoCvView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.LoginCittadinoView;
@@ -16,8 +17,10 @@ import java.util.List;
 public class Ricerca_CentroVaccinale_Controller {
 
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
-    private LoginCittadinoView loginCittadinoView;
-    private SelezionaCentro_View selezionaCentro_View;
+   // private LoginCittadinoView loginCittadinoView;
+   // private SelezionaCentro_View selezionaCentro_View;
+
+    private InfoCvView infoCvView;
     private Server Stub;
     
     public Ricerca_CentroVaccinale_Controller(Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View){
@@ -46,8 +49,10 @@ public class Ricerca_CentroVaccinale_Controller {
             System.out.println(listaCentri.get(0).getComune());
             System.out.println(listaCentri.get(0).getProvincia());
             System.out.println(listaCentri.get(0).getCap());
-            selezionaCentro_View = new SelezionaCentro_View(listaCentri);
-            selezionaCentro_View.setVisible(true);
+           // selezionaCentro_View = new SelezionaCentro_View(listaCentri);
+           // selezionaCentro_View.setVisible(true);
+          //  InfoCvView infoCvView= new InfoCvView(listaCentri);
+            infoCvView.setVisible(true);
             ricerca_CentroVaccinale_View.dispose();
         } catch (Exception e) {
             e.printStackTrace();
