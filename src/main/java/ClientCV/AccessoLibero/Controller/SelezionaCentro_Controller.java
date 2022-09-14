@@ -7,22 +7,27 @@ import javax.swing.*;
 
 public class SelezionaCentro_Controller {
 
-    private SelezionaCentro_View view;
+    private SelezionaCentro_View selezionaCentro_View;
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
 
     public SelezionaCentro_Controller(SelezionaCentro_View selezionaCentro_View) {
-        this.view = selezionaCentro_View;
+        this.selezionaCentro_View = selezionaCentro_View;
     }
 
     public void back() {
-        view.setVisible(false);
-        view.dispose();
+        selezionaCentro_View.setVisible(false);
+        selezionaCentro_View.dispose();
         Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View = new Ricerca_CentroVaccinale_View();
     }
 
     public void closeWindow() {        //metodo finale per chiudere finestre aperte
-        view.setVisible(false);
+       selezionaCentro_View.setVisible(false);
     }
+
+
+
+
+    /** GETTER and SETTER da controllare utilità **/
 
     public Ricerca_CentroVaccinale_View getRicerca_CentroVaccinale_View() {
         return ricerca_CentroVaccinale_View;
