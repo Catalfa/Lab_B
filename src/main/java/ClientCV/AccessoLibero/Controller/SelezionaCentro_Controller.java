@@ -8,7 +8,7 @@ import javax.swing.*;
 public class SelezionaCentro_Controller {
 
     private SelezionaCentro_View view;
-    private Ricerca_CentroVaccinale_View ricerca_centroVaccinale_View;
+    private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
 
     public SelezionaCentro_Controller(SelezionaCentro_View selezionaCentro_View) {
         this.view = selezionaCentro_View;
@@ -24,6 +24,13 @@ public class SelezionaCentro_Controller {
         view.setVisible(false);
     }
 
+    public Ricerca_CentroVaccinale_View getRicerca_CentroVaccinale_View() {
+        return ricerca_CentroVaccinale_View;
+    }
+
+    public void setRicerca_CentroVaccinale_View(Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View) {
+        this.ricerca_CentroVaccinale_View = ricerca_CentroVaccinale_View;
+    }
 }
 
 

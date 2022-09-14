@@ -17,10 +17,10 @@ import java.util.List;
 public class Ricerca_CentroVaccinale_Controller {
 
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
-   // private LoginCittadinoView loginCittadinoView;
-   // private SelezionaCentro_View selezionaCentro_View;
 
-    private InfoCvView infoCvView;
+    private SelezionaCentro_View selezionaCentro_View;
+
+    //private InfoCvView infoCvView;
     private Server Stub;
     
     public Ricerca_CentroVaccinale_Controller(Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View){
@@ -49,19 +49,24 @@ public class Ricerca_CentroVaccinale_Controller {
             System.out.println(listaCentri.get(0).getComune());
             System.out.println(listaCentri.get(0).getProvincia());
             System.out.println(listaCentri.get(0).getCap());
-           // selezionaCentro_View = new SelezionaCentro_View(listaCentri);
+            selezionaCentro_View = new SelezionaCentro_View(listaCentri);
            // selezionaCentro_View.setVisible(true);
           //  InfoCvView infoCvView= new InfoCvView(listaCentri);
-            infoCvView.setVisible(true);
+            selezionaCentro_View.setVisible(true);
             ricerca_CentroVaccinale_View.dispose();
         } catch (Exception e) {
             e.printStackTrace();
             Utility.showInformationPopUp("Attenzione!", "Nessun Centro Trovato");
+            Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View = new Ricerca_CentroVaccinale_View();
+            ricerca_CentroVaccinale_View.setVisible(true);
         }
 
 
 
 
     }
-    
+
+    public void setSelezionaCentro_View(SelezionaCentro_View selezionaCentro_View) {
+        this.selezionaCentro_View = selezionaCentro_View;
+    }
 }

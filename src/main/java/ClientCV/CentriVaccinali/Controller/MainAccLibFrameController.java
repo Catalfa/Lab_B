@@ -9,6 +9,7 @@ import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 
 public class MainAccLibFrameController {
     private MainAccLibFrameView mainAccLibFrameView;
+    private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
 
     public MainAccLibFrameController(MainAccLibFrameView mainAccLibFrameView){
         this.mainAccLibFrameView = mainAccLibFrameView;
@@ -27,9 +28,16 @@ public class MainAccLibFrameController {
      * Metodo che crea un nuovo frame e manda in dispose quello corrente.
      */
    public void createConsultaInfoCvFrame() {
-        Ricerca_CentroVaccinale_View ricerca_centroVaccinale_view = new Ricerca_CentroVaccinale_View();
-        ricerca_centroVaccinale_view.setVisible(true);
+        Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View = new Ricerca_CentroVaccinale_View();
+        ricerca_CentroVaccinale_View.setVisible(true);
         mainAccLibFrameView.dispose();
     }
 
+    public Ricerca_CentroVaccinale_View getRicerca_CentroVaccinale_View() {
+        return ricerca_CentroVaccinale_View;
+    }
+
+    public void setRicerca_CentroVaccinale_View(Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View) {
+        this.ricerca_CentroVaccinale_View = ricerca_CentroVaccinale_View;
+    }
 }
