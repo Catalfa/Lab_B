@@ -157,11 +157,13 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                String nome="";
                 if((tf_cercaPerComune.getText().equals("Comune") && tf_cercaPerNomeCentro.getText().equals("Nome") && tf_cercaPerTipologia.getText().equals("Tipologia"))){
                 Utility.showErrorPopUp("attenzione", "riempire almeno un campo di ricerca");
                 }
                     if(!(tf_cercaPerComune.getText().equals("Comune") && tf_cercaPerNomeCentro.getText().equals("Nome") && tf_cercaPerTipologia.getText().equals("Tipologia"))){
-                        controller.cercaCentro(getTextFieldText());
+                        nome=getTextFieldText();
+                        controller.cercaCentro(nome);
                         frame.dispose();
 
                         
@@ -234,11 +236,24 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
     }
 
+    //metodo da sistemare perchè sostanzialmente va a sovrascirvere la variabile s in ogni if e se comune e tipologia sono vuoti ovviamente s diventa vuota e quindi alla fine viene passata una stringa vuota
     public String getTextFieldText(){
-        String s = "";
+        String s ="";
+        String temp="";
 
         if (!tf_cercaPerNomeCentro.getText().equals("Nome")){
             s = tf_cercaPerNomeCentro.getText();
+            char ch;
+            for(int i=0;i<s.length();i++) {
+             ch=s.charAt(i);
+             if(ch==' ') {
+                 System.out.println("C'è lo spazio");
+             }
+            else{
+                temp=temp+s.charAt(i);
+            }
+            }
+                return temp;
         }
         if (!tf_cercaPerComune.getText().equals("Comune")){
             s = tf_cercaPerComune.getText();
@@ -247,7 +262,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
             s = tf_cercaPerTipologia.getText();
         }
 
-        return s;
+       return s;
     }
 
 

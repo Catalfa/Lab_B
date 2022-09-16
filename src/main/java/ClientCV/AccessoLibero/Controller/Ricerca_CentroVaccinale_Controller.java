@@ -35,11 +35,12 @@ public class Ricerca_CentroVaccinale_Controller {
 
     public void cercaCentro(String nome){
 
-
-        List<InfoCentriVaccinali> listaCentri = new ArrayList<>();
-      //  nome="Astolfo";            usato per vedere se inserendo il nome da codice la lista funziona
+        System.out.println(nome+" Nome in cercacentro"); //usato per verificare che il nome venisse passato
+        List<InfoCentriVaccinali> listaCentri=new ArrayList<>();
+    //  nome="Astolfo";            usato per vedere se inserendo il nome da codice la lista funziona
         try {
             this.Stub = ServerSingleton.getInstance();
+            System.out.println(nome+" Nome per stub"); //usato per verificare che il nome venisse passato
             listaCentri  = this.Stub.cercaCentroVaccinale(nome);
             System.out.println(listaCentri.get(0).getNomeCentro());
             System.out.println(listaCentri.get(0).getTipologia());
