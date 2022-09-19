@@ -56,7 +56,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         /*
         Inizializzo coi vari parametri i pannelli che ho creato sopra
         */
-        panel_welcome.setLayout(null);
+        panel_welcome.setLayout(null);                                                                  /** GUARDO QUI **/
         panel_welcome.setPreferredSize(new Dimension(WIDTH, 70));
         panel_welcome.setBackground(Color.WHITE);
         panel_welcome.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 20));
@@ -138,7 +138,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         frame.add(container);
 
         
-        frame.setSize(WIDTH, HIGHT);
+        frame.setSize(WIDTH, HIGHT);                                                    /** GUARDO QUI **/
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

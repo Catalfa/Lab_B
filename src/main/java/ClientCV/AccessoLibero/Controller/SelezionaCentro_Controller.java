@@ -15,7 +15,7 @@ public class SelezionaCentro_Controller {
     }
 
     public void back() {
-        selezionaCentro_View.setVisible(false);
+        selezionaCentro_View.setVisible(true);
         selezionaCentro_View.dispose();
         Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View = new Ricerca_CentroVaccinale_View();
     }
