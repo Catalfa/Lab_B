@@ -236,36 +236,45 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
     }
 
-    //metodo da sistemare perchè sostanzialmente va a sovrascirvere la variabile s in ogni if e se comune e tipologia sono vuoti ovviamente s diventa vuota e quindi alla fine viene passata una stringa vuota
+    //completato
     public String getTextFieldText(){
         String s ="";
         String temp="";
 
-        if (!tf_cercaPerNomeCentro.getText().equals("Nome")){
+        if (!(tf_cercaPerNomeCentro.getText().equals("Nome")) && !(tf_cercaPerNomeCentro.getText().equals(" "))){
             s = tf_cercaPerNomeCentro.getText();
-            char ch;
-            for(int i=0;i<s.length();i++) {
-             ch=s.charAt(i);
-             if(ch==' ') {
-                 System.out.println("C'è lo spazio");
-             }
-            else{
-                temp=temp+s.charAt(i);
+          //  char ch;
+            temp = implRic(s);
+        }
+            if (!(tf_cercaPerComune.getText().equals("Comune")) && !(tf_cercaPerComune.getText().equals(" "))) {
+                s = tf_cercaPerComune.getText();
+                temp = implRic(s);
             }
-            }
-                return temp;
-        }
-        if (!tf_cercaPerComune.getText().equals("Comune")){
-            s = tf_cercaPerComune.getText();
-        }
-        if (!tf_cercaPerTipologia.getText().equals("Tipologia")){
-            s = tf_cercaPerTipologia.getText();
-        }
 
-       return s;
+                if (!tf_cercaPerTipologia.getText().equals("Tipologia") && !(tf_cercaPerTipologia.getText().equals(" "))) {
+                    s = tf_cercaPerTipologia.getText();
+                    temp = implRic(s);
+                }
+
+
+
+        return temp;
     }
 
-
+public String implRic(String s){ //metodo per prendere il dato di ricerca inserito dall'utente
+   String temp="";
+    char ch;
+    for(int i=0;i<s.length();i++) {
+        ch=s.charAt(i);
+        if(ch==' ') {
+            System.out.println("C'è lo spazio");
+        }
+        else{
+            temp=temp+s.charAt(i);
+        }
+    }
+       return temp;
+}
 
     public void deleteView(){
         frame.setVisible(false);
