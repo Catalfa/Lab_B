@@ -1,6 +1,5 @@
 package ClientCV.AccessoLibero.View;
 
-import ClientCV.AccessoLibero.Controller.Ricerca_CentroVaccinale_Controller;
 import ClientCV.AccessoLibero.Controller.SelezionaCentro_Controller;
 import Common.InfoCentriVaccinali;
 
@@ -13,15 +12,11 @@ import java.util.List;
 
 public class SelezionaCentro_View extends JFrame{
 
-
-                                                                      /** RIGUARDO CONTROLLER **/
     SelezionaCentro_Controller controller;
 
 
-    private static final int WIDTH = 450;
+    private static final int WHIDTH = 450;
     private static final int HIGHT = 550;
-
-    public JFrame frame;
 
     public JFrame frame_showInfoCvCittadino;
     public JPanel panel_showInfoCvCittadino;
@@ -43,15 +38,11 @@ public class SelezionaCentro_View extends JFrame{
     
     public SelezionaCentro_View(List <InfoCentriVaccinali> listaCentri) {
 
-        controller = new SelezionaCentro_Controller(this);
-
         frame_showInfoCvCittadino = new JFrame();
         panel_showInfoCvCittadino = new JPanel();
 
         panel_showInfoCvCittadino.setLayout(null);
-        panel_showInfoCvCittadino.setPreferredSize(new Dimension(WIDTH, 70));
         panel_showInfoCvCittadino.setBackground(Color.WHITE);
-        panel_showInfoCvCittadino.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 20));
 
         JLabel titolo = new JLabel("Informazioni Centro Vaccinale");
         titolo.setForeground(Color.BLACK);
@@ -164,13 +155,6 @@ public class SelezionaCentro_View extends JFrame{
         label_severitàMedia.setVerticalAlignment(JLabel.CENTER);
         panel_showInfoCvCittadino.add(label_severitàMedia);
 
-        setSize(WIDTH, HIGHT);
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
-
-
         tableModel = new DefaultTableModel(new String[] {"Evento", "Intensità"}, 0);
 
         table = new JTable(tableModel) {
@@ -185,7 +169,6 @@ public class SelezionaCentro_View extends JFrame{
         table.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
 
         table.getTableHeader().setReorderingAllowed(false);
-
 
         table.setRowSelectionAllowed(false);
         scrollPane = new JScrollPane(table);
