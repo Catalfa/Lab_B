@@ -150,8 +150,6 @@ public class GestioneClient {
 	public int gestRegistraVaccinato(RegistrazioniVaccinati datoRegistrazione) {
 		if(centriVaccinaliDao.existCf(datoRegistrazione.getnomeCentro(), datoRegistrazione.getCf())){
 			return 3;
-		} else if(cittadiniRegistratiDao.existIdCittadino(datoRegistrazione.getIdVaccinazione())){
-			return 2;
 		} else {
 			centriVaccinaliDao.insertVaccinato(datoRegistrazione);
 			cittadiniRegistratiDao.updateIdCittadino(datoRegistrazione.getIdVaccinazione(), datoRegistrazione.getCf());;

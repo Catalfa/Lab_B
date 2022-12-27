@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 			pstmt = connection.prepareStatement(qAddValuesCentroVaccinale);
 			pstmt.setString(1, infoCentroVaccinale.getIdCentro());
 			pstmt.setString(2, infoCentroVaccinale.getNomeCentro());
-			pstmt.setString(3, infoCentroVaccinale.getTipologia());
+			pstmt.setString(3, infoCentroVaccinale.getTipologia().toLowerCase());
 			pstmt.setString(4, infoCentroVaccinale.getQualificatore());
 			pstmt.setString(5, infoCentroVaccinale.getNomeVia());
 			pstmt.setString(6, ((Integer)infoCentroVaccinale.getNumCiv()).toString());
@@ -327,7 +328,6 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	}
 
 
-
 	/**
 	 * Metodo che inserisce i dati inseriti dal cittadino registrato in fase di prenotazione dopo essere stato vaccinato.
 	 * @param registrazioneVaccinato	I dati di prenotazione della vaccinazione del cittadino registrato.
@@ -338,7 +338,10 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	//TODO metodo da sistemare per far sì che si possa registrare un vaccinato e che questo possa successivamente inserire un evento avveso
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
 		String nomeCentro = registrazioneVaccinato.getnomeCentro();
-		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nomeCentro).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String aux=nomeCentro.toLowerCase();
+        String trimmedString = aux.trim();
+        String nome = trimmedString.replaceAll("\\s", "");
+		String qAddRegistrazioneVaccinato = "INSERT INTO Vaccinati_" +Utility.getNameForQuery(nome).toLowerCase()+ " VALUES (?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
 		

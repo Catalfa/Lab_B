@@ -1,5 +1,7 @@
 package ServerCV.database;
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -25,7 +27,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
     }
 
     public void Create_Vaccinato(Connection conn,String nomeCentro){
-        sql="CREATE TABLE IF NOT EXISTS Vaccinati_"+nomeCentro+ " (\n" +
+        String aux=nomeCentro.toLowerCase();
+        String trimmedString = aux.trim();
+        String nome = trimmedString.replaceAll("\\s", "");
+        
+        sql="CREATE TABLE IF NOT EXISTS Vaccinati_"+nome+ " (\n" +
                 "\tcf VARCHAR(30),\n" +
                 "\tnome VARCHAR(20) NOT NULL,\n" +
                 "\tcognome VARCHAR(20) NOT NULL,\n" +
@@ -83,4 +89,25 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
         }
 
     }
+
+    public void CreateTables(Connection conn) throws SQLException{
+        Statement stm=conn.createStatement();
+        
+        sql= "SELECT * FROM centrivaccinali";
+
+        ResultSet rs=stm.executeQuery(sql);
+        DatabaseMetaData metaData = conn.getMetaData();
+        
+        while(rs.next()){
+            String name=rs.getString("nome_centro");
+            ResultSet ResultSet = metaData.getTables(null, null, "vaccinati_" + name, null);
+            if(ResultSet.next()){
+                return;
+            }else{
+                Create_Vaccinato(conn, name);
+            }
+        }
+
+    }
+
 }
