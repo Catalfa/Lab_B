@@ -19,7 +19,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	/**
 	 * Metodo che richiama la sua superclasse.
-	 * @throws RemoteException	Eccezione remota.
+	 * 
+	 * @throws RemoteException Eccezione remota.
 	 */
 	public ServerImpl() throws RemoteException {
 		super();
@@ -32,7 +33,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	public Integer subscribeToEvents(Client client) throws RemoteException {
 		return gestClient.subscribeToEvents(client);
 	}
-	
+
 	/**
 	 * Metodo implementativo del server che disiscrive il client dagli eventi.
 	 */
@@ -51,6 +52,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	/**
 	 * Metodo implementativo del server che effettua il login del cittadino.
+	 * 
 	 * @return
 	 */
 	@Override
@@ -58,21 +60,22 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return gestClient.gestLoginCittadino(username, password);
 	}
 
-
-	//metodo per il login di un centro, ritorna 1 se il login è stato effettuato con successo,
-	//2 se non esiste centro con quell'username e 3 se la password non è corretta
+	// metodo per il login di un centro, ritorna 1 se il login è stato effettuato
+	// con successo,
+	// 2 se non esiste centro con quell'username e 3 se la password non è corretta
 	public int loginCentroVaccinale(String username, String password) throws RemoteException {
 		return gestClient.gestLoginCentroVaccinale(username, password);
 	}
 
 	/**
-	 * Metodo implementativo del server che effettua la ricerca del centro vaccinale.
+	 * Metodo implementativo del server che effettua la ricerca del centro
+	 * vaccinale.
 	 */
 	@Override
 	public List<InfoCentriVaccinali> cercaCentroVaccinale(String testo) throws RemoteException {
 		return gestClient.gestRicercaCentroVaccinale(testo);
 	}
-	
+
 	/**
 	 * Metodo implementativo del server per ottenere il CF del cittadino.
 	 */
@@ -80,9 +83,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	public String ottieniCf(String username) throws RemoteException {
 		return gestClient.gestOttieniCF(username);
 	}
-	
+
 	/**
 	 * Metodo implementativo del server per ottenere le informazioni dei cittadini.
+	 * 
 	 * @return
 	 */
 	@Override
@@ -97,31 +101,34 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	public int registraVaccinato(RegistrazioniVaccinati datiRegistrazione) throws RemoteException {
 		return gestClient.gestRegistraVaccinato(datiRegistrazione);
 	}
-	
+
 	/**
-	 * Metodo implementativo del server per controllare se un cittadino � stato vaccinato prima di inserire un evento avvero.
+	 * Metodo implementativo del server per controllare se un cittadino � stato
+	 * vaccinato prima di inserire un evento avvero.
 	 */
 	public Boolean controlloPreRegistrazioneEventoAvverso(String cf) throws RemoteException {
 		return gestClient.gestControlloPreRegistrazioneEventoAvverso(cf);
 	}
-	
+
 	/**
-	 * Metodo implementativo del server per ottenere l'ID della vaccinazione del cittadino.
+	 * Metodo implementativo del server per ottenere l'ID della vaccinazione del
+	 * cittadino.
 	 */
 	public String ottieniIdVaccinazione(String cf) throws RemoteException {
 		return gestClient.gestOttieniIdVaccinazione(cf);
 	}
-	
-	
+
 	/**
-	 * Metodo implementativo del server per ottenere il numero di segnalazioni per un determinato centro vaccinale.
+	 * Metodo implementativo del server per ottenere il numero di segnalazioni per
+	 * un determinato centro vaccinale.
 	 */
 	public int ottieniNumSegnalazioni(String nomeCentro) throws RemoteException {
 		return gestClient.gestOttieniNumSegnalazioni(nomeCentro);
 	}
 
 	/**
-	 * Metodo implementativo del server per ottenere i valori medi degli eventi per un determinato centro vaccinale.
+	 * Metodo implementativo del server per ottenere i valori medi degli eventi per
+	 * un determinato centro vaccinale.
 	 */
 	@Override
 	public Double getImportanzaEvento(String nomeCentro, String evento) throws RemoteException {
@@ -147,7 +154,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	}
 
 	@Override
-	public int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione, int dataVaccino, String idCentro) {
+	public int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione,
+			int dataVaccino, String idCentro) {
 		return 0;
 	}
 
@@ -161,6 +169,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 
 	/**
 	 * Metodo implementativo del server che registra i cittadini.
+	 * 
 	 * @return
 	 */
 	@Override
