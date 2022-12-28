@@ -16,12 +16,12 @@ public class Login_CentroVaccinale_View extends JFrame {
 
     private JTextField tf_user = new JTextField(20);
 
-    private JTextField tf_password = new JTextField(20);
+    private JPasswordField tf_password = new JPasswordField(20);
     private JButton loginButton = new JButton("LOGIN");
     private JButton backButton = new JButton("BACK");
     private JButton signinButton = new JButton("SIGN-IN");
 
-    private Utility utility=new Utility();
+    private Utility utility = new Utility();
 
     public Login_CentroVaccinale_View() {
 
@@ -32,20 +32,22 @@ public class Login_CentroVaccinale_View extends JFrame {
         JPanel passwordPanel = new JPanel();
         JPanel buttonPanel = new JPanel();
 
-        userPanel.setLayout(new GridLayout(1, 2));
+        userPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 7, 25));
         userPanel.setBackground(Color.WHITE);
         userPanel.setBounds(5, 5, 5, 5);
         userPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
 
-        passwordPanel.setLayout(new GridLayout(1, 2));
+        passwordPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 7, 25));
         passwordPanel.setBackground(Color.WHITE);
         passwordPanel.setBounds(5, 5, 5, 5);
         passwordPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 45, 20));
-        
+
         buttonPanel.setBackground(Color.WHITE);
 
-        /* usernamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-        passwordPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25)); */
+        /*
+         * usernamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
+         * passwordPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
+         */
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
 
         JLabel label_loginCittadino = new JLabel("LOGIN Centro Vaccinale", SwingConstants.CENTER);
@@ -98,28 +100,26 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         });
 
-
         loginButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 String user = tf_user.getText();
                 String password = tf_password.getText();
-                switch (controller.loginCentroVaccinale( user, password)){
-                    //TODO @Andre implementare frame successivi
+                switch (controller.loginCentroVaccinale(user, password)) {
+                    // TODO @Andre implementare frame successivi
                     case 1:
-                        utility.showConfirmationPopUp("Successo!","Login effettuato");
                         RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
                         registraVaccinatoView.setVisible(true);
                         break;
 
                     case 2:
-                        utility.showWarningPopUp("Attenzione!","Lo username non è corretto");
-                        //username non esistente
+                        utility.showWarningPopUp("Attenzione!", "Lo username non è corretto");
+                        // username non esistente
                         break;
                     case 3:
-                        utility.showWarningPopUp("Attenzione!","La passowrd non è corretta");
-                        //password errata
+                        utility.showWarningPopUp("Attenzione!", "La passowrd non è corretta");
+                        // password errata
                         break;
                 }
             }
