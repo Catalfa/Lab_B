@@ -46,7 +46,8 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	//query implementata
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
-		String qGetNumSegnalazioni = "SELECT count(nome_centro) AS count_segnalazioni FROM eventi_avversi WHERE nome_centro = ?";
+		String id_cen=getNomeCentro(nomeCentro);
+		String qGetNumSegnalazioni = "SELECT count(id_centro) AS count_segnalazioni FROM eventi_avversi WHERE id_centro = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -54,7 +55,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetNumSegnalazioni);
-			pstmt.setString(1, nomeCentro);
+			pstmt.setString(1, id_cen);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -77,7 +78,8 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	//query implementata
 	@Override
 	public double getImportanzaEvento(String nomeCentro, String evento) {
-		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE nome_centro = ? AND nome_evento = ?";
+		String id=getNomeCentro(nomeCentro);
+		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE id_centro = ? AND nome_evento = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
@@ -85,11 +87,12 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetImportanzaEvento);
-			pstmt.setString(1, nomeCentro);
+			pstmt.setString(1, id);
 			pstmt.setString(2, evento);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				System.out.println("media "+rs.getDouble("media_valori"));
 				return rs.getDouble("media_valori");
 			}
 		} catch (SQLException ex) {
@@ -97,6 +100,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		} finally {
 			closeConnection(connection);
 		}
+		System.out.println("passa 0");
 		return 0.0;
 	}
 	
@@ -129,5 +133,31 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		}
 		return false;
 	}
+
+	public String getNomeCentro(String nome_centro) {
+		String tmp = null;
+		String qCentroPasswordMatch = "SELECT id_centro FROM CentriVaccinali WHERE nome_centro=?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qCentroPasswordMatch);
+			pstmt.setString(1, nome_centro);
+			rs = pstmt.executeQuery();
+
+			while (rs.next())
+				tmp = rs.getString("id_centro");
+			System.out.println(tmp);
+			return tmp;
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return tmp;
+		} finally {
+			closeConnection(connection);
+		}
+	}
+
 
 }

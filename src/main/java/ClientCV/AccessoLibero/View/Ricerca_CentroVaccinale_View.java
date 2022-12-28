@@ -245,6 +245,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
             s = tf_cercaPerNomeCentro.getText();
           //  char ch;
             temp = implRic(s);
+          //  temp=accorpamento(temp);
         }
             if (!(tf_cercaPerComune.getText().equals("Comune")) && !(tf_cercaPerComune.getText().equals(" "))) {
                 s = tf_cercaPerComune.getText();
@@ -264,15 +265,18 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 public String implRic(String s){ //metodo per prendere il dato di ricerca inserito dall'utente
    String temp="";
     char ch;
+    int cont=0;
     for(int i=0;i<s.length();i++) {
         ch=s.charAt(i);
-        if(ch==' ') {
+        if(ch==' ' && cont==0) {
             System.out.println("C'è lo spazio");
+            cont++;
         }
         else{
             temp=temp+s.charAt(i);
         }
     }
+    System.out.println("nome passsato del centro per capire "+temp);
        return temp;
 }
 
