@@ -1,9 +1,13 @@
 package Common;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
+
+import ClientCV.client.ServerSingleton;
+import ServerCV.interfaccia.Server;
 
 public class CentroVaccinale implements Serializable {
-    
+
     private String idCentro;
     private String nomeCentroVaccinale;
     private String tipologiaCentro;
@@ -13,8 +17,10 @@ public class CentroVaccinale implements Serializable {
     private String comune;
     private String provincia;
     private int cap;
+    private Server server;
 
-    public CentroVaccinale(String idCentro, String nomeCentroVaccinale, String tipologiaCentro, String qualificatore, String indirizzo, int numeroCivico, String comune, String provincia, int cap) {
+    public CentroVaccinale(String idCentro, String nomeCentroVaccinale, String tipologiaCentro, String qualificatore,
+            String indirizzo, int numeroCivico, String comune, String provincia, int cap) {
         this.idCentro = idCentro;
         this.nomeCentroVaccinale = nomeCentroVaccinale;
         this.tipologiaCentro = tipologiaCentro;
@@ -26,7 +32,7 @@ public class CentroVaccinale implements Serializable {
         this.cap = cap;
     }
 
-    public String getIdCentro(){
+    public String getIdCentro() {
         return idCentro;
     }
 
@@ -38,7 +44,7 @@ public class CentroVaccinale implements Serializable {
         return tipologiaCentro;
     }
 
-    public String getQualificatore(){
+    public String getQualificatore() {
         return qualificatore;
     }
 
@@ -60,6 +66,24 @@ public class CentroVaccinale implements Serializable {
 
     public int getCap() {
         return cap;
+    }
+
+    public String toString(CentroVaccinale centro) throws RemoteException {
+        server = ServerSingleton.getInstance();
+        String Centro = centro.idCentro + "," + centro.nomeCentroVaccinale + "," + centro.tipologiaCentro + ","
+                + centro.provincia + "," + centro.comune + "," + centro.indirizzo + ","
+                + Integer.toString(centro.numeroCivico) + ","
+                + Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Mal di testa")) + "," +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Mal di pancia")) + "," +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Febbre")) + "," +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Dolori articolari - muscolari")) + ","
+                +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Linfoadenopatia")) + "," +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Tachicardia")) + "," +
+                Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Crisi ipertensiva")) + ","
+                + "n segnalazioni";
+        return Centro;
+
     }
 
 }

@@ -131,8 +131,8 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	 * un determinato centro vaccinale.
 	 */
 	@Override
-	public Double getImportanzaEvento(String nomeCentro, String evento) throws RemoteException {
-		return gestClient.gestOttieniImportanzaEventi(nomeCentro, evento);
+	public Double getImportanzaEvento(String id_centro, String evento) throws RemoteException {
+		return gestClient.gestOttieniImportanzaEventi(id_centro, evento);
 	}
 
 	/**

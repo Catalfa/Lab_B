@@ -1,6 +1,7 @@
 package ServerCV.database.gestioneDB;
 
 import ServerCV.database.gestioneDB.interfacceDB.EventiAvversiDao;
+import ServerCV.server.GestioneClient;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,14 +14,15 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * Metodo che inserisce i dati all'interno della tabella eventi_avversi.
 	 *
 	 */
-	//query implementata
-	//non verifcato funzionamento su DB
+	// query implementata
+	// non verifcato funzionamento su DB
 	@Override
-	public void insertEventoAvverso(String id_vaccinazione, String id_centro, String evento, Integer severita, String note, String cf) {
+	public void insertEventoAvverso(String id_vaccinazione, String id_centro, String evento, Integer severita,
+			String note, String cf) {
 		String qInserisciEventiAvversi = "INSERT INTO Eventi_Avversi (id_vaccinazione, id_centro, nome_evento, severita, note_opzionali, cf) VALUES (?, ?, ?, ?, ?,?)";
 		PreparedStatement pstmt;
 		Connection connection = null;
-		
+
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qInserisciEventiAvversi);
@@ -39,11 +41,14 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	}
 
 	/**
-	 * Metodo che conta e restituisce il numero di segnalazioni effetuate per quel determinato centro vaccinale.
-	 * @param nomeCentro	Il nome del centro vaccinale.
-	 * @return				Il numero di segnalazioni effettuate per quel determinato centro vaccinale.
+	 * Metodo che conta e restituisce il numero di segnalazioni effetuate per quel
+	 * determinato centro vaccinale.
+	 * 
+	 * @param nomeCentro Il nome del centro vaccinale.
+	 * @return Il numero di segnalazioni effettuate per quel determinato centro
+	 *         vaccinale.
 	 */
-	//query implementata
+	// query implementata
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
 		String id_cen=getNomeCentro(nomeCentro);
@@ -51,14 +56,14 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
-		
+
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetNumSegnalazioni);
 			pstmt.setString(1, id_cen);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				return rs.getInt("count_segnalazioni");
 			}
 		} catch (SQLException ex) {
@@ -70,29 +75,44 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	}
 
 	/**
-	 * Metodo che calcola e restituisce il valore medio dell'intensita' dell'evento avverso per quel determinato centro vaccinale.
-	 * @param nomeCentro	Il nome del centro vaccinale.
-	 * @param evento		Il tipo di evento avverso.
-	 * @return				Il valore medio di quel determinato evento.
+	 * Metodo che calcola e restituisce il valore medio dell'intensita' dell'evento
+	 * avverso per quel determinato centro vaccinale.
+	 * 
+	 * @param nomeCentro Il nome del centro vaccinale.
+	 * @param evento     Il tipo di evento avverso.
+	 * @return Il valore medio di quel determinato evento.
 	 */
-	//query implementata
+	// query implementata
 	@Override
+<<<<<<< Updated upstream
 	public double getImportanzaEvento(String nomeCentro, String evento) {
 		String id=getNomeCentro(nomeCentro);
+=======
+	public double getImportanzaEvento(String id_centro, String evento) {
+
+>>>>>>> Stashed changes
 		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE id_centro = ? AND nome_evento = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
 		Connection connection = null;
-		
+
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetImportanzaEvento);
+<<<<<<< Updated upstream
 			pstmt.setString(1, id);
 			pstmt.setString(2, evento);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
 				System.out.println("media "+rs.getDouble("media_valori"));
+=======
+			pstmt.setString(1, id_centro);
+			pstmt.setString(2, evento);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+>>>>>>> Stashed changes
 				return rs.getDouble("media_valori");
 			}
 		} catch (SQLException ex) {
@@ -103,13 +123,15 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		System.out.println("passa 0");
 		return 0.0;
 	}
-	
+
 	/**
-	 * Metodo che controlla se sono gia' stati inseriti degli eventi avversi per quel determinato cittadino registrato.
-	 * @param id	L'Id della vaccinazione.
-	 * @return		Se sono gia' stati inseriti degli eventi avversi.
+	 * Metodo che controlla se sono gia' stati inseriti degli eventi avversi per
+	 * quel determinato cittadino registrato.
+	 * 
+	 * @param id L'Id della vaccinazione.
+	 * @return Se sono gia' stati inseriti degli eventi avversi.
 	 */
-	//query implementata
+	// query implementata
 	public boolean existId(String[] id) {
 		String qExistIdInEventiAvversi = "SELECT id_vaccinazione FROM Eventi_Avversi WHERE id_vaccinazione = ?";
 		PreparedStatement pstmt;
@@ -121,7 +143,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 			pstmt = connection.prepareStatement(qExistIdInEventiAvversi);
 			pstmt.setString(1, id[0]);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				return true;
 			}

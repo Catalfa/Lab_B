@@ -275,8 +275,8 @@ public class GestioneClient {
 	 * @return Il valore medio dell'intensita' di quel determinato evento.
 	 */
 	// ok
-	public Double gestOttieniImportanzaEventi(String nomeCentro, String evento) {
-		return eventiAvversiDao.getImportanzaEvento(nomeCentro, evento);
+	public Double gestOttieniImportanzaEventi(String id_centro, String evento) {
+		return eventiAvversiDao.getImportanzaEvento(id_centro, evento);
 	}
 
 	/**

@@ -15,6 +15,8 @@ import ServerCV.interfaccia.Server;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.PrintException;
+
 public class Ricerca_CentroVaccinale_Controller {
 
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
@@ -54,8 +56,11 @@ public class Ricerca_CentroVaccinale_Controller {
             // selezionaCentro_View.setVisible(true);
             // InfoCvView infoCvView= new InfoCvView(listaCentri);
             // selezionaCentro_View.setVisible(true);
-            (new Tabella_centri(listaCentri)).setVisible(true);
-            ;
+            try {
+                new Tabella_centri(listaCentri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             ricerca_CentroVaccinale_View.dispose();
         } catch (Exception e) {
             e.printStackTrace();
