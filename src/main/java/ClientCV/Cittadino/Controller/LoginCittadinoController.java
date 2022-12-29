@@ -40,13 +40,19 @@ public class LoginCittadinoController {
         aggiungiEventoAvversoView.setVisible(true);
         loginCittadinoView.dispose();
 
+
+
         if (username.toString().isEmpty() || password.length == 0 || cf.length() != 16) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati correttamente.");
+            loginCittadinoView = new LoginCittadinoView();
+            loginCittadinoView.setVisible(true);
             return 1;
         }
 
         if (!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username, cf)) {
             utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
+            loginCittadinoView = new LoginCittadinoView();
+            loginCittadinoView.setVisible(true);
             return 1;
         }
 
@@ -63,6 +69,7 @@ public class LoginCittadinoController {
             case 4:
                 utility.showWarningPopUp("Attenzione!", "Codice Fiscale errato");
                 break;
+
         }
         loginCittadinoView.dispose();
 

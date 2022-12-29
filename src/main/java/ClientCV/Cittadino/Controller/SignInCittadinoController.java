@@ -4,6 +4,7 @@ import ClientCV.CentriVaccinali.Controller.MainLoginFrameController;
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
 import ClientCV.Cittadino.View.SignInCittadinoView;
+import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.DatiCittadino;
@@ -21,7 +22,7 @@ public class SignInCittadinoController extends JFrame {
     public final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$",
             Pattern.CASE_INSENSITIVE);
     Server stub;
-    MainLoginFrameController controller = new MainLoginFrameController(new MainLoginFrameView());
+   // MainLoginFrameController controller = new MainLoginFrameController(new MainLoginFrameView());
 
     public SignInCittadinoController(SignInCittadinoView signInCittadinoView) {
         this.signInCittadinoView = signInCittadinoView;
@@ -29,8 +30,8 @@ public class SignInCittadinoController extends JFrame {
     }
 
     public void goBack() {
-        MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
-        mainLoginFrameView.setVisible(true);
+        LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
+        loginCittadinoView.setVisible(true);
         signInCittadinoView.dispose();
     }
 
@@ -47,25 +48,33 @@ public class SignInCittadinoController extends JFrame {
                 || cittadini.getCFCittadino().length() < 16 || cittadini.getEmailCittadino().isEmpty()
                 || cittadini.getUsernameCittadino().isEmpty() || cittadini.getPasswordCittadino().length() == 0) {
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati");
+            SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
+            signInCittadinoView.setVisible(true);
             return 1;
         }
 
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(cittadini.getEmailCittadino());
         if (!matcher.find()) {
             utility.showWarningPopUp("Attenzione", "La mail non è valida, controllare la formattazione");
+            SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
+            signInCittadinoView.setVisible(true);
             return 1;
         }
 
         if (cittadini.getPasswordCittadino().length() < 6) {
             utility.showWarningPopUp("Attenzione", "La password deve essere di almeno 6 caratteri");
+            SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
+            signInCittadinoView.setVisible(true);
             return 1;
         }
         if (stub.registraCittadino(cittadini) == 1) {
             new Utility().showConfirmationPopUp("avviso", " registrazione effettuata con successo");
         } else {
             new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
+            SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
+            signInCittadinoView.setVisible(true);
         }
-        controller.createLoginCittadinoFrame();
+        //controller.createLoginCittadinoFrame();
         signInCittadinoView.dispose();
 
         return 0;
