@@ -10,15 +10,12 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
 import ClientCV.client.ServerSingleton;
 import Common.*;
 import ServerCV.interfaccia.Server;
 
 public class Tabella_centri extends JFrame {
-    private JTable table = null;
-    private DefaultTableModel model;
     private Server server;
     private String[] aux;
     private int i = 1;

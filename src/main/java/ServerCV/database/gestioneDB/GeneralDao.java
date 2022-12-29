@@ -4,13 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-	public class GeneralDao{
-	private static String DB_URL="jdbc:postgresql://localhost:5432/";
+public class GeneralDao {
+	private static String DB_URL = "jdbc:postgresql://localhost:5433/";
 	private static String DB_USERNAME;
 	private static String DB_PASSWORD;
-	
-	public  static void setDatabaseParams(String url, String username, String password) {
-		DB_URL = DB_URL+url;
+
+	public static void setDatabaseParams(String url, String username, String password) {
+		DB_URL = DB_URL + url;
 		DB_USERNAME = username;
 		DB_PASSWORD = password;
 	}
@@ -26,7 +26,7 @@ import java.sql.SQLException;
 		}
 		return null;
 	}
-	
+
 	/**
 	 * Metodo che chiude la connessione col DB.
 	 */

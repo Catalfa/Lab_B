@@ -51,7 +51,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	// query implementata
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
-		String id_cen=getNomeCentro(nomeCentro);
+		String id_cen = getNomeCentro(nomeCentro);
 		String qGetNumSegnalazioni = "SELECT count(id_centro) AS count_segnalazioni FROM eventi_avversi WHERE id_centro = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -84,13 +84,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 */
 	// query implementata
 	@Override
-<<<<<<< Updated upstream
-	public double getImportanzaEvento(String nomeCentro, String evento) {
-		String id=getNomeCentro(nomeCentro);
-=======
 	public double getImportanzaEvento(String id_centro, String evento) {
-
->>>>>>> Stashed changes
 		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE id_centro = ? AND nome_evento = ?";
 		PreparedStatement pstmt;
 		ResultSet rs;
@@ -99,20 +93,18 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetImportanzaEvento);
-<<<<<<< Updated upstream
-			pstmt.setString(1, id);
-			pstmt.setString(2, evento);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				System.out.println("media "+rs.getDouble("media_valori"));
-=======
 			pstmt.setString(1, id_centro);
 			pstmt.setString(2, evento);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
->>>>>>> Stashed changes
+				pstmt.setString(1, id_centro);
+				pstmt.setString(2, evento);
+				rs = pstmt.executeQuery();
+				break;
+			}
+
+			while (rs.next()) {
 				return rs.getDouble("media_valori");
 			}
 		} catch (SQLException ex) {
@@ -180,6 +172,5 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 			closeConnection(connection);
 		}
 	}
-
 
 }
