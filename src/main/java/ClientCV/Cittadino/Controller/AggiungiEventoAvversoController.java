@@ -54,7 +54,10 @@ public class AggiungiEventoAvversoController {
             }
             if (risultato == 1 ) {
                 Utility.showInformationPopUp("Richiesta andata a buon fine.", "Eventi avversi inseriti con successo");
+                LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
+                loginCittadinoView.setVisible(true);
                 eventoAvversoView.deleteView();
+
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -68,7 +71,7 @@ public class AggiungiEventoAvversoController {
 	 */
     public void checkNumCharAction(KeyEvent arg0, int count_numCharNote) {
         if(count_numCharNote==256){
-            //TODO da controllare
+
             Utility.showErrorPopUp("ERRORE", "Raggiunto numero massimo di caratteri disponibili");
             arg0.consume();
         }

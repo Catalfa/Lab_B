@@ -57,12 +57,16 @@ public class Registra_CentroVaccinale_Controller {
             cVaccinale.getCap()==0 || cVaccinale.getUsername().isEmpty() || cVaccinale.getPassword().isEmpty()){
 
             utility.showWarningPopUp("Attenzione", "Controllare che tutti i campi siano compilati.");
+            Registra_CentroVaccinale_View registra_centroVaccinale_view = new Registra_CentroVaccinale_View();
+            registra_centroVaccinale_view.setVisible(true);
             return 1;
         }
 
         //Controlla con il metodo presente nel bottone "buttons[1] nella View"
         if(cVaccinale.getNumCiv() == -1){
             utility.showWarningPopUp("Attenzione", "Il numero civico dev'essere un numero.");
+            Registra_CentroVaccinale_View registra_centroVaccinale_view = new Registra_CentroVaccinale_View();
+            registra_centroVaccinale_view.setVisible(true);
             return 1;
         }
             System.out.println("IDcentro: "+cVaccinale.getIdCentro());
@@ -79,6 +83,8 @@ public class Registra_CentroVaccinale_Controller {
 
         if(cVaccinale.getProvincia().length() != 2){
             utility.showWarningPopUp("Attenzione", "La provincia deve essere una sigla di due caratteri.");
+            Registra_CentroVaccinale_View registra_centroVaccinale_view = new Registra_CentroVaccinale_View();
+            registra_centroVaccinale_view.setVisible(true);
             return 1;
         }
         int c=Stub.registraCentroVaccinale(cVaccinale);
