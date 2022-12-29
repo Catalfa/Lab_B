@@ -38,7 +38,7 @@ public class SignInCittadinoController extends JFrame {
 
         AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView(); /**
                                                                                                 * COANDO COLLEGAMENTO
-                                                                                                * NUOVO
+                                                                                                * NUOVOO
                                                                                                 **/
         aggiungiEventoAvversoView.setVisible(true);
         signInCittadinoView.dispose();
