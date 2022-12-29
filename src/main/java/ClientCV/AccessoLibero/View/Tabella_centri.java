@@ -11,17 +11,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 
-import ClientCV.client.ServerSingleton;
 import Common.*;
-import ServerCV.interfaccia.Server;
 
 public class Tabella_centri extends JFrame {
-    private Server server;
     private String[] aux;
     private int i = 1;
 
     public Tabella_centri(List<InfoCentriVaccinali> listaCentri) throws RemoteException {
-        server = ServerSingleton.getInstance();
         String[] columnNames = { "Colonna 1", "Colonna 2", "Colonna 3", "Colonna 4", "Colonna 5",
                 "Colonna 6", "Colonna 7", "Colonna 8", "Colonna 9", "Colonna 10",
                 "Colonna 11", "Colonna 12", "Colonna 13", "Colonna 14", "colonna 15" };

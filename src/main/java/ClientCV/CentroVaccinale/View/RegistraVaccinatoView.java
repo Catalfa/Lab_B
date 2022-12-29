@@ -4,11 +4,9 @@ import ClientCV.CentroVaccinale.Controller.RegistraVaccinatoController;
 import Common.RegistrazioniVaccinati;
 
 import javax.swing.*;
-import java.sql.Date;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 
 public class RegistraVaccinatoView extends JFrame {
 

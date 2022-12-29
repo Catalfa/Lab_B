@@ -1,7 +1,6 @@
 package ServerCV.database.gestioneDB;
 
 import ServerCV.database.gestioneDB.interfacceDB.EventiAvversiDao;
-import ServerCV.server.GestioneClient;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

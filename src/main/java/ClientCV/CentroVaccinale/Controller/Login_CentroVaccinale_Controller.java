@@ -2,9 +2,7 @@ package ClientCV.CentroVaccinale.Controller;
 
 import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
-import ClientCV.CentroVaccinale.View.RegistraVaccinatoView;
 import ClientCV.CentroVaccinale.View.Registra_CentroVaccinale_View;
-import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
 import Common.InfoCentriVaccinali;
@@ -23,8 +21,8 @@ public class Login_CentroVaccinale_Controller {
     }
 
     /**
-	 * Metodo che torna al frame precedente.
-	 */
+     * Metodo che torna al frame precedente.
+     */
     public void goBack() {
         MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
         mainLoginFrameView.setVisible(true);
@@ -36,18 +34,18 @@ public class Login_CentroVaccinale_Controller {
      */
     public int loginCentroVaccinale(String user, String password) {
 
+        // String idcentro, String nome_centro, String tipologia, String qualificatore,
+        // String nomevia, int numciv, String comune, String provincia, String sigla,
+        // int cap
+        // infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
 
-        //String idcentro, String nome_centro, String tipologia, String qualificatore, String nomevia, int numciv, String comune, String provincia, String sigla, int cap 
-        //infoCentroVaccinali = new InfoCentriVaccinali(idCentro, nomeCentroVaccinale);
-
-        if(user.isEmpty() || password.isEmpty()){                                 //ATT ciclo controllo compilare campi, copio per acc lib
+        if (user.isEmpty() || password.isEmpty()) { // ATT ciclo controllo compilare campi, copio per acc lib
             utility.showWarningPopUp("Attenzione", "Riempire tutti i campi.");
             return 0;
-        }
-        else{
+        } else {
             try {
-                int a=Stub.loginCentroVaccinale(user,password);
-                if(a==1){
+                int a = Stub.loginCentroVaccinale(user, password);
+                if (a == 1) {
                     loginCVaccView.dispose();
                 }
                 return a;
@@ -55,13 +53,13 @@ public class Login_CentroVaccinale_Controller {
                 e.printStackTrace();
             }
         }
-        
-    return 0;
+
+        return 0;
     }
 
     /**
-	 * Metodo che crea un nuovo frame e manda in dispose quello corrente.
-	 */
+     * Metodo che crea un nuovo frame e manda in dispose quello corrente.
+     */
     public void signIn() {
         Registra_CentroVaccinale_View signInCentroVaccinaleView = new Registra_CentroVaccinale_View();
         signInCentroVaccinaleView.setVisible(true);
