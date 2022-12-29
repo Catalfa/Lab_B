@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 
 public class HomePageView extends JFrame {
 
-    //todo
-    //Modificare in modo che nel frame non appaia Dottore ma Centro Vaccinale - fatto
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
     private final int WIDTH = 400;
@@ -33,8 +31,8 @@ public class HomePageView extends JFrame {
         btnLogin.setFont(mainFont);
 
         lbCentriVaccinali.setBounds((WIDTH/2)-100, 5, 200, 100);
-        btnAccessoLibero.setBounds(20, HIGHT-80, 150, 25);
-        btnLogin.setBounds(WIDTH-170, HIGHT-80, 150, 25);
+        btnAccessoLibero.setBounds(30, HIGHT-120, 150, 25);
+        btnLogin.setBounds(WIDTH-192, HIGHT-120, 150, 25);
         
         btnLogin.addActionListener(new ActionListener() {
             @Override

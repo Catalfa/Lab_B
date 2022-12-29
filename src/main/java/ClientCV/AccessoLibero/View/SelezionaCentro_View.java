@@ -15,7 +15,7 @@ public class SelezionaCentro_View extends JFrame{
     SelezionaCentro_Controller controller;
 
 
-    private static final int WHIDTH = 450;
+    private static final int WIDTH = 450;
     private static final int HIGHT = 550;
 
     public JFrame frame_showInfoCvCittadino;

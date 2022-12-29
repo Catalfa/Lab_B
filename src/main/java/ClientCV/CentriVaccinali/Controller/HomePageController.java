@@ -24,7 +24,7 @@ public class HomePageController implements Client {
         homePageView.dispose();
     }
 
-    public void createAccLibFrame(){                              //ATT new
+    public void createAccLibFrame(){                              //Collega acc lib
         MainAccLibFrameView f = new MainAccLibFrameView();
         f.setVisible(true);
         homePageView.dispose();

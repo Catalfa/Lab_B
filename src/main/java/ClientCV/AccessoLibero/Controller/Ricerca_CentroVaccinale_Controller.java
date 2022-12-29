@@ -37,8 +37,8 @@ public class Ricerca_CentroVaccinale_Controller {
     public void cercaCentro(String nome) {
 
         List<InfoCentriVaccinali> listaCentri = new ArrayList<>();
-        // nome="Astolfo"; usato per vedere se inserendo il nome da codice la lista
-        // funziona
+        // nome="Astolfo"; usato per vedere se inserendo il nome da codice la lista funziona
+
         try {
             this.Stub = ServerSingleton.getInstance();
             listaCentri = this.Stub.cercaCentroVaccinale(nome);

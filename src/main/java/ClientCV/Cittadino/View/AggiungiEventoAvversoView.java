@@ -20,7 +20,7 @@ public class AggiungiEventoAvversoView extends JFrame{
     private static final int HIGHT = 800;
 
     /*
-    Creo questi panels inquesta posizione perchè mi serviranno
+    Creo questi panels in questa posizione perchè mi serviranno
     anche in altre parti di codice e altre classi
     */
     private JFrame frame_aggiungiEventoAvverso;

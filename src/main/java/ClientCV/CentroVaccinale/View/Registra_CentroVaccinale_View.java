@@ -21,7 +21,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
             "Username",
             "Password",
             "ID centro",
-            "Nome centtro",
+            "Nome centro",
             "Tipologia Centro",
             "via/viale/piazza",
             "Indirizzo",

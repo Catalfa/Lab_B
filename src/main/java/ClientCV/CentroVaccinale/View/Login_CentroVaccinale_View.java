@@ -107,7 +107,7 @@ public class Login_CentroVaccinale_View extends JFrame {
                 String user = tf_user.getText();
                 String password = tf_password.getText();
                 switch (controller.loginCentroVaccinale(user, password)) {
-                    // TODO @Andre implementare frame successivi
+
                     case 1:
                         RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
                         registraVaccinatoView.setVisible(true);

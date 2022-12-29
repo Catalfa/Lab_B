@@ -9,8 +9,6 @@ import java.awt.event.ActionListener;
 
 public class MainLoginFrameView extends JFrame {
 
-    //todo
-    //Modificare in modo che nel frame non appaia Dottore ma Centro Vaccinale
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
     private final Font secondMainFont = new Font("Segoeo print", Font.BOLD, 16);

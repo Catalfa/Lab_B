@@ -15,13 +15,6 @@ public class InfoCvController {
     }
 
 
-  /*  public MainAccLibFrameController(MainAccLibFrameView mainAccLibFrameView){
-        this.mainAccLibFrameView = mainAccLibFrameView;
-    }
-    */
-
-
-
     public void back() {
         ricerca_centroVaccinale_View.setVisible(false);
         infoCvView.dispose();

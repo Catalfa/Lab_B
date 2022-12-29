@@ -5,14 +5,7 @@ import ClientCV.client.ServerSingleton;
 import ServerCV.interfaccia.Server;
 
 /**
- * Nicolo' Ferrari, Mat. 732707, Varese
- * Alessandro Formenti, Mat. 734465, Varese
- * Luigi Mucciarone, Mat. 732714, Varese
- * Luca Alberti, Mat. 733096, Varese
- */
-
-/**
- * Classe contenente tutti i controlli effettuati nella View ShowInfoCentroVaccinaleCitizen.
+ * Classe contenente tutti i controlli effettuati nella View ShowInfoCentroVaccinale
  */
 public class ShowInfoCentroVaccinaleCitizenController {
 	
@@ -21,8 +14,7 @@ public class ShowInfoCentroVaccinaleCitizenController {
 	Server stub;
 	
 	/**
-	 * Costruttore della classe.
-	 * @param view La View della classe corrente.
+	 * Costruttore della classe
 	 */
 	public ShowInfoCentroVaccinaleCitizenController(ShowInfoCentroVaccinaleCitizenView view) {
 		this.view = view;

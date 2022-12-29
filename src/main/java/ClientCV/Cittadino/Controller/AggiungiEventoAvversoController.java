@@ -37,9 +37,9 @@ public class AggiungiEventoAvversoController {
 	 * @param intensitaEventi	L'intensit� dei vari eventi.
 	 * @param noteEventi		Le note sui vari eventi.
 	 * @param nomeCentro		Il nome del centro vaccinale.
-	 * @param eventi			La lista degli eventi.
-	 */
-    
+	 * @param eventi			La lista degli eventi. */
+
+
      public void inserisciEventiAvversiAction( String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
         EventiAvversi eventoAvverso = new EventiAvversi(idEvento, nomeCentro, eventi, intensitaEventi, noteEventi,codiceFiscale);
 

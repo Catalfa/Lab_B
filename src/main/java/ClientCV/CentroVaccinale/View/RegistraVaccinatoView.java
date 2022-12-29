@@ -70,7 +70,7 @@ public class RegistraVaccinatoView extends JFrame {
         int x = 0;
         for (int i = 0; i < 2; i++) {
             buttons[i] = new JButton(buttonNames[i]);
-            buttons[i].setBounds((WIDTH / 2) - 150 + x, 505, 90, 25);
+            buttons[i].setBounds((WIDTH / 2) - 120 + x, 505, 98, 25);
             mainPanel.add(buttons[i], JButton.BOTTOM);
             x += 100;
         }
