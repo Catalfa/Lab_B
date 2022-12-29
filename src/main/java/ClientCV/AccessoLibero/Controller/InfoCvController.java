@@ -2,8 +2,6 @@ package ClientCV.AccessoLibero.Controller;
 
 import ClientCV.AccessoLibero.View.InfoCvView;
 import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
-import ClientCV.AccessoLibero.View.SelezionaCentro_View;
-import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
 
 public class InfoCvController {
 
@@ -14,14 +12,15 @@ public class InfoCvController {
         this.infoCvView = infoCvView;
     }
 
-
     public void back() {
         ricerca_centroVaccinale_View.setVisible(false);
         infoCvView.dispose();
-        Ricerca_CentroVaccinale_View ricerca_centroVaccinale_view = new Ricerca_CentroVaccinale_View();
+        new Ricerca_CentroVaccinale_View();
     }
 
-  /*  public void closeWindow() {        //metodo finale per chiudere finestre aperte
-        view.setVisible(false);
-    } */
+    /*
+     * public void closeWindow() { //metodo finale per chiudere finestre aperte
+     * view.setVisible(false);
+     * }
+     */
 }

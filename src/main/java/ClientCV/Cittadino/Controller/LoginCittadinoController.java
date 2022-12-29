@@ -16,7 +16,7 @@ import java.rmi.RemoteException;
 public class LoginCittadinoController {
 
     Server Stub;
-    
+
     Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
     public LoginCittadinoView loginCittadinoView;
 
@@ -40,24 +40,19 @@ public class LoginCittadinoController {
         aggiungiEventoAvversoView.setVisible(true);
         loginCittadinoView.dispose();
 
-
-        if(username.toString().isEmpty() || password.length == 0 || cf.length()!=16){
+        if (username.toString().isEmpty() || password.length == 0 || cf.length() != 16) {
             utility.showWarningPopUp("Attenzione!", "Controllare che tutti i campi siano compilati correttamente.");
-            LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
-            loginCittadinoView.setVisible(true);
             return 1;
         }
 
-        if(!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username,cf)){
-            utility.showWarningPopUp("Attenzione!", "verifica che i dati inseriti siano corretti.");
-            LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
-            loginCittadinoView.setVisible(true);
+        if (!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username, cf)) {
+            utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
             return 1;
         }
 
-        switch (Stub.loginCittadino(username,password.toString(), cf)){
+        switch (Stub.loginCittadino(username, password.toString(), cf)) {
             case 1:
-                AggiungiEventoAvversoView eventoAvversoView = new AggiungiEventoAvversoView(new CittadiniRegistratiDaoImpl().getIdCittadino(cf));      //log corretto
+                new AggiungiEventoAvversoView(new CittadiniRegistratiDaoImpl().getIdCittadino(cf));
                 break;
             case 2:
                 utility.showWarningPopUp("Attenzione!", "Username errato");
@@ -70,7 +65,7 @@ public class LoginCittadinoController {
                 break;
         }
         loginCittadinoView.dispose();
-        
+
         return 0;
     }
 

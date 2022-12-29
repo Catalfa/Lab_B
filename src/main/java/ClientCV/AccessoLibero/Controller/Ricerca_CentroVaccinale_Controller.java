@@ -1,11 +1,7 @@
 package ClientCV.AccessoLibero.Controller;
 
-import ClientCV.AccessoLibero.View.InfoCvView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
-import ClientCV.Cittadino.View.AggiungiEventoAvversoView;
-import ClientCV.Cittadino.View.LoginCittadinoView;
 import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
-import ClientCV.AccessoLibero.View.SelezionaCentro_View;
 import ClientCV.AccessoLibero.View.Tabella_centri;
 import ClientCV.Utility;
 import ClientCV.client.ServerSingleton;
@@ -18,8 +14,6 @@ import java.util.List;
 public class Ricerca_CentroVaccinale_Controller {
 
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
-
-    private SelezionaCentro_View selezionaCentro_View;
 
     // private InfoCvView infoCvView;
     private Server Stub;
@@ -37,7 +31,8 @@ public class Ricerca_CentroVaccinale_Controller {
     public void cercaCentro(String nome) {
 
         List<InfoCentriVaccinali> listaCentri = new ArrayList<>();
-        // nome="Astolfo"; usato per vedere se inserendo il nome da codice la lista funziona
+        // nome="Astolfo"; usato per vedere se inserendo il nome da codice la lista
+        // funziona
 
         try {
             this.Stub = ServerSingleton.getInstance();
@@ -50,12 +45,14 @@ public class Ricerca_CentroVaccinale_Controller {
             System.out.println(listaCentri.get(0).getComune());
             System.out.println(listaCentri.get(0).getProvincia());
             System.out.println(listaCentri.get(0).getCap());
-            selezionaCentro_View = new SelezionaCentro_View(listaCentri);
             // selezionaCentro_View.setVisible(true);
             // InfoCvView infoCvView= new InfoCvView(listaCentri);
             // selezionaCentro_View.setVisible(true);
-            (new Tabella_centri(listaCentri)).setVisible(true);
-            ;
+            try {
+                new Tabella_centri(listaCentri);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             ricerca_CentroVaccinale_View.dispose();
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +63,4 @@ public class Ricerca_CentroVaccinale_Controller {
 
     }
 
-    public void setSelezionaCentro_View(SelezionaCentro_View selezionaCentro_View) {
-        this.selezionaCentro_View = selezionaCentro_View;
-    }
 }

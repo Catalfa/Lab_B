@@ -13,9 +13,6 @@ import java.awt.*;
  */
 public class ShowInfoCentroVaccinaleCitizenView extends JDialog {
 
-	private static final int WIDTH = 400;
-	private static final int HEIGHT = 450;
-
 	public JDialog dialog_ShowInfoCentroVaccinaleCitizen;
 	public JFrame frame_ShowInfoCentroVaccinaleCitizen;
 	public JPanel panel_ShowInfoCentroVaccinaleCitizen;
@@ -26,10 +23,9 @@ public class ShowInfoCentroVaccinaleCitizenView extends JDialog {
 	private JTable table;
 	public DefaultTableModel tableModel;
 	private JScrollPane scrollPane;
-	private ShowInfoCentroVaccinaleCitizenController controller;
 
 	public ShowInfoCentroVaccinaleCitizenView() {
-		this.controller = new ShowInfoCentroVaccinaleCitizenController(this);
+		new ShowInfoCentroVaccinaleCitizenController(this);
 
 		frame_ShowInfoCentroVaccinaleCitizen = new JFrame();
 		panel_ShowInfoCentroVaccinaleCitizen = new JPanel();

@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -413,12 +412,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	// compatta (usata solo per i metodi del vaccinato)
 	public static String accorpamento(String centro) {
 		String tmp = "";
-		String fin = "";
 
 		for (int i = 0; i < centro.length(); i++) {
 			char ch = centro.charAt(i);
 			if (ch == ' ') {
-				tmp = tmp;
+
 			} else {
 				tmp = tmp + ch;
 
