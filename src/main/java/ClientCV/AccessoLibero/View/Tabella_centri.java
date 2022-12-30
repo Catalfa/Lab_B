@@ -26,7 +26,7 @@ public class Tabella_centri extends JFrame {
         aux[0] = "ID Centro" + "," + "Nome" + "," + "Tipologia" + "," +
                 "Provincia" + "," + "Comune" + "," + "Indirizzo" + "," + "Civico" + "," + "Mal di testa" + ","
                 + "Mal di pancia" + "," + "Febbre" + "," + "Dolori articolari" + "," + "Linfoadenopatia"
-                + "," + "Tachicardia " + "," + "Crisi ipertensiva" + "," + "segnalazioni";
+                + "," + "Tachicardia " + "," + "Crisi ipertensiva" + "," + "n. segnalazioni";
 
         for (InfoCentriVaccinali centro : listaCentri) {
             aux[i] = centro.toArray(centro);

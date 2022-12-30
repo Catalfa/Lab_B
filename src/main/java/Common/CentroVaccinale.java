@@ -81,7 +81,7 @@ public class CentroVaccinale implements Serializable {
                 Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Linfoadenopatia")) + "," +
                 Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Tachicardia")) + "," +
                 Double.toString(server.getImportanzaEvento(centro.getIdCentro(), "Crisi ipertensiva")) + ","
-                + "n segnalazioni";
+                + Integer.toString(server.ottieniNumSegnalazioni(centro.nomeCentroVaccinale));
         return Centro;
 
     }

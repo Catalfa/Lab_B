@@ -36,6 +36,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
+			System.out.println();
+			ex.printStackTrace();
 			return false;
 		} finally {
 			closeConnection(connection);

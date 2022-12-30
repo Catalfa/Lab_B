@@ -244,8 +244,16 @@ public class AggiungiEventoAvversoView extends JFrame{
         inizializzaButtonGroup();
         for(int j=0; j<7; j++){
             for(int i=0; i<6; i++){
-                JRadioButton rb_intensita = new JRadioButton(""+i, (i==1 ? true : false));
-                rb_intensita.setActionCommand(""+j);
+                JRadioButton rb_intensita = new JRadioButton(""+i, (i==0 ? true : false));
+
+
+                if(rb_intensita.isSelected()) {rb_intensita.setActionCommand(""+i);   }
+                else{
+                    //QUI
+                    rb_intensita.setActionCommand(Integer.toString(i));
+                }
+
+
                 rb_intensita.setVerticalTextPosition(JRadioButton.BOTTOM);
                 rb_intensita.setHorizontalTextPosition(JRadioButton.CENTER);
                 buttonGroup[j].add(rb_intensita);

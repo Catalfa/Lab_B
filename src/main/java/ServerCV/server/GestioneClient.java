@@ -270,7 +270,7 @@ public class GestioneClient {
 	 * Metodo che gestisce l'ottenimento dell'intensita' media di ogni evento per un
 	 * determinato centro vaccinale.
 	 * 
-	 * @param nomeCentro Il nome del centro vaccinale.
+	 * @param id_centro Il nome del centro vaccinale.
 	 * @param evento     Il nome dell'evento avverso.
 	 * @return Il valore medio dell'intensita' di quel determinato evento.
 	 */

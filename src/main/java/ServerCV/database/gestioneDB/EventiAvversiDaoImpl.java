@@ -77,7 +77,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * Metodo che calcola e restituisce il valore medio dell'intensita' dell'evento
 	 * avverso per quel determinato centro vaccinale.
 	 * 
-	 * @param nomeCentro Il nome del centro vaccinale.
+	 * @param id_centro Il nome del centro vaccinale.
 	 * @param evento     Il tipo di evento avverso.
 	 * @return Il valore medio di quel determinato evento.
 	 */

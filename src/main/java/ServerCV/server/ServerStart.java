@@ -57,8 +57,6 @@ public class ServerStart {
 			System.out.println("Sto creando la tabella cittadini_registrati...");
 			ct.Create_CittadinoRegistrato(connessione);
 			System.out.println("Sto creando la tabella vaccinati...");
-			String nomecentro = "SantaMaria";
-			ct.Create_Vaccinato(connessione, nomecentro);
 			System.out.println("Sto creando la tabella eventi_avversi...");
 			ct.Create_EventiAvversi(connessione);
 			try {

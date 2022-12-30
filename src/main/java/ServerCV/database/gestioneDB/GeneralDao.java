@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class GeneralDao {
-	private static String DB_URL = "jdbc:postgresql://localhost:5432/";
+	private static String DB_URL = "jdbc:postgresql://localhost:5433/";
 	private static String DB_USERNAME;
 	private static String DB_PASSWORD;
 
