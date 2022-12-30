@@ -189,9 +189,11 @@ public class AggiungiEventoAvversoView extends JFrame{
                 String noteEventi[] = new String[7];
 
                 for(int i=0; i<7; i++){
+                  // System.out.println("Prova per capire "+buttonGroup[i].getElements());
                     intensitaEventi[i] = Integer.parseInt(buttonGroup[i].getSelection().getActionCommand());
+                  //  System.out.println(intensitaEventi[i]);
                     noteEventi[i] = noteFields[i].getText();
-
+                   //buttonGroup[i].getSelection().getMnemonic();
                 }
                 controller.inserisciEventiAvversiAction( idEvento, id_cittadino[2], nomeCentro, eventiRegistrabili, intensitaEventi, noteEventi);
 

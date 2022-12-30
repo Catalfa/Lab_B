@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinaliDao {
 
@@ -31,16 +32,16 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddValuesCentroVaccinale);
-			pstmt.setString(1, infoCentroVaccinale.getIdCentro());
-			pstmt.setString(2, infoCentroVaccinale.getNomeCentro());
+			pstmt.setString(1, infoCentroVaccinale.getIdCentro().toLowerCase());
+			pstmt.setString(2, infoCentroVaccinale.getNomeCentro().toLowerCase());
 			pstmt.setString(3, infoCentroVaccinale.getTipologia().toLowerCase());
-			pstmt.setString(4, infoCentroVaccinale.getQualificatore());
-			pstmt.setString(5, infoCentroVaccinale.getNomeVia());
+			pstmt.setString(4, infoCentroVaccinale.getQualificatore().toLowerCase());
+			pstmt.setString(5, infoCentroVaccinale.getNomeVia().toLowerCase());
 			pstmt.setString(6, ((Integer) infoCentroVaccinale.getNumCiv()).toString());
-			pstmt.setString(7, infoCentroVaccinale.getComune());
-			pstmt.setString(8, infoCentroVaccinale.getProvincia());
+			pstmt.setString(7, infoCentroVaccinale.getComune().toLowerCase());
+			pstmt.setString(8, infoCentroVaccinale.getProvincia().toLowerCase());
 			pstmt.setInt(9, infoCentroVaccinale.getCap());
-			pstmt.setString(10, infoCentroVaccinale.getUsername());
+			pstmt.setString(10, infoCentroVaccinale.getUsername().toLowerCase());
 			pstmt.setString(11, infoCentroVaccinale.getPassword());
 			pstmt.executeUpdate();
 			createVaccinati_(infoCentroVaccinale.getNomeCentro());
@@ -74,9 +75,9 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(query2);
-			pstmt.setString(1, researchText);
-			pstmt.setString(2, researchText);
-			pstmt.setString(3, researchText);
+			pstmt.setString(1, researchText.toLowerCase());
+			pstmt.setString(2, researchText.toLowerCase());
+			pstmt.setString(3, researchText.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -110,7 +111,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCenterOnDb);
-			pstmt.setString(1, nomeCentro);
+			pstmt.setString(1, nomeCentro.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next())
@@ -133,7 +134,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCitizenOnDb);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next())
@@ -156,7 +157,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCenterOnDb);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next())
@@ -179,7 +180,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qCentroPasswordMatch);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 
@@ -268,7 +269,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCfInVaccinati_);
-			pstmt.setString(1, cf);
+			pstmt.setString(1, cf.toUpperCase());
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -292,7 +293,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qCentroPasswordMatch);
-			pstmt.setString(1, id_centro);
+			pstmt.setString(1, id_centro.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next())
@@ -330,7 +331,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInVaccinati_);
-			pstmt.setString(1, id);
+			pstmt.setString(1, id.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -369,13 +370,13 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddRegistrazioneVaccinato);
-			pstmt.setString(1, registrazioneVaccinato.getCf());
-			pstmt.setString(2, registrazioneVaccinato.getNomeVaccinato());
-			pstmt.setString(3, registrazioneVaccinato.getCognomeVaccinato());
+			pstmt.setString(1, registrazioneVaccinato.getCf().toUpperCase());
+			pstmt.setString(2, registrazioneVaccinato.getNomeVaccinato().toLowerCase());
+			pstmt.setString(3, registrazioneVaccinato.getCognomeVaccinato().toLowerCase());
 			pstmt.setString(4, registrazioneVaccinato.getDataVaccino());
-			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino());
-			pstmt.setString(6, registrazioneVaccinato.getIdVaccinazione());
-			pstmt.setString(7, registrazioneVaccinato.getIdCentro());
+			pstmt.setString(5, registrazioneVaccinato.getTipoVaccino().toLowerCase());
+			pstmt.setString(6, registrazioneVaccinato.getIdVaccinazione().toLowerCase());
+			pstmt.setString(7, registrazioneVaccinato.getIdCentro().toLowerCase());
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();

@@ -25,14 +25,14 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qAddValuesCittadiniRegistrati);
-			pstmt.setString(1, citizenData.getCFCittadino());
-			pstmt.setString(2, citizenData.getNomeCittadino());
-			pstmt.setString(3, citizenData.getCognomeCittadino());
-			pstmt.setString(4, citizenData.getEmailCittadino());
-			pstmt.setString(5, citizenData.getUsernameCittadino());
+			pstmt.setString(1, citizenData.getCFCittadino().toUpperCase());
+			pstmt.setString(2, citizenData.getNomeCittadino().toLowerCase());
+			pstmt.setString(3, citizenData.getCognomeCittadino().toLowerCase());
+			pstmt.setString(4, citizenData.getEmailCittadino().toLowerCase());
+			pstmt.setString(5, citizenData.getUsernameCittadino().toLowerCase());
 			pstmt.setString(6, citizenData.getPasswordCittadino());
-			pstmt.setString(7,citizenData.getIdvaccinazione());
-			pstmt.setString(8,citizenData.getIdcentro());
+			pstmt.setString(7,citizenData.getIdvaccinazione().toLowerCase());
+			pstmt.setString(8,citizenData.getIdcentro().toLowerCase());
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
@@ -62,7 +62,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection =openConnection();
 			pstmt = connection.prepareStatement(qGetInfoCittadini);
-			pstmt.setString(1, cf);
+			pstmt.setString(1, cf.toUpperCase());
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				datiCittadino = new DatiCittadino(rs.getString("nome"), rs.getString("cognome"), null, null, null, null, null, null);
@@ -93,7 +93,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qCitizenPasswordMatch);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			
@@ -121,7 +121,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCitizenOnDb);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next())
@@ -151,7 +151,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetCitizenCf);
-			pstmt.setString(1, username);
+			pstmt.setString(1, username.toLowerCase());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -181,7 +181,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCfInCittadiniRegistrati);
-			pstmt.setString(1, cf);
+			pstmt.setString(1, cf.toUpperCase());
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -204,8 +204,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistCfInCittadiniRegistrati);
-			pstmt.setString(1, username);
-			pstmt.setString(2, cf_cittadino);
+			pstmt.setString(1, username.toLowerCase());
+			pstmt.setString(2, cf_cittadino.toUpperCase());
 			rs = pstmt.executeQuery();
 
 			if((rs.next())){
@@ -239,8 +239,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qUpdateIdVaccinazioneInCittadiniRegistrati);
-			pstmt.setString(1, id1);
-			pstmt.setString(2, cf);
+			pstmt.setString(1, id1.toLowerCase());
+			pstmt.setString(2, cf.toUpperCase());
 			pstmt.executeUpdate();
 			
 		} catch (SQLException ex) {
@@ -266,7 +266,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInCittadiniRegistrati);
-			pstmt.setString(1, id1);
+			pstmt.setString(1, id1.toLowerCase());
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -296,7 +296,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetIdVaccinazioneInCittadiniRegistrati);
-			pstmt.setString(1, cf);
+			pstmt.setString(1, cf.toUpperCase());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
