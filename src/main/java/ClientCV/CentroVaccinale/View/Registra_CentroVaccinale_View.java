@@ -1,6 +1,7 @@
 package ClientCV.CentroVaccinale.View;
 
 import ClientCV.CentroVaccinale.Controller.Registra_CentroVaccinale_Controller;
+import ClientCV.Utility;
 import Common.InfoCentriVaccinali;
 
 import javax.swing.*;
@@ -120,7 +121,8 @@ public class Registra_CentroVaccinale_View extends JFrame {
                             textFields[5].getText(),
                             textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[8].getText(),
                             textFields[9].getText(), Integer.parseInt(textFields[10].getText())));
-                } catch (RemoteException ex) {
+                } catch (Exception ex) {
+                    Utility.showErrorPopUp("Attenzione", "controllare che tutti i campi siano compilati correttamente");
                     ex.printStackTrace();
                 }
             }
