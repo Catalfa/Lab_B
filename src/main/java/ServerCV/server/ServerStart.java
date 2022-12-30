@@ -7,6 +7,7 @@ import ServerCV.interfaccia.Server;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -61,8 +62,8 @@ public class ServerStart {
 			ct.Create_EventiAvversi(connessione);
 			try {
 				ct.CreateTables(connessione);
-			} catch (Exception e) {
-				System.out.println("zio pera");
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 	}

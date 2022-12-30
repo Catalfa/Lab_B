@@ -46,7 +46,7 @@ public class AggiungiEventoAvversoController {
         try {
             int risultato = Stub.InserisciEventiAvversi(eventoAvverso, codiceFiscale);
            if (risultato == 2) {
-                Utility.showErrorPopUp("ERRORE", "Non ti sei vaccinato in questo centro vaccinale");
+                Utility.showErrorPopUp("ERRORE", "Non risulta vaccinazione intestato al tuo ID vaccinazione, potrai effettuare segnalazioni solo dopo aver ricevuto il vaccino");
                 return;
             }if (risultato == 3) {
                 Utility.showErrorPopUp("ERRORE", "Sono gia' stati inseriti degli eventi avversi per questo Id");

@@ -36,7 +36,8 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException ex) {
-			System.out.println();
+			System.out.println(ex);
+			System.out.println("problemi query registrazione cittadino");
 			ex.printStackTrace();
 			return false;
 		} finally {

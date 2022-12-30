@@ -37,10 +37,7 @@ public class SignInCittadinoController extends JFrame {
 
     public int signIn(DatiCittadino cittadini) throws RemoteException {
 
-        AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView(); /**
-                                                                                                * COANDO COLLEGAMENTO
-                                                                                                * NUOVOO
-                                                                                                **/
+        AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView();
         aggiungiEventoAvversoView.setVisible(true);
         signInCittadinoView.dispose();
 
@@ -68,13 +65,15 @@ public class SignInCittadinoController extends JFrame {
             return 1;
         }
         if (stub.registraCittadino(cittadini) == 1) {
-            new Utility().showConfirmationPopUp("avviso", " registrazione effettuata con successo");
+            new Utility().showConfirmationPopUp("avviso", " registrazione effettuata con successo!");
+            LoginCittadinoView loginframe = new LoginCittadinoView();
+            loginframe.setVisible(true);
         } else {
-            new Utility().showWarningPopUp("attenzione", "errore nella registrazioe");
+            new Utility().showWarningPopUp("attenzione", "Codice Fiscale già registrato");
             SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
             signInCittadinoView.setVisible(true);
         }
-        //controller.createLoginCittadinoFrame();
+
         signInCittadinoView.dispose();
 
         return 0;
