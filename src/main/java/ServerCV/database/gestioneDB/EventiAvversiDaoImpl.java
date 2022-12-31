@@ -25,12 +25,12 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qInserisciEventiAvversi);
-			pstmt.setString(1, id_vaccinazione);
-			pstmt.setString(2, id_centro);
-			pstmt.setString(3, evento);
+			pstmt.setString(1, id_vaccinazione.toLowerCase());
+			pstmt.setString(2, id_centro.toLowerCase());
+			pstmt.setString(3, evento.toLowerCase());
 			pstmt.setInt(4, severita);
-			pstmt.setString(5, note);
-			pstmt.setString(6, cf);
+			pstmt.setString(5, note.toLowerCase());
+			pstmt.setString(6, cf.toUpperCase());
 			pstmt.executeUpdate();
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -92,13 +92,13 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetImportanzaEvento);
-			pstmt.setString(1, id_centro);
-			pstmt.setString(2, evento);
+			pstmt.setString(1, id_centro.toLowerCase());
+			pstmt.setString(2, evento.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				pstmt.setString(1, id_centro);
-				pstmt.setString(2, evento);
+				pstmt.setString(1, id_centro.toLowerCase());
+				pstmt.setString(2, evento.toLowerCase());
 				rs = pstmt.executeQuery();
 				break;
 			}
@@ -132,7 +132,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qExistIdInEventiAvversi);
-			pstmt.setString(1, id[0]);
+			pstmt.setString(1, id[0].toLowerCase());
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -157,7 +157,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qCentroPasswordMatch);
-			pstmt.setString(1, nome_centro);
+			pstmt.setString(1, nome_centro.toLowerCase());
 			rs = pstmt.executeQuery();
 
 			while (rs.next())
