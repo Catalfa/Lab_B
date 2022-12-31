@@ -1,5 +1,6 @@
 package ClientCV.CentriVaccinali;
 
+import ClientCV.CentriVaccinali.View.ConnectionView;
 import ClientCV.client.ClientStart;
 import Common.RegistrazioniVaccinati;
 import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
@@ -14,8 +15,7 @@ public class CentriVaccinali {
     static ClientStart client = new ClientStart();
 
     public static void main(String[] args) {
-        server.start();
-        client.start();
+        new ConnectionView();
 
         /*
          * String sDate1="2015-03-31";
