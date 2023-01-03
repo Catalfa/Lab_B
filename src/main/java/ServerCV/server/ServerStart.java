@@ -25,7 +25,7 @@ public class ServerStart {
 	 * }
 	 */
 
-	public void start(String nomeDb, String user, String password) {
+	public void start(String porta,String nomeDb, String user, String password) {
 		CreazioneTabelle ct = new CreazioneTabelle();
 		Connection connessione = null;
 
@@ -33,7 +33,7 @@ public class ServerStart {
 			Server stub = (Server) new ServerImpl();
 			Registry registry = LocateRegistry.createRegistry(1100);
 			registry.rebind("ServerCV", stub);
-			GeneralDao.setDatabaseParams(nomeDb, user, password);
+			GeneralDao.setDatabaseParams(porta ,nomeDb, user, password);
 			connessione = GeneralDao.openConnection();
 			if (connessione == null)
 				System.out.println("Errore");

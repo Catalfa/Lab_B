@@ -62,10 +62,10 @@ public class ConnectionView extends JFrame {
                 System.out.println("Valore del campo 3: " + field3.getText());
                 System.out.println("Valore del campo 4: " + field4.getText());
                 try {
-                    new ServerStart().start(field1.getText(),field3.getText(),field4.getText());
+                    new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.getText());
                     new ClientStart().start();
                 }catch (Exception ex){
-                    Utility.showErrorPopUp("Attenzione","Errore nella connessione, verifica che i dati inseriti siano corretti");
+                    dispose();
                     return;
                 }
             }
@@ -78,7 +78,4 @@ public class ConnectionView extends JFrame {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        ConnectionView frame = new ConnectionView();
-    }
 }
