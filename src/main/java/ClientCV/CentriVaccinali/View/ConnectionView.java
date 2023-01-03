@@ -57,13 +57,10 @@ public class ConnectionView extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 // quando viene premuto il bottone, stampa i valori dei campi di testo
-                System.out.println("Valore del campo 1: " + field1.getText());
-                System.out.println("Valore del campo 2: " + field2.getText());
-                System.out.println("Valore del campo 3: " + field3.getText());
-                System.out.println("Valore del campo 4: " + field4.getText());
                 try {
                     new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.getText());
                     new ClientStart().start();
+                    dispose();
                 }catch (Exception ex){
                     dispose();
                     return;
