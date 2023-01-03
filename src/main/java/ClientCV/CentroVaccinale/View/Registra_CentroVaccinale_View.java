@@ -16,9 +16,9 @@ public class Registra_CentroVaccinale_View extends JFrame {
     private final int WIDTH = 520;
     private final int HIGHT = 700;
 
+
+
     private String[] labelNames = {
-            "Username",
-            "Password",
             "ID centro",
             "Nome centro",
             "Tipologia Centro",
@@ -27,10 +27,14 @@ public class Registra_CentroVaccinale_View extends JFrame {
             "Numero Civico",
             "Comune",
             "Provincia (sigla)",
-            "CAP" };
+            "CAP",
+            "Username",
+            "Password"};
     private String[] buttonNames = { "BACK", "SIGN-IN", "RESET" };
     private JButton[] buttons = new JButton[3];
-    public JTextField[] textFields = new JTextField[11];
+    public JTextField[] textFields = new JTextField[10];
+
+    JPasswordField psw= new JPasswordField(20);
     private JLabel[] labels = new JLabel[11];
     public JPasswordField passwordField;
 
@@ -61,13 +65,15 @@ public class Registra_CentroVaccinale_View extends JFrame {
         }
 
         y = 50;
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < 10; i++) {
             textFields[i] = new JTextField(20);
             textFields[i].setBounds(220, y, 250, 25);
             // textFields[i] = new JTextField(labelNames[i]);
             mainPanel.add(textFields[i]);
             y += 50;
         }
+        psw.setBounds(220, y, 250, 25);
+        mainPanel.add(psw);
 
         int x = 0;
         for (int i = 0; i < 3; i++) {
@@ -103,7 +109,7 @@ public class Registra_CentroVaccinale_View extends JFrame {
                  * metodo per fare il controllo di un int
                  */
                 int s;
-                String k = textFields[10].getText(); // 3
+                String k = textFields[8].getText(); // 3
                 if (k.isEmpty()) {
                     s = 0;
                 } else {
@@ -116,11 +122,11 @@ public class Registra_CentroVaccinale_View extends JFrame {
                 // se il seguente metodo restituisce 1 la reggistrazione è avvenuta con
                 // successo, altrimenti se restituisce 2 esiste già un Centro con quel nome
                 try {
-                    controller.signIn(new InfoCentriVaccinali(textFields[0].getText(), textFields[1].getText(),
-                            textFields[2].getText(), textFields[3].getText(), textFields[4].getText(),
-                            textFields[5].getText(),
-                            textFields[6].getText(), Integer.parseInt(textFields[7].getText()), textFields[8].getText(),
-                            textFields[9].getText(), Integer.parseInt(textFields[10].getText())));
+                    controller.signIn(new InfoCentriVaccinali(textFields[9].getText(), psw.getText(),
+                            textFields[0].getText(), textFields[1].getText(), textFields[2].getText(),
+                            textFields[3].getText(),
+                            textFields[4].getText(), Integer.parseInt(textFields[5].getText()), textFields[6].getText(),
+                            textFields[7].getText(), Integer.parseInt(textFields[8].getText())));
                 } catch (Exception ex) {
                     Utility.showErrorPopUp("Attenzione", "controllare che tutti i campi siano compilati correttamente");
                     ex.printStackTrace();

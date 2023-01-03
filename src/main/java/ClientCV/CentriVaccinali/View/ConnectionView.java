@@ -19,7 +19,7 @@ public class ConnectionView extends JFrame {
     private JTextField field1;
     private JTextField field2;
     private JTextField field3;
-    private JTextField field4;
+    private JPasswordField field4;
     private JButton button;
 
     public  ConnectionView() {
@@ -39,7 +39,7 @@ public class ConnectionView extends JFrame {
         field1 = new JTextField(20);
         field2 = new JTextField(20);
         field3 = new JTextField(20);
-        field4 = new JTextField(20);
+        field4 = new JPasswordField(20);
         add(nomeLabel);
         add(field1);
         add(portaLabel);
