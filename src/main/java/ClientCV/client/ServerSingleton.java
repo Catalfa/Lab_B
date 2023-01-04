@@ -28,6 +28,7 @@ public class ServerSingleton {
 				instance = (Server)registry.lookup("ServerCV");
 				System.err.println("client collegato");
 			} catch (Exception ex) {
+				System.err.println("problemi connessione server");
 				System.out.println(ex);
 			}
 		}

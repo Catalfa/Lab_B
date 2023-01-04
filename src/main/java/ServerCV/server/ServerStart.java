@@ -25,10 +25,9 @@ public class ServerStart {
 	 * }
 	 */
 
-	/**
-	 * Metodo per startare il server.
-	 */
-	public void start() {
+
+	public void start(String porta,String nomeDb, String user, String password) {
+
 		CreazioneTabelle ct = new CreazioneTabelle();
 		Connection connessione = null;
 
@@ -36,15 +35,7 @@ public class ServerStart {
 			Server stub = (Server) new ServerImpl();
 			Registry registry = LocateRegistry.createRegistry(1100);
 			registry.rebind("ServerCV", stub);
-			Scanner sc = new Scanner(System.in);
-			System.out.println("Inserisci il nome del database");
-			String nomeDb = sc.next();
-			System.out.println("Inserisci lo username");
-			String user = sc.next();
-			System.out.println("Inserisci la password");
-			String password = sc.next();
-			sc.close();
-			GeneralDao.setDatabaseParams(nomeDb, user, password);
+			GeneralDao.setDatabaseParams(porta ,nomeDb, user, password);
 			connessione = GeneralDao.openConnection();
 			if (connessione == null)
 				System.out.println("Errore");

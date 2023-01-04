@@ -1,20 +1,14 @@
 package ClientCV.CentriVaccinali;
 
+import ServerCV.ConnectionView;
 import ClientCV.client.ClientStart;
-import Common.RegistrazioniVaccinati;
-import ServerCV.database.gestioneDB.CentriVaccinaliDaoImpl;
 import ServerCV.server.ServerStart;
-
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 public class CentriVaccinali {
     static ServerStart server = new ServerStart();
     static ClientStart client = new ClientStart();
 
     public static void main(String[] args) {
-        server.start();
         client.start();
 
         /*
