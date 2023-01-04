@@ -8,14 +8,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Classe oggetto per la gestione delle query deicittadini registrati.
+ */
+
 public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniRegistratiDao {
 
 	/**
 	 * Metodo che inserisce i dati nella tabella cittadini_registrati.
 	 * @param citizenData    I dati del cittadino che si sta registrando.
-	 * @return
+	 * @return Se l'inserimento è andato a buon fine
 	 */
-	//Query implementata
+
 	@Override
 	public Boolean insertCittadino(DatiCittadino citizenData) {
 		String qAddValuesCittadiniRegistrati = "INSERT INTO Cittadini_Registrati VALUES (?,?,?, ?, ?, ?, ?, ?)";
@@ -50,7 +54,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf 	Il codice fiscale del cittadino.
 	 * @return 		Il nome e cognome del cittadino.
 	 */
-	//Query implementata
+
 	@Override
 	public DatiCittadino getDatiCittadino(String cf) {
 		DatiCittadino datiCittadino = null;
@@ -77,12 +81,13 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	}
 	
 	/**
-	 * Metodo che controlla se la password inserita corrisponde a quella presente sul Db per quel determinato cittadino.
+	 * Metodo che controlla se la password inserita corrisponde
+	 * a quella presente sul Db per quel determinato cittadino.
 	 * @param username	L'username del cittadino registrato.
 	 * @param password	La password del cittadino registrato.
 	 * @return			Se la password dell'utente registrato e' corretta.
 	 */
-	//query implementata
+
 	@Override
 	public boolean checkPwCittadino(String username, String password) {
 		String qCitizenPasswordMatch = "SELECT userid, password FROM Cittadini_Registrati WHERE userid = ? AND password = ?";
@@ -110,7 +115,12 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		}
 	}
 
-	//query implementata
+	/** Metodo che controlla se esiste già un cittadino con quello username nel DB.
+	 *
+	 * @param username Lo username del cittadino.
+	 * @return Se è già esistente un cittadino con quello username nel DB
+	 */
+
 	@Override
 	public boolean existCittadino(String username) {
 		String qExistCitizenOnDb = "SELECT userid FROM Cittadini_Registrati WHERE userid = ?";
@@ -137,9 +147,9 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	/**
 	 * Metodo che restituisce il Cf del cittadino.
 	 * @param username	Il nome del cittadino registrato.
-	 * @return			Il Cf del cittadino registrato.
+	 * @return			Il cf del cittadino registrato.
 	 */
-	//query implementata
+
 	@Override
 	public DatiCittadino getCfCittadino(String username) {
 		DatiCittadino datiCittadino = null;
@@ -170,7 +180,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf	Il Cf del cittadino che si sta registrando
 	 * @return		Se e' gia' presente un cittadino registrato con quel Cf.
 	 */
-	//query implementata
+
 	@Override
 	public boolean existCfCittadino(String cf) {
 		String qExistCfInCittadiniRegistrati = "SELECT cf FROM Cittadini_Registrati WHERE cf = ?";
@@ -195,6 +205,12 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return false;
 	}
 
+	/**
+	 * Metodo che controlla se esiste già un cittadino con quello usernam e cf nel DB.
+	 * @param username Lo username del cittadino.
+	 * @param cf_cittadino Il cf del cittadino.
+	 * @return Se è presente un cittadino con quello username e cf nel DB
+	 */
 	public boolean CheckCfCittadino(String username, String cf_cittadino) {
 		String qExistCfInCittadiniRegistrati = "SELECT * FROM Cittadini_Registrati WHERE userid = ? and cf =?";
 		PreparedStatement pstmt;
@@ -225,10 +241,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 
 	/**
 	 * Metodo che aggiorna il valore dell'Id vaccinazione per quel determinato cittadino registrato.
-	 * @param id	L'Id della vaccinazione.
-	 * @param cf	Il Cf del cittadino registrato.
+	 * @param id	L'id della vaccinazione.
+	 * @param cf	Il cf del cittadino registrato.
 	 */
-	//query implementata
+
 	@Override
 	public void updateIdCittadino(String id, String cf) {
 		String id1=String.valueOf(id);
@@ -250,11 +266,11 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		}
 	}
 	/**
-	 * Metodo che controlla se l'Id vaccinazione inserito e' gia' stato utilizzato.
-	 * @param id	L'Id della vaccinazione.
-	 * @return		Se e' gia' stato utilizzato quell'Id.
+	 * Metodo che controlla se l'id vaccinazione inserito e' gia' stato utilizzato.
+	 * @param id	L'id della vaccinazione.
+	 * @return		Se e' gia' stato utilizzato quell'id.
 	 */
-	//query implementata
+
 	@Override
 	public boolean existIdCittadino(String id) {
 		String id1=String.valueOf(id);
@@ -281,11 +297,11 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	}
 
 	/**
-	 * Metodo che restituisce l'Id vaccinazione per quel determinato cittadino registrato.
-	 * @param cf    Il Cf del cittadino registrato.
-	 * @return		L'Id della vaccinazione.
+	 * Metodo che restituisce l'id vaccinazione per quel determinato cittadino registrato.
+	 * @param cf    Il cf del cittadino registrato.
+	 * @return		L'id della vaccinazione.
 	 */
-	//query implementata
+
 	@Override
 	public String[] getIdCittadino(String cf) {
 		String qGetIdVaccinazioneInCittadiniRegistrati = "SELECT idvaccinazione , id_centro FROM Cittadini_Registrati WHERE cf = ?";
@@ -313,7 +329,10 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return null ;
 	}
 
-	//query implementata
+	/**
+	 * Metodo che effettua il conteggio dei cittadini vaccinati.
+	 * @return Il numero di cittadini vaccinati
+	 */
 	@Override
 	public int countCittadiniVaccinati() {
 		String qCountCittadiniVaccinati = "SELECT COUNT(idvaccinazione) AS count_vaccinazioni FROM Cittadini_Registrati WHERE (idvaccinazione IS NOT NULL)";

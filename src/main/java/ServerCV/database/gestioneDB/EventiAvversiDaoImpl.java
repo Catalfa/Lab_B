@@ -7,14 +7,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Classe oggetto per la gestione delle query degli eventi avversi registrati.
+ */
+
 public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao {
 
 	/**
 	 * Metodo che inserisce i dati all'interno della tabella eventi_avversi.
-	 *
+	 * @param id_vaccinazione L'id della vaccinazione.
+	 * @param id_centro L'id del centro vaccinale.
+	 * @param evento L'evento avverso.
+	 * @param severita La severità dell'evento avverso.
 	 */
-	// query implementata
-	// non verifcato funzionamento su DB
+
+
 	@Override
 	public void insertEventoAvverso(String id_vaccinazione, String id_centro, String evento, Integer severita,
 			String note, String cf) {
@@ -47,7 +54,7 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @return Il numero di segnalazioni effettuate per quel determinato centro
 	 *         vaccinale.
 	 */
-	// query implementata
+
 	@Override
 	public int getSegnalazioni(String nomeCentro) {
 		String id_cen = getNomeCentro(nomeCentro);
@@ -77,11 +84,11 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * Metodo che calcola e restituisce il valore medio dell'intensita' dell'evento
 	 * avverso per quel determinato centro vaccinale.
 	 * 
-	 * @param id_centro Il nome del centro vaccinale.
+	 * @param id_centro L'id del centro vaccinale.
 	 * @param evento     Il tipo di evento avverso.
 	 * @return Il valore medio di quel determinato evento.
 	 */
-	// query implementata
+
 	@Override
 	public double getImportanzaEvento(String id_centro, String evento) {
 		String qGetImportanzaEvento = "SELECT avg(severita) AS media_valori FROM Eventi_Avversi WHERE id_centro = ? AND nome_evento = ?";
@@ -119,10 +126,10 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * Metodo che controlla se sono gia' stati inseriti degli eventi avversi per
 	 * quel determinato cittadino registrato.
 	 * 
-	 * @param id L'Id della vaccinazione.
+	 * @param id L'array con gli id delle vaccinazione.
 	 * @return Se sono gia' stati inseriti degli eventi avversi.
 	 */
-	// query implementata
+
 	public boolean existId(String[] id) {
 		String qExistIdInEventiAvversi = "SELECT id_vaccinazione FROM Eventi_Avversi WHERE id_vaccinazione = ?";
 		PreparedStatement pstmt;
@@ -147,6 +154,11 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 		return false;
 	}
 
+	/**
+	 * Metodo che controlla se esiste già un centro vaccinale con quel nome.
+	 * @param nome_centro Il nome del centro.
+	 * @return L'id del centro vaccinale con quel nome.
+	 */
 	public String getNomeCentro(String nome_centro) {
 		String tmp = null;
 		String qCentroPasswordMatch = "SELECT id_centro FROM CentriVaccinali WHERE nome_centro=?";
