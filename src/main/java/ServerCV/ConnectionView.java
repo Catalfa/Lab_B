@@ -1,4 +1,4 @@
-package ClientCV.CentriVaccinali.View;
+package ServerCV;
 import ClientCV.Utility;
 import ClientCV.client.ClientStart;
 import ServerCV.server.ServerStart;
@@ -59,7 +59,6 @@ public class ConnectionView extends JFrame {
                 // quando viene premuto il bottone, stampa i valori dei campi di testo
                 try {
                     new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.getText());
-                    new ClientStart().start();
                     dispose();
                 }catch (Exception ex){
                     dispose();

@@ -1,6 +1,5 @@
 package ServerCV.database.gestioneDB;
 
-import ClientCV.CentriVaccinali.View.ConnectionView;
 import ClientCV.Utility;
 
 import java.sql.Connection;
