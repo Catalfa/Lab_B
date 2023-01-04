@@ -38,13 +38,18 @@ public class RegistrazioniVaccinati implements Serializable {
 	}
 
 	/**
-	 * Metodo che restituisce il nome del centro vaccinale.
+	 * Metodo che restituisce l'id del centro vaccinale.
 	 * 
-	 * @return Il nome del centro vaccinale.
+	 * @return L'id del centro vaccinale.
 	 */
 	public String getIdCentro() {
 		return idCentro;
 	}
+
+	/**
+	 * Metodo che restituisce il nome del centro vaccinale.
+	 * @return Il nome del centro vaccinale.
+	 */
 
 	public String getnomeCentro() {
 		return nomeCentro;

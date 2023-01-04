@@ -23,8 +23,6 @@ public class EventiAvversi implements Serializable{
 	 * @param note				le note degli eventi.
 	 */
 
-	//int id_evento, String nomeCentro, String evento, Integer severita, String note
-	
 
     public EventiAvversi(String id_evento, String nomeCentro, String[] evento,  Integer[] severita, String[] note, String cf) {
         this.id_evento = id_evento;

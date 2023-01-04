@@ -5,8 +5,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Classe oggetto per la creazione delle tabelle nel DB.
+ */
+
 public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
     String sql;
+
+    /**
+     * Metodo che realizza la query per creazione della tabella dei centri vaccinali nel DB.
+     * @param conn La connessione con il DB
+     */
     public void Create_CentroVaccinale(Connection conn){
         sql= """
                 CREATE TABLE IF NOT EXISTS CentriVaccinali (
@@ -26,6 +35,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
 
     }
 
+    /**
+     * Metodo che realizza la query per la creazione della tabella vaccinati di un determinato centro nel DB.
+     * @param conn La connessione al DB.
+     * @param nomeCentro Il nome del centro vaccinale
+     */
     public void Create_Vaccinato(Connection conn,String nomeCentro){
         String aux=nomeCentro.toLowerCase();
         String trimmedString = aux.trim();
@@ -45,6 +59,10 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
         InvioCreateTable(sql,conn);
     }
 
+    /**
+     * Metodo che realizza la query per la creazione della tabella dei cittadini registrati ad un centro nel DB.
+     * @param conn La connessione al DB
+     */
 
     public void Create_CittadinoRegistrato(Connection conn){
         sql= """
@@ -62,6 +80,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
         InvioCreateTable(sql,conn);
     }
 
+    /**
+     * Metodo che realizza la query per la creazione della tabella degli eventi avversi nel DB.
+     * @param conn La connessione al DB
+     */
+
     public void Create_EventiAvversi(Connection conn){
         sql= """
                 CREATE TABLE IF NOT EXISTS Eventi_Avversi (
@@ -77,6 +100,11 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
         InvioCreateTable(sql,conn);
     }
 
+    /**
+     * Metodo che crea nel DB la tabella specificata nella query.
+     * @param sql La query per la creazione della tabella.
+     * @param conn La connessione al DB
+     */
     public void InvioCreateTable(String sql, Connection conn){
         Statement statement;
         try {
@@ -89,6 +117,12 @@ public class CreazioneTabelle { //Classe che usiamo per creare le tabelle nel DB
         }
 
     }
+
+    /**
+     * Metodo per realizzare le tabelle nel DB.
+     * @param conn Connessione al DB
+     * @throws SQLException
+     */
 
     public void CreateTables(Connection conn) throws SQLException{
         Statement stm=conn.createStatement();

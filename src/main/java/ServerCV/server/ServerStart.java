@@ -25,6 +25,9 @@ public class ServerStart {
 	 * }
 	 */
 
+	/**
+	 * Metodo per startare il server.
+	 */
 	public void start() {
 		CreazioneTabelle ct = new CreazioneTabelle();
 		Connection connessione = null;

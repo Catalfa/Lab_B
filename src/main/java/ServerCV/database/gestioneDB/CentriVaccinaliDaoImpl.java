@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Classe oggetto per la gestione delle query dei centri vaccinali registrati.
+ */
+
 public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinaliDao {
 
 	/**
@@ -21,8 +25,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * 
 	 * @param infoCentroVaccinale I dati del centro vaccinale.
 	 */
-	// Devo controllare se metodo funziona su DB, query già implementata ma ancora
-	// da provare
+
 	@Override
 	public void insertDatiCentroVaccinale(InfoCentriVaccinali infoCentroVaccinale) {
 		String qAddValuesCentroVaccinale = "INSERT INTO CentriVaccinali(id_centro, nome_centro,tipologia,qualificatore, nome_via,num_civ, comune, provincia, cap, username, password ) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
@@ -56,8 +59,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * Metodo che effettua una ricerca del centro vaccinale.
 	 * 
 	 * @param researchText Il testo scritto dall'utente.
+	 * @return Lista centri trovati in base alla ricerca
 	 */
-	// query implementata
 	@Override
 	public List<InfoCentriVaccinali> findCentroVaccinale(String researchText) {
 		List<InfoCentriVaccinali> list = new ArrayList<>();
@@ -94,13 +97,13 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	}
 
 	/**
-	 * Metodo che controlla se il esiste gi� un centro vaccinale con quel nome sul
+	 * Metodo che controlla se esiste gi� un centro vaccinale con quel nome sul
 	 * Db.
 	 * 
 	 * @param nomeCentro Il nome del centro vaccinale.
 	 * @return Se e' gia' esistente un centro con lo stesso nome
 	 */
-	// query implementata
+
 	@Override
 	public Boolean existCentroVaccinale(String nomeCentro) {
 		String qExistCenterOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE nome_centro = ?";
@@ -124,7 +127,13 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return false;
 	}
 
-	// query implementata
+	/**
+	 * Metodo che controlla se esiste un centro vaccinale con quel nome nel DB.
+	 *
+	 * @param username Lo username del centro vaccinale.
+	 * @return Se è già esistente un centro con lo stesso username
+	 */
+
 	public Boolean existCentro(String username) {
 		String qExistCitizenOnDb = "SELECT nome_centro FROM CentriVaccinali WHERE username = ?";
 		PreparedStatement pstmt;
@@ -147,7 +156,13 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return false;
 	}
 
-	// metodo per controllare che lo user del centro sia corretto
+	/**
+	 * Metodo per controllare se esiste già un centro con lo stesso username nel DB.
+	 *
+	 * @param username Lo username del centro vaccinale.
+	 * @return Se è già esistente un centro con lo stesso username
+	 */
+
 	public Boolean existUser(String username) {
 		String qExistCenterOnDb = "SELECT username FROM CentriVaccinali WHERE username = ?";
 		PreparedStatement pstmt;
@@ -170,7 +185,14 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return false;
 	}
 
-	// query implementata
+	/**
+	 * Metodo usato per controllare il login del centro
+	 * verifica se esiste già un centro con quello username e password nel DB.
+	 *
+	 * @param username Lo username del centro vaccinale.
+	 * @param password La password del centro vaccinale.
+	 * @return Se esiste già un centro con quello username e quella passowrd nel DB
+	 */
 	public Boolean checkLoginCentro(String username, String password) {
 		String qCentroPasswordMatch = "SELECT username, password FROM CentriVaccinali WHERE username = ? AND password = ?";
 		PreparedStatement pstmt;
@@ -199,7 +221,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * 
 	 * @param nomeCentro Il nome del centro vaccinale.
 	 */
-	// query NON implementata, bisogna capire quando chiamarla
+
 	public void createVaccinati_(String nomeCentro) {
 		String centro = accorpamento(nomeCentro);
 		Connection conn = openConnection();
@@ -217,7 +239,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param rs Il ResultSet di una query.
 	 * @return I valori della query sotto forma di informazioni.
 	 */
-	// query implementata
+
 	public InfoCentriVaccinali convertToInfoCentro(ResultSet rs) {
 		String nome_centro = null;
 		String tipologia = null;
@@ -248,7 +270,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	}
 
 	/**
-	 * Metodo che controlla se e' gi� stata effettuata una vaccinazione per quel Cf
+	 * Metodo che controlla se e' già stata effettuata una vaccinazione per quel Cf
 	 * in quel determinato centro vaccinale..
 	 * 
 	 * @param nomeCentro Il nome del centro vaccinale.
@@ -256,7 +278,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @return Se e' gia' stata effettuata una vaccinazione in quel centro
 	 *         vaccinale.
 	 */
-	// Devo verificare che metodo funzioni su DB, ma già implementata
+
 	@Override
 	public Boolean existCf(String nomeCentro, String cf) {
 		String centro = accorpamento(nomeCentro);
@@ -282,6 +304,13 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 		return false;
 	}
+
+	/**
+	 * Metodo che controlla se è presente un centro con quell'id.
+	 *
+	 * @param id_centro L'id del centro vaccinale.
+	 * @return Il nome del centro vaccinale con quel determinato id
+	 */
 
 	public String getNomeCentro(String id_centro) {
 		String tmp = null;
@@ -317,7 +346,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @return Se la vaccinazione e' stata effettuata in quel determinato centro
 	 *         vaccinale.
 	 */
-	// query implementata
+
 	@Override
 	public Boolean existIdVaccinazione(String nomeCentro, String id) {
 		String centro = getNomeCentro(nomeCentro);
@@ -352,9 +381,8 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @param registrazioneVaccinato I dati di prenotazione della vaccinazione del
 	 *                               cittadino registrato.
 	 */
-	// Non verificato che moto sia funzionante su DB, ma già implementata
-	@Override
 
+	@Override
 	// TODO metodo da sistemare per far sì che si possa registrare un vaccinato e
 	// che questo possa successivamente inserire un evento avveso
 	public void insertVaccinato(RegistrazioniVaccinati registrazioneVaccinato) {
@@ -385,7 +413,11 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		}
 	}
 
-	// Query implementata
+	/**
+	 * Metodo che conta il numero di centri vaccinali nel DB.
+	 *
+	 * @return Il numero di centri vaccinali
+	 */
 	@Override
 	public int countCentriVaccinali() {
 		String qCountCentriVaccinali = "SELECT COUNT(*) AS count_centri FROM CentriVaccinali";
@@ -409,8 +441,12 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 		return 0;
 	}
 
-	// metodo che viene usato per ridurre il nome del centro in un'unica stringa
-	// compatta (usata solo per i metodi del vaccinato)
+	/**
+	 * Metodo che toglie lo spazio da un nome centro composto
+	 * @param centro Nome del centro.
+	 * @return Una stringa contenente il nome del centro vaccinale senza spazi.
+	 */
+
 	public static String accorpamento(String centro) {
 		String tmp = "";
 

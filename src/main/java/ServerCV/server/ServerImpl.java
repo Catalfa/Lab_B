@@ -53,7 +53,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	/**
 	 * Metodo implementativo del server che effettua il login del cittadino.
 	 * 
-	 * @return
+	 *
 	 */
 	@Override
 	public int loginCittadino(String username, String password, String cf) throws RemoteException {
@@ -87,7 +87,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	/**
 	 * Metodo implementativo del server per ottenere le informazioni dei cittadini.
 	 * 
-	 * @return
+	 *
 	 */
 	@Override
 	public InfoCittadino getInfoCittadini(String cf) throws RemoteException {
@@ -153,6 +153,10 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return 0;
 	}
 
+	/**
+	 * Metodo implementativo per la registrazione di un vaccinato.
+	 *
+	 */
 	@Override
 	public int registraVaccinato(String nome, String cognome, String vaccinoSomministrato, String idVaccinazione,
 			int dataVaccino, String idCentro) {
@@ -170,7 +174,7 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 	/**
 	 * Metodo implementativo del server che registra i cittadini.
 	 * 
-	 * @return
+	 *
 	 */
 	@Override
 	public int registraCittadino(DatiCittadino datiCittadino) throws RemoteException {
