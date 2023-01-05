@@ -10,17 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConnectionView extends JFrame {
-    private JLabel titleLabel;
-    private JLabel nomeLabel;
-    private JLabel portaLabel;
-    private JLabel usernameLabel;
-    private JLabel passwordLabel;
+    private  JLabel titleLabel;
+    private final JLabel nomeLabel;
+    private final JLabel portaLabel;
+    private final JLabel usernameLabel;
+    private final JLabel passwordLabel;
 
-    private JTextField field1;
-    private JTextField field2;
-    private JTextField field3;
-    private JPasswordField field4;
-    private JButton button;
+    private final JTextField field1;
+    private final JTextField field2;
+    private final JTextField field3;
+    private final JPasswordField field4;
+    private final JButton button;
 
     public  ConnectionView() {
         // imposta il titolo del frame
@@ -40,6 +40,10 @@ public class ConnectionView extends JFrame {
         field2 = new JTextField(20);
         field3 = new JTextField(20);
         field4 = new JPasswordField(20);
+        field1.setBounds(220, 50, 250, 25);
+        field2.setBounds(220, 100, 250, 25);
+        field3.setBounds(220, 150, 250, 25);
+        field4.setBounds(220, 200, 250, 25);
         add(nomeLabel);
         add(field1);
         add(portaLabel);
@@ -58,11 +62,10 @@ public class ConnectionView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // quando viene premuto il bottone, stampa i valori dei campi di testo
                 try {
-                    new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.getText());
+                    new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.toString());
                     dispose();
                 }catch (Exception ex){
                     dispose();
-                    return;
                 }
             }
         });
