@@ -22,6 +22,8 @@ public interface CittadiniRegistratiDao {
 	 */
 	public DatiCittadino getDatiCittadino(String cf) ;
 
+	boolean CheckCFCittadino(String username, String cf);
+
 	/**
 	 * Metodo che controlla se la password inserita corrisponde
 	 * a quella presente sul Db per quel determinato cittadino.

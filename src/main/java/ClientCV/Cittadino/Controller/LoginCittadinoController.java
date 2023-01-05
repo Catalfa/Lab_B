@@ -33,8 +33,8 @@ public class LoginCittadinoController {
      * @param loginCittadinoView
      */
     public LoginCittadinoController(LoginCittadinoView loginCittadinoView) {
-        Stub = ServerSingleton.getInstance();
         this.loginCittadinoView = loginCittadinoView;
+        Stub = ServerSingleton.getInstance();
     }
 
 
@@ -71,16 +71,18 @@ public class LoginCittadinoController {
             return 1;
         }
 
-        if (!new CittadiniRegistratiDaoImpl().CheckCfCittadino(username, cf)) {
+        if (!Stub.CheckCFCittadino(username, cf)) {
             utility.showWarningPopUp("Attenzione!", "verifica che i dati inderiti siano corretti.");
             loginCittadinoView = new LoginCittadinoView();
             loginCittadinoView.setVisible(true);
             return 1;
         }
 
+        String [] aux=Stub.getIdCittadino(cf);
+
         switch (Stub.loginCittadino(username, password.toString(), cf)) {
             case 1:
-                new AggiungiEventoAvversoView(new CittadiniRegistratiDaoImpl().getIdCittadino(cf));
+                new AggiungiEventoAvversoView(Stub.getIdCittadino(cf ));
                 break;
             case 2:
                 utility.showWarningPopUp("Attenzione!", "Username errato");

@@ -34,6 +34,24 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return gestClient.subscribeToEvents(client);
 	}
 
+
+//TODO
+
+
+	@Override
+	public boolean CheckCFCittadino(String username, String cf)throws RemoteException {
+		System.out.println("booh");
+		return gestClient.CheckCFCittadino(username,cf);
+
+	}
+
+	@Override
+	public String[] getIdCittadino(String cf) throws RemoteException {
+		String aux[] =gestClient.getIdCittadino(cf);
+		System.out.println(aux);
+		return aux;
+	}
+
 	/**
 	 * Metodo implementativo del server che disiscrive il client dagli eventi.
 	 */

@@ -79,7 +79,36 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		}
 		return datiCittadino;
 	}
-	
+
+
+	@Override
+	public boolean CheckCFCittadino(String username, String cf) {
+		String qExistCfInCittadiniRegistrati = "SELECT * FROM Cittadini_Registrati WHERE userid = ? and cf =?";
+		PreparedStatement pstmt;
+		ResultSet rs;
+		Connection connection = null;
+
+		try {
+			connection = openConnection();
+			pstmt = connection.prepareStatement(qExistCfInCittadiniRegistrati);
+			pstmt.setString(1, username.toLowerCase());
+			pstmt.setString(2, cf.toUpperCase());
+			rs = pstmt.executeQuery();
+
+			if((rs.next())){
+				return true;
+			}else{
+				return false;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			return false;
+		} finally {
+			closeConnection(connection);
+		}
+
+	}
+
 	/**
 	 * Metodo che controlla se la password inserita corrisponde
 	 * a quella presente sul Db per quel determinato cittadino.
@@ -211,33 +240,6 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 	 * @param cf_cittadino Il cf del cittadino.
 	 * @return Se è presente un cittadino con quello username e cf nel DB
 	 */
-	public boolean CheckCfCittadino(String username, String cf_cittadino) {
-		String qExistCfInCittadiniRegistrati = "SELECT * FROM Cittadini_Registrati WHERE userid = ? and cf =?";
-		PreparedStatement pstmt;
-		ResultSet rs;
-		Connection connection = null;
-
-		try {
-			connection = openConnection();
-			pstmt = connection.prepareStatement(qExistCfInCittadiniRegistrati);
-			pstmt.setString(1, username.toLowerCase());
-			pstmt.setString(2, cf_cittadino.toUpperCase());
-			rs = pstmt.executeQuery();
-
-			if((rs.next())){
-				return true;
-			}else{
-				return false;
-			}
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-			return false;
-		} finally {
-			closeConnection(connection);
-		}
-
-	}
-
 
 	/**
 	 * Metodo che aggiorna il valore dell'Id vaccinazione per quel determinato cittadino registrato.
@@ -309,6 +311,7 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		ResultSet rs;
 		Connection connection = null;
 		String [] risultato;
+		System.out.println("dmdkacada");
 		try {
 			connection = openConnection();
 			pstmt = connection.prepareStatement(qGetIdVaccinazioneInCittadiniRegistrati);

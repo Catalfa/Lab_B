@@ -136,6 +136,15 @@ public class GestioneClient {
 		return datiCittadino.getCFCittadino();
 	}
 
+	public String[] getIdCittadino(String cf)  {
+		return cittadiniRegistratiDao.getIdCittadino(cf);
+	}
+
+	public boolean CheckCFCittadino(String username, String cf) {
+		return cittadiniRegistratiDao.CheckCFCittadino(username,cf);
+	}
+
+
 	/**
 	 * Metodo che gestisce le informazioni dei cittadini registrati.
 	 * 

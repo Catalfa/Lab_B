@@ -21,7 +21,11 @@ public interface Server extends Remote {
 	 * @throws RemoteException	Eccezione remota.
 	 */
 	Integer subscribeToEvents(Client client) throws RemoteException;
-	
+
+	boolean CheckCFCittadino(String username, String cf) throws RemoteException;
+
+	public String[] getIdCittadino(String cf)throws RemoteException;
+
 	/**
 	 * Metodo per gestire la rimozione del client dagli eventi.
 	 * @param clientId			Il codice del client.
