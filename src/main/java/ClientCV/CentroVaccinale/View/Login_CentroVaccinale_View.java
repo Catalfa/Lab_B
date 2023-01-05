@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Classe view che effettua login di un centro, gestisce bottoni back, sign-in e il login
+ */
 public class Login_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
@@ -23,6 +27,10 @@ public class Login_CentroVaccinale_View extends JFrame {
 
     private Utility utility = new Utility();
 
+
+    /**
+     * Costruttore della classe
+     */
     public Login_CentroVaccinale_View() {
 
         Login_CentroVaccinale_Controller controller = new Login_CentroVaccinale_Controller(this);
@@ -44,10 +52,6 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         buttonPanel.setBackground(Color.WHITE);
 
-        /*
-         * usernamePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-         * passwordPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
-         */
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 25));
 
         JLabel label_loginCittadino = new JLabel("LOGIN Centro Vaccinale", SwingConstants.CENTER);
@@ -82,6 +86,10 @@ public class Login_CentroVaccinale_View extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+
+        /**
+         * Metodo bottone back che chiude frame corrente e rimanda frame precedente Login
+         */
         backButton.addActionListener(new ActionListener() {
 
             @Override
@@ -91,6 +99,10 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone sign-in chiude frame corrente e apre frame sign-in Centro
+         */
         signinButton.addActionListener(new ActionListener() {
 
             @Override
@@ -100,6 +112,10 @@ public class Login_CentroVaccinale_View extends JFrame {
 
         });
 
+
+        /**
+         * metodo login gestisce login del centro
+         */
         loginButton.addActionListener(new ActionListener() {
 
             @Override

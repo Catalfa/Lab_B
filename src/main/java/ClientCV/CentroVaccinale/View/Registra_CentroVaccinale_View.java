@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
+
+/**
+ * classe Registra Centro gestisce sign-in di un nuovo centro e bottoni back, reset e sign-in
+ */
 public class Registra_CentroVaccinale_View extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
@@ -38,6 +42,10 @@ public class Registra_CentroVaccinale_View extends JFrame {
     private JLabel[] labels = new JLabel[11];
     public JPasswordField passwordField;
 
+
+    /**
+     * Costruttore della classe
+     */
     public Registra_CentroVaccinale_View() {
 
         Registra_CentroVaccinale_Controller controller = new Registra_CentroVaccinale_Controller(this);
@@ -91,6 +99,10 @@ public class Registra_CentroVaccinale_View extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+
+        /**
+         * metodo bottone back chiude frame corrente e torna frame precendente Login centro
+         */
         buttons[0].addActionListener(new ActionListener() {
 
             @Override
@@ -100,6 +112,10 @@ public class Registra_CentroVaccinale_View extends JFrame {
 
         });
 
+
+        /**
+         * metodo sign-in che gestisce nuova registrazione del centro
+         */
         buttons[1].addActionListener(new ActionListener() {
 
             @Override
@@ -135,6 +151,10 @@ public class Registra_CentroVaccinale_View extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone reset cancella dati inseriti e rimane sul frame corrente
+         */
         buttons[2].addActionListener(new ActionListener() {
 
             @Override

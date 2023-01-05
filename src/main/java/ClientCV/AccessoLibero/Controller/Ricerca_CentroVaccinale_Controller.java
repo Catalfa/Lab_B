@@ -11,35 +11,50 @@ import ServerCV.interfaccia.Server;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/** Classe per effettuare la ricerca di un centro vaccinale
+ */
+
+
 public class Ricerca_CentroVaccinale_Controller {
 
     private Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View;
 
-    // private InfoCvView infoCvView;
+
     private Server Stub;
+
+
+    /**  Costruttore della classe Ricerca Centro Vaccinale
+     *
+     * @param ricerca_CentroVaccinale_View
+     */
 
     public Ricerca_CentroVaccinale_Controller(Ricerca_CentroVaccinale_View ricerca_CentroVaccinale_View) {
         this.ricerca_CentroVaccinale_View = ricerca_CentroVaccinale_View;
     }
 
+
+    /** Metodo che crea collegamento con la classe precedente MainAccLib
+
+     */
     public void back() {
         ricerca_CentroVaccinale_View.deleteView();
         MainAccLibFrameView mainAccLibFrameView = new MainAccLibFrameView();
         mainAccLibFrameView.setVisible(true);
     }
 
+    /** Metodo che permette ricercare Centro vaccinale selezionato dal DB
+
+     */
     public void cercaCentro(String nome) {
 
         List<InfoCentriVaccinali> listaCentri = new ArrayList<>();
-        // nome="Astolfo"; usato per vedere se inserendo il nome da codice la lista
-        // funziona
+
 
         try {
             this.Stub = ServerSingleton.getInstance();
             listaCentri = this.Stub.cercaCentroVaccinale(nome);
-            // selezionaCentro_View.setVisible(true);
-            // InfoCvView infoCvView= new InfoCvView(listaCentri);
-            // selezionaCentro_View.setVisible(true);
+
             try {
                 new Tabella_centri(listaCentri);
             } catch (Exception e) {

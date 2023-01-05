@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+
+/** Classe per effettuare la ricerca di un Centro vaccinale
+
+ */
 public class Ricerca_CentroVaccinale_View extends JFrame{
 
     Ricerca_CentroVaccinale_Controller controller;
@@ -37,6 +41,10 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
     private JButton btn_cerca;
     private JButton btn_reset;
 
+
+    /** Costruttore della classe Ricerca Centro Vaccinale
+     *
+     */
     public Ricerca_CentroVaccinale_View(){
 
         frame = new JFrame("Consulta Informazioni Centri Vaccinali");
@@ -56,7 +64,7 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         /*
         Inizializzo coi vari parametri i pannelli che ho creato sopra
         */
-        panel_welcome.setLayout(null);                                                            /** GUARDO QUI **/
+        panel_welcome.setLayout(null);
         panel_welcome.setPreferredSize(new Dimension(WIDTH, 70));
         panel_welcome.setBackground(Color.WHITE);
         panel_welcome.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 20));
@@ -138,12 +146,16 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         frame.add(container);
 
         
-        frame.setSize(WIDTH, HIGHT);                                          /** GUARDO QUI **/
+        frame.setSize(WIDTH, HIGHT);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
+
+        /** Bottone Back che collega questa classe a quella precedente tramite classe controller Ricerca Centro
+
+         */
         btn_back.addActionListener(new ActionListener(){
 
             @Override
@@ -153,6 +165,10 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
         });
 
+
+        /**
+         * Bottone Cerca che collega questa classe a quella successiva tramite classe controller Ricerca Centro
+         */
         btn_cerca.addActionListener(new ActionListener(){
 
             @Override
@@ -172,6 +188,10 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
                 }
         });
 
+
+        /**  Bottone Reset che cancella i dati inseriti e riapre la schermata corrente
+         *
+         */
         btn_reset.addActionListener(new ActionListener(){
 
             @Override
@@ -187,7 +207,9 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
         });
 
-        
+        /** Metodo che ricerca per Nome il Centro dal DB
+         *
+         */
         tf_cercaPerNomeCentro.addKeyListener(new KeyListener(){
 
             @Override
@@ -203,6 +225,11 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
             public void keyReleased(KeyEvent arg0) {     }
 
         });
+
+
+        /** Metodo che ricerca per Comune il Centro dal DB
+         *
+         */
         tf_cercaPerComune.addKeyListener(new KeyListener(){
 
             @Override
@@ -218,6 +245,10 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
             public void keyReleased(KeyEvent arg0) {     }
 
         });
+
+        /** Metodo che ricerca per Tipologia il Centro dal DB
+         *
+         */
         tf_cercaPerTipologia.addKeyListener(new KeyListener(){
 
             @Override
@@ -236,7 +267,9 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
     }
 
-    //completato
+    /** Metodo che permette leggere i dati inseriti
+     *
+     */
     public String getTextFieldText(){
         String s ="";
         String temp="";
@@ -262,7 +295,12 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         return temp;
     }
 
-public String implRic(String s){ //metodo per prendere il dato di ricerca inserito dall'utente
+    /** metodo per prendere il dato di ricerca inserito dall'utente
+     *
+     * @param s
+     * @return
+     */
+    public String implRic(String s){
    String temp="";
     char ch;
     int cont=0;
@@ -280,6 +318,10 @@ public String implRic(String s){ //metodo per prendere il dato di ricerca inseri
        return temp;
 }
 
+
+    /**
+     * Metodo per chiudere Frame Ricerca Centro
+     */
     public void deleteView(){
         frame.setVisible(false);
         frame.dispose();

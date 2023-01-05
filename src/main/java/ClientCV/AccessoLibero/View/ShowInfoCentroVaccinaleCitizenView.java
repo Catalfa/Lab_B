@@ -24,6 +24,10 @@ public class ShowInfoCentroVaccinaleCitizenView extends JDialog {
 	public DefaultTableModel tableModel;
 	private JScrollPane scrollPane;
 
+
+	/**
+	 * Costruttore della classe Show Info Centro Vaccinale
+	 */
 	public ShowInfoCentroVaccinaleCitizenView() {
 		new ShowInfoCentroVaccinaleCitizenController(this);
 

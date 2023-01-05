@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Classe che permette esecuzione del programma tramite Login, contiene bottoni back, login Cittadino e login Centro
+ */
 public class MainLoginFrameView extends JFrame {
 
 
@@ -15,6 +19,10 @@ public class MainLoginFrameView extends JFrame {
     private final int WIDTH = 600;
     private final int HIGHT = 250;
 
+
+    /**
+     * Costruttore della classe
+     */
     public MainLoginFrameView(){
 
         MainLoginFrameController controller = new MainLoginFrameController(this);
@@ -54,6 +62,10 @@ public class MainLoginFrameView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+
+        /**
+         * metodo bottone Back chiude frame corrente e apre frame precedente HomePage
+         */
         btnBack.addActionListener(new ActionListener() {
 
             @Override
@@ -63,6 +75,10 @@ public class MainLoginFrameView extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone LoginCittadino chiude frame corrente e apre frame successivo Login Cittadino
+         */
         btnLogCittadino.addActionListener(new ActionListener() {
 
             @Override
@@ -72,6 +88,10 @@ public class MainLoginFrameView extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone LoginCentro chiude frame corrente e apre frame successivo Login Centro
+         */
         btnLoginDottore.addActionListener(new ActionListener() {
 
             @Override

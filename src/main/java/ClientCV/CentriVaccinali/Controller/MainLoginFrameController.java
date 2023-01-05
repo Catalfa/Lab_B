@@ -5,10 +5,19 @@ import ClientCV.CentriVaccinali.View.MainLoginFrameView;
 import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
 import ClientCV.Cittadino.View.LoginCittadinoView;
 
+
+/**
+ * Classe view che permette esecuzione del programma tramite Login
+ */
 public class MainLoginFrameController {
     
     private MainLoginFrameView loginFrameView;
 
+
+    /**
+     * Costruttore della classe
+     * @param loginFrameView
+     */
     public MainLoginFrameController(MainLoginFrameView loginFrameView){
         this.loginFrameView = loginFrameView;
     }
@@ -23,7 +32,7 @@ public class MainLoginFrameController {
     }
 
     /**
-	 * Metodo che crea un nuovo frame e manda in dispose quello corrente.
+	 * Metodo che crea collegamento con Login Cittadino e chiude frame corrente.
 	 */
     public void createLoginCittadinoFrame() {
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
@@ -31,6 +40,10 @@ public class MainLoginFrameController {
         loginFrameView.dispose();
     }
 
+
+    /**
+     * Metodo che crea collegamento con Login Centro e chiude frame corrente.
+     */
     public void createLoginDottoreFrame() {
         Login_CentroVaccinale_View loginDottoreView = new Login_CentroVaccinale_View();
         loginDottoreView.setVisible(true);

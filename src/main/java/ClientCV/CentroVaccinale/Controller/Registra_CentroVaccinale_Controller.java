@@ -11,6 +11,10 @@ import ServerCV.interfaccia.Server;
 import java.rmi.RemoteException;
 import java.util.regex.Pattern;
 
+
+/**
+ * classe Registra Centro gestisce sign-in di un nuovo centro
+ */
 public class Registra_CentroVaccinale_Controller {
 
     Server Stub;
@@ -19,13 +23,18 @@ public class Registra_CentroVaccinale_Controller {
     private Utility utility = new Utility();
     public final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+
+    /**
+     * Costruttore della classe
+     * @param registraCentroVaccinaleView
+     */
     public Registra_CentroVaccinale_Controller(Registra_CentroVaccinale_View registraCentroVaccinaleView) {
         this.registraCentroVaccinaleView = registraCentroVaccinaleView;
         Stub = ServerSingleton.getInstance();
     }
 
     /**
-	 * Metodo che torna al frame precedente.
+	 * Metodo bottne che torna al frame precedente e manda dispose quello corrente
 	 */
     public void goBack() {
         MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
@@ -33,7 +42,7 @@ public class Registra_CentroVaccinale_Controller {
         registraCentroVaccinaleView.dispose();
     }
 
-    //* In base al codice restituito dal server puo' mostrare, o un messaggio d'errore o uno di avvenuto inserimento.
+
 
     /**
 	 * Metodo che, dopo aver effettuato vari controlli, invia al server i dati per registrare un nuovo centro vaccinale.
@@ -62,7 +71,7 @@ public class Registra_CentroVaccinale_Controller {
             return 1;
         }
 
-        //Controlla con il metodo presente nel bottone "buttons[1] nella View"
+
         if(cVaccinale.getNumCiv() == -1){
             utility.showWarningPopUp("Attenzione", "Il numero civico dev'essere un numero.");
             Registra_CentroVaccinale_View registra_centroVaccinale_view = new Registra_CentroVaccinale_View();
@@ -92,7 +101,9 @@ public class Registra_CentroVaccinale_Controller {
         return c;
     }
 
-    
+    /**
+     * metodo bottone reset cancella dati inseriti e rimane sul frame corrente
+     */
     public void reset() {
         for(int i=0; i<10; i++)
         registraCentroVaccinaleView.textFields[i].setText("");

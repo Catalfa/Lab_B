@@ -8,6 +8,10 @@ import ClientCV.client.ServerSingleton;
 import Common.InfoCentriVaccinali;
 import ServerCV.interfaccia.Server;
 
+
+/**
+ * Classe che effettua login di un centro
+ */
 public class Login_CentroVaccinale_Controller {
     InfoCentriVaccinali infoCentroVaccinali;
 
@@ -15,13 +19,18 @@ public class Login_CentroVaccinale_Controller {
     Utility utility = new Utility();
     Server Stub;
 
+
+    /**
+     * Costruttore della classe
+     * @param loginCVaccView
+     */
     public Login_CentroVaccinale_Controller(Login_CentroVaccinale_View loginCVaccView) {
         this.loginCVaccView = loginCVaccView;
         Stub = ServerSingleton.getInstance();
     }
 
     /**
-     * Metodo che torna al frame precedente.
+     * Metodo bottone back chiude frame corrente e torna frame precendente Login
      */
     public void goBack() {
         MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
@@ -58,7 +67,7 @@ public class Login_CentroVaccinale_Controller {
     }
 
     /**
-     * Metodo che crea un nuovo frame e manda in dispose quello corrente.
+     * Metodo che crea un nuovo frame e chiude quello corrente.
      */
     public void signIn() {
         Registra_CentroVaccinale_View signInCentroVaccinaleView = new Registra_CentroVaccinale_View();

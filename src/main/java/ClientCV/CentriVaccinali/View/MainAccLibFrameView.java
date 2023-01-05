@@ -7,6 +7,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Classe view che permette esecuzione del programma tramite Accesso Libero, contiene bottone Consulta informazioni centro e back
+ */
 public class MainAccLibFrameView extends JFrame {
 
     public JFrame frame;
@@ -15,6 +19,10 @@ public class MainAccLibFrameView extends JFrame {
     private final int WIDTH = 450;
     private final int HIGHT = 300;
 
+
+    /**
+     * Costruttore della classe
+     */
     public MainAccLibFrameView(){
 
 
@@ -54,6 +62,10 @@ public class MainAccLibFrameView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+
+        /**
+         * metodo bottone Back chiude frame corrente e torna frame precedente HomePage
+         */
         btnBack.addActionListener(new ActionListener() {
 
             @Override
@@ -63,6 +75,10 @@ public class MainAccLibFrameView extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone Consulta Informazioni Centro chiude frame corrente e apre frame successivo Ricerca Centro
+         */
         btnConsultaInfoCv.addActionListener(new ActionListener() {
 
             @Override

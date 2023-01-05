@@ -4,10 +4,19 @@ import ServerCV.ConnectionView;
 import ClientCV.client.ClientStart;
 import ServerCV.server.ServerStart;
 
+
+/**
+ * Classe main Centri Vaccinali
+ */
 public class CentriVaccinali {
     static ServerStart server = new ServerStart();
     static ClientStart client = new ClientStart();
 
+
+    /**
+     * Costruttore della classe
+     * @param args
+     */
     public static void main(String[] args) {
         client.start();
 

@@ -13,10 +13,20 @@ import javax.swing.JTable;
 
 import Common.*;
 
+
+/**
+ * Classe che mostra in tabella tutte le informazioni del Centro Vaccinale selezionato
+ */
 public class Tabella_centri extends JFrame {
     private String[] aux;
     private int i = 1;
 
+
+    /**
+     * Costruttore della classe
+     * @param listaCentri
+     * @throws RemoteException
+     */
     public Tabella_centri(List<InfoCentriVaccinali> listaCentri) throws RemoteException {
         String[] columnNames = { "Colonna 1", "Colonna 2", "Colonna 3", "Colonna 4", "Colonna 5",
                 "Colonna 6", "Colonna 7", "Colonna 8", "Colonna 9", "Colonna 10",

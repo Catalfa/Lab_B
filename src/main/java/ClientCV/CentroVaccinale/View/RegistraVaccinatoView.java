@@ -8,6 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * classe gestisce la registrazione di un nuovo vaccinato, gestisce tasti back e registra
+ */
 public class RegistraVaccinatoView extends JFrame {
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
@@ -30,6 +34,10 @@ public class RegistraVaccinatoView extends JFrame {
     private JLabel[] labels = new JLabel[8];
     // public JPasswordField passwordField;
 
+
+    /**
+     * costruttore della classe
+     */
     public RegistraVaccinatoView() {
 
         RegistraVaccinatoController controller = new RegistraVaccinatoController(this);
@@ -81,6 +89,9 @@ public class RegistraVaccinatoView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        /**
+         * metodo bottone back chiude frame corrente e apre frame precendete Login centro
+         */
         buttons[0].addActionListener(new ActionListener() {
 
             @Override
@@ -90,6 +101,9 @@ public class RegistraVaccinatoView extends JFrame {
 
         });
 
+        /**
+         * metodo gestisce registrazione del vaccinato
+         */
         buttons[1].addActionListener(new ActionListener() {
 
             @Override
