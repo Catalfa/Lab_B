@@ -80,6 +80,8 @@ public class Registra_CentroVaccinale_Controller {
             return 1;
         }
         int c=Stub.registraCentroVaccinale(cVaccinale);
+
+        Utility.showInformationPopUp("Complimenti!","Registrazione effettuata con successo!");
         return c;
     }
 

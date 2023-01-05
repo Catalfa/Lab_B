@@ -1,5 +1,6 @@
 package ServerCV.server;
 
+import ClientCV.Utility;
 import ServerCV.database.CreazioneTabelle;
 import ServerCV.database.gestioneDB.CittadiniRegistratiDaoImpl;
 import ServerCV.database.gestioneDB.GeneralDao;
@@ -57,6 +58,7 @@ public class ServerStart {
 			ct.Create_EventiAvversi(connessione);
 			try {
 				ct.CreateTables(connessione);
+				Utility.showInformationPopUp("Successo!","Server avviato correttamente");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
