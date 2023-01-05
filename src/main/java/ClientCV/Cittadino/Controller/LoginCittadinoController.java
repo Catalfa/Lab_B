@@ -13,6 +13,10 @@ import ServerCV.interfaccia.Server;
 
 import java.rmi.RemoteException;
 
+
+/**
+ * Classe Login cittadino permette di fare login come cittadino
+ */
 public class LoginCittadinoController {
 
     Server Stub;
@@ -23,17 +27,35 @@ public class LoginCittadinoController {
     public InfoCittadino infoCittadino;
     private Utility utility = new Utility();
 
+
+    /**
+     * Costruttore della classe
+     * @param loginCittadinoView
+     */
     public LoginCittadinoController(LoginCittadinoView loginCittadinoView) {
         Stub = ServerSingleton.getInstance();
         this.loginCittadinoView = loginCittadinoView;
     }
 
+
+    /**
+     * metodo bottone back chiude frame corrente e apre frame precedente login
+     */
     public void goBack() {
         MainLoginFrameView mainLoginFrameView = new MainLoginFrameView();
         mainLoginFrameView.setVisible(true);
         loginCittadinoView.dispose();
     }
 
+
+    /**
+     * metodo gestisce login del cittadino
+     * @param username
+     * @param password
+     * @param cf
+     * @return
+     * @throws RemoteException
+     */
     public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
 
         AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView();
@@ -76,6 +98,10 @@ public class LoginCittadinoController {
         return 0;
     }
 
+
+    /**
+     * metodo permette fare sign-in di un nuovo cittadino
+     */
     public void signinCittadino() {
         SignInCittadinoView signInCittadinoView = new SignInCittadinoView();
         signInCittadinoView.setVisible(true);

@@ -10,6 +10,9 @@ import ServerCV.interfaccia.Server;
 import java.awt.event.KeyEvent;
 import java.rmi.RemoteException;
 
+/**
+ * Classe che gestisce l'inserimento degli eventi avversi
+ */
 public class AggiungiEventoAvversoController {
 
    // public LoginCittadinoView username;
@@ -18,18 +21,26 @@ public class AggiungiEventoAvversoController {
     private AggiungiEventoAvversoView eventoAvversoView;
     private Server Stub;
     //private ServerImpl serverImpl;
-    
+
+    /**
+     * costruttore della classe
+     * @param eventoAvversoView
+     */
     public AggiungiEventoAvversoController(AggiungiEventoAvversoView eventoAvversoView) {
         Stub = ServerSingleton.getInstance();
         this.eventoAvversoView = eventoAvversoView;
     }
 
 
+    /**
+     * metodo bottone back chiude frame corrente e torna frame precedente login cittadino
+     */
     public void goBack(){
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
         loginCittadinoView.setVisible(true);
         eventoAvversoView.deleteView();
     }
+
 
     /**
 	 * Metodo che, dopo aver effettuato vari controlli, invia al server i dati per registrare gli eventi avversi inseriti dal cittadino.
@@ -38,7 +49,6 @@ public class AggiungiEventoAvversoController {
 	 * @param noteEventi		Le note sui vari eventi.
 	 * @param nomeCentro		Il nome del centro vaccinale.
 	 * @param eventi			La lista degli eventi. */
-
 
      public void inserisciEventiAvversiAction( String idEvento,String codiceFiscale,String nomeCentro, String[] eventi, Integer[] intensitaEventi, String[] noteEventi){
         EventiAvversi eventoAvverso = new EventiAvversi(idEvento, nomeCentro, eventi, intensitaEventi, noteEventi,codiceFiscale);
@@ -63,6 +73,7 @@ public class AggiungiEventoAvversoController {
             e.printStackTrace();
         }
     }
+
 
     /**
 	 * Metodo che conta il numero di caratteri digirati e mostra un pop-up di errore quando viene raggiunto il massimo numero di caratteri disponibili.

@@ -10,6 +10,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * classe che gestisce l'inserimento degli eventi avversi
+ */
 public class AggiungiEventoAvversoView extends JFrame{
 
     AggiungiEventoAvversoController controller;
@@ -47,6 +50,11 @@ public class AggiungiEventoAvversoView extends JFrame{
         "Crisi ipertensiva",
     };
 
+
+    /**
+     * costruttore della classe
+     * @param id_cittadino
+     */
     public AggiungiEventoAvversoView(String[] id_cittadino){
 
         //Per poter creare un nuovo frame che ci permetta di inserire eventi avversi
@@ -179,7 +187,11 @@ public class AggiungiEventoAvversoView extends JFrame{
         container.add(panelButton, BorderLayout.PAGE_END);
 
         btn_inserisciEventiAvversi.addActionListener(new ActionListener(){
-            //andre serve che venga passato anche il codice fiscale del cittadino che effettua la segnalazione
+
+            /**
+             * metodo che gestisce inserimento id dell'evento, il nome del centro, l'intensità degli eventi e il nome degli eventi
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 
@@ -201,8 +213,10 @@ public class AggiungiEventoAvversoView extends JFrame{
             }
         });
 
-        
-        
+
+        /**
+         * metodo che gestisce bottone back chiude frame corrente e passa frame precedente
+         */
         btn_backToSignIn.addActionListener(new ActionListener(){
 
             @Override
@@ -230,7 +244,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         }
     }
     
-    /*
+    /**
     *Metodo per inizializzare il ButtonGroup
     */
     private void inizializzaButtonGroup(){
@@ -302,7 +316,7 @@ public class AggiungiEventoAvversoView extends JFrame{
         frame_aggiungiEventoAvverso.setVisible(true);
     }
 
-    /* 
+    /**
     *Metodo per chiudere frames di controller
     */
     public void deleteView(){

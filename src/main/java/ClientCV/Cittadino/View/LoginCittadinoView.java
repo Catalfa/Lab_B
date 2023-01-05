@@ -8,6 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
+
+/**
+ * Classe login che gestisce login del cittadino, i bottoni login, back e sign-in
+ */
 public class LoginCittadinoView extends JFrame {
     
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
@@ -21,6 +25,10 @@ public class LoginCittadinoView extends JFrame {
     private JButton backButton = new JButton("BACK");
     private JButton signinButton = new JButton("SIGN-IN");
 
+
+    /**
+     * costruttore della classe
+     */
     public LoginCittadinoView() {
 
         LoginCittadinoController controller = new LoginCittadinoController(this);
@@ -78,6 +86,10 @@ public class LoginCittadinoView extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+
+        /**
+         * metodo bottone back chiude frame corrente e apre frame precedente Login 
+         */
         backButton.addActionListener(new ActionListener() {
 
             @Override
@@ -87,6 +99,10 @@ public class LoginCittadinoView extends JFrame {
 
         });
 
+
+        /**
+         * metodo bottone sign-in chiude frame corrente e apre frame Sign-in del centro
+         */
         signinButton.addActionListener(new ActionListener() {
 
             @Override
@@ -96,6 +112,10 @@ public class LoginCittadinoView extends JFrame {
 
         });
 
+
+        /**
+         * metodo che gestisce il login
+         */
         loginButton.addActionListener(new ActionListener() {
 
             @Override

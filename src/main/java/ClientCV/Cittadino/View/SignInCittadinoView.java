@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
+/**
+ * classe view che gestisce la registrazione di un nuovo cittadino, bottone back, sign-in e reset
+ */
 public class SignInCittadinoView extends JFrame{
 
     private final Font mainFont = new Font("Segoeo print", Font.BOLD, 18);
@@ -23,6 +26,10 @@ public class SignInCittadinoView extends JFrame{
     public JPasswordField passwordField;
     private SignInCittadinoController controller;
 
+
+    /**
+     * costruttore della classe
+     */
     public SignInCittadinoView() {
 
         this.controller = new SignInCittadinoController(this);
@@ -82,6 +89,9 @@ public class SignInCittadinoView extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        /**
+         * metodo bottone back chiude frame corrente e torna frame Login cittadino
+         */
         buttons[0].addActionListener(new ActionListener() {
 
             @Override
@@ -91,7 +101,9 @@ public class SignInCittadinoView extends JFrame{
 
         });
 
-        //0 ci ritorna l'id_vaccinazione nel controller
+        /**
+         * metodo che gestisce sign-in del cittadino
+         */
         buttons[1].addActionListener(new ActionListener() {
 
             @Override
@@ -106,6 +118,9 @@ public class SignInCittadinoView extends JFrame{
 
         });
 
+        /**
+         * metodo bottone reset cancella dati inseriti e rimane su frame corrente
+         */
         buttons[2].addActionListener(new ActionListener() {
 
             @Override

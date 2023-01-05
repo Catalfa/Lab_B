@@ -15,6 +15,9 @@ import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * classe che gestisce la registrazione di un nuovo cittadino
+ */
 public class SignInCittadinoController extends JFrame {
 
     private SignInCittadinoView signInCittadinoView;
@@ -24,17 +27,31 @@ public class SignInCittadinoController extends JFrame {
     Server stub;
    // MainLoginFrameController controller = new MainLoginFrameController(new MainLoginFrameView());
 
+
+    /**
+     * Costruttore della classe
+     * @param signInCittadinoView
+     */
     public SignInCittadinoController(SignInCittadinoView signInCittadinoView) {
         this.signInCittadinoView = signInCittadinoView;
         stub = ServerSingleton.getInstance();
     }
 
+    /**
+     * metodo bottone back chiude frame corrente e torna frame Login cittadino
+     */
     public void goBack() {
         LoginCittadinoView loginCittadinoView = new LoginCittadinoView();
         loginCittadinoView.setVisible(true);
         signInCittadinoView.dispose();
     }
 
+    /**
+     * metodo che gestisce sign-in del cittadino
+     * @param cittadini
+     * @return
+     * @throws RemoteException
+     */
     public int signIn(DatiCittadino cittadini) throws RemoteException {
 
         AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView();
@@ -79,6 +96,9 @@ public class SignInCittadinoController extends JFrame {
         return 0;
     }
 
+    /**
+     * metodo bottone reset cancella dati inseriti e rimane su frame corrente
+     */
     public void reset() {
         for (int i = 0; i < 8; i++)
             signInCittadinoView.textFields[i].setText("");
