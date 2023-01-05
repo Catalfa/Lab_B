@@ -14,15 +14,11 @@ import ServerCV.interfaccia.Server;
 public class RegistraVaccinatoController {
 
     Server Stub;
-
-
     public RegistraVaccinatoView registraVaccinatoView;
-
-
     private Utility utility = new Utility();
 
     /**
-     * costruttore della classe
+     * costruttore della classe view su cui si baserà il controller
      * @param registraVaccinatoView
      */
     public RegistraVaccinatoController(RegistraVaccinatoView registraVaccinatoView) {

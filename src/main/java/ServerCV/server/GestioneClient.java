@@ -130,16 +130,29 @@ public class GestioneClient {
 	 * @param username Lo username del cittadino.
 	 * @return Il CF del cittadino.
 	 */
-	// ok
+	//
 	public String gestOttieniCF(String username) {
 		DatiCittadino datiCittadino = cittadiniRegistratiDao.getCfCittadino(username);
 		return datiCittadino.getCFCittadino();
 	}
-
+	/**
+	 * Metodo che gestisce l'ottenimento dei dati vaccinazione del cittadino registrato in base
+	 * all codice fiscale.
+	 *
+	 * @param cf Codice fiscale del cittadino.
+	 * @return dati vaccinazione (ID_vaccinazione, ID_centro).
+	 */
 	public String[] getIdCittadino(String cf)  {
 		return cittadiniRegistratiDao.getIdCittadino(cf);
 	}
-
+	/**
+	 * Metodo cheverifica la corrispondenza del codice fiscale a un determinato username.
+	 *
+	 * @param username Lo username del cittadino.
+	 * @param cf Il CF del cittadino.
+	 * @return vero se corrisponde.
+	 */
+	// ok
 	public boolean CheckCFCittadino(String username, String cf) {
 		return cittadiniRegistratiDao.CheckCFCittadino(username,cf);
 	}

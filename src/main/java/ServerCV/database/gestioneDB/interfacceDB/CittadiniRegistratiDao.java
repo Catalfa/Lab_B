@@ -2,6 +2,8 @@ package ServerCV.database.gestioneDB.interfacceDB;
 
 import Common.DatiCittadino;
 
+import java.rmi.RemoteException;
+
 /**
  * Interfaccia per i cittadini registrati.
  */
@@ -22,6 +24,13 @@ public interface CittadiniRegistratiDao {
 	 */
 	public DatiCittadino getDatiCittadino(String cf) ;
 
+	/**
+	 * Metodo cheverifica la corrispondenza del codice fiscale a un determinato username.
+	 *
+	 * @param username Lo username del cittadino.
+	 * @param cf Il CF del cittadino.
+	 * @return vero se corrisponde.
+	 */
 	boolean CheckCFCittadino(String username, String cf);
 
 	/**

@@ -11,8 +11,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-/** Classe per effettuare la ricerca di un Centro vaccinale
-
+/**
+ * Classe per effettuare la ricerca di un Centro vaccinale
  */
 public class Ricerca_CentroVaccinale_View extends JFrame{
 
@@ -42,8 +42,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
     private JButton btn_reset;
 
 
-    /** Costruttore della classe Ricerca Centro Vaccinale
-     *
+    /**
+     * Costruttore della classe Ricerca Centro Vaccinale
      */
     public Ricerca_CentroVaccinale_View(){
 
@@ -61,9 +61,6 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         panel_welcome = new JPanel();
 
 
-        /*
-        Inizializzo coi vari parametri i pannelli che ho creato sopra
-        */
         panel_welcome.setLayout(null);
         panel_welcome.setPreferredSize(new Dimension(WIDTH, 70));
         panel_welcome.setBackground(Color.WHITE);
@@ -153,8 +150,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         frame.setVisible(true);
 
 
-        /** Bottone Back che collega questa classe a quella precedente tramite classe controller Ricerca Centro
-
+        /**
+         * Bottone Back che collega questa classe a quella precedente tramite classe controller Ricerca Centro
          */
         btn_back.addActionListener(new ActionListener(){
 
@@ -189,8 +186,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         });
 
 
-        /**  Bottone Reset che cancella i dati inseriti e riapre la schermata corrente
-         *
+        /**
+         *  Bottone Reset che cancella i dati inseriti e riapre la schermata corrente
          */
         btn_reset.addActionListener(new ActionListener(){
 
@@ -207,8 +204,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
         });
 
-        /** Metodo che ricerca per Nome il Centro dal DB
-         *
+        /**
+         * Metodo che ricerca per Nome il Centro dal DB
          */
         tf_cercaPerNomeCentro.addKeyListener(new KeyListener(){
 
@@ -227,8 +224,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         });
 
 
-        /** Metodo che ricerca per Comune il Centro dal DB
-         *
+        /**
+         * Metodo che ricerca per Comune il Centro dal DB
          */
         tf_cercaPerComune.addKeyListener(new KeyListener(){
 
@@ -246,8 +243,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
         });
 
-        /** Metodo che ricerca per Tipologia il Centro dal DB
-         *
+        /**
+         * Metodo che ricerca per Tipologia il Centro dal DB
          */
         tf_cercaPerTipologia.addKeyListener(new KeyListener(){
 
@@ -267,8 +264,8 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
 
     }
 
-    /** Metodo che permette leggere i dati inseriti
-     *
+    /**
+     * Metodo che permette leggere i dati inseriti
      */
     public String getTextFieldText(){
         String s ="";
@@ -295,10 +292,11 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
         return temp;
     }
 
-    /** metodo per prendere il dato di ricerca inserito dall'utente
+    /**
+     * metodo per prendere il dato di ricerca inserito dall'utente
      *
-     * @param s
-     * @return
+     * @param s stringa su cui verranno effettuate le operazioni
+     * @return la stringa formattata per la ricerca
      */
     public String implRic(String s){
    String temp="";
@@ -307,14 +305,12 @@ public class Ricerca_CentroVaccinale_View extends JFrame{
     for(int i=0;i<s.length();i++) {
         ch=s.charAt(i);
         if(ch==' ' && cont==0) {
-            System.out.println("C'è lo spazio");
             cont++;
         }
         else{
             temp=temp+s.charAt(i);
         }
     }
-    System.out.println("nome passsato del centro per capire "+temp);
        return temp;
 }
 

@@ -16,7 +16,7 @@ public class MainLoginFrameController {
 
     /**
      * Costruttore della classe
-     * @param loginFrameView
+     * @param loginFrameView view su cui si baserà il controller
      */
     public MainLoginFrameController(MainLoginFrameView loginFrameView){
         this.loginFrameView = loginFrameView;

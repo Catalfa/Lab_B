@@ -447,7 +447,7 @@ public class CentriVaccinaliDaoImpl extends GeneralDao implements CentriVaccinal
 	 * @return Una stringa contenente il nome del centro vaccinale senza spazi.
 	 */
 
-	public static String accorpamento(String centro) {
+	public static String accorpamento(String centro) throws NullPointerException{
 		String tmp = "";
 
 		for (int i = 0; i < centro.length(); i++) {

@@ -22,7 +22,7 @@ public class Login_CentroVaccinale_Controller {
 
     /**
      * Costruttore della classe
-     * @param loginCVaccView
+     * @param loginCVaccView view su cui si baserà il controller
      */
     public Login_CentroVaccinale_Controller(Login_CentroVaccinale_View loginCVaccView) {
         this.loginCVaccView = loginCVaccView;
@@ -40,6 +40,7 @@ public class Login_CentroVaccinale_Controller {
 
     /**
      * Metodo che gestisce il login del centro vaccinale.
+     * @return 1 in caso avvenga il login, 0 in caso contrario
      */
     public int loginCentroVaccinale(String user, String password) {
 

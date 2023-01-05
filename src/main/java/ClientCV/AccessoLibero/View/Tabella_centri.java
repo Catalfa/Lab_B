@@ -24,7 +24,7 @@ public class Tabella_centri extends JFrame {
 
     /**
      * Costruttore della classe
-     * @param listaCentri
+     * @param listaCentri lista che verrà mostrata nella tabella
      * @throws RemoteException
      */
     public Tabella_centri(List<InfoCentriVaccinali> listaCentri) throws RemoteException {

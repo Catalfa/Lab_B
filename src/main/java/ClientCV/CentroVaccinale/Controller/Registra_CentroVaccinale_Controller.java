@@ -26,7 +26,7 @@ public class Registra_CentroVaccinale_Controller {
 
     /**
      * Costruttore della classe
-     * @param registraCentroVaccinaleView
+     * @param registraCentroVaccinaleView view su cui si baserà il controller
      */
     public Registra_CentroVaccinale_Controller(Registra_CentroVaccinale_View registraCentroVaccinaleView) {
         this.registraCentroVaccinaleView = registraCentroVaccinaleView;
@@ -53,11 +53,6 @@ public class Registra_CentroVaccinale_Controller {
         RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
         registraVaccinatoView.setVisible(true);
         registraCentroVaccinaleView.dispose();
-        /*
-        gli errori di tipo 1 sono errori dal lato client
-        gli errori di tipo 2 sono errori dal lato server
-        return tipo 0indica che non ci sono errori 
-        */
 
         if(cVaccinale.getIdCentro().isEmpty() || cVaccinale.getNomeCentro().isEmpty() ||
             cVaccinale.getTipologia().isEmpty() || cVaccinale.getQualificatore().isEmpty() ||
@@ -78,18 +73,6 @@ public class Registra_CentroVaccinale_Controller {
             registra_centroVaccinale_view.setVisible(true);
             return 1;
         }
-            System.out.println("IDcentro: "+cVaccinale.getIdCentro());
-        System.out.println("nomeCentro: "+cVaccinale.getNomeCentro());
-        System.out.println("username: "+cVaccinale.getUsername());
-        System.out.println("password: "+cVaccinale.getPassword());
-        System.out.println("tipologia: "+cVaccinale.getTipologia());
-        System.out.println("qualificatore: "+cVaccinale.getQualificatore());
-        System.out.println("indirizzo: "+cVaccinale.getNomeVia());
-        System.out.println("numeroCivico: "+cVaccinale.getNumCiv());
-        System.out.println("comune: "+cVaccinale.getComune());
-        System.out.println("provincia: "+cVaccinale.getProvincia());
-        System.out.println("cap: "+cVaccinale.getCap());
-
         if(cVaccinale.getProvincia().length() != 2){
             utility.showWarningPopUp("Attenzione", "La provincia deve essere una sigla di due caratteri.");
             Registra_CentroVaccinale_View registra_centroVaccinale_view = new Registra_CentroVaccinale_View();
@@ -97,7 +80,6 @@ public class Registra_CentroVaccinale_Controller {
             return 1;
         }
         int c=Stub.registraCentroVaccinale(cVaccinale);
-        System.out.println(c);
         return c;
     }
 

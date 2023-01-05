@@ -18,7 +18,7 @@ public class HomePageController implements Client {
 
     /**
      * Costruttore della classe
-     * @param homePageView
+     * @param homePageView view su cui si baserà il controller
      */
     public HomePageController(HomePageView homePageView){
         this.homePageView = homePageView;

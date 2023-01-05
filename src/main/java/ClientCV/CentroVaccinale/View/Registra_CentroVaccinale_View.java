@@ -21,7 +21,6 @@ public class Registra_CentroVaccinale_View extends JFrame {
     private final int HIGHT = 700;
 
 
-
     private String[] labelNames = {
             "ID centro",
             "Nome centro",

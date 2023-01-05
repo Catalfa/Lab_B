@@ -4,8 +4,6 @@ package ClientCV.CentriVaccinali.Controller;
 import ClientCV.AccessoLibero.View.Ricerca_CentroVaccinale_View;
 import ClientCV.CentriVaccinali.View.HomePageView;
 import ClientCV.CentriVaccinali.View.MainAccLibFrameView;
-//import ClientCV.CentroVaccinale.View.Login_CentroVaccinale_View;
-//import ClientCV.Cittadino.View.LoginCittadinoView;
 
 
 /**
@@ -19,7 +17,7 @@ public class MainAccLibFrameController {
     /**
      * Costruttore della classe
      *
-     * @param mainAccLibFrameView
+     * @param mainAccLibFrameView view su cui si baserà il controller
      */
     public MainAccLibFrameController(MainAccLibFrameView mainAccLibFrameView) {
         this.mainAccLibFrameView = mainAccLibFrameView;

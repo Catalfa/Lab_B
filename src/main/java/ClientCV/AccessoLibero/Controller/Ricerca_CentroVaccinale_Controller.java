@@ -34,8 +34,8 @@ public class Ricerca_CentroVaccinale_Controller {
     }
 
 
-    /** Metodo che crea collegamento con la classe precedente MainAccLib
-
+    /**
+     * Metodo che crea collegamento con la classe precedente MainAccLib
      */
     public void back() {
         ricerca_CentroVaccinale_View.deleteView();
@@ -43,8 +43,8 @@ public class Ricerca_CentroVaccinale_Controller {
         mainAccLibFrameView.setVisible(true);
     }
 
-    /** Metodo che permette ricercare Centro vaccinale selezionato dal DB
-
+    /**
+     *  Metodo che permette ricercare Centro vaccinale selezionato dal DB
      */
     public void cercaCentro(String nome) {
 

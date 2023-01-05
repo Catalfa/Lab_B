@@ -22,8 +22,23 @@ public interface Server extends Remote {
 	 */
 	Integer subscribeToEvents(Client client) throws RemoteException;
 
+	/**
+	 * Metodo cheverifica la corrispondenza del codice fiscale a un determinato username.
+	 *
+	 * @param username Lo username del cittadino.
+	 * @param cf Il CF del cittadino.
+	 * @return vero se corrisponde.
+	 * @throws RemoteException	Eccezione remota.
+	 */
 	boolean CheckCFCittadino(String username, String cf) throws RemoteException;
-
+	/**
+	 * Metodo che gestisce l'ottenimento dei dati vaccinazione del cittadino registrato in base
+	 * all codice fiscale.
+	 *
+	 * @param cf Codice fiscale del cittadino.
+	 * @return dati vaccinazione (ID_vaccinazione, ID_centro).
+	 * @throws RemoteException	Eccezione remota.
+	 */
 	public String[] getIdCittadino(String cf)throws RemoteException;
 
 	/**

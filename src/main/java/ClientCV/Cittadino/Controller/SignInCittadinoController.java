@@ -48,8 +48,8 @@ public class SignInCittadinoController extends JFrame {
 
     /**
      * metodo che gestisce sign-in del cittadino
-     * @param cittadini
-     * @return
+     * @param cittadini insieme dei dati del cittadino
+     * @return 1 in caso di problemi, 0 in caso contrario
      * @throws RemoteException
      */
     public int signIn(DatiCittadino cittadini) throws RemoteException {

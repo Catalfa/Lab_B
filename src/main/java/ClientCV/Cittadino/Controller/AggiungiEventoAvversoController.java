@@ -15,8 +15,6 @@ import java.rmi.RemoteException;
  */
 public class AggiungiEventoAvversoController {
 
-   // public LoginCittadinoView username;
-   // public LoginCittadinoView password;
     public LoginCittadinoView cf;
     private AggiungiEventoAvversoView eventoAvversoView;
     private Server Stub;
@@ -24,7 +22,7 @@ public class AggiungiEventoAvversoController {
 
     /**
      * costruttore della classe
-     * @param eventoAvversoView
+     * @param eventoAvversoView view su cui si baserà il controller
      */
     public AggiungiEventoAvversoController(AggiungiEventoAvversoView eventoAvversoView) {
         Stub = ServerSingleton.getInstance();

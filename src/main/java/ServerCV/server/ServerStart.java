@@ -48,9 +48,6 @@ public class ServerStart {
 		} catch (Exception ex) {
 			System.out.println(ex);
 		} finally {
-
-			System.out.println(new CittadiniRegistratiDaoImpl().CheckCFCittadino("dibla","MMMMMMMMMMMMMMMM"));
-
 			System.out.println("Sto creando la tabella centrivaccinali...");
 			ct.Create_CentroVaccinale(connessione);
 			System.out.println("Sto creando la tabella cittadini_registrati...");

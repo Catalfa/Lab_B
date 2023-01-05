@@ -50,10 +50,10 @@ public class LoginCittadinoController {
 
     /**
      * metodo gestisce login del cittadino
-     * @param username
-     * @param password
-     * @param cf
-     * @return
+     * @param username username cittadino
+     * @param password password cittadino
+     * @param cf codice fiscale cittadino
+     * @return 1 in caso di problemi nel login, 0 in caso contrario
      * @throws RemoteException
      */
     public int loginCittadino(String username, char[] password, String cf) throws RemoteException {
@@ -61,7 +61,6 @@ public class LoginCittadinoController {
         AggiungiEventoAvversoView aggiungiEventoAvversoView = new AggiungiEventoAvversoView();
         aggiungiEventoAvversoView.setVisible(true);
         loginCittadinoView.dispose();
-
 
 
         if (username.toString().isEmpty() || password.length == 0 || cf.length() != 16) {
@@ -77,8 +76,6 @@ public class LoginCittadinoController {
             loginCittadinoView.setVisible(true);
             return 1;
         }
-
-        String [] aux=Stub.getIdCittadino(cf);
 
         switch (Stub.loginCittadino(username, password.toString(), cf)) {
             case 1:

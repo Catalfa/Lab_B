@@ -34,17 +34,17 @@ public class ServerImpl extends UnicastRemoteObject implements Server {
 		return gestClient.subscribeToEvents(client);
 	}
 
-
-//TODO
-
-
+	/**
+	 * Metodo implementativo del server che controlla che il codice fiscale corrisponda all'username
+	 */
 	@Override
 	public boolean CheckCFCittadino(String username, String cf)throws RemoteException {
-		System.out.println("booh");
 		return gestClient.CheckCFCittadino(username,cf);
 
 	}
-
+	/**
+	 * Metodo implementativo del server che restituisce i dati vaccinazione corrispondenti al codice fiscale.
+	 */
 	@Override
 	public String[] getIdCittadino(String cf) throws RemoteException {
 		String aux[] =gestClient.getIdCittadino(cf);
