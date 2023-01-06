@@ -80,6 +80,12 @@ public class CittadiniRegistratiDaoImpl extends GeneralDao implements CittadiniR
 		return datiCittadino;
 	}
 
+	/**
+	 * Metodo per controllare se l'user e il cf corrispondono
+	 * @param username Lo username del cittadino.
+	 * @param cf Il CF del cittadino.
+	 * @return Se i dati sono corretti.
+	 */
 
 	@Override
 	public boolean CheckCFCittadino(String username, String cf) {
