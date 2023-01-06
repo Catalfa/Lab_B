@@ -125,6 +125,7 @@ public class Login_CentroVaccinale_View extends JFrame {
                 switch (controller.loginCentroVaccinale(user, password)) {
 
                     case 1:
+                        Utility.showInformationPopUp("Complimenti", "accesso eseguito ");
                         RegistraVaccinatoView registraVaccinatoView = new RegistraVaccinatoView();
                         registraVaccinatoView.setVisible(true);
                         break;
