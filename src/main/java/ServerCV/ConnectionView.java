@@ -9,6 +9,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe che collega server e client
+ */
 public class ConnectionView extends JFrame {
 
     private final int WIDTH = 510;
@@ -26,6 +29,9 @@ public class ConnectionView extends JFrame {
     private JPasswordField field4;
     private JButton button;
 
+    /**
+     * costruttore della classe
+     */
     public  ConnectionView() {
         // imposta il titolo del frame
         super("Connessione DB");
@@ -65,10 +71,13 @@ public class ConnectionView extends JFrame {
         setVisible(true);
 
 
+        /**
+         * metodo bottone che stampa valori dei campi
+         */
         // imposta l'azione del bottone
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // quando viene premuto il bottone, stampa i valori dei campi di testo
+
                 try {
                     new ServerStart().start(field2.getText(),field1.getText(),field3.getText(),field4.getText());
                     dispose();
