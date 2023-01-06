@@ -1,8 +1,5 @@
 package ServerCV;
-import ClientCV.Utility;
-import ClientCV.client.ClientStart;
 import ServerCV.server.ServerStart;
-import jdk.jshell.execution.Util;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConnectionView extends JFrame {
-    private  JLabel titleLabel;
+
     private final JLabel nomeLabel;
     private final JLabel portaLabel;
     private final JLabel usernameLabel;
@@ -73,7 +70,9 @@ public class ConnectionView extends JFrame {
         // imposta le dimensioni del frame e lo rende visibile
         setSize(300, 300);
         // posiziona il frame al centro del monitor
+        setResizable(false);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
