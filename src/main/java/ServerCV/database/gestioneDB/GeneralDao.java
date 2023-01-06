@@ -34,6 +34,7 @@ public class GeneralDao {
 	 */
 	public static Connection openConnection() {
 		try {
+			System.out.println("url "+DB_URL+"user "+DB_USERNAME);
 			return DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 		} catch (SQLException ex) {
 			Utility.showErrorPopUp("Errore", "Errore nell'inserimento dati, per riprovare, riavviare l'applicazione");

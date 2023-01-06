@@ -19,6 +19,8 @@ public class EventiAvversiDaoImpl extends GeneralDao implements EventiAvversiDao
 	 * @param id_centro L'id del centro vaccinale.
 	 * @param evento L'evento avverso.
 	 * @param severita La severità dell'evento avverso.
+	 * @param note Le note opzionali.
+	 * @param cf Il cf del cittadino.
 	 */
 
 
