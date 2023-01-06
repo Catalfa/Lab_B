@@ -8,6 +8,10 @@ import java.awt.event.ActionListener;
 
 public class ConnectionView extends JFrame {
 
+    private final Font mainFont = new Font("Segoeo print", Font.BOLD, 15);
+    private static final int WIDTH = 510;
+    private static final int HIGHT = 350;
+
     private final JLabel nomeLabel;
     private final JLabel portaLabel;
     private final JLabel usernameLabel;
@@ -33,10 +37,10 @@ public class ConnectionView extends JFrame {
         passwordLabel = new JLabel("password: ");
 
         // crea i campi di testo
-        field1 = new JTextField(20);
-        field2 = new JTextField(20);
-        field3 = new JTextField(20);
-        field4 = new JPasswordField(20);
+        field1 = new JTextField(40);
+        field2 = new JTextField(40);
+        field3 = new JTextField(40);
+        field4 = new JPasswordField(40);
         field1.setBounds(220, 50, 250, 25);
         field2.setBounds(220, 100, 250, 25);
         field3.setBounds(220, 150, 250, 25);
@@ -68,7 +72,7 @@ public class ConnectionView extends JFrame {
         });
 
         // imposta le dimensioni del frame e lo rende visibile
-        setSize(300, 300);
+        setSize(WIDTH, HIGHT);
         // posiziona il frame al centro del monitor
         setResizable(false);
         setLocationRelativeTo(null);
