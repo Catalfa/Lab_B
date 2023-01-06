@@ -10,6 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ConnectionView extends JFrame {
+
+    private final int WIDTH = 510;
+    private final int HIGHT = 450;
+
     private JLabel titleLabel;
     private JLabel nomeLabel;
     private JLabel portaLabel;
@@ -30,16 +34,16 @@ public class ConnectionView extends JFrame {
         setLayout(new FlowLayout());
 
         // crea il label per il titolo
-        nomeLabel = new JLabel("nome database:");
-        portaLabel = new JLabel("porta database:");
-        usernameLabel = new JLabel("username: ");
-        passwordLabel = new JLabel("password: ");
+        nomeLabel = new JLabel(" Nome database:");
+        portaLabel = new JLabel("Porta database:  ");
+        usernameLabel = new JLabel("Username:         ");
+        passwordLabel = new JLabel("Password:          ");
 
         // crea i campi di testo
-        field1 = new JTextField(20);
-        field2 = new JTextField(20);
-        field3 = new JTextField(20);
-        field4 = new JPasswordField(20);
+        field1 = new JTextField(40);
+        field2 = new JTextField(40);
+        field3 = new JTextField(40);
+        field4 = new JPasswordField(40);
         add(nomeLabel);
         add(field1);
         add(portaLabel);
@@ -52,6 +56,14 @@ public class ConnectionView extends JFrame {
         // crea il bottone
         button = new JButton("Connetti");
         add(button);
+
+
+        setSize(WIDTH, HIGHT);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+
 
         // imposta l'azione del bottone
         button.addActionListener(new ActionListener() {
@@ -68,7 +80,7 @@ public class ConnectionView extends JFrame {
         });
 
         // imposta le dimensioni del frame e lo rende visibile
-        setSize(300, 300);
+        setSize(510, 450);
         // posiziona il frame al centro del monitor
         setLocationRelativeTo(null);
         setVisible(true);
